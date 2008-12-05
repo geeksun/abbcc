@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="hydlm" type="java.lang.String"></form-property>
+			<form-property name="mm" type="java.lang.String"></form-property>
+			<form-property name="status" type="java.lang.String"></form-property>
+		</form-bean>
+		<form-bean name="registerForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="hydlm" type="java.lang.String"></form-property>
+			<form-property name="mm" type="java.lang.String"></form-property>
+			<form-property name="mmtswt" type="java.lang.String"></form-property>
+			<form-property name="mmtsda" type="java.lang.String"></form-property>
+			<form-property name="zsxm" type="java.lang.String"></form-property>
+			<form-property name="xb" type="java.lang.String"></form-property>
+			<form-property name="zw" type="java.lang.String"></form-property>
+			<form-property name="dzyx" type="java.lang.String"></form-property>
+			<form-property name="gddh" type="java.lang.String"></form-property>
+			<form-property name="cz" type="java.lang.String" initial=""></form-property>
+			<form-property name="sj" type="java.lang.String" initial=""></form-property>
+			<form-property name="gslx" type="java.lang.String"></form-property>
+			<form-property name="gsmc" type="java.lang.String"></form-property>
+			<form-property name="gsszd" type="java.lang.String"></form-property>
+			<form-property name="jydz" type="java.lang.String"></form-property>
+			<form-property name="zyhy" type="java.lang.String"></form-property>
+			
+		</form-bean>
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="error.invalidlogin" type="java.lang.Exception" path="/index.jsp" scope="request"></exception>
+	</global-exceptions>
+	<global-forwards>
+		<forward name="login" path="/login.jsp"></forward>
+		<forward name="fail" path="/fail.jsp"></forward>
+	</global-forwards>
+	<action-mappings>
+	  	<action path="/pubabbcc" type="com.abbcc.struts.action.PubAbbccAction"  validate="false">
+	    	<forward name="main" path="/admin/main.jsp"></forward>
+	    </action>
+      
+	    <!-- login -->
+	    <action path="/login" input="/user/index.jsp" name="loginForm" attribute="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
+	     	<forward name="loginsuccess" path="/user/welcome.jsp"></forward>
+	    </action>
+	    <action path="/register" input="/user/register.jsp" name="registerForm" attribute="registerForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+	      	<forward name="loginsuccess" path="/user/welcome.jsp"></forward>
+	    </action>
+	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+	    </action>
+	    
+	</action-mappings>
+	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
+	<!--   插件导入spring   
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/app-config/applicationContext-*.xml" />
+	</plug-in>
+	-->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/admin_validation.xml"/>
+	</plug-in>
+</struts-config>

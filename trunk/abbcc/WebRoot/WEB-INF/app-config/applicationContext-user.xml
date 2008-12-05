@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="hyjbxxDao" class="com.abbcc.dao.impl.HyjbxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="hyjbxxService" class="com.abbcc.service.impl.HyjbxxServiceImpl">
+		<property name="hyjbxxDao">
+			<ref local="hyjbxxDao"/>
+		</property>
+	</bean>
+	<bean name="/checkName" class="com.abbcc.customer.CheckName" >    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/register" class="com.abbcc.customer.RegisterAction" >    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/login" class="com.abbcc.customer.CustomerLoginAction" >    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+</beans>

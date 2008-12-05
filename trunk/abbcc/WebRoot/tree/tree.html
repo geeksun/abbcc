@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>sys menu</title>
+<style type="text/css">
+body{
+ margin: 0px;
+ text-align:left;
+ background: url(treeview/left_bg.jpg) repeat-y;
+ height:100%;
+ overflow: auto;
+}
+a {
+ color: #000000;
+ text-decoration: none;
+}
+</style>
+<SCRIPT language=JavaScript type="text/javascript" SRC="System.js"></SCRIPT>
+<SCRIPT language=JavaScript type="text/javascript" SRC="Control.js"></SCRIPT>
+<SCRIPT language=JavaScript type="text/javascript" SRC="Tree.js"></SCRIPT>
+
+<SCRIPT language=JavaScript type="text/javascript">
+var icon_dir = "treeview/";
+function afterload(){
+    init();
+    inittree();
+//  TreeView1.SetNodeType('CheckBox');
+//  TreeView1.Items.Item[0].Expand(false);
+    TreeView1.RootNode.Expand(false);
+}
+function init(){
+ window.TreeView1=new TreeView();
+ TreeView1.Name='TreeView1';
+ TreeView1.style.height='100%';
+ TreeView1.style.width='190';
+ TreeView1.style.position='absolute';
+ TreeView1.style.left='5';
+ TreeView1.style.top='30';
+ TreeView1.OnChange=TreeView1OnChange;
+ TreeView1.OnNodeControlClick=TreeView1OnNodeControlClick;
+ window.status='';
+}
+
+function inittree(){
+  var rootNode = new TreeNode();
+  rootNode.Text.innerHTML='系统菜单';    
+  rootNode.DefaultImage=icon_dir+'desktop.gif';
+  rootNode.SelectImage=icon_dir+'desktop.gif';
+  TreeView1.Items.AddChild(rootNode);
+    
+  var n1 = new TreeNode();
+  n1.Text.innerHTML='节点1';
+  n1.DefaultImage=icon_dir+'documents.gif';
+  n1.SelectImage=icon_dir+'documents.gif';
+  rootNode.Items.AddChild(n1);
+  var n11 = new TreeNode();
+  n11.Text.innerHTML='节点11';
+  n11.Text.href="{[$urlroot]}/modules/storage/";
+  n11.Text.target = "mainFrame";
+  n1.Items.AddChild(n11);
+}
+
+//******************展开和收缩树形菜单，同时变换相应的图片标示********************************
+function exp_col(imgobj)
+{
+ if (imgobj.src.indexOf("expand") != -1)
+ {
+  imgobj.src = "treeview/collapse_all.jpg";
+  imgobj.title = "收缩";
+  TreeView1.FullExpand();
+ }
+ else
+ {
+  imgobj.src = "treeview/expand_all.jpg";
+  imgobj.title = "展开";
+  TreeView1.FullCollapse();
+ }
+  window.focus();
+  return true;
+}
+</script>
+</head>
+
+<body oncontextmenu="return false" onload="afterload()">
+<div style="width:197px;height:27px;background:url(treeview/left_header.jpg) no-repeat;text-align: right;">
+<a href="#"><img src="treeview/expand_all.jpg" border="0" style="margin-right:11px;" title="展开" onclick="exp_col(this);" /></a>
+</div>
+</body>
+</html>
+
