@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 		}
 		return  us; 
 	}
-	public boolean login(String name, String pass) {
-		boolean validate = hyd.findByProperty(name,pass);
+	public int login(String name, String pass) {
+		int validate = hyd.findByProperty(name,pass);
 		return validate;
 	}
 	public int save(Hyjbxx hy) {   
