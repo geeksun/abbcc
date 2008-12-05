@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>js去除左右空格</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <script type="text/javascript">
+	function trim1(string)
+    {
+        var temp = string.replace(/(^\s*)|(\s*$)/g, "");
+        alert(temp);
+    }
+    function lTrim(str) 
+	{ 
+	  if (str.charAt(0) == " ") 
+	  { 
+	    //如果字串左边第一个字符为空格 
+	    str = str.slice(1);//将空格从字串中去掉 
+	    //这一句也可改成 str = str.substring(1, str.length); 
+	    str = lTrim(str);    //递归调用 
+	  } 
+	  return str; 
+	} 
+	//rTrim()去掉字串右边的空格 
+	function rTrim(str) 
+	{ 
+	  var iLength; 
+	  iLength = str.length; 
+	  if (str.charAt(iLength - 1) == " ") 
+	  { 
+	    //如果字串右边第一个字符为空格 
+	    str = str.slice(0, iLength - 1);//将空格从字串中去掉 
+	    //这一句也可改成 str = str.substring(0, iLength - 1); 
+	    str = rTrim(str);    //递归调用 
+	  } 
+	  return str; 
+	} 
+	//trim()去掉字串两边的空格 
+	function trim(str) 
+	{ 
+	  var i = lTrim(rTrim(str)); 
+	  alert(i);
+	}   
+    </script>
+  </head>
+  
+  <body>
+     <input type="button" onBlur="trim('  g ');" value="trim">
+     <img border=0 src='/abbcc/images/gif/loadding_indicator_remembermilk_orange.gif'/>
+  </body>
+</html>

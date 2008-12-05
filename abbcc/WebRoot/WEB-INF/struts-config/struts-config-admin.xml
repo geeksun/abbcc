@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="adminLoginForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="uname" type="java.lang.String"/>
+			<form-property name="upass" type="java.lang.String"/>
+		</form-bean>
+	</form-beans>
+	<global-exceptions>
+	</global-exceptions>
+	<global-forwards>
+	</global-forwards>
+	<action-mappings>
+	  <action path="/adminlogin" attribute="adminLoginForm" name="adminLoginForm" scope="request"  type="" >
+      	
+      </action>
+      <action attribute="adminLoginForm" name="adminLoginForm" input="/admin/index.jsp"
+			parameter="adminstatus" path="/adminlogin" scope="request"
+			type="com.abbcc.struts.action.adminLoginAction" validate="true">
+			<forward name="adminlogin" path="/admin/"></forward>
+		</action>
+	</action-mappings>
+</struts-config>
