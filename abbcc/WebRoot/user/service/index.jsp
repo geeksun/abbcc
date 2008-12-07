@@ -10,7 +10,7 @@
 
   </head>
   <frameset rows="80,*"> 
-		<frame name="top" src="topMenu.jsp"> 
+		<frame name="top" src="<%=path %>/user/service/topMenu.jsp"> 
 	<frameset cols="200,*"> 
 		<frame name="lower_left" src="<%=path %>/user/service/leftMenu.jsp" scrolling="NO" noresize> 
 		<frame name="lower_right" src="<%=path %>/user/service/main.jsp"> 
