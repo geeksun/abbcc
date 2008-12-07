@@ -51,7 +51,8 @@ public class FwsxDAOImpl implements FwsxDAO {
 	public void insert(Fwsx fwsx) throws Exception {
 		hid = fwsx.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("fwsx");
+		
+		int[] track = pa.updateRecNum("fwsx");
 		sql = "INSERT INTO fwsx_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);

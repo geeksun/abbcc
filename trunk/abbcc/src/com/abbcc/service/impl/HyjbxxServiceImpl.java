@@ -5,6 +5,7 @@ import java.util.List;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
+import com.abbcc.vo.HyjbxxBean;
 
 public class HyjbxxServiceImpl implements HyjbxxService {
 	private HyjbxxDAO hyjbxxDao;
@@ -32,6 +33,11 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		} else {
 			return false;
 		}
+	}
+
+	public List getMemberByName(String customer) { 
+		List list = hyjbxxDao.getMemberByName(customer);
+		return  list;
 	}
 
 }

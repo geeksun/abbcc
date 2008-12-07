@@ -1,0 +1,8 @@
+#Created by geeksun
+#2008.12.5
+err.adminname=\u7BA1\u7406\u5458\u7528\u6237\u540D
+err.adminpass=\u7BA1\u7406\u5458\u5BC6\u7801
+errors.required=\ <li> {0}\u4E0D\u80FD\u4E3A\u7A7A\!\!\!
+
+usernameError=用户名或密码错误
+error.submit.double=请不要重复提交信息

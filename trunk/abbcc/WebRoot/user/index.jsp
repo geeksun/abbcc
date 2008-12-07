@@ -35,16 +35,22 @@
 		<br>
 		<p>
 		</p>
-		<br>
-		<p>
-		</p>
 		<html:messages id="usernameError" message="true">
 				<div align="center" id="message">
 					<font color=red size=h3>
 					<bean:write name="usernameError" />
 					</font>
 				</div>
-				</html:messages>
+		</html:messages>
+		<!-- 
+		<html:messages id="repeatLogin" message="false">
+				<div align="center" id="message">
+					<font color=red size=h3>
+					<bean:write name="repeatLogin" />
+					</font>
+				</div>
+		</html:messages>
+		 -->
 		<html:form action="login.do" method="post">
 			<table align="center" >
 				<tr>
@@ -72,7 +78,7 @@
 					<!-- µÇÂ½×´Ì¬ -->
 					<html:hidden property="status" value="userlogin"/>
 					<td colspan="2" align="center">
-						<input type="button" value="Ìá½»" onClick="verify();"/>
+						<input type="button" value="µÇÂ¼" onClick="verify();"/>
 						<input type="button" value="×¢²á" onClick="register();"/>
 					</td>
 				</tr>

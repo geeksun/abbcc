@@ -3,6 +3,7 @@ package com.abbcc.dao;
 import java.util.List;
 
 import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.vo.HyjbxxBean;
 
 public interface HyjbxxDAO {
 	
@@ -23,10 +24,12 @@ public interface HyjbxxDAO {
 
 	//public boolean findByExample(Hyjbxx hy);
 	//public int findByName(String name);
-	public List<Hyjbxx> findByName(String name);
+	public List findByName(String name);
 
 	public int findByProperty(String name, String pass);
 
-	public void save(Hyjbxx hy); 
+	public void save(Hyjbxx hy);
+
+	public List getMemberByName(String customer);   
 
 }

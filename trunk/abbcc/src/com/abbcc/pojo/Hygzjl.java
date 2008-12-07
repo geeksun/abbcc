@@ -5,8 +5,12 @@ package com.abbcc.pojo;
  */
 
 public class Hygzjl implements java.io.Serializable {
-
 	// Fields
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2564467896592490734L;
 
 	private Integer hygzjlid;
 

@@ -52,7 +52,7 @@ public class JghzDAOImpl implements JghzDAO {
 	public void insert(Jghz jghz) throws Exception {
 		hid = jghz.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("jghz");
+		int[] track = pa.updateRecNum("jghz");
 		sql = "INSERT INTO jghz_" + page + " VALUES(?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, hid);

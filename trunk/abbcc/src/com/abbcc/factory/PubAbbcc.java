@@ -10,9 +10,7 @@ import com.abbcc.common.DataBase;
 
 public class PubAbbcc {
 	private static Connection conn = null;
-	private static int count;
 	private static PubAbbcc pa;
-	private static Session session = null;
 
 	public static PubAbbcc getInstance() {
 		if (pa == null) {
@@ -22,14 +20,12 @@ public class PubAbbcc {
 	}
 
 	public PubAbbcc() {
-		//session = HibernateUtil.currentSession();
-		//conn = session.connection();
-		count = 0;
+		//count = 0;
 	}
 
 	public int getRecNum(String tablename) {
-		String sql = "SELECT a.recnum FROM pz a WHERE a.tablename='"
-				+ tablename + "'";
+		int count = 0;
+		String sql = "SELECT a.recnum FROM pz a WHERE a.tablename='" + tablename + "'";
 		PreparedStatement pstmt = null;
 		conn = DataBase.getConnection();
 		try {
@@ -49,36 +45,32 @@ public class PubAbbcc {
 
 	/**
 	 * @param tablename
-	 * @return  更新纪录数量,返回总纪录数
+	 * @return  更新记录的总数,返回记录属性的数组
 	 */
-	public int updateRecNum(String tablename) {
-		String sql = "SELECT a.recnum FROM pz a WHERE a.tablename='"
-				+ tablename + "'";
+	public int[] updateRecNum(String tablename) {
+		int[] track = new int[2];
+		//查询纪录总数
+		String sql = "SELECT a.recnum,a.max_count FROM pz a WHERE a.tablename='" + tablename + "'";
 		PreparedStatement pstmt = null;
 		conn = DataBase.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				count = rs.getInt(1);
+				track[0] = rs.getInt(1);
+				track[1] = rs.getInt(2);
 			}
-			count = count + 1;
-			sql = "UPDATE pz p SET p.recnum=" + count + " WHERE p.tablename='"
+			++track[0];
+			sql = "UPDATE pz p SET p.recnum=" + track[0] + ",p.max_count=p.max_count+1 WHERE p.tablename='"
 					+ tablename + "'";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();
 			rs.close();
-			//  总纪录数
-			sql = "UPDATE pz p SET p.recnum=p.recnum+1 WHERE p.tablename='"
-					+ tablename + "_total'";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.executeUpdate();
-			pstmt.close();
 			DataBase.closeCon(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return count;
+		return track;
 	}
 
 	public void deleteRecNum(String tablename) {
@@ -98,7 +90,7 @@ public class PubAbbcc {
 	public void deleteByHyjbxxid(int hyjbxxid, String tablename)
 			throws Exception {
 		int page = hyjbxxid / Globals.COUNT;
-
+		int count = 0;
 		// 得到信息条数
 		String sql = "SELECT count(*) FROM " + tablename + "_" + page
 				+ " a WHERE a.hyjbxxid=" + hyjbxxid;

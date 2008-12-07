@@ -52,7 +52,7 @@ public class HygzjlDAOImpl implements HygzjlDAO {
 	public void insert(Hygzjl hygzjl) throws Exception {
 		hid = hygzjl.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("cpgqxx");
+		int[] track = pa.updateRecNum("cpgqxx");
 		sql = "INSERT INTO hygzjl_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?)";
 		System.out.println(sql);

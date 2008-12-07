@@ -1,5 +1,7 @@
 package com.abbcc.service;
 
+import java.util.List;
+
 import com.abbcc.pojo.Hyjbxx;
 
 public interface HyjbxxService {
@@ -7,5 +9,7 @@ public interface HyjbxxService {
 
 	public int save(Hyjbxx hy) ;
 
-	public boolean checkName(String hydlm);        
+	public boolean checkName(String hydlm);
+
+	public List getMemberByName(String customer);         
 }

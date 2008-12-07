@@ -8,8 +8,8 @@
   <head>
     <title>welcome to abbcc</title>
   <style type="text/css">
-		dl{	background-color:#000;color:#fff;width:100px;}
-		dt{ cursor:pointer;width:100%;background-color:#666;}
+		dl{	background-color:#FFDAB9;color:#0000ff;width:200px;}
+		dt{ cursor:pointer;width:100%;background-color:#008000;}
 		.expand {overflow:visible;}
 		.collapse {height:16px;overflow:hidden;}
 	</style>
@@ -27,11 +27,14 @@
   		XX,欢迎登陆  <a href="http://yys580.cn.alibaba.com">客户网址</a>
   	</div>
      <dl>
-     	<dt onclick="toggleDl(this)">根结点</dt>
-     	<dd><a href="/service/index.jsp">基本服务</a></dd>
-     	<dd>子结点2</dd>
-     	<dd>子结点3</dd>
-     	<dd>子结点4</dd>
+     	<dt onclick="toggleDl(this)">基本信息设置</dt>
+     	<dd><a href="/service/index.jsp">基本资料管理</a></dd>
+     	<dd>后台密码修改</dd>
+     	<dd>公司简介</dd>
+     	<dd>荣誉证书</dd>
+     	<dd>技术实力</dd>
+     	<dd>上传公司标志</dd>
+     	<dd>数据导入</dd>
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">根结点</dt>
