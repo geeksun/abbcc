@@ -52,7 +52,7 @@ public class DljmsxDAOImpl implements DljmsxDAO {
 	public void insert(Dljmsx dljmsx) throws Exception {
 		hid = dljmsx.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("cpgqxx");
+		int[] track = pa.updateRecNum("cpgqxx");
 		sql = "INSERT INTO dljmsx_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);

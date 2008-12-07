@@ -50,7 +50,7 @@ public class ZpxxDAOImpl implements ZpxxDAO {
 	public void insert(Zpxx zpxx) throws Exception {
 		hid = zpxx.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("zpxx");
+		int[] track = pa.updateRecNum("zpxx");
 		sql = "INSERT INTO zpxx_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);

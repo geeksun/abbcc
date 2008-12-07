@@ -51,7 +51,8 @@ public class CpgqxxDAOImplbak implements CpgqxxDAO {
 	
 	public void insert(Cpgqxx cpgqxx) throws Exception {
 		hid = cpgqxx.getHyjbxxid();
-		count = pa.updateRecNum("cpgqxx");
+		int[] track = pa.updateRecNum("hyjbxx");
+		track = pa.updateRecNum("cpgqxx");
 		page = hid / Globals.COUNT;
 		sql = "INSERT INTO cpgqxx_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

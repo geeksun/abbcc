@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *	DataBase operate
  */
 public class DataBase {
-	public static Connection getConnection(){ 
+	public synchronized static Connection getConnection(){   
 		Connection con = null;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");

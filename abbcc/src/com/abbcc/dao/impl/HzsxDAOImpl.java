@@ -52,7 +52,7 @@ public class HzsxDAOImpl implements HzsxDAO {
 	public void insert(Hzsx hzsx) throws Exception {
 		hid = hzsx.getHyjbxxid();
 		page = hid / Globals.COUNT;
-		count = pa.updateRecNum("hzsx");
+		int[] track = pa.updateRecNum("hzsx");
 		sql = "INSERT INTO hzsx_" + page
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);

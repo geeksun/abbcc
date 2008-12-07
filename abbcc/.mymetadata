@@ -2,7 +2,7 @@
 <project-module
   type="WEB"
   name="abbcc"
-  id="myeclipse.1228181029484"
+  id="myeclipse.1228313880218"
   context-root="/abbcc"
   j2ee-spec="1.4"
   archive="abbcc.war">

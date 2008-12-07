@@ -19,11 +19,8 @@ import com.abbcc.pojo.Hyjbxx;
 
 public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
-	/*private JdbcTemplate jdbcTemplate;
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate)
-    {
-        this.jdbcTemplate = jdbcTemplate;
-    }*/
+	public static final String HYDLM = "hydlm";
+	
 	private static HyjbxxDAOImpl hyjbxxdaoimpl = null;
 	private static int count = 0;
 	private static ResultSet rs = null;
@@ -31,12 +28,8 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static String sql = null;
 	private static PreparedStatement pstmt = null;
 	private static PubAbbcc pa = null;
-	private static Connection conn = null;
 	private Session session = null;
 	public HyjbxxDAOImpl() {
-		/*session = HibernateUtil.currentSession();			//  marker:del
-		session = HibernateSessionFactory.getSession();		//  marker:del
-		conn = session.connection();	*/					//  marker:del
 		pa = new PubAbbcc();
 	}
 
@@ -48,27 +41,27 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	}
 
 	/* 
-	 *  插入会员资料 20 items
-	 *  count 表的计数
+	 *  插入会员资料 
+	 *  count 表的总记录
 	 *  page  判断应该第几个表  
 	 */
 	public int insert(Hyjbxx hyjbxx) { 
 		log.debug("saving Hyjbxx instance");
-		count = pa.updateRecNum("hyjbxx");
+		int[] track = pa.updateRecNum("hyjbxx");
+		count = track[0];
+		int maxCount = track[1];
+		
 		page = count / Globals.COUNT;
 		int init = 0;					//  判断 sql 是否执行
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		//System.out.println("spring transfer session: "+session);
-		
-		if(conn==null)
-			conn = session.connection();
+		Connection	conn = session.connection();
 		sql = "INSERT INTO hyjbxx_" + page
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 		pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setInt(1, count);
+		pstmt.setInt(1, maxCount);
 		pstmt.setString(2, hyjbxx.getHydlm());
 		pstmt.setString(3, hyjbxx.getMm());
 		pstmt.setString(4, hyjbxx.getMmtswt());
@@ -111,6 +104,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	// 修改会员个人资料
 	public void update(Hyjbxx hyjbxx) throws Exception {
 		count = hyjbxx.getHyjbxxid() / Globals.COUNT;
+		Connection	conn = session.connection();
 		sql = "UPDATE hyjbxx_"
 				+ count
 				+ " h SET h.hydlm=?,h.mm=?,h.mmtswt=?,h.mmtsda=?,h.zsxm=?,h.xb=?,h.dzyx=?,h.gddh=?,h.cz=?,h.sj=?,h.sqsj=?,h.sfyx=?,h.scsj=? WHERE h.hyjbxxid=?";
@@ -138,6 +132,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pa.deleteRecNum("hyjbxx");
 		count = hyjbxxid / Globals.COUNT;
 		sql = "DELETE FROM hyjbxx_" + count + " WHERE hyjbxxid=?";
+		Connection	conn = session.connection();
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, hyjbxxid);
 		pstmt.executeUpdate();
@@ -151,7 +146,6 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pa.deleteByHyjbxxid(hyjbxxid, "gsxxxx");
 		pa.deleteByHyjbxxid(hyjbxxid, "hygrzl");
 		pa.deleteByHyjbxxid(hyjbxxid, "hygzjl");
-		// pa.deleteByHyjbxxid(hyjbxxid, "hyjbxx");
 		pa.deleteByHyjbxxid(hyjbxxid, "hyjyjl");
 		pa.deleteByHyjbxxid(hyjbxxid, "hzsx");
 		pa.deleteByHyjbxxid(hyjbxxid, "jghz");
@@ -164,6 +158,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		Hyjbxx h = new Hyjbxx();
 		count = hyjbxxid / Globals.COUNT;
 		sql = "SELECT * FROM hyjbxx_" + count + " h WHERE h.hyjbxxid=?";
+		Connection conn = session.connection();
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, hyjbxxid);
 		ResultSet rs = pstmt.executeQuery();
@@ -203,6 +198,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		sql = "SELECT * FROM hyjbxx_" + page + " a UNION SELECT * FROM hyjbxx_"
 				+ page1 + " b ORDER BY hyjbxxid DESC LIMIT "
 				+ (currentPage - 1) * lineSize + "," + lineSize;
+		Connection conn = session.connection();
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		while (rs.next()) {
@@ -228,50 +224,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		return list;
 	}
 
-	/* 
-	 *  如何查全部分区表？
-	 */
-	/*public List findByName(String name) {
-		String sql = "select h.hydlm from Hyjbxx h where h.hydlm = ?";
-		List list = jdbcTemplate.
-	}*/
-	/*public int findByName(String name) {
-		//session = HibernateSessionFactory.getSession();
-		int init = 0;
-		Connection conn = DataBase.getConnection();
-		String sql = "select h.hydlm from Hyjbxx h where h.hydlm = ?";
-		PreparedStatement pst;
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, name);
-			ResultSet rs = pst.executeQuery();
-			while(rs.next()){
-				init = 1;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		//session.close();
-		System.out.println(init);
-		return init;
-	}*/
-
 	public int findByProperty(String name, String pass) {
-		/*String hql = "select h.mm from Hyjbxx h where h.hydlm = ?";
-		session = HibernateSessionFactory.getSession();
-		Query query = session.createQuery(hql);
-		query.setString(0, name);
-		//query.setDate(arg0, arg1);
-		List list = query.list();    
-		//System.out.println("list: "+list.size()); 
-		if(list.size()==1){
-			String mm = (String) list.get(0);
-			if(mm.equals(pass)){
-				return true;
-			}
-			return false;
-		}
-		return false;*/
 		log.debug("find instance by member name and password");
 		String sql = "select h.mm from Hyjbxx h where h.hydlm = ?";
 		List list = getHibernateTemplate().find(sql,name);
@@ -290,11 +243,25 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		session.saveOrUpdate(hy);
 	}
 
-	public List<Hyjbxx> findByName(String name) {
-		log.debug("find instance by member register name");
-		String sql = "select h.hydlm from Hyjbxx h where h.hydlm = ?";
-		List list = getHibernateTemplate().find(sql,name);
-		//System.out.println("hyjbxxdaoimpl.list().size():  "+list.size());
-		return list;
+	public List findByName(String name) {
+		log.debug("find " + HYDLM + " by member register name:" + name);
+		try{
+			String queryString = "select h.hydlm from Hyjbxx h where h." + HYDLM + "= ?";
+			return getHibernateTemplate().find(queryString,name);
+		}catch(RuntimeException re){
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+
+	public List getMemberByName(String customer) {
+		log.debug("finding Hyjbxx instance with property: " + HYDLM + ", value: " + customer);
+		try{
+			String queryString = "from Hyjbxx as model where model." + HYDLM + "= ?";
+			return getHibernateTemplate().find(queryString, customer);
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
 	}
 }

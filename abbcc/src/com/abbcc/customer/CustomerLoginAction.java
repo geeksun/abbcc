@@ -2,6 +2,7 @@ package com.abbcc.customer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -10,6 +11,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.DynaActionForm;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.struts.action.BaseAction;
 
@@ -22,16 +24,32 @@ public class CustomerLoginAction extends BaseAction {
 
 	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
+		//  防止重复提交
+		/*if(!isTokenValid(request)) {
+	        ActionMessages messages = new ActionMessages();
+
+	        messages.add(AppConstants.RepeatLogin,new ActionMessage("error.submit.double"));
+	        saveMessages(request.getSession(), messages);
+	        
+	        //如果是重复提交，重新生成token
+	        saveToken(request);
+	        return actionMapping.getInputForward();
+	    }*/
+		
 		DynaActionForm loginForm = (DynaActionForm)actionForm;
 		String name = loginForm.getString("hydlm");
 		String pass = loginForm.getString("mm");
+		
 		//UserService as = ServiceFactory.getUserService();
 		/*Hyjbxx hy = new Hyjbxx();
 		BeanUtils.copyProperties(hy,loginForm);*/
 		
+		
 		int validate = hyjbxxService.login(name,pass);
 		//System.out.println("validate: "+validate);
 		if(validate>0){
+			HttpSession session = request.getSession(true);
+			session.setAttribute("customer", name);
 			return actionMapping.findForward("loginsuccess");
 		}else{
 			ActionMessages am = new ActionMessages();
