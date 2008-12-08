@@ -10,9 +10,9 @@ import com.abbcc.pojo.TradeInfo;
 
 public class TradeInfoDaoImpl extends BaseDaoImpl implements TradeInfoDAO{
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
-	public static final String TABLENAME = "table_name";
-	public static final String PRODUCTID = "product_id";
-	public static final String CATEGORYID = "category_id";
+	public static final String TABLENAME = "tableName";
+	public static final String PRODUCTID = "productId";
+	public static final String CATEGORYID = "categoryId";
 	public void delete(int tradeInfoId) {
 		
 	}
@@ -40,11 +40,14 @@ public class TradeInfoDaoImpl extends BaseDaoImpl implements TradeInfoDAO{
 	public List getTableNameById(String id) {
 		log.debug("finding TradeInfo instance with property: " + CATEGORYID + ", value: " + id);
 		try{
-			String queryString = "from TradeInfo as model where model." + CATEGORYID + "=?";
-			return getHibernateTemplate().find(queryString,id);
-		}catch(RuntimeException re) {
+			//String queryString = "from TradeInfo as model where model." + CATEGORYID + "=?";
+			String queryString = "select h.* from TradeInfo h where h." + CATEGORYID + "= '0'";
+			//return getHibernateTemplate().find(queryString,id);
+			return getHibernateTemplate().find(queryString);
+		}catch(Exception re) {
 			log.error("find by property id failed", re);
-			throw re;
+			re.printStackTrace();
 		}
+		return null; 
 	}
 }
