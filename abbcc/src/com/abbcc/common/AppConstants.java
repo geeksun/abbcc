@@ -11,5 +11,6 @@ public class AppConstants {
 	public static final String RepeatLogin = "repeatLogin";
 	public static final int validate = 1;
 	public static final int invalidate = 0;
-	
+	//∂•º∂÷÷¿‡ID
+	public static final String TOPCATEGORYID = "0";
 }
