@@ -179,8 +179,12 @@
     			<TD>
     			<SPAN id=prdMore>
     			<SELECT id=topCatFormKey style="WIDTH: 120px" onchange=onChangeTopCategory() size=8 name=topCatFormKey>
-    			<option value="1">ÕÕÃ÷¹¤Òµ</option>
+    				<c:forEach var="trade" items="${traList}" begin="0" end="7" step="1">    
+				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.name}"/></option>    
+				    </c:forEach>
+    				
     			</SELECT>
+    			
     			<SELECT id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey></SELECT>
     			<SELECT id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeLeafCategory() size=8 name=leafCatFormKey></SELECT> 
     			</SPAN><BR>
