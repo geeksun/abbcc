@@ -14,6 +14,16 @@
 			<ref local="hyjbxxDao"/>
 		</property>
 	</bean>
+	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
+		<property name="tradeInfoDao">
+			<ref local="tradeInfoDao"/>
+		</property>
+	</bean>
 	<bean name="/checkName" class="com.abbcc.customer.CheckName" scope="prototype">    
 		<property name="hyjbxxService">
 			<ref local="hyjbxxService"/>
@@ -32,6 +42,9 @@
 	<bean name="/traceInfo" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
 		<property name="hyjbxxService">
 			<ref local="hyjbxxService"/>
+		</property>
+		<property name="tradeInfoService">
+			<ref local="tradeInfoService"/>
 		</property>
 	</bean>
 </beans>
