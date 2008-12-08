@@ -11,7 +11,9 @@ package com.abbcc.pojo;
  */
 public class TradeInfo implements java.io.Serializable {
 	private static final long serialVersionUID = 3199541942508080609L;
-	private String categoryId,productId,tableName;
+	private String categoryId;
+	private String productId;
+	private String tableName;
 	// Constructors
 
 	/** default constructor */
