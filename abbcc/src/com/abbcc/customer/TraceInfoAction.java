@@ -10,8 +10,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
+import com.abbcc.service.TradeInfoService;
 import com.abbcc.struts.action.BaseAction;
 
 /**
@@ -21,10 +23,15 @@ import com.abbcc.struts.action.BaseAction;
  */
 public class TraceInfoAction extends BaseAction {
 	private HyjbxxService hyjbxxService;
-
+	private TradeInfoService tradeInfoService;
 	public void setHyjbxxService(HyjbxxService hyjbxxService) {
 		this.hyjbxxService = hyjbxxService;
 	}
+
+	public void setTradeInfoService(TradeInfoService tradeInfoService) {
+		this.tradeInfoService = tradeInfoService;
+	}
+
 	/* 
 	 * @resolve 基本资料管理
 	 */
@@ -36,8 +43,10 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx leaguer = (Hyjbxx) list.get(0); 
 			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
 			// Mlist: 会员的全部属性
-			request.setAttribute("leaguer", leaguer);
+			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
 			
+			request.setAttribute("leaguer", leaguer);
+			request.setAttribute("traList", tradeList);
 			 
 			return mapping.findForward("basicinfo"); 
 	}
