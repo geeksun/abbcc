@@ -37,6 +37,7 @@ public class TraceInfoAction extends BaseAction {
 			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
 			// Mlist: 会员的全部属性
 			request.setAttribute("leaguer", leaguer);
+			
 			 
 			return mapping.findForward("basicinfo"); 
 	}
