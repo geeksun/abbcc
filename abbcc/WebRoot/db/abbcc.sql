@@ -1553,6 +1553,20 @@ CREATE TABLE `pz` (
 
 insert  into `pz`(`tablename`,`recnum`,`max_count`) values ('hyjbxx',2,2),('hygrzl',0,0),('hygzjl',0,0),('hyjyjl',0,0),('gsjbxx',0,0),('gsxxxx',0,0),('cpgqxx',0,0),('jytj',0,0),('dljmsx',0,0),('jghz',0,0),('fwsx',0,0),('hzsx',0,0),('zpxx',0,0),('hysh',0,0),('xxsh',0,0),('gly',0,0),('wzjbxx',0,0);
 
+/*Table structure for table `trade_info` */
+
+DROP TABLE IF EXISTS `trade_info`;
+
+CREATE TABLE `trade_info` (
+  `category_id` varchar(16) default NULL,
+  `product_id` varchar(32) default NULL,
+  `table_name` varchar(32) default NULL
+) ENGINE=InnoDB DEFAULT CHARSET=gbk;
+
+/*Data for the table `trade_info` */
+
+insert  into `trade_info`(`category_id`,`product_id`,`table_name`) values ('0','01','照明工业'),('01','0101','白炽灯'),('0101','010102','卤钨灯泡'),('01','0103',NULL),('0101','010104','普通照明白炽灯'),('0101','010105','微型灯泡'),('0101','010106','聚光灯泡'),('0101','010107','水下灯泡'),('0101','010108','无影灯'),('0101','010109','红外线灯泡'),('0101','010110','指示灯泡'),('0101','010110','指示灯泡'),('01','0102','气体放电灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),('0102','010201','氙气灯'),(NULL,NULL,NULL),('0102','010211','紫外线灯管'),('0102','010212','螺旋型荧光灯管'),('01','0103','冷光源'),(NULL,NULL,NULL);
+
 /*Table structure for table `wzjbxx` */
 
 DROP TABLE IF EXISTS `wzjbxx`;
