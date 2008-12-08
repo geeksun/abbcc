@@ -186,7 +186,7 @@
     			</SPAN><BR>
     			<INPUT onclick="doSubmit1('select')" type=button value=添加↓ name=Submit222> 
 				<INPUT onclick="doSubmit1('deselect')" type=button value=×删除 name=Submit2222> 
-                  <BR></TD></TR></TBODY></TABLE></SPAN>
+                  <BR></TD></TR></TABLE>
             <TABLE>
               <TBODY>
               <TR>
@@ -198,9 +198,7 @@
               ></TBODY>
     		</table>
     	</table>
-    		</td>
-    	</tr>
-    </table>
+    		
     <script type="text/javascript">
     	//入口参数
     	var topCatForm = document.form.topCatFormKey;
