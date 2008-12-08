@@ -44,6 +44,7 @@ public class TraceInfoAction extends BaseAction {
 			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
 			// Mlist: 会员的全部属性
 			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
+			System.out.println(tradeList.size());
 			
 			request.setAttribute("leaguer", leaguer);
 			request.setAttribute("traList", tradeList);
