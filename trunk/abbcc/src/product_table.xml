@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--     
+-->
+<pps>
+	<pp>
+		<table id="010101" table="Bzd_csdp">
+			<property name="cz" type="java.lang.Integer" />
+			<property name="pp" type="java.lang.Integer" />
+		</table>
+		<form id="010101">
+			<input ref="cz" name="cz" type="text" show="品牌"/> 
+			<select ref="pp" name="pp" show="类别">
+				<option value="">请选择</option>
+				<option value="1">弹起式地板插座</option>
+				<option value="2">弹起式地板插座</option>
+				<option value="3">弹起式地板插座</option>
+			</select>
+		</form>
+	</pp>
+</pps> 
