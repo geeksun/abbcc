@@ -45,7 +45,7 @@
 	    </action>
 	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 	    </action>
-	    <action path="/traceInfo" type="org.springframework.web.struts.DelegatingActionProxy">
+	    <action path="/traceInfo" scope="request" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    </action>
 	</action-mappings>
