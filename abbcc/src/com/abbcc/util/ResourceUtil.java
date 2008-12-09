@@ -19,20 +19,14 @@ import org.dom4j.io.SAXReader;
 import com.abbcc.util.product.ProductType;
 
 public class ResourceUtil {
-	 
-	 
 	public static final String PRODUCT_TYPE_PP = "pp";
-
 	public static final String PRODUCT_TYPE_ID = "id";
-
 	public static final String PRODUCT_TYPE_NAME = "name";
-
 	public static final String PRODUCT_TYPE_ROOT = "root";
 
 	public Map getProductMapByPath(String appNamePath) throws FileNotFoundException {
 		InputStream input = getAppStream(appNamePath);
 		return loadProductTypeByInput(input);
-		 
 	}
 
 	private InputStream getAppStream(String appName)
@@ -42,7 +36,6 @@ public class ResourceUtil {
 		InputStream input = new FileInputStream(new File(path));
 		return input;
 	}
-
 	 
 	public Map loadProductTypeByInput(InputStream input) {
 		SAXReader reader = new SAXReader();
@@ -64,10 +57,8 @@ public class ResourceUtil {
 
 		} catch (DocumentException e) {
 			e.printStackTrace();
-
 		}
 		return resources;
-
 	}
 
 	 
@@ -85,7 +76,6 @@ public class ResourceUtil {
 			if(!child.isTextOnly())
 				parseProductTypeXml(child, resources);
 		}
-
 	}
 	public static void main(String[] args)
 	{
@@ -105,7 +95,6 @@ public class ResourceUtil {
 			}
 			System.out.println(map.size());
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
