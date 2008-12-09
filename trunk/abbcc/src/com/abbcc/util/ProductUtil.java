@@ -37,7 +37,7 @@ public class ProductUtil {
 		if (select != null) {
 			for (int i = 0; i < select.length; i++) {
 				Select se = select[i];
-				String value = RequestUtils.getParameter(request, se.getName());
+				String value =null;// RequestUtils.getParameter(request, se.getName());
 				ret.add(value);
 			}
 		} 
