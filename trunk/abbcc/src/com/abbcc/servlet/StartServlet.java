@@ -9,8 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-public class StattServlet extends HttpServlet {
-	private   Log log = LogFactory.getLog(StattServlet.class);
+public class StartServlet extends HttpServlet {
+	private   Log log = LogFactory.getLog(StartServlet.class);
 
 	private static ApplicationContext context;
 
