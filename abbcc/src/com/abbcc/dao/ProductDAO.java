@@ -1,6 +1,6 @@
 package com.abbcc.dao;
 
-import com.abbcc.util.Product;
+import com.abbcc.util.product.Product;
 
 public interface ProductDAO {
 	
