@@ -33,7 +33,6 @@
     	ay.add(st3);
     	session.setAttribute("stu",ay);
     	session.setAttribute("stu1",st1);
-    	
     %>
      
       <c:out value="${stu1.teacher.name}"/>
