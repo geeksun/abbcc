@@ -58,6 +58,7 @@
 				<value>com/abbcc/pojo/Xxsh.hbm.xml</value>
 				<value>com/abbcc/pojo/Zpxx.hbm.xml</value>
 				<value>com/abbcc/pojo/Pz.hbm.xml</value>
+				<value>com/abbcc/pojo/TradeInfo.hbm.xml</value>
 				
 			</list>
 		</property>
