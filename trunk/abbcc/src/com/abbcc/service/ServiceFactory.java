@@ -2,6 +2,7 @@ package com.abbcc.service;
 
 import com.abbcc.service.impl.AdminServiceImpl;
 import com.abbcc.service.impl.CheckSerivceImpl;
+import com.abbcc.service.impl.ProductServiceImpl;
 import com.abbcc.service.impl.UserServiceImpl;
 
 public class ServiceFactory {
@@ -13,5 +14,8 @@ public class ServiceFactory {
 	}
 	public static CheckService getCheckService(){
 		return CheckSerivceImpl.getInstance();  
+	}
+	public static ProductService getProductService(){
+		return ProductServiceImpl.getInstance();
 	}
 }
