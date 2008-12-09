@@ -5,7 +5,7 @@ import java.util.List;
 import com.abbcc.pojo.Cpgqxx;
 import com.abbcc.pojo.Jytj;
 import com.abbcc.service.ProductService;
-import com.abbcc.util.Product;
+import com.abbcc.util.product.Product;
 import com.abbcc.vo.product.bzd.Bzd_csdp;
 
 public class ProductServiceImpl implements ProductService{
