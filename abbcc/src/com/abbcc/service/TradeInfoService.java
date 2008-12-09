@@ -3,5 +3,7 @@ package com.abbcc.service;
 import java.util.List;
 
 public interface TradeInfoService {
-	public List getTableNameById(String id); 
+	public List getTableNameById(String id);
+
+	public String getSubCategory(String topCatFormKey);  
 }

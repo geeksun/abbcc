@@ -1,5 +1,6 @@
 package com.abbcc.customer;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class TraceInfoAction extends BaseAction {
 	/* 
 	 * @resolve 基本资料管理
 	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+	public ActionForward displayBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession(true);
 			String customer = (String) session.getAttribute("customer");
@@ -51,5 +52,23 @@ public class TraceInfoAction extends BaseAction {
 			 
 			return mapping.findForward("basicinfo"); 
 	}
-	
+	/**
+	 * @see得到上级行业的对应子行业
+	 * @return subList
+	 */
+	public ActionForward getSubCategory(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			response.setContentType("text/xml;charset=GBK");
+			response.setHeader("Cache-Control", "no-cache");
+			PrintWriter out = response.getWriter();
+			
+			String topCatFormKey = request.getParameter("topCatFormKey");
+			System.out.println("topCatFormKey:"+topCatFormKey);
+			List subList = tradeInfoService.getTableNameById(topCatFormKey);
+			//String subList = tradeInfoService.getSubCategory(topCatFormKey);
+			//out.print(subList);
+			
+			request.setAttribute("subList", subList);
+			return mapping.findForward("basicinfo");
+	}
 }
