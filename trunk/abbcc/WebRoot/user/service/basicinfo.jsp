@@ -12,7 +12,7 @@
     	.note {
 			COLOR: #999999
 		}
-    </style>
+    </style>   
 	<script type="text/javascript">
 		 // 检查选择的经营模式，选择不能超过3个，已经超过3个能去除
           function checkBizType(obj) {
@@ -38,27 +38,7 @@
                 return false;
               }
             }
-       	  /*if(counter!=0||document.getElementById("Type_Other").checked){
-	        if(document.getElementsByName('rightImg')[2])
-	         {
-		        document.getElementsByName('rightImg')[2].style.display='';
-	         }
-	        if(document.getElementById("note2"))
-	        {
-	        document.getElementById("note2").style.display = "none";
-	        }
-	      }
-		 else {
-		    if(document.getElementsByName('rightImg')[2])
-	         {
-		         document.getElementsByName('rightImg')[2].style.display='none';
-	         }
-		     if(document.getElementById("note2"))
-		     {
-			     document.getElementById("note2").style.display = "block";
-		     }
-          }*/
-             return true;
+       	    return true;
         }
         document.getElementsByName('mainProduct2')[2].attachEvent('onclick',function(){
 											document.getElementById("mainMajor0").style.display = "none";
@@ -76,6 +56,7 @@
   	公司基本资料
   </p>
   	<c:set var="leaguer" value="${leaguer}" scope="page" ></c:set>
+  	<form action="" name="basicInfoForm">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr>
     		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${leaguer.gsmc}"  size="40"></td>
@@ -102,14 +83,6 @@
     	<tr>
     		<td align=right>经营模式：*</td>
     		<td>
-    		<!--  
-    		<input type="checkbox" name="jyms" id=Type_Manufacturer  value="1" onclick="return checkBizType(this)">生产加工
-    		<input type="checkbox" name="jyms" id=Type_Wholesale  value="2" onclick="return checkBizType(this)">经销批发
-    		<input type="checkbox" name="jyms" id=Type_Investment  value="3" onclick="return checkBizType(this)">招商代理
-    		<input type="checkbox" name="jyms"  value="4" onclick="return checkBizType(this)">商业服务
-    		<input type="checkbox" name="jyms"  value="5" onclick="return checkBizType(this)">以上都不是 <br>
-    		（最多选择2种经营模式）
-    		-->
     		<INPUT id=Type_Manufacturer title=从事自主生产、代/加工制造业务的厂商  onclick="return checkBizType(this)" 
             type=checkbox value=1 name=jyms>生产加工&nbsp;
 			<INPUT id=Type_Wholesale title=从事产品经销、批发、分销的商家 onclick="return checkBizType(this)" 
@@ -122,11 +95,6 @@
 			<SPAN class=note>（最多选择2种经营模式）</SPAN> 
     		</td>
     	</tr>
-    	<!--  
-    	<tr>
-    		<td>注册资本：*</td><td>人民币  万</td>
-    	</tr>
-    	-->
     	<tr>
     		<td align=right>主要经营地点：*</td>
     		<td><input type="text" name="zyjydd" value="${leaguer.jydz }" size="27">
@@ -179,15 +147,20 @@
     			<TD>
     			<SPAN id=prdMore>
     			<SELECT id=topCatFormKey style="WIDTH: 120px" onchange=onChangeTopCategory() size=8 name=topCatFormKey>
-    				<c:forEach var="trade" items="${traList}" begin="0" end="7" step="1">    
-				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.name}"/></option>    
+    				<c:forEach var="trade" items="${traList}" begin="0" end="8" step="1">    
+				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
 				    </c:forEach>
-    				
     			</SELECT>
     			
-    			<SELECT id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey></SELECT>
+    			<SELECT id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
+    				<c:forEach var="sub" items="${subList}" begin="0" end="8" step="1">    
+				   		<option value="<c:out value="${sub.productId}"/>"><c:out value="${sub.tableName}"/></option>    
+				    </c:forEach>
+    			</SELECT>
     			<SELECT id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeLeafCategory() size=8 name=leafCatFormKey></SELECT> 
-    			</SPAN><BR>
+    			</SPAN>
+    			
+    			<BR>
     			<INPUT onclick="doSubmit1('select')" type=button value=添加↓ name=Submit222> 
 				<INPUT onclick="doSubmit1('deselect')" type=button value=×删除 name=Submit2222> 
                   <BR></TD></TR></TABLE>
@@ -202,42 +175,42 @@
               ></TBODY>
     		</table>
     	</table>
-    		
+    </form>		
     <script type="text/javascript">
     	//入口参数
-    	var topCatForm = document.form.topCatFormKey;
+    	/*var topCatForm = document.form.topCatFormKey;
 		var secondCatForm = document.form.secondCatFormKey;
-		var beginIndex = 0;
+		var beginIndex = 0;*/
+		var url = "<%=path%>/checkName.do";
+			//alert('ho'); 
+			var pars = "hydlm="+$("hydlm").value;
+			new Ajax.Request(url,{
+					method:'post',
+					parameters:pars,
+					onSuccess:function(transport){
+						if("fail" == transport.responseText){
+							showError(successid,id,"&nbsp;&nbsp;&nbsp;<font color='red'>该用户已经存在</font>");
+							return false;
+						}else{
+						 	showSuccess(successid,id);
+							return true;
+						}
+					}
+			});
     	function onChangeTopCategory(){
-		    changeTopCategory();
-		}
-		function changeTopCategory(){
-		    secondCatForm.value = "";
-				if(topCatForm.selectedIndex == -1 || (topCatForm.selectedIndex == 0 && beginIndex == 1)) {
-				if(beginIndex == 1){
-		        	topCatForm.options[0].selected = true;
+    		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
+    		var pars = "topCatFormKey="+$("topCatFormKey").value;
+		    //changeTopCategory();
+		    new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
+	  	}
+	    function showChecked(originalRequest){
+			var result= originalRequest.responseText;	  		
+			//if(result.indexOf("恭喜")>=0)	
+			//$("secondCatFormKey").innerHTML=result;
+			//else
+				//$("msg").innerHTML=result;
+	  	} 
 		
-				}
-		        var len = secondCatForm.options.length;
-		        for (var i = len - 1; i > beginIndex - 1; i--) {
-		            secondCatForm.options[i] = null;
-		        }
-			}
-			else{
-			   	var selectedTopCategory;
-				//查出选择了那个顶极类目
-				for(var j =0;j<topCatArr.length;j++){
-					if(topCatForm.options[topCatForm.selectedIndex].value == topCatArr[j].id){
-						selectedTopCategory = topCatArr[j];
-					} 
-				}
-				        initSubOptions(selectedTopCategory.id, secondCatForm);
-			}
-			if (beginIndex == 1){
-		        secondCatForm.options[0].selected = true;
-			}
-		    changeSecondCategory();
-		}
     </script>
   </body>
 </html>
