@@ -4,11 +4,24 @@
 <pps>
 	<pp>
 		<table id="010101" table="Bzd_csdp">
-			<property name="cz" type="java.lang.Integer" />
-			<property name="pp" type="java.lang.Integer" />
+			<property name="cz" type="java.lang.Integer" not-null="true"/>
+			<property name="pp" type="java.lang.Integer" not-null="true"/>
 		</table>
 		<form id="010101">
-			<input ref="cz" name="cz" type="text" show="品牌"/> 
+			<input ref="cz" name="cz" type="text" show="品牌" not-null="true"/> 
+			<input ref="cz" name="cz" type="text" show="品牌" not-null="true"/> 
+			<input ref="cz" name="cz" type="checkbox" show="品牌" not-null="true"> 
+			    <checkbox ref="cz" name="cz" value="1" show="品牌"/>
+			    <checkbox ref="cz" name="cz" value="2" show="品牌"/>
+			    <checkbox ref="cz" name="cz" value="3" show="品牌"/>
+			    <checkbox ref="cz" name="cz" value="4" show="品牌"/> 
+			</input> 
+			<input ref="cz" name="cz" type="radio" show="品牌" not-null="true"> 
+			    <radio ref="cz" name="cz" value="1" show="品牌"/>
+			    <radio ref="cz" name="cz" value="2" show="品牌"/>
+			    <radio ref="cz" name="cz" value="3" show="品牌"/>
+			    <radio ref="cz" name="cz" value="4" show="品牌"/> 
+			</input> 
 			<select ref="pp" name="pp" show="类别">
 				<option value="">请选择</option>
 				<option value="1">弹起式地板插座</option>
