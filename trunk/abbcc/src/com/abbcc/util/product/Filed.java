@@ -6,6 +6,8 @@ public class Filed {
 	private String name;
 
 	private String type;
+	
+	private boolean notNull;
 
 	public String getName() {
 		return name;
@@ -29,6 +31,14 @@ public class Filed {
 
 	public void setKey(String key) {
 		this.key = key;
+	}
+
+	public boolean isNotNull() {
+		return notNull;
+	}
+
+	public void setNotNull(boolean notNull) {
+		this.notNull = notNull;
 	}
 
 }

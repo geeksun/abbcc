@@ -9,6 +9,8 @@ public class Input {
 	private String type;
 
 	private String value;
+	
+	private boolean notNull;
 	 
 
 	public String getName() {
@@ -41,6 +43,14 @@ public class Input {
 
 	public void setKey(String key) {
 		this.key = key;
+	}
+
+	public boolean isNotNull() {
+		return notNull;
+	}
+
+	public void setNotNull(boolean notNull) {
+		this.notNull = notNull;
 	}
 
 	 

@@ -8,7 +8,6 @@ public class Table {
 	private String name;
 	
 	private Filed[] filed;
-	
 	 
 	public Filed[] getFiled() {
 		return filed;
