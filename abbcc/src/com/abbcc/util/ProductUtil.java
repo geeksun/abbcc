@@ -7,16 +7,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
 import com.abbcc.exception.ValueNullException;
-import com.abbcc.servlet.StartServlet;
 import com.abbcc.util.product.Checkbox;
 import com.abbcc.util.product.Filed;
 import com.abbcc.util.product.Form;
 import com.abbcc.util.product.FormObject;
 import com.abbcc.util.product.Option;
-import com.abbcc.util.product.ProductType;
 import com.abbcc.util.product.Radio;
 import com.abbcc.util.product.Select;
 import com.abbcc.util.product.Table;
@@ -24,12 +20,7 @@ import com.abbcc.util.product.Text;
 
 public class ProductUtil {
 
-	private static Map<String, Table> tableMap = new HashMap<String, Table>();
-
-	private static Map<String, Form> formMap = new HashMap<String, Form>();
-
-	private static Map<String, List<ProductType>> productType = new HashMap<String, List<ProductType>>();
-
+	 
 	public Map<String, Object> getFormValue(Form form,
 			HttpServletRequest request) throws ValueNullException {
 		Map<String, Object> ret = new HashMap<String, Object>();
@@ -75,21 +66,7 @@ public class ProductUtil {
 
 		return ret;
 	}
-
-	public Map<String, Object> getProductBySelectSql(String sql) {
-		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
-		List list = jdbc.queryForList(sql);
-		if (list != null && list.size() > 0) {
-			return (Map<String, Object>) list.get(0);
-		}
-		return null;
-	}
-
-	public List getProductListBySelectSql(String sql) {
-		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
-		return jdbc.queryForList(sql);
-	}
-
+  
 	public String getInsertSql(Table table) {
 		StringBuilder builder = new StringBuilder("insert into ");
 		builder.append(table.getName() + "(");

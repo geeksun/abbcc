@@ -16,7 +16,9 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.abbcc.util.product.Form;
 import com.abbcc.util.product.ProductType;
+import com.abbcc.util.product.Table;
 
 public class ResourceUtil {
 	public static final String PRODUCT_TYPE_PP = "pp";
@@ -24,10 +26,17 @@ public class ResourceUtil {
 	public static final String PRODUCT_TYPE_NAME = "name";
 	public static final String PRODUCT_TYPE_ROOT = "root";
 
-	public Map getProductMapByPath(String appNamePath) throws FileNotFoundException {
+	public  Map<String, List<ProductType>> getProductMapByPath(String appNamePath) throws FileNotFoundException {
 		InputStream input = getAppStream(appNamePath);
 		return loadProductTypeByInput(input);
 	}
+	public Map<String, Table> getTableMapByPath(String appNamePath){
+		return null;
+	}
+	public Map<String, Form> getFormMapByPath(String appNamePath){
+		return null;
+	}
+
 
 	private InputStream getAppStream(String appName)
 			throws FileNotFoundException {
@@ -82,7 +91,7 @@ public class ResourceUtil {
 		ResourceUtil  resource=new ResourceUtil();
 		String appNamePath="product_type_resource.xml";
 		try {
-			Map<String,List> map=resource.getProductMapByPath(appNamePath);
+			Map<String, List<ProductType>> map=resource.getProductMapByPath(appNamePath);
 			
 			List list=map.get(PRODUCT_TYPE_ROOT);
 			
