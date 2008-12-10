@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.abbcc.common.AppConstants;
+import com.abbcc.common.JsonUtil;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.service.TradeInfoService;
@@ -54,7 +55,7 @@ public class TraceInfoAction extends BaseAction {
 	}
 	/**
 	 * @see得到上级行业的对应子行业
-	 * @return subList
+	 * @return subCategoryList
 	 */
 	public ActionForward getSubCategory(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
@@ -66,9 +67,15 @@ public class TraceInfoAction extends BaseAction {
 			System.out.println("topCatFormKey:"+topCatFormKey);
 			List subList = tradeInfoService.getTableNameById(topCatFormKey);
 			//String subList = tradeInfoService.getSubCategory(topCatFormKey);
-			//out.print(subList);
 			
-			request.setAttribute("subList", subList);
-			return mapping.findForward("basicinfo");
+			//String json = "[";
+			//JSONObject json = JSONObject.forObject(subList);  
+			String json = JsonUtil.list2json(subList);
+			System.out.print(json);
+			out.print(json);
+			
+			//request.setAttribute("subList", subList);
+			return null;
 	}
+	
 }

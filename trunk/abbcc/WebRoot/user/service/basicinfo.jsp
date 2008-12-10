@@ -13,6 +13,8 @@
 			COLOR: #999999
 		}
     </style>   
+    <script src="<%=path%>/js/json.js"></script>
+    <script src="<%=path%>/js/prototype.js"></script> 
 	<script type="text/javascript">
 		 // 检查选择的经营模式，选择不能超过3个，已经超过3个能去除
           function checkBizType(obj) {
@@ -146,7 +148,7 @@
     			<tr>
     			<TD>
     			<SPAN id=prdMore>
-    			<SELECT id=topCatFormKey style="WIDTH: 120px" onchange=onChangeTopCategory() size=8 name=topCatFormKey>
+    			<SELECT id=topCatFormKey style="WIDTH: 120px" onClick=onChangeTopCategory() size=8 name=topCatFormKey>
     				<c:forEach var="trade" items="${traList}" begin="0" end="8" step="1">    
 				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
 				    </c:forEach>
@@ -181,7 +183,7 @@
     	/*var topCatForm = document.form.topCatFormKey;
 		var secondCatForm = document.form.secondCatFormKey;
 		var beginIndex = 0;*/
-		var url = "<%=path%>/checkName.do";
+		/*var url = "path%>/checkName.do";
 			//alert('ho'); 
 			var pars = "hydlm="+$("hydlm").value;
 			new Ajax.Request(url,{
@@ -196,19 +198,26 @@
 							return true;
 						}
 					}
-			});
+			});*/
     	function onChangeTopCategory(){
+    		alert('ok');
     		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
+    		alert(url);
     		var pars = "topCatFormKey="+$("topCatFormKey").value;
-		    //changeTopCategory();
+    		alert(pars);
 		    new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
+		    /*new Ajax.Request(url,{
+					method:'post',
+					parameters:pars,
+		    		onSuccess:function(transport){
+		    		alert(transport.responseText);
+					});
+		    alert('run');
+	  	}*/
 	  	}
 	    function showChecked(originalRequest){
 			var result= originalRequest.responseText;	  		
-			//if(result.indexOf("恭喜")>=0)	
-			//$("secondCatFormKey").innerHTML=result;
-			//else
-				//$("msg").innerHTML=result;
+			alert('ok');
 	  	} 
 		
     </script>
