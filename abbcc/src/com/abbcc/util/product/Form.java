@@ -1,9 +1,7 @@
 package com.abbcc.util.product;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 
 public class Form {
@@ -15,10 +13,8 @@ public class Form {
 	private String action;
 
 	private String method;
-
-	private Input[] input;
-
-	private Select[] select;
+	
+	private List<FormObject> list;
 
 	public String getAction() {
 		return action;
@@ -28,12 +24,21 @@ public class Form {
 		this.action = action;
 	}
 
-	public Input[] getInput() {
-		return input;
+	public String getId() {
+		return id;
 	}
 
-	public void setInput(Input[] input) {
-		this.input = input;
+	public void setId(String id) {
+		this.id = id;
+	}
+ 
+
+	public List<FormObject> getList() {
+		return list;
+	}
+
+	public void setList(List<FormObject> list) {
+		this.list = list;
 	}
 
 	public String getMethod() {
@@ -51,20 +56,5 @@ public class Form {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Select[] getSelect() {
-		return select;
-	}
-
-	public void setSelect(Select[] select) {
-		this.select = select;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}  
+	    
 }
