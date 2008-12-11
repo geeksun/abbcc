@@ -66,6 +66,6 @@ public class StringUtils {
             System.out.print(hex.toUpperCase() + " ");
         }
         System.out.println("");
-    }
+    } 
     
 }

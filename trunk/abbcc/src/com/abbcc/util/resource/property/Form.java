@@ -1,4 +1,4 @@
-package com.abbcc.util.product;
+package com.abbcc.util.resource.property;
 
 import java.util.List;
 

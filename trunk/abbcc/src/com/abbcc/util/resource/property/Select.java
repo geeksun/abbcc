@@ -1,23 +1,18 @@
-package com.abbcc.util.product;
+package com.abbcc.util.resource.property;
 
-public class Text implements FormObject{
+public class Select implements FormObject{
 	private String key;
- 
-
 	private String name;
-	
-	private boolean notNull;
-	
+	private Option[] option;
 	private String show;
-	
-	 
+	private boolean notNull;
 
-	public String getKey() {
-		return key;
+	public Option[] getOption() {
+		return option;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setOption(Option[] option) {
+		this.option = option;
 	}
 
 	public String getName() {
@@ -26,6 +21,14 @@ public class Text implements FormObject{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public Object getValue() {
@@ -48,5 +51,6 @@ public class Text implements FormObject{
 	public void setShow(String show) {
 		this.show = show;
 	}
-
+	
+	
 }
