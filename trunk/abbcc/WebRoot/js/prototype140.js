@@ -16,6 +16,7 @@ var Prototype = {
 
 var Class = {
   create: function() {
+  	//alert('ooo');
     return function() {
       this.initialize.apply(this, arguments);
     }
