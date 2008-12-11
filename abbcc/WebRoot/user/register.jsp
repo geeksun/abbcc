@@ -26,7 +26,7 @@
 			//  loading...
 			$(id).innerHTML = "<img border=0 src='<%=path%>/images/gif/loadding_indicator_remembermilk_orange.gif'/>";
 			var url = "<%=path%>/checkName.do";
-			//alert('ho'); 
+			//alert(url); 
 			var pars = "hydlm="+$("hydlm").value;
 			new Ajax.Request(url,{
 					method:'post',
