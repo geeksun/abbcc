@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.abbcc.exception.XmlException;
 import com.abbcc.util.ResourceUtil;
 import com.abbcc.util.product.Form;
 import com.abbcc.util.product.ProductType;
@@ -21,7 +22,7 @@ public class InitResource {
 
 	private String productTableResource = "product_table_resource.xml";
 
-	public void init() throws FileNotFoundException {
+	public void init() throws FileNotFoundException, XmlException {
 		ResourceUtil resource = new ResourceUtil();
 		productType = resource.getProductMapByPath(productTypeResource);
 		tableMap = resource.getTableMapByPath(productTableResource);

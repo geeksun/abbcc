@@ -6,7 +6,7 @@ public class Radio implements FormObject{
 	private String name;
 
 	private Option[] option;
-	
+	private String show;
 	private boolean notNull;
 
 	public String getKey() {
@@ -38,12 +38,20 @@ public class Radio implements FormObject{
 		return null;
 	}
 
-	public boolean isNotnull() {
+	public boolean isNotNull() {
 		return notNull;
 	}
 
-	public void setNotnull(boolean notNull) {
+	public void setNotNull(boolean notNull) {
 		this.notNull = notNull;
+	}
+
+	public String getShow() {
+		return show;
+	}
+
+	public void setShow(String show) {
+		this.show = show;
 	}
 
 }

@@ -7,6 +7,9 @@ public class Text implements FormObject{
 	private String name;
 	
 	private boolean notNull;
+	
+	private String show;
+	
 	 
 
 	public String getKey() {
@@ -36,6 +39,14 @@ public class Text implements FormObject{
 
 	public void setNotNull(boolean notNull) {
 		this.notNull = notNull;
+	}
+
+	public String getShow() {
+		return show;
+	}
+
+	public void setShow(String show) {
+		this.show = show;
 	}
 
 }

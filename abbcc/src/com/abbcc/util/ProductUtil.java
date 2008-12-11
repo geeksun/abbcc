@@ -40,7 +40,7 @@ public class ProductUtil {
 				Radio radio = (Radio) o;
 				String value = RequestUtils.getParameter(request, radio
 						.getName());
-				if (radio.isNotnull() && value == null) {
+				if (radio.isNotNull() && value == null) {
 					throw new ValueNullException(radio.getName() + " is null");
 				}
 				ret.put(radio.getKey(), value);
@@ -117,7 +117,7 @@ public class ProductUtil {
 		Filed[] filed = table.getFiled();
 		for (int i = 0; i < filed.length; i++) {
 			Filed f = filed[i];
-			String key = f.getKey();
+			String key = f.getName();
 			Object value = valueMap.get(key);
 			if (value == null) {
 				if (f.isNotNull()) {
@@ -224,7 +224,7 @@ public class ProductUtil {
 		for (int i = 0; i < filed.length; i++) {
 			Filed f = filed[i];
 
-			String key = f.getKey();
+			String key = f.getName();
 			Object value = valueMap.get(key);
 			if (value == null) {
 				if (f.isNotNull()) {
@@ -246,7 +246,7 @@ public class ProductUtil {
 		builder.append(" value (");
 		for (int i = 0; i < filed.length; i++) {
 			Filed f = filed[i];
-			String key = f.getKey();
+			String key = f.getName();
 			Object value = valueMap.get(key);
 			if (value != null) {
 				if (i == filed.length - 1) {

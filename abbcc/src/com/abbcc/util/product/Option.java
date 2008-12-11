@@ -2,6 +2,7 @@ package com.abbcc.util.product;
 
 public class Option {
 	private String value;
+
 	private String show;
 
 	public String getValue() {
