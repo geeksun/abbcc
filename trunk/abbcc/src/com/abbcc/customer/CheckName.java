@@ -25,7 +25,6 @@ public class CheckName extends BaseAction {
 		PrintWriter out = response.getWriter();
 		//CheckService cs = ServiceFactory.getCheckService();
 		
-		
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("registerStatus");
 		
