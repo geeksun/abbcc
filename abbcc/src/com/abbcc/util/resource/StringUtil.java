@@ -1,4 +1,4 @@
-package com.abbcc.util;
+package com.abbcc.util.resource;
 
 import java.util.ArrayList;
 import java.util.Iterator;

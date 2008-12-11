@@ -1,4 +1,4 @@
-package com.abbcc.servlet;
+package com.abbcc.util.resource;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
