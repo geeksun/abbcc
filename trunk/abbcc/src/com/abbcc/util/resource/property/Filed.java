@@ -5,7 +5,7 @@ public class Filed {
 	private String name;
 
 	private String type;
-	
+	  
 	private boolean notNull;
 
 	public String getName() {
@@ -17,6 +17,14 @@ public class Filed {
 	}
 
 	public Object getType() {
+		try {
+			Class c=Class.forName(type);
+			return c.newInstance();
+		} catch ( Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return type;
 	}
 
