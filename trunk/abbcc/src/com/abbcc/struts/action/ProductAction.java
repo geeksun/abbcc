@@ -13,7 +13,7 @@ public class ProductAction extends BaseAction {
 	public ActionForward addProduct(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		try {
-			String sql=ProductTemplate.getInstance().getProductInsertValueSql(request);
+			String sql=ProductTemplate.getInstance().getProductInsertValueSql(request,ProductTemplate.PRODUCT_KEY);
 			
 			productService.addProduct(null, null, sql);
 		

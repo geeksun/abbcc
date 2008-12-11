@@ -73,6 +73,45 @@ public class TableResourceUtil {
 
 		return ret;
 	}
+	public   Map<String, Object>  getParseFormValue(Table table,Map<String, Object> valueMap){
+		
+		Filed idFiled=table.getIdFiled();
+		Object value=valueMap.get(idFiled.getName());
+		Object type=idFiled.getType();
+		if(value instanceof String){
+			
+			String s=(String)value;
+			if (type instanceof Integer  ) {
+				valueMap.put(idFiled.getName(), Integer.valueOf(s));
+				 
+			} else if (type instanceof String) {
+				 
+			}else if( type instanceof Long){
+				
+			}else if(type instanceof Double){
+				
+			}
+			
+		}
+		
+		
+		return null;
+	}
+	public   String  getFormIdValue(Table table,Form form,
+			HttpServletRequest request) throws ValueNullException {
+
+		List<FormObject> list = form.getList();
+		Iterator<FormObject> iter = list.iterator();
+		String key = table.getIdFiled().getName(); 
+		while (iter.hasNext()) {
+			FormObject o = iter.next();
+			if (key.equals(o.getKey())) {
+				String value = RequestUtils.getParameter(request, o.getName());
+				return value;
+			}
+		} 
+		return null;
+	}
   
 	public   String  getInsertSql(Table table) {
 		StringBuilder builder = new StringBuilder("insert into ");
