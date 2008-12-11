@@ -48,7 +48,7 @@ public class ProductUtil {
 				Checkbox checkbox = (Checkbox) o;
 				int[] value = RequestUtils.getIntParameters(request, checkbox
 						.getName());
-				if (checkbox.isNotnull() && value == null) {
+				if (checkbox.isNotNull() && value == null) {
 					throw new ValueNullException(checkbox.getName()
 							+ " is null");
 				}
