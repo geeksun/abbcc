@@ -16,7 +16,7 @@ public class Filed {
 		this.name = name;
 	}
 
-	public String getType() {
+	public Object getType() {
 		return type;
 	}
 
@@ -31,5 +31,6 @@ public class Filed {
 	public void setNotNull(boolean notNull) {
 		this.notNull = notNull;
 	}
+	
 
 }

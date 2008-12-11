@@ -20,8 +20,15 @@ import com.abbcc.util.resource.property.Text;
 
 public class TableResourceUtil {
 
-	 
-	public Map<String, Object> getFormValue(Form form,
+	private static final TableResourceUtil instance=new TableResourceUtil();
+	public static TableResourceUtil getInstance(){
+		 return instance;
+	}
+	private  TableResourceUtil() {
+		 
+	}
+
+	public   Map<String, Object>  getFormValue(Form form,
 			HttpServletRequest request) throws ValueNullException {
 		Map<String, Object> ret = new HashMap<String, Object>();
 		List<FormObject> list = form.getList();
@@ -67,7 +74,7 @@ public class TableResourceUtil {
 		return ret;
 	}
   
-	public String getInsertSql(Table table) {
+	public   String  getInsertSql(Table table) {
 		StringBuilder builder = new StringBuilder("insert into ");
 		builder.append(table.getName() + "(");
 		Filed[] filed = table.getFiled();
@@ -222,10 +229,9 @@ public class TableResourceUtil {
 		builder.append(table.getName() + "(");
 		Filed[] filed = table.getFiled();
 		for (int i = 0; i < filed.length; i++) {
-			Filed f = filed[i];
-
+			Filed f = filed[i]; 
 			String key = f.getName();
-			Object value = valueMap.get(key);
+			Object value = valueMap.get(key); 
 			if (value == null) {
 				if (f.isNotNull()) {
 					throw new ValueNullException("filed " + f.getName()
@@ -253,6 +259,59 @@ public class TableResourceUtil {
 					builder.append("?)");
 				} else {
 					builder.append("?,");
+				}
+			}
+		}
+		return builder.toString();
+
+	} 
+	public   String getInsertValueSql(Table table, Map<String, Object> valueMap)
+	throws ValueNullException {
+		StringBuilder builder = new StringBuilder("insert into ");
+		builder.append(table.getName() + "(");
+		Filed[] filed = table.getFiled();
+		for (int i = 0; i < filed.length; i++) {
+			Filed f = filed[i];
+			String key = f.getName();
+			Object value = valueMap.get(key);
+
+			if (value == null) {
+				if (f.isNotNull()) {
+					throw new ValueNullException("filed " + f.getName()
+							+ " value is null");
+				}
+				if (i == filed.length - 1) {
+					builder.append(")");
+				}
+			} else {
+				if (i == filed.length - 1) {
+					builder.append(f.getName() + ")");
+				} else {
+					builder.append(f.getName() + ",");
+				}
+			}
+
+		}
+		builder.append(" value (");
+		for (int i = 0; i < filed.length; i++) {
+			Filed f = filed[i];
+			String key = f.getName();
+			Object value = valueMap.get(key);
+			Object type = f.getType();
+			if (value != null) {
+				if (type instanceof Integer || type instanceof Long
+						|| type instanceof Double) {
+					if (i == filed.length - 1) {
+						builder.append(value + ")");
+					} else {
+						builder.append(value + ",");
+					}
+				} else if (type instanceof String) {
+					if (i == filed.length - 1) {
+						builder.append("'" + value + "')");
+					} else {
+						builder.append("'" + value + "',");
+					}
 				}
 			}
 		}
