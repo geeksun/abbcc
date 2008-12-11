@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.abbcc.servlet.StartServlet;
 
 public class JdbcTemplateUtil {
-	public Map<String, Object> getObjectBySelectSql(String sql) {
+	public static Map<String, Object>  getObjectBySelectSql(String sql) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
 		List list = jdbc.queryForList(sql);
 		if (list != null && list.size() > 0) {
@@ -16,7 +16,7 @@ public class JdbcTemplateUtil {
 		}
 		return null;
 	}
-	public Map<String, Object> getObjectBySelectSql(String sql,Object  param) {
+	public static Map<String, Object> getObjectBySelectSql(String sql,Object  param) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
 		List list = jdbc.queryForList(sql,new Object[]{param}); 
 		if (list != null && list.size() > 0) {
@@ -25,31 +25,24 @@ public class JdbcTemplateUtil {
 		return null;
 	}
 
-	public List getProductListBySelectSql(String sql) {
+	public static List getProductListBySelectSql(String sql) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
 		return jdbc.queryForList(sql);
 	}
 
-	public List getProductListBySelectSql(String sql,Object[]  param) {
+	public static List getProductListBySelectSql(String sql,Object[]  param) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
 		return jdbc.queryForList(sql,param);
 	}
-	public void updateObject(String sql) {
+	public static void updateObject(String sql) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
 		jdbc.update(sql);
 	}
-	public void updateObject(String sql,Object[]  param) {
+	public static void updateObject(String sql,Object[]  param) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate"); 
 		jdbc.update(sql,param);
 	}
-	public void deleteObject(String sql,Object[]  param) {
-		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
-		jdbc.update(sql,param);
-	}
-	public void insertObject(String sql,Object[]  param) {
-		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
-		jdbc.update(sql,param);
-	}
+	 
 	
 
 }

@@ -4,16 +4,28 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import com.abbcc.util.RequestUtils;
 import com.abbcc.util.resource.property.Checkbox;
 import com.abbcc.util.resource.property.Form;
 import com.abbcc.util.resource.property.FormObject;
 import com.abbcc.util.resource.property.Option;
 import com.abbcc.util.resource.property.Radio;
 import com.abbcc.util.resource.property.Select;
+import com.abbcc.util.resource.property.Table;
 import com.abbcc.util.resource.property.Text;
 
 public class ProductTemplate {
-
+	public static final String PRODUCT_KEY="key";
+	private static final ProductTemplate instance=new ProductTemplate();
+	public static ProductTemplate getInstance(){
+		 return instance;
+	}
+	private  ProductTemplate() {
+		 
+	} 
+	
 	public String getTable(Form form) {
 		List<FormObject> list = form.getList();
 		StringBuilder builder = new StringBuilder();
@@ -198,6 +210,19 @@ public class ProductTemplate {
 		}
 		builder.append("</table>");
 		return builder.toString();
+	}
+	public String getProductInsertValueSql(HttpServletRequest request) throws  Exception{
+		String key=RequestUtils.getParameter(request,PRODUCT_KEY);
+		if(key!=null){
+			Form form=InitResource.getFormMap().get(key);
+			if(form!=null){
+				Map<String,Object> values=	TableResourceUtil.getInstance().getFormValue(form,request);
+				Table table=InitResource.getTableMap().get(key);
+				String sql=TableResourceUtil.getInstance().getInsertValueSql(table,values);
+				return sql;
+			}  
+		}
+		return null;
 	}
 
 }
