@@ -201,7 +201,7 @@
 			});*/
     	function onChangeTopCategory(){
     		alert('ok');
-    		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
+    		var url = "/traceInfo.do?action=getSubCategory";
     		alert(url);
     		var pars = "topCatFormKey="+$("topCatFormKey").value;
     		alert(pars);
