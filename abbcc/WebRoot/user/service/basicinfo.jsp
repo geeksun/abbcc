@@ -148,16 +148,16 @@
     			<tr>
     			<TD>
     			<SPAN id=prdMore>
-    			<SELECT id=topCatFormKey style="WIDTH: 120px" onClick=onChangeTopCategory() size=8 name=topCatFormKey>
+    			<SELECT id=topCatFormKey style="WIDTH: 120px" onClick="onChangeTopCategory()" size=8 name=topCatFormKey>
     				<c:forEach var="trade" items="${traList}" begin="0" end="8" step="1">    
 				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
 				    </c:forEach>
     			</SELECT>
     			
     			<SELECT id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
-    				<c:forEach var="sub" items="${subList}" begin="0" end="8" step="1">    
+    				<!--<c:forEach var="sub" items="${subList}" begin="0" end="8" step="1">    
 				   		<option value="<c:out value="${sub.productId}"/>"><c:out value="${sub.tableName}"/></option>    
-				    </c:forEach>
+				    </c:forEach>-->
     			</SELECT>
     			<SELECT id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeLeafCategory() size=8 name=leafCatFormKey></SELECT> 
     			</SPAN>
@@ -169,57 +169,61 @@
             <TABLE>
               <TBODY>
               <TR>
+              <td>
               <SPAN id=selectedText style="DISPLAY: none"><BR>以下是您已选择的主营行业：</SPAN>
               <SELECT style="WIDTH: 368px" size=8 name=right_category_id> 
               	<OPTION value= selected></OPTION>
               </SELECT> 
-               </TR
-              ></TBODY>
+              </td>
+               </TR>
+               <tr>
+				<td align=center>用户名称:
+				<input type=text id="userName" name="userName" onBlur="doCheck();"><div id=msg></div>
+				</td>
+				</tr>
+              </TBODY>
     		</table>
     	</table>
     </form>		
     <script type="text/javascript">
     	//入口参数
-    	/*var topCatForm = document.form.topCatFormKey;
-		var secondCatForm = document.form.secondCatFormKey;
-		var beginIndex = 0;*/
-		/*var url = "path%>/checkName.do";
-			//alert('ho'); 
-			var pars = "hydlm="+$("hydlm").value;
-			new Ajax.Request(url,{
-					method:'post',
-					parameters:pars,
-					onSuccess:function(transport){
-						if("fail" == transport.responseText){
-							showError(successid,id,"&nbsp;&nbsp;&nbsp;<font color='red'>该用户已经存在</font>");
-							return false;
-						}else{
-						 	showSuccess(successid,id);
-							return true;
-						}
-					}
-			});*/
     	function onChangeTopCategory(){
-    		alert('ok');
-    		var url = "/traceInfo.do?action=getSubCategory";
+    		var paramname = $F("topCatFormKey");
+    		alert(paramname);
+    		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
+    		//var url = "<%=path%>/checkName.do";
     		alert(url);
-    		var pars = "topCatFormKey="+$("topCatFormKey").value;
+    		var pars = "topCatFormKey=" + paramname;
+    		//var pars = "hydlm=" + paramname;
     		alert(pars);
-		    new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
-		    /*new Ajax.Request(url,{
-					method:'post',
-					parameters:pars,
-		    		onSuccess:function(transport){
-		    		alert(transport.responseText);
-					});
-		    alert('run');
-	  	}*/
+		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
 	  	}
+	  	
+	  	function doCheck(){
+			 alert('ooo');
+			 var paramname = $F("userName");
+			 alert(paramname);
+			 var url = "/abbcc/checkName.do"; 
+	   		 var pars ="hydlm=" + paramname;  
+	   		 pars = encodeURI(pars);
+	   		 pars = encodeURI(pars);		
+	   		 
+	   		 var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
+  		}
 	    function showChecked(originalRequest){
 			var result= originalRequest.responseText;	  		
-			alert('ok');
+			alert(result);
+			/*if(result.indexOf("恭喜")>=0)	
+				$("msg").innerHTML=result;
+			else
+				$("msg").innerHTML=result;*/
 	  	} 
-		
+		function onChangeSecondCategory(){
+			alert('ok');
+		}
+		function onChangeLeafCategory(){
+			alert('ok');
+		}
     </script>
   </body>
 </html>
