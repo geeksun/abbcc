@@ -4,7 +4,7 @@ public class Select implements FormObject{
 	private String key;
 	private String name;
 	private Option[] option;
-	
+	private String show;
 	private boolean notNull;
 
 	public Option[] getOption() {
@@ -42,6 +42,14 @@ public class Select implements FormObject{
 
 	public void setNotNull(boolean notNull) {
 		this.notNull = notNull;
+	}
+
+	public String getShow() {
+		return show;
+	}
+
+	public void setShow(String show) {
+		this.show = show;
 	}
 	
 	

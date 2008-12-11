@@ -3,26 +3,27 @@
 -->
 <pps>
 	<pp>
-		<table id="010101" table="Bzd_csdp">
+		<table key="010101"   name="Bzd_csdp">
+		    <id  name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer" not-null="true"/>
 			<property name="pp" type="java.lang.Integer" not-null="true"/>
 		</table>
-		<form id="010101">
-			<input ref="cz" name="cz" type="text" show="品牌" not-null="true"/> 
-			<input ref="cz" name="cz" type="text" show="品牌" not-null="true"/> 
-			<input ref="cz" name="cz" type="checkbox" show="品牌" not-null="true"> 
-			    <checkbox ref="cz" name="cz" value="1" show="品牌"/>
-			    <checkbox ref="cz" name="cz" value="2" show="品牌"/>
-			    <checkbox ref="cz" name="cz" value="3" show="品牌"/>
-			    <checkbox ref="cz" name="cz" value="4" show="品牌"/> 
+		<form>
+			<input ref-filed="cz" name="cz" type="text" show="品牌" not-null="true"/> 
+			<input ref-filed="cz" name="cz" type="text" show="品牌" not-null="true"/> 
+			<input ref-filed="cz" name="cz" type="checkbox" show="类别" not-null="true"> 
+			    <checkbox    value="1" show="品牌"/>
+			    <checkbox    value="2" show="品牌"/>
+			    <checkbox    value="3" show="品牌"/>
+			    <checkbox    value="4" show="品牌"/> 
 			</input> 
-			<input ref="cz" name="cz" type="radio" show="品牌" not-null="true"> 
-			    <radio ref="cz" name="cz" value="1" show="品牌"/>
-			    <radio ref="cz" name="cz" value="2" show="品牌"/>
-			    <radio ref="cz" name="cz" value="3" show="品牌"/>
-			    <radio ref="cz" name="cz" value="4" show="品牌"/> 
+			<input ref-filed="pp" name="cz" type="radio" show="类别2" not-null="true"> 
+			    <radio     value="1" show="品牌2"/>
+			    <radio     value="2" show="品牌4"/>
+			    <radio    value="3" show="品牌"/>
+			    <radio     value="4" show="品牌"/> 
 			</input> 
-			<select ref="pp" name="pp" show="类别">
+			<select ref-filed="pp" name="pp" show="类别">
 				<option value="">请选择</option>
 				<option value="1">弹起式地板插座</option>
 				<option value="2">弹起式地板插座</option>
@@ -30,4 +31,5 @@
 			</select>
 		</form>
 	</pp>
+	 
 </pps> 

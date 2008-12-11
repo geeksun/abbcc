@@ -1,13 +1,15 @@
 package com.abbcc.util.product;
 
-public class Checkbox {
+public class Checkbox implements FormObject{
 	private String key;
 
 	private String name;
 
 	private Option[] option;
 
-	private boolean notnull;
+	private boolean notNull;
+	
+	private String show;
 
 	public String getKey() {
 		return key;
@@ -24,13 +26,9 @@ public class Checkbox {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public boolean isNotnull() {
-		return notnull;
-	}
-
-	public void setNotnull(boolean notnull) {
-		this.notnull = notnull;
+ 
+	public void setNotNull(boolean notNull) {
+		this.notNull = notNull;
 	}
 
 	public Option[] getOption() {
@@ -39,6 +37,18 @@ public class Checkbox {
 
 	public void setOption(Option[] option) {
 		this.option = option;
+	}
+
+	public String getShow() {
+		return show;
+	}
+
+	public void setShow(String show) {
+		this.show = show;
+	}
+
+	public boolean isNotNull() {
+		return notNull;
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.abbcc.util.product;
 
-public class Filed {
-	private String key;
+public class Filed { 
 
 	private String name;
 
@@ -24,15 +23,7 @@ public class Filed {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
-
+  
 	public boolean isNotNull() {
 		return notNull;
 	}

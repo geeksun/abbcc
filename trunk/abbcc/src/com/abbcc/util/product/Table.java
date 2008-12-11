@@ -5,7 +5,11 @@ public class Table {
 	
 	private String id;
 
+	private String key;
+	
 	private String name;
+	
+	private Filed   idFiled;
 	
 	private Filed[] filed;
 	 
@@ -33,32 +37,23 @@ public class Table {
 		this.name = name;
 	}
 
-	 
-	public String getInsertSql() {
-		StringBuilder builder = new StringBuilder();
-		String sql = "insert into ";
-		builder.append(sql);
-		builder.append(name + " (");
-		Filed[] fileds = getFiled();
-		for (int i = 0; i < fileds.length; i++) {
-			Filed filed = fileds[i];
-			if (i == fileds.length - 1) {
-				builder.append(filed.getName() + ")");
-			} else {
-				builder.append(filed.getName() + ",");
-			}
-
-		}
-		builder.append(" value (");
-		for (int i = 0; i < fileds.length; i++) {
-			if (i == fileds.length - 1) {
-				builder.append("?)");
-			} else {
-				builder.append("?,");
-			}
-
-		}
-		return builder.toString();
+	public String getKey() {
+		return key;
 	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public Filed getIdFiled() {
+		return idFiled;
+	}
+
+	public void setIdFiled(Filed idFiled) {
+		this.idFiled = idFiled;
+	}
+
+	 
+	 
 	
 }
