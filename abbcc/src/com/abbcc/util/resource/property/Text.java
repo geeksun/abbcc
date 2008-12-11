@@ -2,8 +2,7 @@ package com.abbcc.util.resource.property;
 
 public class Text implements FormObject{
 	private String key;
- 
-
+  
 	private String name;
 	
 	private boolean notNull;
