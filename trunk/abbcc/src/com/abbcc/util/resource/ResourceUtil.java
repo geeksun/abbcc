@@ -32,7 +32,9 @@ public class ResourceUtil {
 
 	public static final String productTypeResource = "product_type_resource.xml";
 
-	public static final String productTableResource = "product_table_resource.xml";
+	public static final String productTableResource = "table_resource.xml";
+
+	public static final String PRODUCT_ROOT = "root";
 
 	private String note_pp = "pp";
 
@@ -90,14 +92,43 @@ public class ResourceUtil {
 		return loadFormByInput(input);
 
 	}
-
-	private InputStream getAppStream(String appName)
+	private InputStream getAppStream(String appName){
+		 
+		String appPath =  appName;
+		InputStream input = null;
+		try {
+			input = new FileInputStream(new File(appPath));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return input;
+	}
+	/*private InputStream getAppStream(String appName)
 			throws FileNotFoundException {
 		URL url = this.getClass().getClassLoader().getResource(".");
 		String path = url.getPath() + appName;
 		InputStream input = new FileInputStream(new File(path));
 		return input;
-	}
+		URL url = this.getClass().getClassLoader().getResource(File.separator);
+		String path = url.getPath().replace("classes", "security");
+		String appPath =  url.getPath() + appName;
+		InputStream input = null;
+		try {
+			input = new FileInputStream(new File(appPath));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return input;
+	}*/
+	private InputStream getLocalStream(String appName)
+	throws FileNotFoundException {
+		URL url = this.getClass().getClassLoader().getResource(".");
+		String path = url.getPath() + appName;
+		InputStream input = new FileInputStream(new File(path));
+		return input;
+}
 
 	public Map<String, Table> loadTableByInput(InputStream input)
 			throws XmlException {
@@ -202,7 +233,8 @@ public class ResourceUtil {
 
 	}
 
-	public Map<String, Form> loadFormByInput(InputStream input) throws XmlException {
+	public Map<String, Form> loadFormByInput(InputStream input)
+			throws XmlException {
 		SAXReader reader = new SAXReader();
 		Map<String, Form> resources = new HashMap<String, Form>();
 		try {
@@ -436,7 +468,7 @@ public class ResourceUtil {
 			Element root = doc.getRootElement();
 			Iterator iter = root.elementIterator(note_pp);
 			List<ProductType> list = new ArrayList<ProductType>();
-			resources.put(note_root, list);
+			resources.put(PRODUCT_ROOT, list);
 			while (iter.hasNext()) {
 				Element child = (Element) iter.next();
 				String id = child.attributeValue(note_id);
@@ -487,21 +519,22 @@ public class ResourceUtil {
 		}
 	}
 
+	
 	public static void main(String[] args) {
 		ResourceUtil resource = new ResourceUtil();
-		String appNamePath = productTableResource;
+		String appNamePath = "D:\\ProgramFiles\\jakarta-tomcat-5.5.9\\webapps\\abbcc\\WEB-INF\\classes\\product_table_resource.xml";
 		try {
 			Map map = resource.getFormMapByPath(appNamePath);
- 
-			List list = null;//map.get(PRODUCT_TYPE_ROOT);
 
-			/*Iterator iter=list.iterator();
-			 while(iter.hasNext()){
-			 ProductType type=(ProductType)iter.next();
-			 List nextlist=map.get(type.getId());
-			 Iterator nextiter=nextlist.iterator();
-			 
-			 }*/
+			List list = null;// map.get(PRODUCT_TYPE_ROOT);
+
+			/*
+			 * Iterator iter=list.iterator(); while(iter.hasNext()){ ProductType
+			 * type=(ProductType)iter.next(); List
+			 * nextlist=map.get(type.getId()); Iterator
+			 * nextiter=nextlist.iterator();
+			 *  }
+			 */
 			System.out.println(map.size());
 		} catch (Exception e) {
 			e.printStackTrace();
