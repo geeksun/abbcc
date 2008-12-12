@@ -1,5 +1,7 @@
 package com.abbcc.struts.action;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
@@ -50,24 +52,40 @@ public class ProductAction extends BaseAction {
 
 		return mapping.findForward("");
 	}
-	public ActionForward productCategory(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		Map<String, List<ProductType>> map=InitResource.getProductType();
-		String node=	RequestUtils.getParameter(request, "node");
-		if(node!=null){
-			List<ProductType> list=map.get(node);  
-			request.setAttribute("list", list);
-			return mapping.findForward("product");
-		} 
+
+	public ActionForward productCategory(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+		response.setContentType("text/xml;charset=UTF-8");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0); 
+		
+		try {
+			PrintWriter out = response.getWriter();
+			String result = ""; 
+			Map<String, List<ProductType>> map = InitResource.getProductType();
+			String node = RequestUtils.getParameter(request, "node");
+			if (node != null) {
+				List<ProductType> list = map.get(node);
+
+			}
+			out.write(result);
+		} catch (IOException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+
 		return null;
-	
+
 	}
+
 	public ActionForward showProduct(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		Map<String, List<ProductType>> map=InitResource.getProductType(); 
-		List<ProductType> list=map.get(ResourceUtil.PRODUCT_ROOT);  
+		Map<String, List<ProductType>> map = InitResource.getProductType();
+		List<ProductType> list = map.get(ResourceUtil.PRODUCT_ROOT);
 		request.setAttribute("list", list);
 		return mapping.findForward("product");
 	}
-	
+
 }

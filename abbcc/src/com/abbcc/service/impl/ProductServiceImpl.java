@@ -17,6 +17,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	public void addProduct(Cpgqxx cpgqxx, Jytj jyty, String productInsertSql) {
+		
+		
 		JdbcTemplateUtil.updateObject(productInsertSql);
 		
 	}
