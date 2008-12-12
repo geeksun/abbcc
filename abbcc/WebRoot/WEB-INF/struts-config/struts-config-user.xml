@@ -48,6 +48,9 @@
 	    <action path="/traceInfo" scope="request" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    </action>
+	     <action path="/product"   parameter="method" type="com.abbcc.struts.action.ProductAction">
+	    	<forward name="product" path="/user/product/product.jsp"></forward>
+	    </action>
 	</action-mappings>
 	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
