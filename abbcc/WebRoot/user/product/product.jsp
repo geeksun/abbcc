@@ -6,6 +6,49 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		<title></title> 
+	    <script src="<%=path%>/js/prototype.js"></script> 
+	    <script type="text/javascript">
+    	 
+    	function onChangeTopCategory(){
+    		alert('ok');
+    		var url = "<%=path%>/product.do?method=productCategory";
+    		alert(url);
+    		var pars = "node=1101";
+    		alert(pars);
+		    new Ajax.Request(url,{method:'post', parameters:pars,onComplete:showChecked});
+   
+	  	}
+	    function showChecked(originalRequest){
+			var result= originalRequest.responseText;	  		
+			alert('ok');
+	  	} 
+	  	function onChange2Category(){
+    		alert('ok');
+    		var url = "<%=path%>/product.do?method=productCategory";
+    		alert(url);
+    		var pars = "node=1101";
+    		alert(pars);
+		    new Ajax.Request(url,{method:'post', parameters:pars,onComplete:showChecked});
+    
+	  	}
+	    function show2Checked(originalRequest){
+			var result= originalRequest.responseText;	  		
+			alert('ok');
+	  	} 
+	  	function onChange3Category(){
+    		alert('ok');
+    		var url = "<%=path%>/product.do?method=productCategory";
+    		alert(url);
+    		var pars = "node=1101";
+    		alert(pars);
+		    new Ajax.Request(url,{method:'post', parameters:pars,onComplete:showChecked});
+   
+	  	}
+	    function show4Checked(originalRequest){
+			var result= originalRequest.responseText;	  		
+			alert('ok');
+	  	} 
+    </script>
 	</head>
 	<body>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0" >
