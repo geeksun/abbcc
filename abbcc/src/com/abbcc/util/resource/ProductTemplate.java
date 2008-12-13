@@ -24,7 +24,114 @@ public class ProductTemplate {
 	private  ProductTemplate() {
 		 
 	} 
-	
+	public String getProductTemplate(Form form, String servletPath) {
+		if (form == null || servletPath == null)
+			return "";
+		List<FormObject> list = form.getList();
+		StringBuilder builder = new StringBuilder();
+		builder
+				.append("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
+		builder.append("<tbody>");
+		Iterator<FormObject> iter = list.iterator();
+		boolean hasHidden=false;
+		while (iter.hasNext()) {
+			FormObject o = iter.next();
+			builder .append("<tr><td class='list_left_box' align='right' valign='top'>");
+			builder .append("<img id='img_right_feature112222' "
+							+ "src='"
+							+ servletPath
+							+ "/user/product/product_files/icon_nowhitewhiteright_19x19.gif'"
+							+ " align='absmiddle' width='19' height='16'>");
+			builder.append("<b>" + o.getShow() + "</b>");
+			if (o.isNotNull()) {
+				builder.append("<font color='#ff0000'>*</font>");
+
+			} else {
+				builder.append("&nbsp;");
+
+			}
+			builder.append("</td>");
+			builder.append("<td class='list_right_box' style='padding: 2px;'>");
+			if (o instanceof Text) {
+				Text text = (Text) o;
+				builder
+						.append("<input type='text' name='"
+								+ text.getName()
+								+ "' value='' size='23' maxlength='80'  "
+								+ "onblur='doOnBlur(this.name,true)' onfocus='doOnFocus(this.name)'>");
+
+			} else if (o instanceof Radio) {
+				Radio radio = (Radio) o;
+				Option[] option = radio.getOption();
+				if (option != null) {
+					for (int j = 0; j < option.length; j++) {
+						Option op = option[j];
+						builder.append(op.getShow());
+						builder.append("<input type='radio' name='"
+								+ radio.getName() + "' value='" + op.getValue()
+								+ "'>");
+					}
+				}
+
+			} else if (o instanceof Checkbox) {
+
+				Checkbox checkbox = (Checkbox) o;
+				Option[] option = checkbox.getOption();
+				if (option != null) {
+					for (int j = 0; j < option.length; j++) {
+						Option op = option[j];
+						builder.append(op.getShow());
+						builder.append("<input type='checkbox' name='"
+								+ checkbox.getName() + "' value='"
+								+ op.getValue() + "'>");
+					}
+				}
+			} else if (o instanceof Select) {
+				Select select = (Select) o;
+				builder
+						.append("<select  name='"
+								+ select.getName()
+								+ "' maxlength='80' "
+								+ "onchange='javascript:funcSelectOther(112242)' id='feature112242' "
+								+ "onblur='doOnBlur(this.name,	true)' onfocus='doOnFocus(this.name)'>");
+				builder.append("<option value=''>请选择</option>");
+				Option[] option = select.getOption();
+				if (option != null) {
+
+					for (int j = 0; j < option.length; j++) {
+						Option op = option[j];
+						builder.append("<option value='" + op.getValue() + "'>"
+								+ op.getShow() + "</option>");
+					}
+				}
+
+				builder.append("</select>");
+			}
+			builder.append("<span style='padding-left:10px;'>");
+			builder
+					.append("<span id='wrong_feature112222' class='slh13wrong' style='display:none; width:110px;'> ");
+			builder
+					.append("<span  class='wrongwords' id='wrong_words_feature112222'>带<font	color='red'>*</font>为必填项。 </span> ");
+			builder.append("</span></span>");
+			if (o.isHidden()&&!hasHidden) {
+				hasHidden=true;
+				builder.append("<a style='cursor: pointer;' "
+						+ "onclick='showMore(this)' ");
+				builder.append(" class='Htab2_off' >" + "更多属性</a> </td> </tr>"
+						+ "</tbody></table> ");
+				builder
+						.append("<table id='table_more' style='display: none;' border='0' cellpadding='0' cellspacing='0' width='100%'>");
+				builder.append(" <tbody> ");
+			} else {
+				builder.append("</td></tr>");
+
+			} 
+
+		}
+		builder.append("</tbody></table>");
+		String template = builder.toString();
+		return template;
+	}
 	public String getTable(Form form) {
 		List<FormObject> list = form.getList();
 		StringBuilder builder = new StringBuilder();
@@ -35,7 +142,7 @@ public class ProductTemplate {
 			if (o instanceof Text) {
 				Text text = (Text) o;
 				builder.append("<tr><td>");
-				builder.append("<input type='text'name='" + text.getName()
+				builder.append("<input type='text' name='" + text.getName()
 						+ "' value='' >");
 				builder.append("</td></tr>");
 
@@ -74,8 +181,7 @@ public class ProductTemplate {
 				builder.append("<select  name='" + select.getName() + "' >");
 				builder.append("<option value=''>请选择</option>");
 				Option[] option = select.getOption();
-				if (option != null) {
-
+				if (option != null) { 
 					for (int j = 0; j < option.length; j++) {
 						Option op = option[j];
 						builder.append("<option value='" + op.getValue() + "'>"

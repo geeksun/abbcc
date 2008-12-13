@@ -10,9 +10,13 @@ public class Checkbox implements FormObject{
 	private boolean notNull;
 	
 	private String show;
-
+	private boolean isHidden;
 	public String getKey() {
 		return key;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
 	}
 
 	public void setKey(String key) {
@@ -51,4 +55,11 @@ public class Checkbox implements FormObject{
 		return notNull;
 	}
 
+	public boolean isHidden() {
+		return isHidden;
+	}
+
+ 
+
+	 
 }

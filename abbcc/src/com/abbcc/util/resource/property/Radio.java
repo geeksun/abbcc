@@ -4,13 +4,17 @@ public class Radio implements FormObject{
 	private String key;
 
 	private String name;
-
+	private boolean isHidden;
 	private Option[] option;
 	private String show;
 	private boolean notNull;
 
 	public String getKey() {
 		return key;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
 	}
 
 	public void setKey(String key) {
@@ -53,5 +57,13 @@ public class Radio implements FormObject{
 	public void setShow(String show) {
 		this.show = show;
 	}
+
+	public boolean isHidden() {
+		return isHidden;
+	}
+
+ 
+
+	 
 
 }

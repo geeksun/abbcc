@@ -43,8 +43,7 @@ public class ResourceUtil {
 	private String note_name = "name";
 
 	private String note_value = "value";
-
-	private String note_root = "root";
+ 
 
 	private String note_table = "table";
 
@@ -55,6 +54,8 @@ public class ResourceUtil {
 	private String note_input = "input";
 
 	private String note_text = "text";
+	
+	private String note_hidden = "hidden";
 
 	private String note_checkbox = "checkbox";
 
@@ -272,6 +273,9 @@ public class ResourceUtil {
 									.attributeValue(note_notNull);
 							String ref_filed = inputProperty
 									.attributeValue(note_refFiled);
+							String hidden = inputProperty .attributeValue(note_hidden);
+				
+							
 							if (inputType == null) {
 								throw new XmlException(note_type
 										+ " input property  has null");
@@ -284,12 +288,16 @@ public class ResourceUtil {
 								throw new XmlException(note_name
 										+ " input property  has null");
 							}
+							
 							if (inputType.equals(note_text)) {
 
 								Text text = new Text();
 								list.add(text);
 								text.setKey(ref_filed);
 								text.setName(inputName);
+								if(hidden!=null&&hidden.equals("true")){
+									text.setHidden(true);
+								}
 								if (inputNotNull != null
 										&& inputNotNull.equals("true")) {
 									text.setNotNull(true);
@@ -306,6 +314,9 @@ public class ResourceUtil {
 										&& inputNotNull.equals("true")) {
 									checkbox.setNotNull(true);
 								}
+								if(hidden!=null&&hidden.equals("true")){
+									checkbox.setHidden(true);
+								}
 								List checkbocList = inputProperty
 										.selectNodes(note_checkbox);
 								if (checkbocList == null
@@ -313,6 +324,7 @@ public class ResourceUtil {
 									continue;
 								Option[] option = new Option[checkbocList
 										.size()];
+								checkbox.setOption(option);
 								int i = 0;
 								Iterator checkboxIter = checkbocList.iterator();
 								while (checkboxIter.hasNext()) {
@@ -345,11 +357,16 @@ public class ResourceUtil {
 										&& inputNotNull.equals("true")) {
 									radio.setNotNull(true);
 								}
+								if(hidden!=null&&hidden.equals("true")){
+									radio.setHidden(true);
+								}
 								List radioList = inputProperty
 										.selectNodes(note_radio);
 								if (radioList == null || radioList.size() == 0)
 									continue;
+								
 								Option[] option = new Option[radioList.size()];
+								radio.setOption(option);
 								int i = 0;
 								Iterator radioIter = radioList.iterator();
 								while (radioIter.hasNext()) {
@@ -390,31 +407,42 @@ public class ResourceUtil {
 									.attributeValue(note_notNull);
 							String ref_filed = selectProperty
 									.attributeValue(note_refFiled);
+							String hidden = selectProperty .attributeValue(note_hidden);
+							
 							if (inputName == null || ref_filed == null) {
 								throw new XmlException(
 										"input property  has null");
 							}
+							
 
 							Select select = new Select();
 							list.add(select);
 							select.setKey(ref_filed);
 							select.setName(inputName);
 							select.setShow(inputShow);
+							if(hidden!=null&&hidden.equals("true")){
+								select.setHidden(true);
+							}
+							
 							if (inputNotNull != null
 									&& inputNotNull.equals("true")) {
 								select.setNotNull(true);
 							}
+							
 							List optionList = selectProperty
 									.selectNodes(note_option);
 							if (optionList == null || optionList.size() == 0)
 								continue;
+							
 							Option[] option = new Option[optionList.size()];
+							select.setOption(option);
 							int i = 0;
 							Iterator radioIter = optionList.iterator();
 							while (radioIter.hasNext()) {
 								Element optionProperty = (Element) radioIter
 										.next();
 								Option op = new Option();
+								 
 								String radioValue = optionProperty
 										.attributeValue(note_value);
 								String radioShow = optionProperty

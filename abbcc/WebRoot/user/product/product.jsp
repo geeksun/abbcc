@@ -1,23 +1,24 @@
-<%@ page contentType="text/html; charset=gbk"%>  
-<%@ page import="java.util.List,java.util.Iterator" %>
-<%@ page import="com.abbcc.util.product.ProductType" %>
- 
+<%@ page contentType="text/html; charset=gbk"%>
+<%@ page import="java.util.List,java.util.Iterator"%>
+<%@ page import="com.abbcc.util.product.ProductType"%>
+
 <%
 String path = request.getContextPath();
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head> 
+	<head>
 		<title>product</title>
 		<link rel="shortcut icon" href="http://i02.c.aliimg.com/favicon.ico">
 		<meta http-equiv="Content-Type" content="text/html; charset=x-gbk">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<script language="JavaScript" src="product_files/aliclick.js"></script>  
+		<script language="JavaScript" src="product_files/aliclick.js"></script>
 		<script type="text/javascript"
 			src="<%=path%>/user/product/product_files/search.js" charset="gb2312"></script>
 		<script type="text/javascript"
 			src="<%=path%>/user/product/product_files/AlicnTree.js"></script>
+		<script src="<%=path%>/js/prototype.js"></script>
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/AlicnTree.css"
 			type="text/css">
@@ -31,15 +32,15 @@ String path = request.getContextPath();
 			href="<%=path%>/user/product/product_files/content.css"
 			type="text/css">
 	</head>
-	
-	<body> 
+
+	<body>
 		<script>
 		function initTipBoxHeight(){
     				}
 	   </script>
- 		<link rel="stylesheet" rev="stylesheet"
+		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myalibaba.css"
-			type="text/css"> 
+			type="text/css">
 		<style>
 <!--
 .tablestyle{
@@ -111,6 +112,7 @@ ul.callinglayout li {
 		
 	}
 --></style>
+
 		<script language="JavaScript">
           	   var isBizTypeSet = true;
       
@@ -191,7 +193,7 @@ ul.callinglayout li {
 </script>
 		<script language="JavaScript"
 			src="<%=path%>/user/product/product_files/AutoMatchScript.js"></script>
-		<script language="JavaScript">aliclick(null,'?tracelog=fb_onestep_one');</script> 
+		<script language="JavaScript">aliclick(null,'?tracelog=fb_onestep_one');</script>
 		<script language="JavaScript">
 
 			var isEditVar = "";
@@ -1614,7 +1616,7 @@ function checkContactInfo(content) {
 
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myalibaba.css"
-			type="text/css"> 
+			type="text/css">
 		<input id="msg_focus_category" value="" type="hidden">
 		<!--message tips end-->
 		<table align="right" class="content_border" border="0" cellpadding="0"
@@ -1626,7 +1628,7 @@ function checkContactInfo(content) {
 						<form name="mainform" method="post">
 							<input name="show_type" value="" type="hidden">
 							<input name="doneUrl" value="" type="hidden">
-							<input name="currentSite" value="" type="hidden"> 
+							<input name="currentSite" value="" type="hidden">
 							<input name="TBDInfoCanChange" value="" type="hidden">
 							<input name="step" value="try" type="hidden">
 							<input name="status" value="" type="hidden">
@@ -1657,16 +1659,16 @@ function checkContactInfo(content) {
 												<div class="important_close"
 													onclick="document.getElementById('important_note').style.display='none'; document.getElementById('Htab_on2').className='Htab_off2'">
 													<img
-														src="<%=path%>/user/product/product_files/Icon_close01_12x.gif"/>
+														src="<%=path%>/user/product/product_files/Icon_close01_12x.gif" />
 												</div>
 												<strong>为了让买家能更精确找到您的产品，您可以做以下几步提高您的信息精度，获得更好的排名：</strong>
-												<br/>
+												<br />
 												1、一条信息只发布一个产品；&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、选择与您产品符合的类目，建议您使用“类目自动匹配”功能；
-												
-												<br/>
+
+												<br />
 												2、您的产品名称务必出现在标题中；&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、发布的信息带图且填写产品属性。
-												
-												<br/>
+
+												<br />
 												<font class="ts_text">&nbsp;&nbsp;&nbsp;为了提高信息质量，请您注意不要发布重复信息，重复信息将无法成功发布上网！</font>（
 												<a
 													href="http://info.china.alibaba.com/helpcenter/tips/s5003008-d5470949.html?tracelog=chinagas_help"
@@ -1686,7 +1688,8 @@ function checkContactInfo(content) {
 														onmouseover="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 														onmouseout="document.getElementById('toolbar').style.display = 'none';document.getElementById('Htab').className='Htab_off';"
 														onmousemove="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';">相关帮助
-														<ul style="z-index: 100; background-color: rgb(255, 255, 255);"
+														<ul
+															style="z-index: 100; background-color: rgb(255, 255, 255);"
 															onmousemove="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 															onmouseover="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 															class="toolbar s2" id="toolbar">
@@ -1704,8 +1707,7 @@ function checkContactInfo(content) {
 																	href="http://info.china.alibaba.com/helpcenter/tips/s5011168-d5550522.html"
 																	target="_blank">发布规范</a>
 															</li>
-														</ul>
-													</span>
+														</ul> </span>
 												</div>
 											</div>
 										</td>
@@ -1746,10 +1748,11 @@ function checkContactInfo(content) {
 
 									<tr>
 										<td class="list_left_box" align="right" valign="top">
-											<img src="<%=path%>/user/product/product_files/icon_right_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+											<img
+												src="<%=path%>/user/product/product_files/icon_right_19x19.gif"
+												align="absmiddle" width="19" height="16" />
 											&nbsp;
-											
+
 											<b>信息类型</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box">
@@ -1769,10 +1772,11 @@ function checkContactInfo(content) {
 									</tr>
 									<tr style="display: none;" id="tr_quickBuySellMatch">
 										<td class="list_left_box" align="right" valign="top">
-											<img src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+											<img
+												src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
+												align="absmiddle" width="19" height="16" />
 											&nbsp;
-											
+
 											<b>买卖速配</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box" valign="top">
@@ -1793,8 +1797,7 @@ function checkContactInfo(content) {
 															<font style="padding: 2px 0px 2px 2px;">买卖速配：用最短的时间，征集最多的供应商！
 																<a
 																href="http://info.china.alibaba.com/helpcenter/tips/s5019715-d5823833.html"
-																target="_blank">什么是买卖速配？</a>
-															</font>
+																target="_blank">什么是买卖速配？</a> </font>
 														</td>
 													</tr>
 												</tbody>
@@ -1816,9 +1819,9 @@ function checkContactInfo(content) {
 										<td class="list_left_box" align="right" valign="top">
 											<img id="img_right__fmo.a._0.k"
 												src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16" />
 											&nbsp;
-											
+
 											<b>产品名称</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box" valign="top">
@@ -1872,7 +1875,7 @@ function checkContactInfo(content) {
 										<td class="list_left_box" align="right" valign="top">
 											<img id="img_right_category"
 												src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16" />
 											<b> 产品所属类目</b><font color="#ff0000">*</font>
 
 										</td>
@@ -1882,47 +1885,92 @@ function checkContactInfo(content) {
 												cellspacing="0" width="100%">
 												<tbody>
 													<tr>
-														<td>
-															<select name="topCatFormKey" size="8"
+														<td><table>
+															<tr>
+															  <td  id="tdtopCatFormKey">
+															  <select name="topCatFormKey" size="8"
 																style="width: 129px;" id="topCatFormKey"
-																onblur='doOnBlur("category", true)'
-																onfocus='doOnFocus("category")'
-																onchange="onChangeTopCategory(this)">
-																<% 
-																	List productTypeList=(List)	request.getAttribute("productTypeList"); 
-																	if(productTypeList!=null){
-																		Iterator iter=productTypeList.iterator();
-																		while(iter.hasNext()){
-																			ProductType productType=(ProductType)iter.next();
-																			if(productType!=null){
-																				String name=productType.getName();
-																				String value=productType.getId();
-																				boolean able=productType.isAble();
-																				out.println("<option value=\""+value+"\"");
-																				if(able){
-																					out.println(" style=\"color: rgb(204, 204, 204);\" ");
-																				} 
-																				out.println(">");
-																				out.println(name);
-																				out.println("</option>");
-																				
+																onchange="onChangeTopCategory(this.value)">
+																<%
+																	List topCategory = (List) request.getAttribute("topCategory");
+																	if (topCategory != null) {
+																		Iterator iter = topCategory.iterator();
+																		while (iter.hasNext()) {
+																			ProductType productType = (ProductType) iter.next();
+																			if (productType != null) {
+																		String name = productType.getName();
+																		String value = productType.getId();
+																		boolean able = productType.isAble();
+																		out.print("<option value=\"" + value + "\"");
+																		if (able) {
+																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																		}
+																		out.println(">");
+																		out.println(name);
+																		out.println("</option>");
+
 																			}
-																		} 
+																		}
 																	}
-																			 
-																%> 
-															 
-															</select>
+																%>
+
+															</select></td>
+															<td  id="tdsecondCatFormKey">
 															<select name="secondCatFormKey" size="8"
 																style="width: 129px;" id="secondCatFormKey"
-																onblur='doOnBlur("category", true)'
-																onfocus='doOnFocus("category")'
-																onchange="onChangeSecondCategory(this)"></select>
-															<select name="leafCatFormKey" size="8"
+																onchange="onChangeSecondCategory(this.value)">
+																<%
+																	List secondCategory = (List) request.getAttribute("secondCategory");
+																	if (secondCategory != null) {
+																		Iterator iter = secondCategory.iterator();
+																		while (iter.hasNext()) {
+																			ProductType productType = (ProductType) iter.next();
+																			if (productType != null) {
+																		String name = productType.getName();
+																		String value = productType.getId();
+																		boolean able = productType.isAble();
+																		out.print("<option value=\"" + value + "\"");
+																		if (able) {
+																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																		}
+																		out.println(">");
+																		out.println(name);
+																		out.println("</option>");
+
+																			}
+																		}
+																	}
+																%>
+															</select></td>
+															<td  id="tdleafCatFormKey">
+															<select    name="leafCatFormKey" size="8"
 																id="leafCatFormKey" style="width: 129px;"
-																onblur='doOnBlur("category", true)'
-																onfocus='doOnFocus("category")'
-																onchange="onChangeLeafCategory(this)"></select>
+																onchange="onChangeLeafCategory(this.value)">
+																<%
+																	List thirdCategory = (List) request.getAttribute("thirdCategory");
+																	if (thirdCategory != null) {
+																		Iterator iter = thirdCategory.iterator();
+																		while (iter.hasNext()) {
+																			ProductType productType = (ProductType) iter.next();
+																			if (productType != null) {
+																		String name = productType.getName();
+																		String value = productType.getId();
+																		boolean able = productType.isAble();
+																		out.print("<option value=\"" + value + "\"");
+																		if (able) {
+																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																		}
+																		out.println(">");
+																		out.println(name);
+																		out.println("</option>");
+
+																			}
+																		}
+																	}
+																%>
+															</select>
+															</td>
+															</tr></table> 
 														</td>
 													</tr>
 													<tr>
@@ -1970,7 +2018,7 @@ function checkContactInfo(content) {
 																onblur="doOnBlur(this.name, true)"
 																onfocus="doOnFocus(this.name)"
 																onchange="doModifySubject(this)" maxlength="25"
-																type="text"/>
+																type="text" />
 														</td>
 													</tr>
 												</tbody>
@@ -2006,9 +2054,9 @@ function checkContactInfo(content) {
 										<td class="list_left_box" align="right" valign="top">
 											<img
 												src="<%=path%>/user/product/product_files/icon_right_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16" />
 											&nbsp;
-											
+
 											<b>信息有效期</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box">
@@ -2027,7 +2075,7 @@ function checkContactInfo(content) {
 												1个月
 												<input onclick='javascript:doOnFocus("_fmo.a._0.o");'
 													onblur='doOnRadioBlur("_fmo.a._0.o")' value="90"
-													name="_fmo.a._0.o" type="radio"/>
+													name="_fmo.a._0.o" type="radio" />
 												3个月
 												<input onclick='javascript:doOnFocus("_fmo.a._0.o");'
 													onblur='doOnRadioBlur("_fmo.a._0.o")' value="180"
@@ -2045,8 +2093,7 @@ function checkContactInfo(content) {
 															</td>
 															<td>
 																<b><span class="note"><font color="#000000">3天</font>
-																</span>
-																</b>
+																</span> </b>
 															</td>
 														</tr>
 														<tr>
@@ -2092,7 +2139,7 @@ function checkContactInfo(content) {
 											<div style="padding-top: 5px;" id="div_productfeature">
 												<table border="0" cellpadding="0" cellspacing="0"
 													width="100%">
-													<tbody>
+													<tbody id="product_key">
 														<tr>
 															<td class="list_left_box" align="right" valign="top">
 																<input id="neededFeatures_112222" name="neededFeatures"
@@ -2214,7 +2261,9 @@ function checkContactInfo(content) {
 																		class="wrongwords" id="wrong_words_feature112271">
 																			带<font color="red">*</font>为必填项。 </span> </span> </span>
 																<a style="cursor: pointer;"
-																	onclick="if(document.getElementById('table_more').style.display=='none'){document.getElementById('table_more').style.display='block';this.className='Htab2_on';};else{ document.getElementById('table_more').style.display = 'none';;this.className='Htab2_off';}"
+																	onclick="if(document.getElementById('table_more').style.display=='none')
+																	{document.getElementById('table_more').style.display='block';this.className='Htab2_on';};
+																	else{ document.getElementById('table_more').style.display = 'none';;this.className='Htab2_off';}"
 																	class="Htab2_off">更多属性</a>
 															</td>
 														</tr>
@@ -2301,8 +2350,7 @@ function checkContactInfo(content) {
 										<td class="list_left_box" align="right" valign="top">
 											<a name="flagDetails"></a>
 											<b>详细说明</b><span id="detail_star" style="display: none;"><font
-												color="#ff0000">*</font>
-											</span>
+												color="#ff0000">*</font> </span>
 											<div id="freeTemplateDiv" style="visibility: hidden;">
 												<div style="padding-top: 80px;"></div>
 												<table border="0" cellpadding="0" cellspacing="0"
@@ -2320,8 +2368,7 @@ function checkContactInfo(content) {
 																	target="_blank"><img
 																		src="<%=path%>/user/product/product_files/001_80.gif"
 																		style="border: 2px solid rgb(153, 153, 153);"
-																		width="80" height="80"/>
-																</a>
+																		width="80" height="80" /> </a>
 															</td>
 														</tr>
 														<tr>
@@ -2331,8 +2378,7 @@ function checkContactInfo(content) {
 																	target="_blank"><img
 																		src="<%=path%>/user/product/product_files/002_80.gif"
 																		style="border: 2px solid rgb(153, 153, 153);"
-																		width="80" height="80"/>
-																</a>
+																		width="80" height="80" /> </a>
 															</td>
 														</tr>
 														<tr>
@@ -2342,8 +2388,7 @@ function checkContactInfo(content) {
 																	target="_blank"><img
 																		src="<%=path%>/user/product/product_files/003_80.gif"
 																		style="border: 2px solid rgb(153, 153, 153);"
-																		width="80" height="80"/>
-																</a>
+																		width="80" height="80" /> </a>
 															</td>
 														</tr>
 														<tr>
@@ -2352,8 +2397,7 @@ function checkContactInfo(content) {
 																	href="http://upload.china.alibaba.com/offer/post_select_template.htm?text_name=_fmo.a._0.d&amp;tracelog=dujin_fb_more"
 																	target="_blank"><img
 																		src="<%=path%>/user/product/product_files/but_gengduo.gif"
-																		border="0" width="81" height="20"/>
-																</a>
+																		border="0" width="81" height="20" /> </a>
 															</td>
 														</tr>
 													</tbody>
@@ -3746,43 +3790,43 @@ function getEl(sTag,start) {
 														<td id="tdpic01" align="center" height="25">
 															<img name="uploaded0"
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
-																width="100" height="100"/>
+																width="100" height="100" />
 														</td>
 														<td align="center">
 															<img name="uploaded1"
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
-																width="100" height="100"/>
+																width="100" height="100" />
 														</td>
 														<td align="center">
 															<img name="uploaded2"
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
-																width="100" height="100"/>
+																width="100" height="100" />
 														</td>
 													</tr>
 													<tr>
 														<td align="center" height="35">
 															<input onclick="table_display2('table100');" value="上传"
-																name="uploadPicBtn0" type="button"/>
+																name="uploadPicBtn0" type="button" />
 															&nbsp;
-															
+
 															<input onclick="delete_picture('0');" value="删除"
-																name="delPicBtn0" type="button"/>
+																name="delPicBtn0" type="button" />
 														</td>
 														<td align="center">
 															<input onclick="table_display('table101');" value="上传"
-																name="uploadPicBtn1" type="button"/>
+																name="uploadPicBtn1" type="button" />
 															&nbsp;
-															
+
 															<input onclick="delete_picture('1');" value="删除"
-																name="delPicBtn1" type="button"/>
+																name="delPicBtn1" type="button" />
 														</td>
 														<td align="center">
 															<input onclick="table_display('table102');" value="上传"
-																name="uploadPicBtn2" type="button"/>
+																name="uploadPicBtn2" type="button" />
 															&nbsp;
-															
+
 															<input onclick="delete_picture('2');" value="删除"
-																name="delPicBtn2" type="button"/>
+																name="delPicBtn2" type="button" />
 														</td>
 													</tr>
 												</tbody>
@@ -4164,9 +4208,9 @@ function startAlitalk(){
 										<td class="list_left_box" align="right" valign="top">
 											<img
 												src="<%=path%>/user/product/product_files/icon_right_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16" />
 											&nbsp;
-											
+
 											<b>选择联系方式</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box" valign="top">
@@ -4276,8 +4320,8 @@ function startAlitalk(){
 																			带<font color="red">*</font>为必填项。 </span> </span> </span>
 																<span style="padding-left: 10px;"><span
 																	id="trade_wrong_feature59238" class="s lh13 wrong"
-																	style="display: none; width: 260px;"> <br/>
-																		<font color="#999999">请填写与单价相符的计量单位，如只、件、箱等</font> </span> </span>
+																	style="display: none; width: 260px;"> <br /> <font
+																		color="#999999">请填写与单价相符的计量单位，如只、件、箱等</font> </span> </span>
 															</td>
 														</tr>
 														<tr>
@@ -4291,14 +4335,14 @@ function startAlitalk(){
 															<td class="list_right_box">
 																<input id="fieldFlagName_price"
 																	name="fieldFlagName_price" value="feature59240"
-																	type="hidden"/>
+																	type="hidden" />
 
 
 																<input class="tpf_input" name="feature59240"
 																	id="feature59240" value="" size="23" maxlength="12"
 																	onblur="doOnBlur(this.name, false,'trade_productfeature');checkTradeCondition(false, this)"
 																	onfocus="doOnFocusOfTrade(this.name, 'trade_productfeature')"
-																	type="text"/>
+																	type="text" />
 																元/
 																<span id="trade_unit_price">单位</span>
 																<span style="padding-left: 10px;"><span
@@ -4308,8 +4352,8 @@ function startAlitalk(){
 																			带<font color="red">*</font>为必填项。 </span> </span> </span>
 																<span style="padding-left: 10px;"><span
 																	id="trade_wrong_feature59240" class="s lh13 wrong"
-																	style="display: none; width: 260px;"> <br/>
-																		<font color="#999999">请您填写不含运费的价格</font> </span> </span>
+																	style="display: none; width: 260px;"> <br /> <font
+																		color="#999999">请您填写不含运费的价格</font> </span> </span>
 															</td>
 														</tr>
 														<tr>
@@ -4323,14 +4367,14 @@ function startAlitalk(){
 															<td class="list_right_box">
 																<input id="fieldFlagName_beginamount"
 																	name="fieldFlagName_beginamount" value="feature59239"
-																	type="hidden"/>
+																	type="hidden" />
 
 
 																<input class="tpf_input" name="feature59239"
 																	id="feature59239" value="" size="23" maxlength="12"
 																	onblur="doOnBlur(this.name, false,'trade_productfeature');checkTradeCondition(false, this)"
 																	onfocus="doOnFocusOfTrade(this.name, 'trade_productfeature')"
-																	type="text"/>
+																	type="text" />
 																<span id="trade_unit_beginamount">单位</span>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59239" class="s lh13 wrong"
@@ -4524,16 +4568,16 @@ function startAlitalk(){
 															align="right" valign="top" height="13">
 															<img
 																src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																align="absmiddle" width="19" height="16"/>
+																align="absmiddle" width="19" height="16" />
 															&nbsp;
-															
+
 															<b>经销批发</b><font color="#ff0000">*</font>
 														</td>
 														<td class="list_right_box" valign="top">
 															<input name="rBizType" value="checkbox"
-																onclick="changeBizType('Y')" type="radio"/>
+																onclick="changeBizType('Y')" type="radio" />
 															是&nbsp;
-															
+
 															<input name="rBizType" value="checkbox"
 																onclick="changeBizType('N')" type="radio">
 															否
@@ -4722,338 +4766,6 @@ function startAlitalk(){
 
 						</form>
 
-						<script>
-//.入口参数
-var topCatForm = document.mainform.topCatFormKey;
-var secondCatForm = document.mainform.secondCatFormKey;
-var leafCatForm = document.mainform.leafCatFormKey;
-var catTradeTypeVar = "1";
-var catModuleNameVar = "";
-var catBatchPostOnlyVar = "";
-var catAllTradeTypeVar = "";
-    var baseDataFeeder = 'http://upload.china.alibaba.com/offer/list_category.htm?all_trade_type=&trade_type=1&module_name=&batch_post_only=';
-//下拉列表的起始索引
-    var beginIndex = 0;
-//.end
-if (beginIndex > 1){
-	beginIndex = 1;
-}
-
-function getCategoryDataFeeder(parentId){
-	var d = new Date();
-	return baseDataFeeder + "&parent_id=" + parentId + "&t=" + d.getTime();
-}
-
-function initSubOptions(id, target){
-     var onSuccess=function(httpReq){
-	    //从JSON解析出类目数组
-	 	var jsonTxt = httpReq.request.responseText;
-		var optionDataArr = eval(jsonTxt);
-		//清除选择框
-		var len = target.options.length;
-        for (var i = len - 1; i > beginIndex - 1; i--) {
-            target.options[i] = null;
-        }
-		//设置选择框
-        for (var i = 0; i < optionDataArr.length; i++) {
-		    var op = new Option(optionDataArr[i].title, optionDataArr[i].id);
-			if(!optionDataArr[i].tradeTypeMatch){
-    			op.style.color="#CCCCCC";
-			}
-            target.options[i + beginIndex] = op;
-        }
-		if(target.length > beginIndex){
-			target.disabled = false;
-		}
-		else{
-			target.disabled = true;
-		}
-	 };
-	 var url = getCategoryDataFeeder(id);
-     var httpReq = new HttpRequestSender("GET", url,null,null, onSuccess, null);
-	 httpReq.sendRequest();
-}
-
-</script>
-						<script language="JavaScript">		
-	function HttpRequestSender(method, url, params, contentType, onsuccess, onerror){
-		this.method = method;
-		this.url = url;
-		this.params = params;
-		this.onsuccess = onsuccess;
-		if(onerror){
-		    this.onerror = onerror;
-		}
-		else{
-			this.onerror = function(){};
-		}
-	}
-		
-	HttpRequestSender.prototype.sendRequest = function(){
-		this.request = null;
-		if (window.XMLHttpRequest) {
-			this.request = new XMLHttpRequest();
-		}else if (typeof ActiveXObject != "undefined"){
-			try{
-				this.request = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			catch(err){
-				this.request = null;
-			}
-		}
-		if (this.request){
-        	try{
-          		var loader=this;
-            	this.request.onreadystatechange=function(){
-            		HttpRequestSender.onReadyState.call(loader);
-          		}
-          		this.request.open(this.method,this.url,false);
-          		if (this.contentType){
-            		this.request.setRequestHeader('Content-Type', this.contentType);
-          		}
-          		this.request.send(this.params);
-        	}catch (err){
-          		this.onerror.call(this);
-        	}
-  		}
-	}
-	
-	HttpRequestSender.onReadyState = function(){
-		var req=this.request;
-  		if (req.readyState == 4){
-    		if (req.status == 200 || req.status==0){
-      			this.onsuccess.call(this, this);
-    		}else{
-      			this.onerror.call(this);
-    		}
-  		}
-	}
-</script>
-						<script>
- 
-function changeSecondCategory() {
-	leafCatForm.value = "";
-    if (secondCatForm.selectedIndex == -1 || (secondCatForm.selectedIndex == 0 && beginIndex == 1)) {
-        if (beginIndex == 1)
-            secondCatForm.options[0].selected = true;
-        var len = leafCatForm.options.length;
-        for (var i = len - 1; i > beginIndex - 1; i--) {
-            leafCatForm.options[i] = null;
-        }
-    }
-    else {
-        var option = secondCatForm.options[secondCatForm.selectedIndex];
-		initSubOptions(option.value, leafCatForm);
-    }
-    if (beginIndex == 1){
-        leafCatForm.options[0].selected = true;
-	}
-}
-
-function setSelectByIdPath(idPath, noChangeTopCat) {
-    var topCatId = 0, secondCatId = 0, leafCatId = 0;
-    var index, oldIndex;
-    oldIndex = 0;
-    index = idPath.indexOf(",");
-    if (index == -1)
-        return false;
-        
-    topCatId = idPath.substring(oldIndex, index);
-    if (noChangeTopCat && topCatId != topCatForm.value)
-        return;
-
-    oldIndex = index + 1;
-    index = idPath.indexOf(',', oldIndex);    
-    if (index == -1) {
-        secondCatId = idPath.substring(oldIndex);
-    }
-    else {
-        secondCatId = idPath.substring(oldIndex, index);
-
-        oldIndex = index + 1;
-        index = idPath.indexOf(',', oldIndex);
-        if (index == -1)
-            leafCatId = idPath.substring(oldIndex);
-        else
-            leafCatId = idPath.substring(oldIndex, index);
-    }
-    if (!noChangeTopCat) {
-        topCatForm.value = topCatId;
-        changeTopCategory();
-    }
-    secondCatForm.value = secondCatId;
-    changeSecondCategory();
-    leafCatForm.value = leafCatId;
-
-    return true;
-}
-
-function setSelectLeafCategoryByPath(path) {
-    var index;
-    index = path.indexOf("/");
-    var name;
-    if (index >= 0) {
-        name = path.substring(0, index);
-    }
-    else {
-        name = path;
-    }
-    var flag = false;
-    var topLen = topCatForm.options.length;
-    for (var i = beginIndex; i < topLen; i++) {
-        if (topCatForm.options[i].text == name) {
-            flag = true;
-            topCatForm.options[i].selected = true;
-            changeTopCategory();
-            path = path.substring(index + 1);
-            index = path.indexOf("/");
-            if (index == -1)
-                name = path;
-            else
-                name = path.substring(0, index);
-
-            var secLen = secondCatForm.options.length;
-            var j;
-            secondCatForm.selectedIndex = -1;
-            for (j = beginIndex; j < secLen; j++) {
-                if (secondCatForm.options[j].text == name) {
-                    secondCatForm.options[j].selected = true;
-                    changeSecondCategory();
-                    name = path.substring(index + 1);
-                    var thirdLen = leafCatForm.options.length;
-                    var k;
-                    leafCatForm.selectedIndex = -1;
-                    for (k = beginIndex; k < thirdLen; k++) {
-                        if (leafCatForm.options[k].text == name) {
-                            leafCatForm.options[k].selected = true;
-                            break;
-                        }
-                    }
-                    if (k == secLen) flag = false;
-                    break;
-                }
-            }
-            if (j == secLen) flag = false;
-            break;
-        }
-    }
-    return flag;
-}
-
-function initTopCategoryForm() {
-    var size = topCatArr.length;
-    for (var i = 0; i < size; i++) {
-        topCatForm.options[i + beginIndex] = topCatArr[i].option;
-    }
-    changeTopCategory();
-}
-
-function doDeleteAgentAndCorp(topCateObj){
-    var changed = false;
-    for (var i = 0; i < topCateObj.length; i++) {		
-        if(topCateObj.options[i].value=='51' || topCateObj.options[i].value=='2903'){
-			if(topCateObj.options[i].selected == true){
-				topCateObj.options[0].selected = true;
-				changed = true;
-			}				
-			topCateObj.options[i] = null;				
-		}
-    }
-	if(changed){
-		changeTopCategory();
-	}
-}
-//static methods
-var topCatArr = new Array();
-//init data store in javascript
-var topCat;
-var sCat;
-function initTopCategoryData(){
-                                                topCat = new TopCategory('58', '照明工业', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('57', '电子元器件', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('53', '传媒、广电', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('30', '安全、防护', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('23', '包装', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('52', '纸业', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('21', '办公、文教', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('7', '数码、电脑', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('5', '电工电气', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('4', '纺织、皮革', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('3', '服装', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('54', '服饰', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('14', '机械及行业设备', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('59', '五金、工具', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('8', '化工', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('56', '精细化学品', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('55', '橡塑', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('11', '环保', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('10208', '仪器仪表', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('15', '家居用品', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('6', '家用电器', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('13', '建筑、建材', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('12', '交通运输', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('17', '礼品、工艺品、饰品', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('10', '能源', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('1', '农业', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('33', '汽摩及配件', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('2', '食品、饮料', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('509', '通信产品', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('1813', '玩具', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('9', '冶金矿产', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('16', '医药、保养', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('34', '印刷', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('18', '运动、休闲', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('-5', '商务服务', false)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('-4', '项目合作', false)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('2829', '二手设备转让', true)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('-2', '加工', false)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('-3', '代理', false)
-                topCatArr = topCatArr.concat(topCat)
-                                                topCat = new TopCategory('32', '库存积压', true)
-                topCatArr = topCatArr.concat(topCat)
-                        }
-initTopCategoryData();
-initTopCategoryForm();
-    var isTreeEmpty = false;
-</script>
 						<br>
 						<br>
 					</td>
@@ -5239,70 +4951,9 @@ function getCategoryTradeHtml(catid, isNeedFeature, bizType) {
 }
 
 </script>
-
-
-		<script language="JavaScript" type="text/javascript">
-	function onChangeTopCategory(obj){
-	    changeTopCategory();
-	    featurePropertiesHtmlValue = "";
-	    tradeFeaturePropertiesHtmlValue = "";
-	    showSelectPath();
-        if(obj && obj.value){
-        	doOnSelectCategory(obj);
-        }
-	}
-	function onChangeSecondCategory(obj){
-	    changeSecondCategory();
-	    featurePropertiesHtmlValue = "";
-	    tradeFeaturePropertiesHtmlValue = "";
-	    if(form.leafCatFormKey.length > beginIndex){
-	    form.leafCatFormKey.disabled = false;
-	    }else{
-	    form.leafCatFormKey.disabled = true;
-	    makeFeatureProperties();
-	    }
-	    showSelectPath();
-        if(obj && obj.value){
-        	doOnSelectCategory(obj);
-        }
-	}
-
-	function onChangeLeafCategory(obj){
-	    showSelectPath();
-	    featurePropertiesHtmlValue = "";
-	    tradeFeaturePropertiesHtmlValue = "";
-	    makeFeatureProperties();
-        if(obj && obj.value){
-        	doOnSelectCategory(obj);
-        }
-	}
-
-	function getSelectPath(){
-        if(form.topCatFormKey.selectedIndex == -1)
-            return "";
-
-        var path = form.topCatFormKey.options[form.topCatFormKey.selectedIndex].text;
-        if(form.secondCatFormKey.selectedIndex >=0)
-            path += " >> " + form.secondCatFormKey.options[form.secondCatFormKey.selectedIndex].text;
-
-        if(form.leafCatFormKey.selectedIndex >=0)
-            path += " >> " + form.leafCatFormKey.options[form.leafCatFormKey.selectedIndex].text;
-
-        return path;
-	}
-
-	function showSelectPath(){
-        /*
-        var path = getSelectPath();
-        if(path == "") return;
-	    document.getElementById("catPath").innerHTML = path;
-	    */
-	}
-	function getSelectTypeValue(){
-	    return getOfferTypeValue();
-	}
-
-
+ <script language="JavaScript" type="text/javascript">
+	 
+	  
 
 	var old_tdTradeObj_innerHTML="";
 	//处理选择新的信息类型，在发布offer的时候有效，在修改offer的时候无效
@@ -5495,90 +5146,8 @@ function getCategoryTradeHtml(catid, isNeedFeature, bizType) {
 	    doOnBlurCommon("category",true);
 	}
 
-
-	//根据叶子类目id动态生成产品属性参数,在发布offer的时候有效，在修改offer的时候无效
-	function makeFeatureProperties(){
-
-	    if(oldTopCatValue != form.topCatFormKey.value
-	        || oldSecondCatValue != form.secondCatFormKey.value
-	        || oldLeafCatValue != form.leafCatFormKey.value){
-	        var leafCatId = getLeafCategoryId();
-	        if(leafCatId == ""){
-	            return;
-	        }
-	        oldTopCatValue = form.topCatFormKey.value;
-	        oldSecondCatValue = form.secondCatFormKey.value;
-	        oldLeafCatValue = form.leafCatFormKey.value;
-	        var fpObj = document.all("div_productfeature");
-	        var fpTradeObj = document.all("div_trade_productfeature");
-	        var trTradeObj = document.all("tr_trade_productfeature");
-	        var trProductObj = document.all("tr_productfeature");
-	        var tdTradeObj = document.all("td_trade_productfeature");
-	        try{
-	            if(needFeature){
-	                featurePropertiesHtmlValue = getOrderedCategoryHtml(leafCatId, needFeature);
-	                fpObj.innerHTML = featurePropertiesHtmlValue;
-	                if(featurePropertiesHtmlValue.length > 120){
-	                    trProductObj.style.display="";
-	                }else{
-	                    trProductObj.style.display="none";
-	                }
-	                tradeFeaturePropertiesHtmlValue = getCategoryTradeHtml(leafCatId, needFeature, bizTypeVar);
-	                fpTradeObj.innerHTML = tradeFeaturePropertiesHtmlValue;
-	                if(tradeFeaturePropertiesHtmlValue.length > 650){
-	                    trTradeObj.style.display="";
-	                    if(tdTradeObj){
-			                if(old_tdTradeObj_innerHTML !=""){
-			                	tdTradeObj.innerHTML = old_tdTradeObj_innerHTML;
-			                }
-	                    }
-	                }else{
-	                
-	                if(isTradeVar=="Y"){
-	                	if(old_tdTradeObj_innerHTML == ""){
-	                		old_tdTradeObj_innerHTML=tdTradeObj.innerHTML;
-	                	}
-	                    tdTradeObj.innerHTML = "很抱歉，该行业暂时无法发布一口价信息，但是您可以继续发布普通供应信息。<br/>请填写下表，完成供应信息的发布。";
-	                }else{
-	                    trTradeObj.style.display="none";
-	                }
-	                }
-	            }else{
-	                defaultFeaturePropertiesHtmlValue = getOrderedCategoryHtml(leafCatId, needFeature);
-	                fpObj.innerHTML = defaultFeaturePropertiesHtmlValue;
-	                defaultTradeFeaturePropertiesHtmlValue = "";
-	                fpTradeObj.innerHTML = defaultTradeFeaturePropertiesHtmlValue;
-	                fpTradeObj.innerHTML = "";
-	                if(isTradeVar=="Y"){
-	                	if(old_tdTradeObj_innerHTML == ""){
-	                		old_tdTradeObj_innerHTML=tdTradeObj.innerHTML;
-	                	}
-	                    tdTradeObj.innerHTML = "很抱歉，该行业暂时无法发布一口价信息，但是您可以继续发布普通供应信息。<br/>请填写下表，完成供应信息的发布。";
-	                }else{
-	                    trTradeObj.style.display="none";
-	                }
-	                trProductObj.style.display="";
-	            }
-
-	        }catch(e){
-	        }
-	        showTabTradeProductFeature();
-	    }
-	}
-	//返回被选中的类目(必须是叶子类目)
-	function getLeafCategoryId(){
-	    if(typeof(form.leafCatFormKey) == "object"){
-	        if(form.leafCatFormKey.selectedIndex >= beginIndex){
-	            return form.leafCatFormKey.value;
-	        }else if(form.leafCatFormKey.length > beginIndex){
-	            return "";
-	        }
-	        if(form.secondCatFormKey.selectedIndex >= beginIndex){
-	            return form.secondCatFormKey.value;
-	        }
-	    }
-	    return "";
-	}
+ 
+	 
 	function doOnSubmit(thisform){
 	    thisform.target="";
 	    if(isEditVar=="true"){
@@ -6007,122 +5576,6 @@ function closeSwitchTradeTypeTips(){
     }
 </script>
 
-		<script language="JavaScript" type="text/javascript">
-	
-    var isFreemember = true;
-    
-    if(isFreeMember=="false"){
-        isFreemember = false;
-    }
-    
-    //只要供应方向才有产品参数
-    var needFeature = true;
-    var featurePropertiesHtmlValue="";
-    var defaultFeaturePropertiesHtmlValue="";
-    var tradeFeaturePropertiesHtmlValue="";
-    var defaulTradetFeaturePropertiesHtmlValue="";
-    //init
-    //类目下拉列表的有效内容起始索引
-    var beginIndex = 0;
-    var form = mainform;
-    var subjectModifyFlag = false;
-    //这几个变量都是在发布offer的时候有效的，在修改offer的时候无效
-    
-    if((isEditVar!="true")||(isTBDInfoCanChange=="true")){
-        var oldTopCatValue = form.topCatFormKey.value;
-        var oldSecondCatValue = form.secondCatFormKey.value;
-        var oldLeafCatValue = form.leafCatFormKey.value;
-    }
-     if(hasTradeParam=="false"){    
-      
-        if(isTradeVar=="Y"){
-        	var tdTradeObj=document.all("td_trade_productfeature")
-            if(tdTradeObj) {
-		        if(old_tdTradeObj_innerHTML == ""){
-		        	old_tdTradeObj_innerHTML=tdTradeObj.innerHTML;
-		        }
-            	tdTradeObj.innerHTML = "很抱歉，该行业暂时无法发布一口价信息，但是您可以继续发布普通供应信息。<br/>请填写下表，完成供应信息的发布。";
-            }
-        }else{
-        if(document.all("tr_trade_productfeature"))
-            document.all("tr_trade_productfeature").style.display="none";
-        }
-    }
-
-    if(hasProductFeature && (hasProductFeature == "false")){
-        if(document.all("tr_productfeature")){
-        	document.all("tr_productfeature").style.display="none";
-        }
-    }
-    var needLockAlipayObj = document.all("needLockAlipay")
-    if(typeWayVar == "BUY"){
-        if(needLockAlipayObj){
-           needLockAlipayObj.style.display="none";
-        }
-    }else{
-        if(needLockAlipayObj){
-           needLockAlipayObj.style.display="";
-        }
-   }
-    changeTradeUnit();
-
-        if((categoryId1Value!="")&&((isEditVar==""||isEditVar!="true")||(isTBDInfoCanChange=="true"))){
-        if(tradeTypeVar == "4"){
-            form.topCatFormKey.value = "2903";
-            form.topCatFormKey.style.display="none"
-        }else if(tradeTypeVar == "3"){
-            form.topCatFormKey.value = "51";
-            form.topCatFormKey.style.display="none"
-        }else if(tradeTypeVar == "5"){
-            form.topCatFormKey.value = "28";
-            form.topCatFormKey.style.display="none"
-        }else if(tradeTypeVar == "2"){
-            form.topCatFormKey.value = "2805";
-            form.topCatFormKey.style.display="none"
-        }else{
-        	       		
-			//if(!(typeObj=="" || (typeObj != "BUY" && typeObj != "SALE") && typeObj != "")){
-       	   
-    		   if((typeObj==""||typeObj=="BUY"||typeObj=="SALE")){
-                doDeleteAgentAndCorp(form.topCatFormKey);
-                }
-			
-            form.topCatFormKey.value = topCatIdVar;
-        }
-        onChangeTopCategory();
-        form.secondCatFormKey.value = secondCatIdVar;
-        changeSecondCategory();
-        if(form.leafCatFormKey.length > beginIndex){
-	        form.leafCatFormKey.disabled = false;
-	        form.leafCatFormKey.value = leafCatIdVar;
-        }else{
-        	form.leafCatFormKey.disabled = true;
-        }
-        showSelectPath();
-    }
-    if(typeWayVar == "SALE"){
-        needFeature = true;
-    }else{
-        needFeature = false;
-    }
-
-    if(isTBDInfoCanChange!="true"){
-    setSubjectText(false,false);
-    }
-
-    showTabTradeProductFeature();
-
-
-	//快速匹配
-	quickBuySellMatch(typeObj);
-	//显示更多产品
-	showProductMarket(true,keywordsObj)
-
-    refreashUsedCategory();
-        if(isFromNonmember=="true"){
-       // doOnKeywordBlur(keywordsObj,true);
-    }
-</script>
 
 		<script language="JavaScript">
 if(iskeywordsExist == "Y"){
@@ -6166,5 +5619,64 @@ if(isAtBackOffice=="false"){
 		lfobj.style.height = now_height-2+"px";
 	}
 </script>
+<script language="JavaScript" type="text/javascript">
+		 
+    	function onChangeTopCategory(value){
+    		var paramname = value; 
+    		var url = "<%=path%>/product.do?method=productSecondCategory";  
+    		var pars = "key=" + paramname; 
+		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
+	  	}
+	  	 
+	    function showTopChecked(originalRequest){
+			var result= originalRequest.responseText;	    
+		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
+		     secondCatForm.innerHTML=result;
+	  
+	  	} 
+		function onChangeSecondCategory(value){
+			var paramname = value; 
+    		var url = "<%=path%>/product.do?method=productThirdCategory";  
+    		var pars = "key=" + paramname; 
+		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showSecondChecked});
+	
+		}
+		function showSecondChecked(originalRequest){
+			var result= originalRequest.responseText;	    
+		    var secondCatForm=document.getElementById("tdleafCatFormKey"); 
+		     secondCatForm.innerHTML=result;
+	  
+	  	} 
+		
+		function onChangeLeafCategory(value){
+			var paramname = value; 
+    		var url = "<%=path%>/product.do?method=productTemplate";  
+    		var pars = "key=" + paramname; 
+		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showLeafChecked});
+	
+		} 
+		function showLeafChecked(originalRequest){
+			var result= originalRequest.responseText;	    
+		    var secondCatForm=document.getElementById("div_productfeature");  
+		     secondCatForm.innerHTML=result;
+	  
+	  	} 
+	  	function showMore(value){  									
+	  			var display=document.getElementById('table_more').style.display;
+	  			 
+	  			if(display=='block')
+	  			{ 
+	  				document.getElementById('table_more').style.display='none';
+	  			     value.className='Htab2_on';  
+	  			  
+	  			}
+	  			else  if(display=='none')
+	  			{ 
+	  				document.getElementById('table_more').style.display='block';
+	  			     value.className='Htab2_off'; 
+	  			   
+	  			} 
+	  	} 
+	  	</script>
 	</body>
 </html>
