@@ -10,11 +10,7 @@ import com.abbcc.vo.product.bzd.Bzd_csdp;
 
 public class ProductServiceImpl implements ProductService{
 	
-	private static final ProductServiceImpl instance=new ProductServiceImpl();
-	
-	public static ProductServiceImpl getInstance(){
-		return instance;
-	}
+	 
 
 	public void addProduct(Cpgqxx cpgqxx, Jytj jyty, String productInsertSql) {
 		

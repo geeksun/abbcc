@@ -1,13 +1,11 @@
-<%@ page contentType="text/html; charset=gbk"%>  
-<%@ page import="java.util.List,java.util.Iterator" %>
-<%@ page import="com.abbcc.util.product.ProductType" %>
- 
+<%@ page contentType="text/html; charset=gbk"%>
 <%
 String path = request.getContextPath();
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head> 
+	<head>
+
 		<title>product</title>
 		<link rel="shortcut icon" href="http://i02.c.aliimg.com/favicon.ico">
 		<meta http-equiv="Content-Type" content="text/html; charset=x-gbk">
@@ -31,7 +29,6 @@ String path = request.getContextPath();
 			href="<%=path%>/user/product/product_files/content.css"
 			type="text/css">
 	</head>
-	
 	<body> 
 		<script>
 		function initTipBoxHeight(){
@@ -1872,7 +1869,7 @@ function checkContactInfo(content) {
 										<td class="list_left_box" align="right" valign="top">
 											<img id="img_right_category"
 												src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16">
 											<b> 产品所属类目</b><font color="#ff0000">*</font>
 
 										</td>
@@ -1888,30 +1885,22 @@ function checkContactInfo(content) {
 																onblur='doOnBlur("category", true)'
 																onfocus='doOnFocus("category")'
 																onchange="onChangeTopCategory(this)">
-																<% 
-																	List productTypeList=(List)	request.getAttribute("productTypeList"); 
-																	if(productTypeList!=null){
-																		Iterator iter=productTypeList.iterator();
-																		while(iter.hasNext()){
-																			ProductType productType=(ProductType)iter.next();
-																			if(productType!=null){
-																				String name=productType.getName();
-																				String value=productType.getId();
-																				boolean able=productType.isAble();
-																				out.println("<option value=\""+value+"\"");
-																				if(able){
-																					out.println(" style=\"color: rgb(204, 204, 204);\" ");
-																				} 
-																				out.println(">");
-																				out.println(name);
-																				out.println("</option>");
-																				
-																			}
-																		} 
-																	}
-																			 
-																%> 
-															 
+																<option value="58">
+																	照明工业
+																</option>
+																<option value="57">
+																	电子元器件
+																</option> 
+																<option value="18">
+																	运动、休闲
+																</option>
+																<option style="color: rgb(204, 204, 204);" value="-5">
+																	商务服务
+																</option>
+																<option style="color: rgb(204, 204, 204);" value="-4">
+																	项目合作
+																</option>
+																 
 															</select>
 															<select name="secondCatFormKey" size="8"
 																style="width: 129px;" id="secondCatFormKey"
@@ -1970,7 +1959,7 @@ function checkContactInfo(content) {
 																onblur="doOnBlur(this.name, true)"
 																onfocus="doOnFocus(this.name)"
 																onchange="doModifySubject(this)" maxlength="25"
-																type="text"/>
+																type="text">
 														</td>
 													</tr>
 												</tbody>
@@ -4830,7 +4819,43 @@ function initSubOptions(id, target){
 	}
 </script>
 						<script>
- 
+						 
+function TopCategory(id, title, tradeTypeMatch) {
+    this.id = id;
+    this.title = title;
+    this.option = new Option(this.title, this.id);
+    if(!tradeTypeMatch){
+    	this.option.style.color="#CCCCCC";
+	}
+}
+
+function changeTopCategory(){
+    secondCatForm.value = "";
+		if(topCatForm.selectedIndex == -1 || (topCatForm.selectedIndex == 0 && beginIndex == 1)) {
+		if(beginIndex == 1){
+        	topCatForm.options[0].selected = true;
+
+		}
+        var len = secondCatForm.options.length;
+        for (var i = len - 1; i > beginIndex - 1; i--) {
+            secondCatForm.options[i] = null;
+        }
+	}
+	else{
+	   	var selectedTopCategory;
+		//查出选择了那个顶极类目
+		for(var j =0;j<topCatArr.length;j++){
+			if(topCatForm.options[topCatForm.selectedIndex].value == topCatArr[j].id){
+				selectedTopCategory = topCatArr[j];
+			} 
+		}
+		        initSubOptions(selectedTopCategory.id, secondCatForm);
+	}
+	if (beginIndex == 1){
+        secondCatForm.options[0].selected = true;
+	}
+    changeSecondCategory();
+} 
 function changeSecondCategory() {
 	leafCatForm.value = "";
     if (secondCatForm.selectedIndex == -1 || (secondCatForm.selectedIndex == 0 && beginIndex == 1)) {

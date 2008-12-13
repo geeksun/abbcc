@@ -8,8 +8,7 @@ import com.abbcc.servlet.StartServlet;
 public class BaseAction extends DispatchAction {
 	
 	protected ProductService productService= (ProductService) StartServlet.getBean("productService");
-	protected ProductService userService= (ProductService) StartServlet.getBean("userService");
-	
+ 	
 	 
 
 }

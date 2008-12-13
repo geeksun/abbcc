@@ -20,13 +20,16 @@ public class InitResource {
 
 	private String productTypeResource = "product_type_resource.xml";
 
-	private String productTableResource = "product_table_resource.xml";
+	private String productTableResource = "table_resource.xml";
+	
+	private String folder="/WEB-INF/resource/";
 
-	public void init() throws FileNotFoundException, XmlException {
+	public void init(String serverPath) throws FileNotFoundException, XmlException {
 		ResourceUtil resource = new ResourceUtil();
-		productType = resource.getProductMapByPath(productTypeResource);
-		tableMap = resource.getTableMapByPath(productTableResource);
-		formMap = resource.getFormMapByPath(productTableResource);
+		
+		productType = resource.getProductMapByPath(serverPath+folder+productTypeResource);
+		tableMap = resource.getTableMapByPath(serverPath+folder+productTableResource);
+		formMap = resource.getFormMapByPath(serverPath+folder+productTableResource);
 
 	}
 

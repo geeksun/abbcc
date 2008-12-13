@@ -18,7 +18,9 @@ public class JdbcTemplateUtil {
 	}
 	public static Map<String, Object> getObjectBySelectSql(String sql,Object  param) {
 		JdbcTemplate jdbc = (JdbcTemplate) StartServlet.getBean("jdbcTemplate");
+	 
 		List list = jdbc.queryForList(sql,new Object[]{param}); 
+		 
 		if (list != null && list.size() > 0) {
 			return (Map<String, Object>) list.get(0);
 		}

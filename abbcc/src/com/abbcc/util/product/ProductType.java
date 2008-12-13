@@ -5,6 +5,28 @@ public class ProductType {
 	private String id;
 
 	private String name;
+	
+	private int type;
+	private boolean able;
+	
+
+	 
+
+	public boolean isAble() {
+		return able;
+	}
+
+	public void setAble(boolean able) {
+		this.able = able;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	public String getId() {
 		return id;

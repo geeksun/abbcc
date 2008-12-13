@@ -20,19 +20,22 @@ public class StartServlet extends HttpServlet {
 	private static ApplicationContext context;
 
 	public void init(ServletConfig config) {
-		this.initContext(config.getServletContext());
-		//initResource();
+		ServletContext servlet=config.getServletContext();
+		this.initContext(servlet); 
+		// initResource(servlet);
 	}
 
 	private void initContext(ServletContext servlet) {
-
+ 
 		context = WebApplicationContextUtils.getWebApplicationContext(servlet);
+	
 
 	}
-	private void initResource(){
+	private void initResource(ServletContext servlet){
 		InitResource initResource=new InitResource();
 		try {
-			initResource.init();
+			String path = servlet.getRealPath("/");
+			initResource.init(path);
 		} catch ( Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

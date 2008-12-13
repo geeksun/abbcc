@@ -104,31 +104,14 @@ public class ResourceUtil {
 		}
 		return input;
 	}
-	/*private InputStream getAppStream(String appName)
+	 
+	private InputStream getLocalStream(String appName)
 			throws FileNotFoundException {
 		URL url = this.getClass().getClassLoader().getResource(".");
 		String path = url.getPath() + appName;
 		InputStream input = new FileInputStream(new File(path));
 		return input;
-		URL url = this.getClass().getClassLoader().getResource(File.separator);
-		String path = url.getPath().replace("classes", "security");
-		String appPath =  url.getPath() + appName;
-		InputStream input = null;
-		try {
-			input = new FileInputStream(new File(appPath));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return input;
-	}*/
-	private InputStream getLocalStream(String appName)
-	throws FileNotFoundException {
-		URL url = this.getClass().getClassLoader().getResource(".");
-		String path = url.getPath() + appName;
-		InputStream input = new FileInputStream(new File(path));
-		return input;
-}
+	}
 
 	public Map<String, Table> loadTableByInput(InputStream input)
 			throws XmlException {
@@ -522,7 +505,7 @@ public class ResourceUtil {
 	
 	public static void main(String[] args) {
 		ResourceUtil resource = new ResourceUtil();
-		String appNamePath = "D:\\ProgramFiles\\jakarta-tomcat-5.5.9\\webapps\\abbcc\\WEB-INF\\classes\\product_table_resource.xml";
+		String appNamePath = "D:\\ProgramFiles\\jakarta-tomcat-5.5.9\\webapps\\abbcc\\WEB-INF\\resource\\product_type_resource.xml";
 		try {
 			Map map = resource.getFormMapByPath(appNamePath);
 
