@@ -9,7 +9,17 @@ public class Text implements FormObject{
 	
 	private String show;
 	
+	private boolean isHidden;
+	
 	 
+
+	public boolean isHidden() {
+		return isHidden;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
+	}
 
 	public String getKey() {
 		return key;
@@ -48,4 +58,5 @@ public class Text implements FormObject{
 		this.show = show;
 	}
 
+ 
 }

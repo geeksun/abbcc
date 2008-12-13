@@ -59,9 +59,9 @@
 		if(!patn.test(str)){
 			return 1;
 		}
-		return 0; 
+		return 0; size="8" style="width: 129px;"tdleafCatFormKey   product_key
 	}
-	function checkByteLength(str,minlen,maxlen) {
+	function checkByteLength(str,minlen,maxlen) { div_productfeature
 		if (str == null) return false;
 		var l = str.length;
 		var blen = 0;

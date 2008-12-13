@@ -6,9 +6,13 @@ public class Select implements FormObject{
 	private Option[] option;
 	private String show;
 	private boolean notNull;
-
+	private boolean isHidden;
 	public Option[] getOption() {
 		return option;
+	}
+
+	public void setHidden(boolean isHidden) {
+		this.isHidden = isHidden;
 	}
 
 	public void setOption(Option[] option) {
@@ -51,6 +55,13 @@ public class Select implements FormObject{
 	public void setShow(String show) {
 		this.show = show;
 	}
+
+	public boolean isHidden() {
+		return isHidden;
+	}
+ 
+
+	 
 	
 	
 }
