@@ -15,7 +15,5 @@ public class ServiceFactory {
 	public static CheckService getCheckService(){
 		return CheckSerivceImpl.getInstance();  
 	}
-	public static ProductService getProductService(){
-		return ProductServiceImpl.getInstance();
-	}
+	 
 }

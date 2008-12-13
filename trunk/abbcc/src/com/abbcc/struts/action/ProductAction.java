@@ -83,8 +83,8 @@ public class ProductAction extends BaseAction {
 	public ActionForward showProduct(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		Map<String, List<ProductType>> map = InitResource.getProductType();
-		List<ProductType> list = map.get(ResourceUtil.PRODUCT_ROOT);
-		request.setAttribute("list", list);
+		List<ProductType> productTypeList = map.get(ResourceUtil.PRODUCT_ROOT);
+		request.setAttribute("productTypeList", productTypeList);
 		return mapping.findForward("product");
 	}
 

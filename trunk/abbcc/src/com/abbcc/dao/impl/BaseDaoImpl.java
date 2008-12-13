@@ -15,7 +15,8 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 protected final Log log = LogFactory.getLog(getClass());
 	
 	public void delete(Class clazz, Serializable id) {
-		getHibernateTemplate().delete(getObject(clazz, id));												
+		getHibernateTemplate().delete(getObject(clazz, id));		
+	 
 	}
 	public Object getObject(Class clazz, Serializable id) {
 		 Object o = getHibernateTemplate().get(clazz, id);
