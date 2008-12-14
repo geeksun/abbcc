@@ -13,4 +13,10 @@ public class AppConstants {
 	public static final int invalidate = 0;
 	//∂•º∂÷÷¿‡ID
 	public static final String TOPCATEGORYID = "0";
+	
+	
+	
+	public static final int PRODUCT_SALE=1;
+	public static final int PRODUCT_BUY=2;
+	public static final int PRODUCT_QUICK_BUY=3;
 }

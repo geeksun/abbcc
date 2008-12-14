@@ -199,6 +199,16 @@ public class ProductAction extends BaseAction {
 				ProductType secondProductType=secondCategory.get(0); 
 				List<ProductType> thirdCategory= map.get(secondProductType.getId());
 				request.setAttribute("thirdCategory", thirdCategory);
+				if(thirdCategory!=null&&thirdCategory.size()>0){
+					ProductType thirdProductType=thirdCategory.get(0); 
+				   
+					Map<String, Form> formMap=InitResource.getFormMap();
+					Form f=formMap.get(thirdProductType.getId());
+					String path=request.getContextPath(); 
+					String productTemplate=ProductTemplate.getInstance().getProductTemplate(f,path);
+					request.setAttribute("productTemplate", productTemplate);
+					
+				}
 				
 			}
 		} 

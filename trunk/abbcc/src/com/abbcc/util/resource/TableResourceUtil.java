@@ -30,6 +30,7 @@ public class TableResourceUtil {
 
 	public   Map<String, Object>  getFormValue(Form form,
 			HttpServletRequest request) throws ValueNullException {
+		 
 		Map<String, Object> ret = new HashMap<String, Object>();
 		List<FormObject> list = form.getList();
 		Iterator<FormObject> iter = list.iterator();
