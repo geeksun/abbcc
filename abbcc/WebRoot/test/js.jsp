@@ -21,6 +21,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function test(){
 			alert('ok');
 		}
+		function doSubmit1(button_clicked){
+	  		var leafCatFormKey = document.forms["basicInfoForm"].elements["leafCatFormKey"];
+	  		var right_category_id = $("right_category_id");
+	  		if(leafCatFormKey.length==0||leafCatFormKey.selectedIndex==-1){
+	  			alert('您的"主营行业"未选择完整，请继续选择行业子类');
+	  			return;
+	  		}
+	  		else{
+	  			for(var i=0;i<leafCatFormKey.length;i++){
+		  			if(true==leafCatFormKey.options[i].selected){
+		  				//alert(leafCatFormKey.selectedIndex);
+		  				//alert(leafCatFormKey.options[i]);
+		  				//alert(leafCatFormKey.options[i].value+' '+leafCatFormKey.options[i].text);
+		  				alert(right_category_id.length);
+			  			right_category_id[k] = new Option(leafCatFormKey.options[i].text,leafCatFormKey.options[i].value);
+			  			return;
+			  				
+		  			}
+	  			}
+	  			
+	  		}
+	  	}
+	  	
 	</script>
   </head>
   
