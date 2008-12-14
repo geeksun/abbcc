@@ -173,11 +173,7 @@
               </select> 
               </td>
                </tr>
-               <tr>
-				<td align=center>用户名称:
-				<input type=text id="userName" name="userName" onBlur="doCheck();"><div id=msg></div>
-				</td>
-				</tr>
+               
               </tbody>
     		</table>
     	</table>
@@ -215,32 +211,145 @@
 	  		//alert(0);
 	  		
 	  	}
+	   function addOptions(src, dst,secCategories,topCategories) {
+		    var selected_value = [];
+		    var selected_text = [];
+		   var secV = secCategories;
+		   var topV = topCategories;
+		   var topFlag = false;
+		   var secFlag = false;
+		   var leafFlag = false;
+		
+		 for(var i = 0;i<secCategories.length;i++)
+		 {
+		   if(secCategories[i].selected)
+		  {secV= secCategories[i].text;
+		    secFlag = true;
+		
+		    break;
+		  }
+		 }
+		
+		 for(var i = 0;i<topCategories.length;i++)
+		 {
+		   if(topCategories[i].selected)
+		  {topV= topCategories[i].text;
+		   topFlag = true;
+		  break;
+		  }
+		 }
+		    // Get items from dst
+		    for(var i = 0; i < dst.length; i++) {
+		
+		      selected_value[selected_value.length] = dst[i].value;
+		      selected_text[selected_text.length] = dst[i].text;
+		    }
+		var len = selected_value.length;
+		        if( len >= 6 ) {
+		          alert('您最多可选择6个“主营行业”！');
+		          return ;
+		        }
+		    // Get items from src
+		    for(var i = 0; i < src.length; i++) {
+		      if(src[i].selected) {
+		        var exists = 0;
+		        leafFlag  = true;
+		        for(var j = 0; j < dst.length; j++) {
+		          if(dst[j].value == src[i].value) {
+		            exists = 1;
+		            break;
+		          }
+		        }
+		
+		
+		     if(exists&&exists==1)
+		     {
+		     alert('您已经选择过该“主营行业”！');
+		     return;
+		     }
+		        if(!exists) {
+		          selected_value[selected_value.length] = src[i].value;
+		          if(secV==src[i].text)
+		          selected_text[selected_text.length] = topV+"/"+src[i].text;
+		        else
+		           {
+		          if(topV==src[i].text)
+		          {
+		          selected_text[selected_text.length] = topV;
+		          }
+		          else
+		          {
+		          selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
+		            }
+		          }
+		        }
+		      }
+		    }
+		
+		      if(topFlag ==false && secFlag==false&& leafFlag==false){
+		        alert("您还未选择“主营行业”！");
+		        return ;
+		      }else
+		      {
+		      if(topFlag ==true&& secFlag==false&& leafFlag==false)
+		      {alert("您的“主营行业”未选择完整，请继续选择行业大类！")
+		      return;
+		      }
+		      else{
+		        if(topFlag ==true&& secFlag==true&& leafFlag==false)
+		        {
+		          alert("您的“主营行业”未选择完整，请继续选择行业子类！")
+		          return;
+		       }
+		      }
+		      }
+		    // Clear dst except the first item
+		    while(dst.length > 1) dst[1] = null;
+		
+		    // Fill the dst box
+		
+		    for(var j = 0; j < selected_value.length; j++) {
+		
+		      dst[j] = new Option(selected_text[j], selected_value[j]);
+		    }
+  }	  	
+  		function removeOptions(src, dst) {
+		    for(var i = 0; i < src.length; i++) {
+		    	if(src[i].selected) src[i] =null;
+		    }
+		 }
 	  	function doSubmit1(button_clicked){
-	  		var leafCatFormKey = document.forms["basicInfoForm"].elements["leafCatFormKey"];
-	  		//var leafCatFormKey = $("leafCatFormKey");
-	  		//alert(leafCatFormKey.length);
-	  		var right_category_id = $("right_category_id");
-	  		if(leafCatFormKey.length==0||leafCatFormKey.selectedIndex==-1){
-	  			alert('您的"主营行业"未选择完整，请继续选择行业子类');
-	  			return;
-	  		}
-	  		else{
-	  			for(var i=0;i<leafCatFormKey.length;i++){
-		  			if(true==leafCatFormKey.options[i].selected){
-		  				//alert(leafCatFormKey.selectedIndex);
-		  				//alert(leafCatFormKey.options[i]);
-		  				//alert(leafCatFormKey.options[i].value+' '+leafCatFormKey.options[i].text);
-		  				alert(right_category_id.length);
-		  				//for(var k=0;k<right_category_id.length;k++){
-			  				right_category_id[k] = new Option(leafCatFormKey.options[i].text,leafCatFormKey.options[i].value);
-			  				return;
-			  			//}
-		  			}
-	  			}
-	  			
-	  		}
-	  	}
-	  	
+	  	   var tmpform = document.basicInfoForm;
+	  	   var selected_categories = tmpform.right_category_id.options;
+	  	   
+	  	   if(button_clicked &&(button_clicked == "deselect"||button_clicked == "select")) {
+	  	   
+		   var categories = tmpform.leafCatFormKey.options;
+		   var secCategories = tmpform.secondCatFormKey.options;
+		   var topCategories = tmpform.topCatFormKey.options;
+		   if(button_clicked == 'select')
+		   {        // Move to right pane
+		      if(categories.length==0)
+		      {
+        		if(secCategories.length==0)
+        		{
+        		addOptions(topCategories, selected_categories,secCategories,topCategories);
+        		}else
+		        {
+		        addOptions(secCategories, selected_categories,secCategories,topCategories);
+		        }
+		      }else{
+		        addOptions(categories, selected_categories,secCategories,topCategories);
+		      }
+		   } else{
+			   if(button_clicked == 'deselect') {   // Remove from right pane
+			        removeOptions(selected_categories, categories);
+			   }
+	        	button_clicked = '';
+	        	return false;
+         }
+       }
+	 }
     </script>
   </body>
 </html>
