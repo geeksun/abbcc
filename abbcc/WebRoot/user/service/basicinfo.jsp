@@ -52,7 +52,6 @@
 											});
 	</script>
   </head>
-  
   <body>
   <p>
   	公司基本资料
@@ -136,7 +135,7 @@
     		</td>
     	</tr>
     	<tr>
-    		<td>选择主营行业：<font color=red>*</font></td>
+    		<td align=right>选择主营行业：<font color=red>*</font></td>
     		<td>
     		<table>
 	    		<tr>
@@ -146,84 +145,102 @@
 	    		</td>
 	    		</tr>
     			<tr>
-    			<TD>
-    			<SPAN id=prdMore>
-    			<SELECT id=topCatFormKey style="WIDTH: 120px" onClick="onChangeTopCategory()" size=8 name=topCatFormKey>
+    			<td>
+    			<span id=prdMore>
+    			<select id=topCatFormKey style="WIDTH: 120px" onClick="onChangeTopCategory()" size=8 name=topCatFormKey>
     				<c:forEach var="trade" items="${traList}" begin="0" end="8" step="1">    
 				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
 				    </c:forEach>
-    			</SELECT>
+    			</select>
     			
-    			<SELECT id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
-    				<!--<c:forEach var="sub" items="${subList}" begin="0" end="8" step="1">    
-				   		<option value="<c:out value="${sub.productId}"/>"><c:out value="${sub.tableName}"/></option>    
-				    </c:forEach>-->
-    			</SELECT>
-    			<SELECT id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeLeafCategory() size=8 name=leafCatFormKey></SELECT> 
-    			</SPAN>
+    			<select id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
+    			</select>
+    			<select id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeleafCategory() size=8 name=leafCatFormKey>
+    			</select> 
+    			</span>
     			
-    			<BR>
-    			<INPUT onclick="doSubmit1('select')" type=button value=添加↓ name=Submit222> 
-				<INPUT onclick="doSubmit1('deselect')" type=button value=×删除 name=Submit2222> 
-                  <BR></TD></TR></TABLE>
-            <TABLE>
-              <TBODY>
-              <TR>
+    			<br>
+    			<input onclick="doSubmit1('select')" type=button value=添加↓ name=Submit222> 
+				<input onclick="doSubmit1('deselect')" type=button value=×删除 name=Submit2222> 
+                  <br></td></tr></table>
+            <table>
+              <tbody>
+              <tr>
               <td>
               <SPAN id=selectedText style="DISPLAY: none"><BR>以下是您已选择的主营行业：</SPAN>
-              <SELECT style="WIDTH: 368px" size=8 name=right_category_id> 
-              	<OPTION value= selected></OPTION>
-              </SELECT> 
+              <select style="WIDTH: 368px" size=8 name=right_category_id> 
+              	
+              </select> 
               </td>
-               </TR>
+               </tr>
                <tr>
 				<td align=center>用户名称:
 				<input type=text id="userName" name="userName" onBlur="doCheck();"><div id=msg></div>
 				</td>
 				</tr>
-              </TBODY>
+              </tbody>
     		</table>
     	</table>
     </form>		
     <script type="text/javascript">
-    	//入口参数
+    	//一级菜单
     	function onChangeTopCategory(){
     		var paramname = $F("topCatFormKey");
-    		alert(paramname);
     		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
-    		//var url = "<%=path%>/checkName.do";
-    		alert(url);
     		var pars = "topCatFormKey=" + paramname;
-    		//var pars = "hydlm=" + paramname;
-    		alert(pars);
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
 	  	}
-	  	
-	  	function doCheck(){
-			 alert('ooo');
-			 var paramname = $F("userName");
-			 alert(paramname);
-			 var url = "/abbcc/checkName.do"; 
-	   		 var pars ="hydlm=" + paramname;  
-	   		 pars = encodeURI(pars);
-	   		 pars = encodeURI(pars);		
-	   		 
-	   		 var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showChecked});
-  		}
 	    function showChecked(originalRequest){
-			var result= originalRequest.responseText;	  		
-			alert(result);
-			/*if(result.indexOf("恭喜")>=0)	
-				$("msg").innerHTML=result;
-			else
-				$("msg").innerHTML=result;*/
+			var result= originalRequest.responseText.parseJSON();	
+			var secondCatFormKey = $("secondCatFormKey");
+			for(var i=0;i<result.length;i++){
+				secondCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
+			}													
 	  	} 
+	  	//二级菜单
 		function onChangeSecondCategory(){
-			alert('ok');
+			var paramname = $F("secondCatFormKey");
+    		var url = "<%=path%>/traceInfo.do?action=getSubCategory";
+    		var pars = "topCatFormKey=" + paramname;
+		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showSecondCheck});
 		}
-		function onChangeLeafCategory(){
-			alert('ok');
-		}
+		function showSecondCheck(originalRequest){
+			var result= originalRequest.responseText.parseJSON();	
+			var leafCatFormKey = $("leafCatFormKey");
+			for(var i=0;i<result.length;i++){
+				leafCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
+			}													
+	  	} 
+	  	function onChangeleafCategory(){
+	  		//alert(0);
+	  		
+	  	}
+	  	function doSubmit1(button_clicked){
+	  		var leafCatFormKey = document.forms["basicInfoForm"].elements["leafCatFormKey"];
+	  		//var leafCatFormKey = $("leafCatFormKey");
+	  		//alert(leafCatFormKey.length);
+	  		var right_category_id = $("right_category_id");
+	  		if(leafCatFormKey.length==0||leafCatFormKey.selectedIndex==-1){
+	  			alert('您的"主营行业"未选择完整，请继续选择行业子类');
+	  			return;
+	  		}
+	  		else{
+	  			for(var i=0;i<leafCatFormKey.length;i++){
+		  			if(true==leafCatFormKey.options[i].selected){
+		  				//alert(leafCatFormKey.selectedIndex);
+		  				//alert(leafCatFormKey.options[i]);
+		  				//alert(leafCatFormKey.options[i].value+' '+leafCatFormKey.options[i].text);
+		  				alert(right_category_id.length);
+		  				//for(var k=0;k<right_category_id.length;k++){
+			  				right_category_id[k] = new Option(leafCatFormKey.options[i].text,leafCatFormKey.options[i].value);
+			  				return;
+			  			//}
+		  			}
+	  			}
+	  			
+	  		}
+	  	}
+	  	
     </script>
   </body>
 </html>
