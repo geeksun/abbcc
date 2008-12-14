@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %> 
+<%
+	String path = request.getContextPath();
+%>
 <html>
   <head>
    <title>用户管理</title>
@@ -10,10 +13,10 @@
 	<link href="css/style.css" rel="stylesheet" type="text/css">
   </head>
  <frameset rows="103,*" cols="*" frameborder="no"   border="0" framespacing="0" >
-	  <frame src="top.jsp" name="top" scrolling="no" id="top" noresize>
+	  <frame src="<%=path%>/user/top.jsp" name="top" scrolling="no" id="top" noresize>
 	  <frameset rows="*" cols="187,*" frameborder="no" border="0" framespacing="0">
-		   <frame src="menu.jsp" name="left" scrolling="auto" noresize>
-		   <frame src="right.jsp" name="right" noresize>
+		   <frame src="<%=path%>/user/menu.jsp" name="left" scrolling="auto" noresize>
+		   <frame src="<%=path%>/user/right.jsp" name="right" noresize>
 	  </frameset>
  </frameset>
  <noframes>
