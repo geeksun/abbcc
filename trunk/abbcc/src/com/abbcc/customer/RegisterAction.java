@@ -55,7 +55,7 @@ public class RegisterAction extends BaseAction {
 				int i = hyjbxxService.save(hy);
 				//System.out.println("registerStatus: "+i);
 				if(i>0){
-					return mapping.findForward("loginsuccess");
+					return mapping.findForward("registersuccess");
 				}else{
 					return mapping.findForward("fail");
 				}
