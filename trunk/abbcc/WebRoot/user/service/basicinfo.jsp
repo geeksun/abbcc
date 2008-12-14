@@ -203,6 +203,7 @@
 		function showSecondCheck(originalRequest){
 			var result= originalRequest.responseText.parseJSON();	
 			var leafCatFormKey = $("leafCatFormKey");
+			leafCatFormKey.length = 0;
 			for(var i=0;i<result.length;i++){
 				leafCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
 			}													
@@ -261,7 +262,6 @@
 		          }
 		        }
 		
-		
 		     if(exists&&exists==1)
 		     {
 		     alert('您已经选择过该“主营行业”！');
@@ -285,7 +285,6 @@
 		        }
 		      }
 		    }
-		
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
 		        alert("您还未选择“主营行业”！");
 		        return ;
@@ -307,17 +306,16 @@
 		    while(dst.length > 1) dst[1] = null;
 		
 		    // Fill the dst box
-		
 		    for(var j = 0; j < selected_value.length; j++) {
-		
 		      dst[j] = new Option(selected_text[j], selected_value[j]);
 		    }
-  }	  	
+  	  	}
+  
   		function removeOptions(src, dst) {
 		    for(var i = 0; i < src.length; i++) {
 		    	if(src[i].selected) src[i] =null;
 		    }
-		 }
+		}
 	  	function doSubmit1(button_clicked){
 	  	   var tmpform = document.basicInfoForm;
 	  	   var selected_categories = tmpform.right_category_id.options;
