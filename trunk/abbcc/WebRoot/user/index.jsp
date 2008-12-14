@@ -29,6 +29,15 @@
 			function register(){
 				window.location.href = "register.jsp";
 			}
+			function inspire()
+			{
+				if(event.keyCode==13)
+				{
+					return verify();
+				}
+				else
+					return;
+			}
 		</script>
 	</head>
 	<body>
@@ -71,7 +80,7 @@
 						รÜ&nbsp;&nbsp;ย๋:
 					</td>
 					<td>
-						<input type="password" name="mm" >&nbsp;<a href="javascript:goToRetrievePWD()">อüมหรÜย๋ฃฟ</a>
+						<input type="password" name="mm" onKeyDown="inspire()">&nbsp;<a href="javascript:goToRetrievePWD()">อüมหรÜย๋ฃฟ</a>
 					</td> 
 				</tr>
 				<tr>
