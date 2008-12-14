@@ -64,14 +64,14 @@ public class TraceInfoAction extends BaseAction {
 			PrintWriter out = response.getWriter();
 			
 			String topCatFormKey = request.getParameter("topCatFormKey");
-			System.out.println("topCatFormKey:"+topCatFormKey);
+			//System.out.println("topCatFormKey:"+topCatFormKey);
 			List subList = tradeInfoService.getTableNameById(topCatFormKey);
 			//String subList = tradeInfoService.getSubCategory(topCatFormKey);
 			
 			//String json = "[";
 			//JSONObject json = JSONObject.forObject(subList);  
 			String json = JsonUtil.list2json(subList);
-			System.out.print(json);
+			//System.out.print(json);
 			out.print(json);
 			
 			//request.setAttribute("subList", subList);
