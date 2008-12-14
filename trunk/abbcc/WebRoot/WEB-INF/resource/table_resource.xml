@@ -4,6 +4,25 @@
 <pps>
 	<pp>
 		<table key="010101"   name="Bzd_csdp">
+		    <id  name="cz" type="java.lang.Integer" not-null="true" /> 
+			<property name="pp2" type="java.lang.Integer" not-null="true"/>
+			<property name="pp3" type="java.lang.Integer" not-null="true"/>
+			<property name="pp4" type="java.lang.Integer" not-null="true"/>
+			<property name="pp5" type="java.lang.Integer" not-null="true"/>
+			<property name="pp6" type="java.lang.Integer" not-null="true"/>
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="品牌" not-null="true"  /> 
+			<input ref-filed="pp3" name="pp3" type="text" show="品牌2" not-null="true" hidden="true" />  
+			<select ref-filed="pp4" name="pp4" show="类别1" > 
+				<option value="1"  show="弹起式地板插座"/> 
+				<option value="2"  show="弹起式地板插座"/> 
+				<option value="3"  show="弹起式地板插座"/> 
+			</select>
+		</form>
+	</pp>
+	<pp>
+		<table key="010102"   name="Bzd_csdp2">
 		    <id  name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer" not-null="true"/>
 			<property name="pp" type="java.lang.Integer" not-null="true"/>
@@ -53,10 +72,9 @@
 			    <radio     value="4" show="品牌"/> 
 			</input> 
 			<select ref-filed="pp" name="pp" show="类别">
-				<option value="">请选择</option>
-				<option value="1">弹起式地板插座</option>
-				<option value="2">弹起式地板插座</option>
-				<option value="3">弹起式地板插座</option>
+				<option value="1"  show="弹起式地板插座"/> 
+				<option value="2"  show="弹起式地板插座"/> 
+				<option value="3"  show="弹起式地板插座"/> 
 			</select>
 		</form>
 	</pp>
