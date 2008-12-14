@@ -1,61 +1,14 @@
 package com.abbcc.util.product;
-
-import com.abbcc.util.resource.property.Filed;
-import com.abbcc.util.resource.property.Table;
-
  
 
 public class Product {
 
-	String id;
+	private int id;
 
-	Table table; 
-	
-	public String getId() {
-		return id;
-	}
+	private String tableName;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+	private String fields;
 
-	public Table getTable() {
-		return table;
-	}
+	private String isShow;
 
-	public void setTable(Table table) {
-		this.table = table;
-	} 
-
-	public String getInsertSql( ){
-		 StringBuilder builder=new StringBuilder();
-	     String sql="insert into ";
-	     builder.append(sql);
-	     builder.append(table.getName()+" (");
-	     Filed[] fileds=table.getFiled();
-	     for(int i=0;i<fileds.length;i++){
-	    	 Filed filed=fileds[i];
-	    	 if(i==fileds.length-1)
-	    	 {
-	    		 builder.append(filed.getName()+")");
-	    	 }else
-	    	 {
-	    		 builder.append(filed.getName()+",");
-	    	 }
-	    	
-	     }
-	     builder.append(" value (");
-	     for(int i=0;i<fileds.length;i++){ 
-	    	 if(i==fileds.length-1)
-	    	 {
-	    		 builder.append("?)");
-	    	 }else
-	    	 {
-	    		 builder.append("?,");
-	    	 }
-	    	
-	     }
-	     return builder.toString();
-	}
-	
 }
