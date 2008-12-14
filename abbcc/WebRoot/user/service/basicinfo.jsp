@@ -189,6 +189,8 @@
 	    function showChecked(originalRequest){
 			var result= originalRequest.responseText.parseJSON();	
 			var secondCatFormKey = $("secondCatFormKey");
+			//Çå¿ÕÊý×é
+			secondCatFormKey.length = 0;
 			for(var i=0;i<result.length;i++){
 				secondCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
 			}													
