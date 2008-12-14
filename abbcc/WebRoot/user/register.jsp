@@ -26,7 +26,7 @@
 			//  loading...
 			$(id).innerHTML = "<img border=0 src='<%=path%>/images/gif/loadding_indicator_remembermilk_orange.gif'/>";
 			var url = "<%=path%>/checkName.do";
-			//alert(url); 
+			//alert('ho'); 
 			var pars = "hydlm="+$("hydlm").value;
 			new Ajax.Request(url,{
 					method:'post',
@@ -59,9 +59,9 @@
 		if(!patn.test(str)){
 			return 1;
 		}
-		return 0; size="8" style="width: 129px;"tdleafCatFormKey   product_key
+		return 0; 
 	}
-	function checkByteLength(str,minlen,maxlen) { div_productfeature
+	function checkByteLength(str,minlen,maxlen) {
 		if (str == null) return false;
 		var l = str.length;
 		var blen = 0;
