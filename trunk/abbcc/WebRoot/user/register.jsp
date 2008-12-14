@@ -372,7 +372,7 @@
 				<select name="zyhy" id="zyhy"  onFocus="doEnhance('trade_condition');" 
 				 onChange="checkTrade('trade_img',this,'trade_condition')" >
 					<option value=""></option>
-					<option value="1">1ddddddddd</option>
+					<option value="1">ÕÕÃ÷ĞĞÒµ</option>
 				</select>
 				</td>
 				<td>
