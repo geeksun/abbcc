@@ -10,9 +10,9 @@ public class ProductDAOImpl implements ProductDAO  {
 
 	public void add(Product product) { 
 		JdbcTemplate jdbc=(JdbcTemplate)StartServlet.getBean("jdbcTemplate");
-		String sql=product.getInsertSql();
+		/*String sql=product.getInsertSql();
 		String[] value=null;//product.getValues();
-		jdbc.update(sql, value);
+		jdbc.update(sql, value);*/
 	}
 
 }
