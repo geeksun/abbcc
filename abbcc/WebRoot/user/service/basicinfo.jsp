@@ -173,9 +173,20 @@
               </select> 
               </td>
                </tr>
-               
               </tbody>
     		</table>
+    	</table>
+    	<p>
+    	联系方式的确认与修改
+    	</p>
+    	<table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C">
+               <tr>
+               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="true_name" value="${leaguer.zsxm}"" ><SPAN class=note> 
+                  请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
+               </tr>
+               <tr>
+               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${leaguer.gddh}"" ></td>
+               </tr>
     	</table>
     </form>		
     <script type="text/javascript">
