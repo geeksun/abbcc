@@ -16,13 +16,13 @@ public class Hyjbxx implements java.io.Serializable {
 	private String zsxm;
 	private String xb;
 	private String dzyx;
-	private String gddh;
+	private String gddh;				//  公司电话
 	private String cz;
 	private String sj;
 	private String memberType;			//  会员类型  
 	private String sfyx;
 	private String scsj;				//  删除时间,应该改为日期类型（同注册时间）
-	private String gslx;
+	private String gslx;				
 	private String gsmc;
 	private String jydz; 
 	private String zyhy;				//   主营行业
