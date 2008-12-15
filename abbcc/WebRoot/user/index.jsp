@@ -3,6 +3,9 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%
+	String path = request.getContextPath();
+%>
 <html>
 	<head>
 		<title>东方五金门户网站</title>
@@ -27,7 +30,7 @@
 				return true;
 			}
 			function register(){
-				window.location.href = "register.jsp";
+				window.location.href = "<%path=%>/user/register.jsp";
 			}
 			function inspire()
 			{
