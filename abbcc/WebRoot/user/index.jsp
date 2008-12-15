@@ -30,7 +30,7 @@
 				return true;
 			}
 			function register(){
-				window.location.href = "<%path=%>/user/register.jsp";
+				window.location.href = "<%=path%>/user/register.jsp";
 			}
 			function inspire()
 			{
