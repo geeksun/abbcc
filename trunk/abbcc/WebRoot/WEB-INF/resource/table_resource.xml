@@ -3,80 +3,500 @@
 -->
 <pps>
 	<pp>
-		<table key="010101"   name="Bzd_csdp">
-		    <id  name="cz" type="java.lang.Integer" not-null="true" /> 
-			<property name="pp2" type="java.lang.Integer" not-null="true"/>
-			<property name="pp3" type="java.lang.Integer" not-null="true"/>
-			<property name="pp4" type="java.lang.Integer" not-null="true"/>
-			<property name="pp5" type="java.lang.Integer" not-null="true"/>
-			<property name="pp6" type="java.lang.Integer" not-null="true"/>
+		<table key="010101" name="Bzd_csdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="pp2" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp3" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp4" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp5" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp6" type="java.lang.Integer"
+				not-null="true" />
 		</table>
 		<form>
-			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ" not-null="true"  /> 
-			<input ref-filed="pp3" name="pp3" type="text" show="Æ·ÅÆ2" not-null="true" hidden="true" />  
-			<select ref-filed="pp4" name="pp4" show="Àà±ð1" > 
-				<option value="1"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
-				<option value="2"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
-				<option value="3"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" hidden="true" />
+
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«">
+				<option value="1" show="ºìÉ«" />
+				<option value="2" show="³ÈÉ«" />
+				<option value="3" show="»ÆÉ«" />
 			</select>
 		</form>
 	</pp>
 	<pp>
-		<table key="010102"   name="Bzd_csdp2">
-		    <id  name="cz" type="java.lang.Integer" not-null="true" />
-			<property name="cz" type="java.lang.Integer" not-null="true"/>
-			<property name="pp" type="java.lang.Integer" not-null="true"/>
+		<table key="010102" name="bzd_lwdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+		</form>
+	</pp>
+	<pp>
+		<table key="010103" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
 		</table>
 		<form>
-			<input ref-filed="cz" name="cz" type="text" show="Æ·ÅÆ" not-null="true"/> 
-			<input ref-filed="cz" name="cz" type="text" show="Æ·ÅÆ" not-null="true"/> 
-			<input ref-filed="cz" name="cz" type="checkbox" show="Àà±ð" not-null="true"> 
-			    <checkbox    value="1" show="Æ·ÅÆ" />
-			    <checkbox    value="2" show="Æ·ÅÆ" />
-			    <checkbox    value="3" show="Æ·ÅÆ" />
-			    <checkbox    value="4" show="Æ·ÅÆ" /> 
-			</input> 
-			<input ref-filed="pp" name="cz" type="radio" show="Àà±ð2" not-null="true"> 
-			    <radio     value="1" show="Æ·ÅÆ2"/>
-			    <radio     value="2" show="Æ·ÅÆ4"/>
-			    <radio     value="3" show="Æ·ÅÆ"/>
-			    <radio     value="4" show="Æ·ÅÆ"/> 
-			</input> 
-			<select ref-filed="pp" name="pp" show="Àà±ð">
-				<option value="">ÇëÑ¡Ôñ</option>
-				<option value="1">µ¯ÆðÊ½µØ°å²å×ù</option>
-				<option value="2">µ¯ÆðÊ½µØ°å²å×ù</option>
-				<option value="3">µ¯ÆðÊ½µØ°å²å×ù</option>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010104" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010105" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010201" name="Bzd_csdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="pp2" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp3" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp4" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp5" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp6" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" hidden="true" />
+
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«">
+				<option value="1" show="ºìÉ«" />
+				<option value="2" show="³ÈÉ«" />
+				<option value="3" show="»ÆÉ«" />
 			</select>
 		</form>
 	</pp>
 	<pp>
-		<table key="010102"   name="Bzd_csdp">
-		    <id  name="cz" type="java.lang.Integer" not-null="true" />
-			<property name="cz" type="java.lang.Integer" not-null="true"/>
-			<property name="pp" type="java.lang.Integer" not-null="true"/>
+		<table key="010202" name="bzd_lwdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+		</form>
+	</pp>
+	<pp>
+		<table key="010203" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
 		</table>
 		<form>
-			<input ref-filed="cz" name="cz" type="text" show="Æ·ÅÆ" not-null="true"/> 
-			<input ref-filed="cz" name="cz" type="text" show="Æ·ÅÆ" not-null="true"/> 
-			<input ref-filed="cz" name="cz" type="checkbox" show="Àà±ð" not-null="true"> 
-			    <checkbox    value="1" show="Æ·ÅÆ"/>
-			    <checkbox    value="2" show="Æ·ÅÆ"/>
-			    <checkbox    value="3" show="Æ·ÅÆ"/>
-			    <checkbox    value="4" show="Æ·ÅÆ"/> 
-			</input> 
-			<input ref-filed="pp" name="cz" type="radio" show="Àà±ð2" not-null="true"> 
-			    <radio     value="1" show="Æ·ÅÆ2"/>
-			    <radio     value="2" show="Æ·ÅÆ4"/>
-			    <radio    value="3" show="Æ·ÅÆ"/>
-			    <radio     value="4" show="Æ·ÅÆ"/> 
-			</input> 
-			<select ref-filed="pp" name="pp" show="Àà±ð">
-				<option value="1"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
-				<option value="2"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
-				<option value="3"  show="µ¯ÆðÊ½µØ°å²å×ù"/> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010204" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010205" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+
+		</form>
+	</pp> 
+	<pp>
+		<table key="010301" name="Bzd_csdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="pp2" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp3" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp4" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp5" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp6" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" hidden="true" />
+
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«">
+				<option value="1" show="ºìÉ«" />
+				<option value="2" show="³ÈÉ«" />
+				<option value="3" show="»ÆÉ«" />
 			</select>
 		</form>
 	</pp>
-	 
-</pps> 
+	<pp>
+		<table key="010302" name="bzd_lwdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+		</form>
+	</pp>
+	<pp>
+		<table key="010303" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010304" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010305" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+
+		</form>
+	</pp> 
+	<pp>
+		<table key="010401" name="Bzd_csdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="pp2" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp3" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp4" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp5" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp6" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" hidden="true" />
+
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«">
+				<option value="1" show="ºìÉ«" />
+				<option value="2" show="³ÈÉ«" />
+				<option value="3" show="»ÆÉ«" />
+			</select>
+		</form>
+	</pp>
+	<pp>
+		<table key="010402" name="bzd_lwdp">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form> 
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+		</form>
+	</pp>
+	<pp>
+		<table key="010403" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010404" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010405" name="bzd_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+
+		</form>
+	</pp> 
+	
+</pps>
