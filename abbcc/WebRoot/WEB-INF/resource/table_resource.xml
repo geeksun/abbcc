@@ -3,7 +3,7 @@
 -->
 <pps>
 	<pp>
-		<table key="010101" name="Bzd_csdp">
+		<table key="010101" name="Bzdsdaf_csdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="pp2" type="java.lang.Integer"
 				not-null="true" />
@@ -30,7 +30,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010102" name="bzd_lwdp">
+		<table key="010102" name="bzdasdf_lwdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -53,7 +53,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010103" name="bzd_sydpe">
+		<table key="010103" name="bzd_asdfsydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -77,32 +77,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010104" name="bzd_sydpe">
-			<id name="cz" type="java.lang.Integer" not-null="true" />
-			<property name="cz" type="java.lang.Integer"
-				not-null="true" />
-			<property name="pp" type="java.lang.Integer"
-				not-null="true" />
-		</table>
-		<form>
-			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
-				not-null="true" />
-			
-			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
-				not-null="true" />
-			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
-				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
-				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
-				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
-				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
-			</select>
-			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
-				not-null="true" /> 
-
-		</form>
-	</pp>
-	<pp>
-		<table key="010105" name="bzd_sydpe">
+		<table key="010104" name="bzd_syasdfdpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -115,6 +90,31 @@
 			
 			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
 				not-null="true" />
+			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
+				<option value="1" show="ÕÕÃ÷Â±ÎÙµÆÅÝ" />
+				<option value="2" show="Ò½ÁÆÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="·´ÉäÂ±ÎÙµÆÅÝ" />
+				<option value="3" show="Æû³µÂ±ÎÙµÆÅÝ" />
+			</select>
+			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
+				not-null="true" /> 
+
+		</form>
+	</pp>
+	<pp>
+		<table key="010105" name="bzdasdfa_sydpe">
+			<id name="cz" type="java.lang.Integer" not-null="true" />
+			<property name="cz" type="java.lang.Integer"
+				not-null="true" />
+			<property name="pp" type="java.lang.Integer"
+				not-null="true" />
+		</table>
+		<form>
+			<input ref-filed="pp2" name="pp2" type="text" show="Æ·ÅÆ"
+				not-null="true" />
+			
+			<input ref-filed="pp3" name="pp3" type="text" show="ÐÍºÅ"
+				not-null="true" />
 			<input ref-filed="pp4" name="pp4" type="text" show="¶î¶¨µçÑ¹"
 				not-null="true" /> 
 			<select ref-filed="pp4" name="pp4" show="µÆ¿ÇÑÕÉ«" hidden="true">
@@ -127,7 +127,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010201" name="Bzd_csdp">
+		<table key="010201" name="Bzdasdf_csdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="pp2" type="java.lang.Integer"
 				not-null="true" />
@@ -154,7 +154,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010202" name="bzd_lwdp">
+		<table key="010202" name="adfsdf">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -177,7 +177,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010203" name="bzd_sydpe">
+		<table key="010203" name="bzd_sasdfydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -201,7 +201,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010204" name="bzd_sydpe">
+		<table key="010204" name="bzsadfd_sydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -226,7 +226,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010205" name="bzd_sydpe">
+		<table key="010205" name="bzdasdf_sydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -251,7 +251,7 @@
 		</form>
 	</pp> 
 	<pp>
-		<table key="010301" name="Bzd_csdp">
+		<table key="010301" name="Bzd_csafasddp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="pp2" type="java.lang.Integer"
 				not-null="true" />
@@ -278,7 +278,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010302" name="bzd_lwdp">
+		<table key="010302" name="bzd_asgaslwdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -301,7 +301,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010303" name="bzd_sydpe">
+		<table key="010303" name="bzasdfad_sydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -325,7 +325,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010304" name="bzd_sydpe">
+		<table key="010304" name="bzd_sfgasdydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -350,7 +350,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010305" name="bzd_sydpe">
+		<table key="010305" name="bzasdfd_sydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -375,7 +375,7 @@
 		</form>
 	</pp> 
 	<pp>
-		<table key="010401" name="Bzd_csdp">
+		<table key="010401" name="Bsadfzd_csdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="pp2" type="java.lang.Integer"
 				not-null="true" />
@@ -402,7 +402,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010402" name="bzd_lwdp">
+		<table key="010402" name="bzd_lsdfwdp">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -425,7 +425,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010403" name="bzd_sydpe">
+		<table key="010403" name="bzd_ssdfydpe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -449,7 +449,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010404" name="bzd_sydpe">
+		<table key="010404" name="bzd_sydpdfe">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
@@ -474,7 +474,7 @@
 		</form>
 	</pp>
 	<pp>
-		<table key="010405" name="bzd_sydpe">
+		<table key="010405" name="bzd_sydpedd">
 			<id name="cz" type="java.lang.Integer" not-null="true" />
 			<property name="cz" type="java.lang.Integer"
 				not-null="true" />
