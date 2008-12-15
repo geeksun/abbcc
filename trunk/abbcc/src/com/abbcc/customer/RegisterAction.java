@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.TimeProcess;
+import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.struts.action.BaseAction;
@@ -41,6 +42,7 @@ public class RegisterAction extends BaseAction {
 			if(registerStatus.equals("fail")){
 				return mapping.getInputForward();
 			}			
+			 //注册用户表和公司表
 			 if(rand.equals(yzm)){
 				DynaActionForm registerForm = (DynaActionForm)form;
 				Hyjbxx hy = new Hyjbxx();
@@ -51,6 +53,11 @@ public class RegisterAction extends BaseAction {
 				hy.setRegistTime(registerTime);
 				hy.setSfyx("0");
 				hy.setMemberType("0");
+				
+				//保存公司信息
+				//Gsjbxx gsjbxx = new Gsjbxx();
+				//BeanUtils.copyProperties(gsjbxx,registerForm);
+				
 				
 				int i = hyjbxxService.save(hy);
 				//System.out.println("registerStatus: "+i);
