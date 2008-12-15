@@ -16,25 +16,44 @@
 		 	  <pp id="010110" name="指示灯泡" type="1"/>  
 		 	  <pp id="010111" name="其它白炽灯" type="1"/> 
 		 </pp>
-		 <pp id="0102" name="白炽灯2" type="1" able="true">
-		 	  <pp id="010201" name="彩色灯泡" type="1"/> 
-		 	  <pp id="010202" name="卤钨灯泡" type="1"/> 
-		 	  <pp id="010203" name="摄影灯泡" type="1"/> 
-		 	  <pp id="010204" name="普通照明白炽灯" type="1"/> 
-		 	  <pp id="010205" name="微型灯泡" type="1"/> 
-		 	  <pp id="010206" name="聚光灯泡" type="1"/> 
-		 	  <pp id="010207" name="水下灯泡" type="1"/>  
-		 	  <pp id="010208" name="无影灯"   type="1"/> 
-		 	  <pp id="010209" name="红外线灯泡" type="1"/>
-		 	  <pp id="010210" name="指示灯泡" type="1"/>  
-		 	  <pp id="010211" name="其它白炽灯" type="1"/> 
+		 <pp id="0102" name="气体放电灯" type="1" able="true">
+		 	  <pp id="010201" name="氙气灯" type="1"/> 
+		 	  <pp id="010202" name="U型荧光灯管" type="1"/> 
+		 	  <pp id="010203" name="冷阴极荧光灯" type="1"/> 
+		 	  <pp id="010204" name="霓虹灯管" type="1"/> 
+		 	  <pp id="010205" name="直型荧光灯管" type="1"/> 
+		 	  <pp id="010206" name="环型荧光灯管" type="1"/> 
+		 	  <pp id="010207" name="汞灯" type="1"/>  
+		 	  <pp id="010208" name="纳灯"   type="1"/> 
+		 	  <pp id="010209" name="金卤灯" type="1"/>
+		 	  <pp id="010210" name="氖灯" type="1"/>  
+		 	  <pp id="010211" name="紫外线灯" type="1"/> 
+		 </pp>	
+		  <pp id="0103" name="冷光源" type="1" able="true">
+		 	  <pp id="010301" name="EL冷光片" type="1"/> 
+		 	  <pp id="010402" name="发光二级管" type="1"/> 
+		 	  <pp id="010503" name="其它冷光源" type="1"/> 
+		 	  <pp id="010604" name="普通照明白炽灯" type="1"/> 
+		 	  <pp id="010705" name="微型灯泡" type="1"/>  
+		 </pp>	
+		  <pp id="0104" name="电光源材料" type="1" able="true">
+		 	  <pp id="010401" name="彩色灯泡" type="1"/> 
+		 	  <pp id="010402" name="卤钨灯泡" type="1"/> 
+		 	  <pp id="010403" name="摄影灯泡" type="1"/> 
+		 	  <pp id="010404" name="普通照明白炽灯" type="1"/> 
+		 	  <pp id="010405" name="微型灯泡" type="1"/>  
+		 </pp>	
+		  <pp id="0105" name="灯具配附件" type="1" able="true">
+		 	  <pp id="010501" name="彩色灯泡" type="1"/> 
+		 	  <pp id="010502" name="卤钨灯泡" type="1"/> 
+		 	  <pp id="010503" name="摄影灯泡" type="1"/>  
 		 </pp>	
 	</pp>
-	<pp id="02" name="照明工业2" type="1"> 
+	<pp id="02" name="电子元器件" type="1"> 
 		 <pp id="0201" name="白炽灯2" type="1"></pp>
 	</pp>
-	<pp id="03" name="照明工业3" type="1"> 
+	<pp id="03" name="包装" type="1"> 
 	</pp>
-	<pp id="04" name="照明工业4" type="1"> 
+	<pp id="04" name="纸业" type="1"> 
 	</pp>
 </pps>
