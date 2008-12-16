@@ -3,9 +3,12 @@ package com.abbcc.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 
 import com.abbcc.dao.GsjbxxDAO;
@@ -14,30 +17,22 @@ import com.abbcc.factory.HibernateUtil;
 import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Gsjbxx;
 
-public class GsjbxxDAOImpl implements GsjbxxDAO {
+public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
+	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
 	private static GsjbxxDAOImpl gsjbxxdaoimpl;
-
 	private static int count = 0;
-
 	private static ResultSet rs = null;
-
 	private static int hid = 0;
-
 	private static int page = 0;
-
 	private static String sql = null;
-
 	private static PreparedStatement pstmt = null;
-
 	private static PubAbbcc pa = null;
-
 	private static Connection conn = null;
-
 	private Session session = null;
 
 	public GsjbxxDAOImpl() {
-		session = HibernateUtil.currentSession();
-		conn = session.connection();
+		//session = HibernateUtil.currentSession();
+		//conn = session.connection();
 		pa = new PubAbbcc();
 	}
 
@@ -48,28 +43,56 @@ public class GsjbxxDAOImpl implements GsjbxxDAO {
 		return gsjbxxdaoimpl;
 	}
 
-	// 插入公司基本信息信息
-	public void insert(Gsjbxx gsjbxx) throws Exception {
-		hid = gsjbxx.getHyjbxxid();
-		page = hid / Globals.COUNT;
-		sql = "INSERT INTO gsjbxx_" + page
+	/* 
+	 *  @see 插入公司基本信息
+	 */
+	public int insert(Gsjbxx gsjbxx) { 
+		log.debug("saving Gsjbxx instance");
+		int flag = 0;
+		//
+		int[] track = pa.updateRecNum("gsjbxx");
+		count = track[0];
+		int maxCount = track[1];		//最大的ID
+		page = count / Globals.COUNT;
+		/*hid = gsjbxx.getHyjbxxid();
+		System.out.println("hyjbxxid:"+hid);
+		page = hid / Globals.COUNT;*/
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Connection	conn = session.connection();
+		
+		sql = "INSERT INTO gsjbxx_" + page 
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, gsjbxx.getHyjbxxid());
-		pstmt.setString(2, gsjbxx.getGslx());
-		pstmt.setString(3, gsjbxx.getGsmc());
-		pstmt.setString(4, gsjbxx.getGsyymc());
-		pstmt.setString(5, gsjbxx.getGj());
-		pstmt.setString(6, gsjbxx.getSf());
-		pstmt.setString(7, gsjbxx.getDjs());
-		pstmt.setString(8, gsjbxx.getXjs());
-		pstmt.setString(9, gsjbxx.getJydz());
-		pstmt.setString(10, gsjbxx.getZyhy());
-		pstmt.setString(11, gsjbxx.getZyfx());
-		pstmt.setString(12, gsjbxx.getXsdcp());
-		pstmt.setString(13, gsjbxx.getCgdcp());
-		pstmt.executeUpdate();
-		pstmt.close();
+		
+		try{
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, maxCount);
+			pstmt.setString(2, gsjbxx.getGslx());
+			pstmt.setString(3, gsjbxx.getGsmc());
+			pstmt.setString(4, gsjbxx.getGsszd());
+			pstmt.setString(5, gsjbxx.getEnCorpName());
+			
+			pstmt.setString(6, gsjbxx.getJydz());
+			pstmt.setString(7, gsjbxx.getZyhy());
+			pstmt.setString(8, gsjbxx.getZyfx());
+			pstmt.setString(9, gsjbxx.getXsdcp());
+			pstmt.setString(10, gsjbxx.getCgdcp());
+			pstmt.executeUpdate();
+			
+			log.debug("save successful");
+			pstmt.close();
+		}catch(Exception e){
+			log.error("save failed", e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return flag;
 	}
 
 	// 修改公司基本信息信息
@@ -83,17 +106,14 @@ public class GsjbxxDAOImpl implements GsjbxxDAO {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, gsjbxx.getGslx());
 		pstmt.setString(2, gsjbxx.getGsmc());
-		pstmt.setString(3, gsjbxx.getGsyymc());
-		pstmt.setString(4, gsjbxx.getGj());
-		pstmt.setString(5, gsjbxx.getSf());
-		pstmt.setString(6, gsjbxx.getDjs());
-		pstmt.setString(7, gsjbxx.getXjs());
-		pstmt.setString(8, gsjbxx.getJydz());
-		pstmt.setString(9, gsjbxx.getZyhy());
-		pstmt.setString(10, gsjbxx.getZyfx());
-		pstmt.setString(11, gsjbxx.getXsdcp());
-		pstmt.setString(12, gsjbxx.getCgdcp());
-		pstmt.setInt(13, gsjbxx.getHyjbxxid());
+		pstmt.setString(3, gsjbxx.getGsszd());
+		pstmt.setString(4, gsjbxx.getEnCorpName());
+		
+		pstmt.setString(5, gsjbxx.getJydz());
+		pstmt.setString(6, gsjbxx.getZyhy());
+		pstmt.setString(7, gsjbxx.getZyfx());
+		pstmt.setString(8, gsjbxx.getXsdcp());
+		pstmt.setString(9, gsjbxx.getCgdcp());
 		pstmt.executeUpdate();
 		pstmt.close();
 	}
@@ -121,16 +141,13 @@ public class GsjbxxDAOImpl implements GsjbxxDAO {
 			g.setHyjbxxid(rs.getInt(1));
 			g.setGslx(rs.getString(2));
 			g.setGsmc(rs.getString(3));
-			g.setGsyymc(rs.getString(4));
-			g.setGj(rs.getString(5));
-			g.setSf(rs.getString(6));
-			g.setDjs(rs.getString(7));
-			g.setXjs(rs.getString(8));
-			g.setJydz(rs.getString(9));
-			g.setZyhy(rs.getString(10));
-			g.setZyfx(rs.getString(11));
-			g.setXsdcp(rs.getString(12));
-			g.setCgdcp(rs.getString(13));
+			g.setGsszd(rs.getString(4));
+			
+			g.setJydz(rs.getString(5));
+			g.setZyhy(rs.getString(6));
+			g.setZyfx(rs.getString(7));
+			g.setXsdcp(rs.getString(8));
+			g.setCgdcp(rs.getString(9));
 		}
 		rs.close();
 		pstmt.close();
@@ -157,16 +174,13 @@ public class GsjbxxDAOImpl implements GsjbxxDAO {
 			g.setHyjbxxid(rs.getInt(1));
 			g.setGslx(rs.getString(2));
 			g.setGsmc(rs.getString(3));
-			g.setGsyymc(rs.getString(4));
-			g.setGj(rs.getString(5));
-			g.setSf(rs.getString(6));
-			g.setDjs(rs.getString(7));
-			g.setXjs(rs.getString(8));
-			g.setJydz(rs.getString(9));
-			g.setZyhy(rs.getString(10));
-			g.setZyfx(rs.getString(11));
-			g.setXsdcp(rs.getString(12));
-			g.setCgdcp(rs.getString(13));
+			g.setGsszd(rs.getString(4));
+			
+			g.setJydz(rs.getString(5));
+			g.setZyhy(rs.getString(6));
+			g.setZyfx(rs.getString(7));
+			g.setXsdcp(rs.getString(8));
+			g.setCgdcp(rs.getString(9));
 			list.add(g);
 		}
 		rs.close();
