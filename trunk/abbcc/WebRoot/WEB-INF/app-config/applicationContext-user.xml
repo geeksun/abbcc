@@ -9,9 +9,17 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
+	<bean id="gsjbxxDao" class="com.abbcc.dao.impl.GsjbxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
 	<bean id="hyjbxxService" class="com.abbcc.service.impl.HyjbxxServiceImpl">
 		<property name="hyjbxxDao">
 			<ref local="hyjbxxDao"/>
+		</property>
+		<property name="gsjbxxDao">
+			<ref local="gsjbxxDao"/>
 		</property>
 	</bean>
 	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
