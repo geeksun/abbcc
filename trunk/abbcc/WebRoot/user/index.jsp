@@ -91,7 +91,7 @@
 					<html:hidden property="status" value="userlogin"/>
 					<td colspan="2" align="center">
 						<input type="button" value="µÇÂ¼" onClick="verify();"/>
-						<input type="button" value="×¢²á" onClick="register();"/>
+						<input type="button" value="×¢²á" onClick="document.location='<%=path%>/user/register.jsp'"/>
 					</td>
 				</tr>
 			</table>
