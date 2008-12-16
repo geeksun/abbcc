@@ -188,6 +188,9 @@
                <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${leaguer.gddh}"" ></td>
                </tr>
     	</table>
+    	<p align=center>
+    	<input type="button" onclick="" value="提交公司基本资料">
+    	</p>
     </form>		
     <script type="text/javascript">
     	//一级菜单
