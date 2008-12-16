@@ -36,17 +36,9 @@
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">产品管理</dt>
-     	<dd>子结点1</dd>
-     	<dd>子结点2</dd>
-     	<dd>子结点3</dd>
-     	<dd>子结点4</dd>
      </dl>
      <dl>
-     	<dt onclick="">留言管理</dt>
-     	<dd>子结点1</dd>
-     	<dd>子结点2</dd>
-     	<dd>子结点3</dd>
-     	<dd>子结点4</dd>
+     	<dt onclick="toggleDl(this)">留言管理</dt>
      </dl>
   </body>
 </html>
