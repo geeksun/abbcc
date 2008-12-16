@@ -25,21 +25,24 @@
      	<dt onclick="toggleDl(this)">基本信息设置</dt>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="right">基本资料管理</a></dd>
      	<dd>后台密码修改</dd>
-     	<dd><a href="index.jsp" target="right" >公司简介</a></dd>
+     	<dd><a href="#" target="right" >公司简介</a></dd>
      	<dd>荣誉证书</dd>
      	<dd>技术实力</dd>
      	<dd>上传公司标志</dd>
-     	<dd>数据导入</dd>
      </dl>
      <dl>
-     	<dt onclick="toggleDl(this)">根结点</dt>
+     	<dt onclick="toggleDl(this)">供求管理</dt>
      	<dd><a href="<%=path%>/user/product/category.jsp" target="right">供求信息</a></dd>
+     </dl>
+     <dl>
+     	<dt onclick="toggleDl(this)">产品管理</dt>
+     	<dd>子结点1</dd>
      	<dd>子结点2</dd>
      	<dd>子结点3</dd>
      	<dd>子结点4</dd>
      </dl>
      <dl>
-     	<dt onclick="toggleDl(this)">根结点</dt>
+     	<dt onclick="">留言管理</dt>
      	<dd>子结点1</dd>
      	<dd>子结点2</dd>
      	<dd>子结点3</dd>
