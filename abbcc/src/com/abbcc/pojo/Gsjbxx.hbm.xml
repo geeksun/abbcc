@@ -16,20 +16,12 @@
          <property name="gsmc" type="java.lang.String">
              <column name="gsmc" length="32" />
          </property>
-         <property name="gsyymc" type="java.lang.String">
-             <column name="gsyymc" length="32" />
+         <!-- 公司所在地 -->
+         <property name="gsszd" type="java.lang.String">
+             <column name="gsszd" length="80" />
          </property>
-         <property name="gj" type="java.lang.String">
-             <column name="gj" length="3" />
-         </property>
-         <property name="sf" type="java.lang.String">
-             <column name="sf" length="3" />
-         </property>
-         <property name="djs" type="java.lang.String">
-             <column name="djs" length="3" />
-         </property>
-         <property name="xjs" type="java.lang.String">
-             <column name="xjs" length="3" />
+         <property name="enCorpName" type="java.lang.String">
+             <column name="en_corp_name" length="81" />
          </property>
          <property name="jydz" type="java.lang.String">
              <column name="jydz" length="64" />

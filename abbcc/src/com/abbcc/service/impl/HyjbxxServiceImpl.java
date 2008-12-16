@@ -2,12 +2,19 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
+import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.dao.HyjbxxDAO;
+import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 
 public class HyjbxxServiceImpl implements HyjbxxService {
 	private HyjbxxDAO hyjbxxDao;
+	private GsjbxxDAO gsjbxxDao;
+
+	public void setGsjbxxDao(GsjbxxDAO gsjbxxDao) {
+		this.gsjbxxDao = gsjbxxDao;
+	}
 
 	public void setHyjbxxDao(HyjbxxDAO hyjbxxDao) {
 		this.hyjbxxDao = hyjbxxDao;
@@ -37,6 +44,11 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	public List getMemberByName(String customer) { 
 		List list = hyjbxxDao.getMemberByName(customer);
 		return  list;
+	}
+
+	public int save(Gsjbxx gsjbxx) {
+		int result = gsjbxxDao.insert(gsjbxx); 
+		return result;
 	}
 
 }

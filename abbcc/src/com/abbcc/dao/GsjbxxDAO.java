@@ -6,7 +6,7 @@ import com.abbcc.pojo.Gsjbxx;
 
 public interface GsjbxxDAO {
 	// 插入公司基本信息信息
-	public void insert(Gsjbxx gsjbxx) throws Exception;
+	public int insert(Gsjbxx gsjbxx) ; 
 
 	// 修改公司基本信息信息
 	public void update(Gsjbxx gsjbxx) throws Exception;
@@ -20,4 +20,5 @@ public interface GsjbxxDAO {
 	// 根据时间排列显示所有未审核的公司基本信息
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws Exception;
+
 }

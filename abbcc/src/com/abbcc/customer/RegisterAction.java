@@ -54,14 +54,15 @@ public class RegisterAction extends BaseAction {
 				hy.setSfyx("0");
 				hy.setMemberType("0");
 				
-				//保存公司信息
-				//Gsjbxx gsjbxx = new Gsjbxx();
-				//BeanUtils.copyProperties(gsjbxx,registerForm);
-				
+				//保存公司基本信息
+				Gsjbxx gsjbxx = new Gsjbxx();
+				BeanUtils.copyProperties(gsjbxx,registerForm);
 				
 				int i = hyjbxxService.save(hy);
+				int k = hyjbxxService.save(gsjbxx);
+				
 				//System.out.println("registerStatus: "+i);
-				if(i>0){
+				if(i>0&&k>0){
 					session = request.getSession(true);
 					session.setAttribute("customer", registerForm.get("hydlm")); 
 					return mapping.findForward("registersuccess");

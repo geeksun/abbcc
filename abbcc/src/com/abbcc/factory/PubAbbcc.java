@@ -57,18 +57,16 @@ public class PubAbbcc {
 			pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				track[0] = rs.getInt(1);
-				track[1] = rs.getInt(2);
+				track[0] = rs.getInt(1);    //总纪录数
+				track[1] = rs.getInt(2);	//最大的ID
 			}
-			++track[0];
-			sql = "UPDATE pz p SET p.recnum=" + track[0] + ",p.max_count=p.max_count+1 WHERE p.tablename='"
-					+ tablename + "'";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.executeUpdate();
+			
 			rs.close();
-			DataBase.closeCon(conn);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			DataBase.closeCon(conn);
 		}
 		return track;
 	}
@@ -138,5 +136,24 @@ public class PubAbbcc {
 			recnum = rs.getInt(1);
 		}
 		return recnum;
+	}
+
+	public void updateNum(String string) {
+		PreparedStatement pstmt = null;
+		conn = DataBase.getConnection();
+		String sql = "UPDATE pz p SET p.recnum=p.recnum+1,p.max_count=p.max_count+1 WHERE p.tablename='"
+				+ string + "'";
+		//sql = "UPDATE pz p SET p.recnum=" + track[0] + ",p.max_count=" + track[1] + " WHERE p.tablename='"
+		//		+ tablename + "'";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//pstmt.close();
+			DataBase.closeCon(conn);
+		}
+		
 	}
 }

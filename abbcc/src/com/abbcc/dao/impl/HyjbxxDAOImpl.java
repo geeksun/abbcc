@@ -20,7 +20,6 @@ import com.abbcc.pojo.Hyjbxx;
 public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
 	public static final String HYDLM = "hydlm";
-	
 	private static HyjbxxDAOImpl hyjbxxdaoimpl = null;
 	private static int count = 0;
 	private static ResultSet rs = null;
@@ -44,12 +43,13 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	 *  插入会员资料 
 	 *  count 表的总记录
 	 *  page  判断应该第几个表  
+	 *  先更新 hyjbxx 再更新 pz 表
 	 */
 	public int insert(Hyjbxx hyjbxx) { 
 		log.debug("saving Hyjbxx instance");
 		int[] track = pa.updateRecNum("hyjbxx");
 		count = track[0];
-		int maxCount = track[1];
+		int maxCount = track[1];		//最大的ID
 		
 		page = count / Globals.COUNT;
 		int init = 0;					//  判断 sql 是否执行
@@ -84,8 +84,9 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(20, hyjbxx.getRegistTime());		//   注册时间 -> 20
 		
 		init = pstmt.executeUpdate();
+		pa.updateNum("hyjbxx");
 		log.debug("save successful");
-		System.out.println("sql:"+sql);
+		//System.out.println("sql:"+sql);
 		pstmt.close();
 		}catch(Exception e){
 			log.error("save failed", e);
@@ -93,11 +94,11 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		}finally{
 			try {
 				conn.close();
+				session.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		session.close();
 		return init;
 	}
 
