@@ -20,6 +20,7 @@ import com.abbcc.pojo.Hyjbxx;
 public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
 	public static final String HYDLM = "hydlm";
+	public static final String HYJBXXID = "hyjbxxid";
 	private static HyjbxxDAOImpl hyjbxxdaoimpl = null;
 	private static int count = 0;
 	private static ResultSet rs = null;
@@ -84,6 +85,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(20, hyjbxx.getRegistTime());		//   ×¢²áÊ±¼ä -> 20
 		
 		init = pstmt.executeUpdate();
+		//pa.updateNum(track[0],track[1],"hyjbxx");
 		pa.updateNum("hyjbxx");
 		log.debug("save successful");
 		//System.out.println("sql:"+sql);
@@ -252,10 +254,26 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		}catch(RuntimeException re){
 			log.error("find by property name failed", re);
 			throw re;
+		} 
+	}
+
+	public int getIdByName(String hydlm) {
+		log.debug("find " + HYJBXXID + " by member attribute hydlm:" + hydlm);
+		try{
+			String queryString = "select h.hyjbxxid from Hyjbxx where h."+ HYDLM + "=?";
+			List list = getHibernateTemplate().find(queryString,hydlm);
+			if(list.size()==1){
+				int hyjbxxid = Integer.parseInt((String) list.get(0));
+				return hyjbxxid;
+			}
+			return AppConstants.invalidate;
+		}catch(RuntimeException re){
+			log.error("find by property hydlm failed", re);
+			throw re;
 		}
 	}
 
-	public List getMemberByName(String customer) {
+	/*public List getMemberByName(String customer) {
 		log.debug("finding Hyjbxx instance with property: " + HYDLM + ", value: " + customer);
 		try{
 			String queryString = "from Hyjbxx as model where model." + HYDLM + "= ?";
@@ -264,5 +282,5 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 			log.error("find by property name failed", re);
 			throw re;
 		}
-	}
+	}*/
 }

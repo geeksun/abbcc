@@ -12,7 +12,9 @@ public interface HyjbxxService {
 
 	public boolean checkName(String hydlm);
 
-	public List getMemberByName(String customer);
+	public List getMemberByName(String hyjbxxid);
 
-	public int save(Gsjbxx gsjbxx);          
+	public int save(Gsjbxx gsjbxx);
+
+	public int getIdByName(String  hydlm);           
 }

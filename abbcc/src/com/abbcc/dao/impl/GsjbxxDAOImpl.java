@@ -13,12 +13,12 @@ import org.hibernate.Session;
 
 import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.factory.Globals;
-import com.abbcc.factory.HibernateUtil;
 import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Gsjbxx;
 
 public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
+	public static final String HYJBXXID = "hyjbxxid";
 	private static GsjbxxDAOImpl gsjbxxdaoimpl;
 	private static int count = 0;
 	private static ResultSet rs = null;
@@ -28,7 +28,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	private static PreparedStatement pstmt = null;
 	private static PubAbbcc pa = null;
 	private static Connection conn = null;
-	private Session session = null;
+	//private Session session = null;
 
 	public GsjbxxDAOImpl() {
 		//session = HibernateUtil.currentSession();
@@ -61,7 +61,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		Connection	conn = session.connection();
 		
 		sql = "INSERT INTO gsjbxx_" + page 
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 			pstmt = conn.prepareStatement(sql);
@@ -77,7 +77,9 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 			pstmt.setString(8, gsjbxx.getZyfx());
 			pstmt.setString(9, gsjbxx.getXsdcp());
 			pstmt.setString(10, gsjbxx.getCgdcp());
-			pstmt.executeUpdate();
+			flag = pstmt.executeUpdate();
+			//pa.updateNum(track[0],track[1],"gsjbxx");
+			pa.updateNum("gsjbxx");
 			
 			log.debug("save successful");
 			pstmt.close();
@@ -186,5 +188,16 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		rs.close();
 		pstmt.close();
 		return list;
+	}
+
+	public List getMemberByName(String hyjbxxid) {
+		log.debug("finding Hyjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
+		try{
+			String queryString = "from Gsjbxx as model where model." + HYJBXXID + "= ?";
+			return getHibernateTemplate().find(queryString, hyjbxxid);
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
 	}
 }

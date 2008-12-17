@@ -13,7 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
-import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.service.TradeInfoService;
 import com.abbcc.struts.action.BaseAction;
@@ -35,15 +35,19 @@ public class TraceInfoAction extends BaseAction {
 	}
 
 	/* 
-	 * @resolve 基本资料管理
+	 * @resolve 公司基本资料管理
 	 */
 	public ActionForward displayBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession(true);
 			String customer = (String) session.getAttribute("customer");
-			List list = hyjbxxService.getMemberByName(customer);
-			Hyjbxx leaguer = (Hyjbxx) list.get(0); 
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			
+			List list = hyjbxxService.getMemberByName(hyjbxxid);
+			//Hyjbxx leaguer = (Hyjbxx) list.get(0); 
+			Gsjbxx leaguer = (Gsjbxx) list.get(0);
 			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
+			
 			// Mlist: 会员的全部属性
 			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
 			System.out.println(tradeList.size());
