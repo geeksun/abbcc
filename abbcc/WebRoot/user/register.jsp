@@ -382,6 +382,20 @@
 				</td>
 			</tr>
 			<tr>
+			<td align="right" valign="top">
+				主营方向<font color=red>*</font>
+			</td>
+			<td>
+				<INPUT  type=radio value=1 name=zyfx>销售 				
+				<INPUT 	type=radio value=2 name=zyfx>采购 
+				<INPUT 	type=radio value=3 name=zyfx  CHECKED>两者都有<BR>
+				<font color=red>销售</font>的产品（提供的服务）：<BR>
+				<INPUT maxLength=40 size=32 name=xsdcp><BR>				
+				<font color=red>采购</font>的产品（需要的服务）：<BR>
+				<INPUT maxLength=40 size=32 name=cgdcp>
+			</td>
+			</tr>
+			<tr>
 				<td align=right>验证码<font color=red>*</font></td>
 				<td valign="middle">
 				<input type=text id="yzm" name="yzm" onBlur="checkCode(this,'code_condition')" 
