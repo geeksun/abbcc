@@ -63,7 +63,9 @@ public class RegisterAction extends BaseAction {
 				
 				//System.out.println("registerStatus: "+i);
 				if(i>0&&k>0){
+					int hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm")); 
 					session = request.getSession(true);
+					session.setAttribute("hyjbxxid", hyjbxxid);
 					session.setAttribute("customer", registerForm.get("hydlm")); 
 					return mapping.findForward("registersuccess");
 				}else{
@@ -74,4 +76,5 @@ public class RegisterAction extends BaseAction {
 			}
 			
 	}
+	
 }

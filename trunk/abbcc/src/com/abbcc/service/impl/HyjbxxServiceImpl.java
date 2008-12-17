@@ -41,13 +41,19 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		}
 	}
 
-	public List getMemberByName(String customer) { 
-		List list = hyjbxxDao.getMemberByName(customer);
+	public List getMemberByName(String hyjbxxid) { 
+		//List list = hyjbxxDao.getMemberByName(customer);
+		List list = gsjbxxDao.getMemberByName(hyjbxxid);
 		return  list;
 	}
 
 	public int save(Gsjbxx gsjbxx) {
 		int result = gsjbxxDao.insert(gsjbxx); 
+		return result;
+	}
+	
+	public int getIdByName(String hydlm) {
+		int result = hyjbxxDao.getIdByName(hydlm);
 		return result;
 	}
 

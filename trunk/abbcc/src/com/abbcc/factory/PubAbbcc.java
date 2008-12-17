@@ -23,6 +23,10 @@ public class PubAbbcc {
 		//count = 0;
 	}
 
+	/**
+	 * @param tablename
+	 * @return  总数
+	 */
 	public int getRecNum(String tablename) {
 		int count = 0;
 		String sql = "SELECT a.recnum FROM pz a WHERE a.tablename='" + tablename + "'";
@@ -45,7 +49,7 @@ public class PubAbbcc {
 
 	/**
 	 * @param tablename
-	 * @return  更新记录的总数,返回记录属性的数组
+	 * @return  返回最大ID和总数的数组
 	 */
 	public int[] updateRecNum(String tablename) {
 		int[] track = new int[2];
@@ -138,13 +142,23 @@ public class PubAbbcc {
 		return recnum;
 	}
 
-	public void updateNum(String string) {
+	
+	/**
+	 * @param table
+	 *  更新表中的最大ID数和总数
+	 */
+	//public void updateNum(int recnum, int maxCount, String table) {
+	public void updateNum(String table) {
 		PreparedStatement pstmt = null;
 		conn = DataBase.getConnection();
-		String sql = "UPDATE pz p SET p.recnum=p.recnum+1,p.max_count=p.max_count+1 WHERE p.tablename='"
-				+ string + "'";
+		/*++recnum;
+		++maxCount;
+		String sql = "UPDATE pz p SET p.recnum="+recnum+",p.max_count="+maxCount+" WHERE p.tablename='"
+				+ table + "'";*/
 		//sql = "UPDATE pz p SET p.recnum=" + track[0] + ",p.max_count=" + track[1] + " WHERE p.tablename='"
 		//		+ tablename + "'";
+		String sql = "UPDATE pz p SET p.recnum=p.recnum+1,p.max_count=p.max_count+1 WHERE p.tablename='"
+		 		+ table + "'";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate();

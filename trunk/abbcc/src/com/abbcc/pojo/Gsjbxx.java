@@ -7,16 +7,16 @@ package com.abbcc.pojo;
 public class Gsjbxx implements java.io.Serializable {
 	// Fields
 	private static final long serialVersionUID = -8545252426423419636L;
-	private Integer hyjbxxid;
-	private String gslx;
-	private String gsmc;
+	private Integer hyjbxxid;		//会员基本信息ID
+	private String gslx;			//公司类型
+	private String gsmc;			//公司名称
 	private String gsszd;			//公司所在地
 	private String enCorpName;		//公司英文名称
 	private String jydz;			//经营地址
-	private String zyhy;
-	private String zyfx;
-	private String xsdcp;
-	private String cgdcp;
+	private String zyhy;			//主营行业
+	private String zyfx;			//主营方向
+	private String xsdcp;			//销售的产品
+	private String cgdcp;			//采购的产品
 	public Gsjbxx() {
 	}
 	/** full constructor */

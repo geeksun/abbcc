@@ -21,4 +21,6 @@ public interface GsjbxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws Exception;
 
+	public List getMemberByName(String customer); 
+
 }

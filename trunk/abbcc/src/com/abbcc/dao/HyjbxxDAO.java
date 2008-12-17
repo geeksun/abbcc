@@ -30,6 +30,8 @@ public interface HyjbxxDAO {
 
 	public void save(Hyjbxx hy);
 
-	public List getMemberByName(String customer);   
+	public int getIdByName(String hydlm); 
 
+	//public List getMemberByName(String customer);   
+	
 }

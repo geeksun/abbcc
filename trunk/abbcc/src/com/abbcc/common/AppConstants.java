@@ -10,11 +10,10 @@ public class AppConstants {
 	public static final String PASSWORD = "mm";
 	public static final String RepeatLogin = "repeatLogin";
 	public static final int validate = 1;
-	public static final int invalidate = 0;
+	public static final int invalidate = -1;
 	//∂•º∂÷÷¿‡ID
 	public static final String TOPCATEGORYID = "0";
-	
-	
+
 	
 	public static final int PRODUCT_SALE=1;
 	public static final int PRODUCT_BUY=2;

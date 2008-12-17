@@ -49,7 +49,10 @@ public class CustomerLoginAction extends BaseAction {
 		//System.out.println("validate: "+validate);
 		if(validate>0){
 			HttpSession session = request.getSession(true);
+			int hyjbxxid = hyjbxxService.getIdByName(name);
+			
 			session.setAttribute("customer", name);
+			session.setAttribute("hyjbxxid", hyjbxxid);
 			return actionMapping.findForward("loginsuccess");
 		}else{
 			ActionMessages am = new ActionMessages();
