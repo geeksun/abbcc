@@ -25,6 +25,10 @@
 			<form-property name="gsszd" type="java.lang.String"></form-property>
 			<form-property name="jydz" type="java.lang.String"></form-property>
 			<form-property name="zyhy" type="java.lang.String"></form-property>
+			<!-- 主营方向 -->
+			<form-property name="zyfx" type="java.lang.String"></form-property>
+			<form-property name="xsdcp" type="java.lang.String"></form-property>
+			<form-property name="cgdcp" type="java.lang.String"></form-property>
 			
 		</form-bean>
 	</form-beans>
