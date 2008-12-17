@@ -107,8 +107,8 @@
     			<table>
     				<tr>
     					<td>
-    					<INPUT id=productionService_0 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
+    					<INPUT id=productionService_0 maxLength=20 size=10 name=zycp value="${leaguer.xsdcp}">
+    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp value="${leaguer.cgdcp}">
     					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
     					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
     					</td>
@@ -155,7 +155,9 @@
     			
     			<select id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
     			</select>
+    			
     			<select id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeleafCategory() size=8 name=leafCatFormKey>
+    				<option ></option>
     			</select> 
     			</span>
     			
