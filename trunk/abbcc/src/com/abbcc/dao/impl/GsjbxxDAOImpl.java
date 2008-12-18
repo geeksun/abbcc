@@ -46,7 +46,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	/* 
 	 *  @see 插入公司基本信息
 	 */
-	public int insert(Gsjbxx gsjbxx) { 
+	public int add(Gsjbxx gsjbxx) { 
 		log.debug("saving Gsjbxx instance");
 		int flag = 0;
 		//
@@ -191,6 +191,20 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	}
 
 	public List getMemberByName(String hyjbxxid) {
+		log.debug("finding Hyjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
+		try{
+			String queryString = "from Gsjbxx as model where model." + HYJBXXID + "= ?";
+			return getHibernateTemplate().find(queryString, hyjbxxid);
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+
+	/* 
+	 * @see com.abbcc.dao.GsjbxxDAO#getMemberById(int)
+	 */
+	public List getMemberById(int hyjbxxid) {
 		log.debug("finding Hyjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
 		try{
 			String queryString = "from Gsjbxx as model where model." + HYJBXXID + "= ?";

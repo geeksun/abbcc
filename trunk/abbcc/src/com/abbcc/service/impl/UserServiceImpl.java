@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
 		int validate = hyd.findByProperty(name,pass);
 		return validate;
 	}
-	public int save(Hyjbxx hy) {   
+	public int add(Hyjbxx hy) {   
 		int i = 0;
 		try {
-			i = hyd.insert(hy);
+			i = hyd.add(hy);
 			return i;
 			//hyd.save(hy);
 		} catch (Exception e) {

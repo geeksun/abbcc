@@ -6,7 +6,7 @@ import com.abbcc.pojo.Gsjbxx;
 
 public interface GsjbxxDAO {
 	// 插入公司基本信息信息
-	public int insert(Gsjbxx gsjbxx) ; 
+	public int add(Gsjbxx gsjbxx) ; 
 
 	// 修改公司基本信息信息
 	public void update(Gsjbxx gsjbxx) throws Exception;
@@ -21,6 +21,7 @@ public interface GsjbxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws Exception;
 
-	public List getMemberByName(String customer); 
+	public List getMemberByName(String customer);
 
+	public List getMemberById(int hyjbxxid); 
 }

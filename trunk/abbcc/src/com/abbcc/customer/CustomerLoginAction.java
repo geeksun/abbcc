@@ -48,12 +48,21 @@ public class CustomerLoginAction extends BaseAction {
 		int validate = hyjbxxService.login(name,pass);
 		//System.out.println("validate: "+validate);
 		if(validate>0){
+			//request.getSession(true)==request.getSession()
 			HttpSession session = request.getSession(true);
-			int hyjbxxid = hyjbxxService.getIdByName(name);
-			
+			//int hyjbxxid = hyjbxxService.getIdByName(name);
+			String hyjbxxid = hyjbxxService.getIdByName(name);
 			session.setAttribute("customer", name);
 			session.setAttribute("hyjbxxid", hyjbxxid);
 			return actionMapping.findForward("loginsuccess");
+			
+			//if(!hyjbxxid.equals("")){
+			/*}else{
+				System.out.println("account login " + name+ ":hyjbxxid is empty!");
+				ActionMessages am = new ActionMessages();
+				am.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("hyjbxxidEmpty"));
+				return actionMapping.getInputForward();
+			}*/
 		}else{
 			ActionMessages am = new ActionMessages();
 			//System.out.println("error ");

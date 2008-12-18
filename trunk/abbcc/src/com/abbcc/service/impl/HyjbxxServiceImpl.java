@@ -2,13 +2,14 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 
-public class HyjbxxServiceImpl implements HyjbxxService {
+public class HyjbxxServiceImpl implements HyjbxxService { 
 	private HyjbxxDAO hyjbxxDao;
 	private GsjbxxDAO gsjbxxDao;
 
@@ -23,11 +24,6 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	public int login(String name, String pass) {
 		int validate = hyjbxxDao.findByProperty(name,pass);
 		return validate;
-	}
-
-	public int save(Hyjbxx hy) { 
-		int result = hyjbxxDao.insert(hy);
-		return result;
 	}
 
 	public boolean checkName(String hydlm) {
@@ -46,15 +42,60 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		List list = gsjbxxDao.getMemberByName(hyjbxxid);
 		return  list;
 	}
+	
+	public int add(Hyjbxx hyjbxx) { 
+		int result = hyjbxxDao.add(hyjbxx);  
+		return result;
+	}
 
-	public int save(Gsjbxx gsjbxx) {
-		int result = gsjbxxDao.insert(gsjbxx); 
+	public int add(Gsjbxx gsjbxx) {
+		int result = gsjbxxDao.add(gsjbxx);  
 		return result;
 	}
 	
-	public int getIdByName(String hydlm) {
+	/*public int getIdByName(String hydlm) {
 		int result = hyjbxxDao.getIdByName(hydlm);
 		return result;
+	}*/
+
+	public String getIdByName(String hydlm) {
+		String result = hyjbxxDao.getIdByName(hydlm);
+		return result;
+	}
+	
+	public int add(Hyjbxx hyjbxx, Gsjbxx gsjbxx) {
+		int flag1 = hyjbxxDao.add(hyjbxx);
+		int flag2 = gsjbxxDao.add(gsjbxx);
+		if(flag1>0&&flag2>0){
+			return AppConstants.validate;
+		}
+		return AppConstants.invalidate;
+	}
+
+	public List getMemberById(int hyjbxxid) {
+		
+		return null;
+	}
+
+	public List getMemberByName(int hyjbxxid) {
+		List list = gsjbxxDao.getMemberById(hyjbxxid);
+		return  list;
+	}
+
+	public List getMemberById(String hyjbxxid) {
+		List list = gsjbxxDao.getMemberByName(hyjbxxid);
+		return  list;
+	}
+
+	public Hyjbxx getCustomerByName(String hydlm) {
+		List list = hyjbxxDao.findByName(hydlm);
+		Hyjbxx hyj = (Hyjbxx)list.get(0);
+		return hyj;
+	}
+
+	public Hyjbxx getCustomerById(String hyjbxxid) {
+		Hyjbxx hyjbxx = hyjbxxDao.findById(hyjbxxid);
+		return hyjbxx;
 	}
 
 }
