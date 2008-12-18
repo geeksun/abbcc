@@ -57,6 +57,7 @@
   	公司基本资料
   </p>
   	<c:set var="leaguer" value="${leaguer}" scope="page" ></c:set>
+  	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
   	<form action="" name="basicInfoForm">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr>
@@ -183,11 +184,11 @@
     	</p>
     	<table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C">
                <tr>
-               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="true_name" value="${leaguer.zsxm}"" ><SPAN class=note> 
+               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="true_name" value="${hyjbxx.zsxm}"" ><SPAN class=note> 
                   请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
                </tr>
                <tr>
-               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${leaguer.gddh}"" ></td>
+               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${hyjbxx.gddh}"" ></td>
                </tr>
     	</table>
     	<p align=center>
