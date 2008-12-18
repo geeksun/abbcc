@@ -7,6 +7,6 @@ public interface UserService {
 
 	public int login(String name, String pass);
 
-	public int save(Hyjbxx hy) ;      
+	public int add(Hyjbxx hy) ;      
 	
 }

@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 	public int save(Hyjbxx hy) {   
 		int i = 0;
 		try {
-			i = hyd.insert(hy);
+			i = hyd.add(hy);
 			return i;
 			//hyd.save(hy);
 		} catch (Exception e) {

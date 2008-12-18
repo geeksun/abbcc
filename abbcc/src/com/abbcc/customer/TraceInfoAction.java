@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
 import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.service.TradeInfoService;
 import com.abbcc.struts.action.BaseAction;
@@ -39,19 +40,25 @@ public class TraceInfoAction extends BaseAction {
 	 */
 	public ActionForward displayBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession(false);
+			
 			String customer = (String) session.getAttribute("customer");
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			//int hyjbxxid = Integer.parseInt(tempId);  
 			
-			List list = hyjbxxService.getMemberByName(hyjbxxid);
-			//Hyjbxx leaguer = (Hyjbxx) list.get(0); 
+			//Hyjbxx hyjbxx = hyjbxxService.getCustomerByName(hyjbxxid);
+			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
+			//List list = hyjbxxService.getMemberById(hyjbxxid);
+			List list = hyjbxxService.getMemberById(hyjbxxid);
+			
+			//Hyjbxx hyjbxx = (Hyjbxx) list.get(0);  
 			Gsjbxx leaguer = (Gsjbxx) list.get(0);
 			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
 			
 			// Mlist: 会员的全部属性
 			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
-			System.out.println(tradeList.size());
 			
+			request.setAttribute("hyjbxx", hyjbxx);
 			request.setAttribute("leaguer", leaguer);
 			request.setAttribute("traList", tradeList);
 			 

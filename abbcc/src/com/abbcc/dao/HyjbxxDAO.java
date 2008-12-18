@@ -1,14 +1,12 @@
 package com.abbcc.dao;
 
 import java.util.List;
-
 import com.abbcc.pojo.Hyjbxx;
-import com.abbcc.vo.HyjbxxBean;
 
 public interface HyjbxxDAO {
 	
 	// 插入会员个人资料
-	public int insert(Hyjbxx hyjbxx); 
+	public int add(Hyjbxx hyjbxx);  
 
 	// 修改会员个人资料
 	public void update(Hyjbxx hyjbxx) throws Exception;
@@ -28,10 +26,11 @@ public interface HyjbxxDAO {
 
 	public int findByProperty(String name, String pass);
 
-	public void save(Hyjbxx hy);
+	//public int getIdByName(String hydlm);
 
-	public int getIdByName(String hydlm); 
-
+	public String getIdByName(String hydlm);
 	//public List getMemberByName(String customer);   
+
+	public Hyjbxx findById(String hyjbxxid);  
 	
 }

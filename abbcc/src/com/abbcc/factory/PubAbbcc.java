@@ -25,7 +25,7 @@ public class PubAbbcc {
 
 	/**
 	 * @param tablename
-	 * @return  总数
+	 * @return  表的总纪录
 	 */
 	public int getRecNum(String tablename) {
 		int count = 0;

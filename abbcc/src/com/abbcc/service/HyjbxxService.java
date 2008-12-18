@@ -8,13 +8,24 @@ import com.abbcc.pojo.Hyjbxx;
 public interface HyjbxxService {
 	public int login(String name, String pass);
 
-	public int save(Hyjbxx hy) ;
+	public int add(Hyjbxx hy) ;
 
 	public boolean checkName(String hydlm);
 
+	public List getMemberByName(int hyjbxxid);
+
+	public int add(Gsjbxx gsjbxx); 
+
+	//public int getIdByName(String  hydlm);
+	public String getIdByName(String  hydlm);
+
+	public int add(Hyjbxx hyjbxx, Gsjbxx gsjbxx);
+
+	public List getMemberById(String hyjbxxid); 
+
 	public List getMemberByName(String hyjbxxid);
 
-	public int save(Gsjbxx gsjbxx);
+	public Hyjbxx getCustomerByName(String hydlm); 
 
-	public int getIdByName(String  hydlm);           
+	public Hyjbxx getCustomerById(String hyjbxxid);                 
 }

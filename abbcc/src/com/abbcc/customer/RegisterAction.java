@@ -29,7 +29,7 @@ public class RegisterAction extends BaseAction {
 	}
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			String rand = (String) session.getAttribute("rand");
 			String registerStatus = (String) session.getAttribute("registerStatus");
 			String yzm = request.getParameter("yzm");
@@ -45,29 +45,36 @@ public class RegisterAction extends BaseAction {
 			 //注册用户表和公司表
 			 if(rand.equals(yzm)){
 				DynaActionForm registerForm = (DynaActionForm)form;
-				Hyjbxx hy = new Hyjbxx();
-				BeanUtils.copyProperties(hy,registerForm);
+				Hyjbxx hyjbxx = new Hyjbxx();
+				BeanUtils.copyProperties(hyjbxx,registerForm);
 				Date date = new Date();
 				String registerTime = TimeProcess.timeFormat(date);
 				
-				hy.setRegistTime(registerTime);
-				hy.setSfyx("0");
-				hy.setMemberType("0");
+				hyjbxx.setRegistTime(registerTime);
+				hyjbxx.setSfyx("0");
+				hyjbxx.setMemberType("0");
 				
 				//保存公司基本信息
 				Gsjbxx gsjbxx = new Gsjbxx();
 				BeanUtils.copyProperties(gsjbxx,registerForm);
 				
-				int i = hyjbxxService.save(hy);
-				int k = hyjbxxService.save(gsjbxx);
+				/*int i = hyjbxxService.add(hyjbxx);
+				int k = hyjbxxService.add(gsjbxx);*/ 
+				int flag = hyjbxxService.add(hyjbxx, gsjbxx);
 				
 				//System.out.println("registerStatus: "+i);
-				if(i>0&&k>0){
-					int hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm")); 
-					session = request.getSession(true);
-					session.setAttribute("hyjbxxid", hyjbxxid);
-					session.setAttribute("customer", registerForm.get("hydlm")); 
-					return mapping.findForward("registersuccess");
+				if(flag>0){
+					//int hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm")); 
+					String hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm"));
+					if(!hyjbxxid.equals("")){
+						session = request.getSession();
+						session.setAttribute("hyjbxxid", hyjbxxid);
+						session.setAttribute("customer", registerForm.get("hydlm")); 
+						return mapping.findForward("registersuccess");
+					}else{
+						System.out.println("register account "+registerForm.get("hydlm")+ ":hyjbxxid is empty!");
+						return mapping.getInputForward();
+					}
 				}else{
 					return mapping.findForward("fail");
 				}
