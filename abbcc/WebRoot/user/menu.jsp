@@ -37,6 +37,20 @@
      <dl>
      	<dt onclick="toggleDl(this)">产品管理</dt>
      </dl>
+      <dl>
+     	<dt onclick="toggleDl(this)">我的意见</dt>
+     	<dd><a href="<%=path%>/user/comment/comment.jsp" target="right">评价东方五金</a></dd>
+     	<dd>疑问或难题 </dd>
+     	<dd>意见管理</dd>
+     	<dd>子结点4</dd>
+     </dl>
+     <dl>
+     	<dt onclick="toggleDl(this)">系统后台产品</dt>
+     	<dd><a href="<%=path%>/product.do?method=showProduct" target="right">添加产品</a></dd>
+     	<dd>子结点2</dd>
+     	<dd>子结点3</dd>
+     	<dd>子结点4</dd>
+     </dl>
      <dl>
      	<dt onclick="toggleDl(this)">留言管理</dt>
      </dl>
