@@ -50,6 +50,10 @@
 
 										document.getElementsByName("mainProduct2")[2].checked = true;
 											});
+		function updateBasicInfo(){
+			document.basicInfoForm.action = "updateBasicInfo";
+			document.basicInfoForm.submit();
+		}
 	</script>
   </head>
   <body>
@@ -58,7 +62,8 @@
   </p>
   	<c:set var="leaguer" value="${leaguer}" scope="page" ></c:set>
   	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
-  	<form action="" name="basicInfoForm">
+  	<form action="traceInfo.do" name="basicInfoForm">
+  	<input type="hidden" name="action">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr>
     		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${leaguer.gsmc}"  size="40"></td>
@@ -190,9 +195,15 @@
                <tr>
                <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${hyjbxx.gddh}"" ></td>
                </tr>
+               <tr>
+               <td align=right>公司所在地：<font color=red>*</font></td><td><input type=text name="gsszd" value="${hyjbxx.gsszd }" size=54></td>
+               </tr>
+               <tr>
+               <td align=right>Email:<font color=red>*</font></td><td><input type=text name="dzyx" value="${hyjbxx.dzyx }" ></td>
+               </tr>
     	</table>
     	<p align=center>
-    	<input type="button" onclick="" value="提交公司基本资料">
+    	<input type="button" onclick="updateBasicInfo();" value="提交公司基本资料">
     	</p>
     </form>		
     <script type="text/javascript">
