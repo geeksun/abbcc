@@ -28,8 +28,8 @@ public class InitResource {
 		ResourceUtil resource = new ResourceUtil();
 		
 		productType = resource.getProductMapByPath(serverPath+folder+productTypeResource);
-		tableMap = resource.getTableMapByPath(serverPath+folder+productTableResource);
-		formMap = resource.getFormMapByPath(serverPath+folder+productTableResource);
+		//tableMap = resource.getTableMapByPath(serverPath+folder+productTableResource);
+		//formMap = resource.getFormMapByPath(serverPath+folder+productTableResource);
 
 	}
 

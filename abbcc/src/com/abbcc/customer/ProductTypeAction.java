@@ -1,4 +1,4 @@
-package com.abbcc.struts.action;
+package com.abbcc.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.abbcc.struts.action.BaseAction;
 import com.abbcc.util.RequestUtils;
 import com.abbcc.util.product.ProductType;
 import com.abbcc.util.resource.InitResource;
@@ -20,43 +21,8 @@ import com.abbcc.util.resource.ProductTemplate;
 import com.abbcc.util.resource.ResourceUtil;
 import com.abbcc.util.resource.property.Form;
 
-public class ProductAction extends BaseAction {
-	public ActionForward addProduct(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		try {
-			String sql = ProductTemplate.getInstance()
-					.getProductInsertValueSql(request,
-							ProductTemplate.PRODUCT_KEY);
-
-			productService.addProduct(null, null, sql);
-
-		} catch (Exception e) {
-			log.error(e);
-			e.printStackTrace();
-		}
-		return mapping.findForward("");
-	}
-
-	public ActionForward productList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-
-		return mapping.findForward("");
-	}
-
-	public ActionForward deleteProduct(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-
-		return mapping.findForward("");
-	}
-
-	public ActionForward updateProduct(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-
-		return mapping.findForward("");
-	}
-
+public class ProductTypeAction extends BaseAction {
 	  
-	
 	public ActionForward productSecondCategory(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {

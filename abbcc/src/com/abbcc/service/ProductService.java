@@ -2,25 +2,17 @@ package com.abbcc.service;
 
 import java.util.List;
 
-import com.abbcc.pojo.Cpgqxx;
-import com.abbcc.pojo.Jytj;
-import com.abbcc.vo.product.bzd.Bzd_csdp;
+import com.abbcc.util.pagination.Pagination;
+import com.abbcc.util.product.Product;
 
 public interface ProductService {
  
-	void deleteProduct(int cpgqxxId, int userId);
+	void createProduct(Product product);
 
-	void updateProduct(int userId, Cpgqxx cpgqxx, Jytj jyty, String type);
+	void updateProduct(Product product);
 
-	List<Cpgqxx> productList(int userId);
-
-	Cpgqxx getCpgqxx(  int cpgqxxId);
-
-	Jytj getJytj( int jytjId);
+	List<Product> productList(Pagination pagination);
 	
-	Bzd_csdp getBzd_csdp(int bzd_csdpId); 
-	
-	
-	void addProduct(Cpgqxx cpgqxx, Jytj jyty,String productInsertSql);
-	
+	Product getProduct(long id);
+	 
 }

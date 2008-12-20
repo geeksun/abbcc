@@ -117,6 +117,7 @@ public class ResourceUtil {
 	public Map<String, Table> loadTableByInput(InputStream input)
 			throws XmlException {
 		SAXReader reader = new SAXReader();
+	 
 		Map<String, Table> resources = new HashMap<String, Table>();
 		try {
 			Document doc = reader.read(input);
