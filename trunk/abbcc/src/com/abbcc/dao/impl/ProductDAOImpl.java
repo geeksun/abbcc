@@ -6,7 +6,7 @@ import com.abbcc.dao.ProductDAO;
 import com.abbcc.servlet.StartServlet;
 import com.abbcc.util.product.Product;
 
-public class ProductDAOImpl implements ProductDAO  {
+public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 
 	public void add(Product product) { 
 		JdbcTemplate jdbc=(JdbcTemplate)StartServlet.getBean("jdbcTemplate");

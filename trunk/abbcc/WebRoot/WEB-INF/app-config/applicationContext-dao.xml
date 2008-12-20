@@ -4,21 +4,30 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
-	<!-- 
 	<bean id="hyjbxxDao" class="com.abbcc.dao.impl.HyjbxxDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<bean id="hyjbxxService" class="com.abbcc.service.impl.HyjbxxServiceImpl">
-		<property name="hyjbxxDao">
-			<ref local="hyjbxxDao"/>
+	<bean id="gsjbxxDao" class="com.abbcc.dao.impl.GsjbxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<bean name="/checkName" class="com.abbcc.customer.CheckName" singleton="false">    
-		<property name="hyjbxxService">
-			<ref local="hyjbxxService"/>
+	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	 -->
+	<bean id="productDao" class="com.abbcc.dao.impl.ProductDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="productTypeDao" class="com.abbcc.dao.impl.ProductTypeDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	 
 </beans>

@@ -98,9 +98,8 @@ public class TraceInfoAction extends BaseAction {
 			HttpSession session = request.getSession(false);
 		    
 			Hyjbxx hyjbxx = new Hyjbxx();
-			hyjbxx
-			
-			Gsjbxx gsjbxx = new Gsjbxx();
+			 
+			return null;
 	}
 	
 	

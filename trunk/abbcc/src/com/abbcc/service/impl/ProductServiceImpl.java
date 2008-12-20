@@ -2,33 +2,62 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
+import com.abbcc.dao.ProductDAO;
+import com.abbcc.dao.ProductTypeDAO;
+import com.abbcc.pojo.ProductType;
 import com.abbcc.service.ProductService;
-import com.abbcc.util.pagination.Pagination;
-import com.abbcc.util.product.Product;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
-	public void createProduct(Product product) {
+	private ProductDAO productDao;
+
+	private ProductTypeDAO productTypeDao;
+
+	public void addProductType(ProductType productType) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public Product getProduct(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Product> productList(Pagination pagination) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void updateProduct(Product product) {
+	public void deleteProductTypeById(int id) {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	public List getChildProductTypeById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void getProductTypeById(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateProductType(ProductType productType) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List getProductTypeByParentId(int parentId) {
+		 
+		return productTypeDao.getProductTypeByParentId(parentId);
+	}
+
+	public ProductDAO getProductDao() {
+		return productDao;
+	}
+
+	public void setProductDao(ProductDAO productDao) {
+		this.productDao = productDao;
+	}
+
+	public ProductTypeDAO getProductTypeDao() {
+		return productTypeDao;
+	}
+
+	public void setProductTypeDao(ProductTypeDAO productTypeDao) {
+		this.productTypeDao = productTypeDao;
+	}
+
 	 
- 
-
 }
