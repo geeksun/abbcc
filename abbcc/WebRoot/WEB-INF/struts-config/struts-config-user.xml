@@ -31,6 +31,30 @@
 			<form-property name="cgdcp" type="java.lang.String"></form-property>
 			
 		</form-bean>
+		<!--  basicInfoForm  -->
+		<form-bean name="basicInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="gsmc" type="java.lang.String"></form-property>
+			<form-property name="qylx" type="java.lang.String"></form-property>
+			<form-property name="jyms" type="java.lang.String"></form-property>
+			<form-property name="zyjydd" type="java.lang.String"></form-property>
+			<form-property name="zycp" type="java.lang.String"></form-property>
+			<form-property name="right_category_id" type="java.lang.String"></form-property>
+			<form-property name="true_name" type="java.lang.String"></form-property>
+			<form-property name="dzyx" type="java.lang.String"></form-property>
+			<form-property name="gddh" type="java.lang.String"></form-property>
+			<form-property name="cz" type="java.lang.String" initial=""></form-property>
+			<form-property name="sj" type="java.lang.String" initial=""></form-property>
+			<form-property name="gslx" type="java.lang.String"></form-property>
+			<form-property name="gsmc" type="java.lang.String"></form-property>
+			<form-property name="gsszd" type="java.lang.String"></form-property>
+			<form-property name="jydz" type="java.lang.String"></form-property>
+			<form-property name="zyhy" type="java.lang.String"></form-property>
+			<!-- 主营方向 -->
+			<form-property name="zyfx" type="java.lang.String"></form-property>
+			<form-property name="xsdcp" type="java.lang.String"></form-property>
+			<form-property name="cgdcp" type="java.lang.String"></form-property>
+			
+		</form-bean>
 	</form-beans>
 
 	<global-exceptions>
