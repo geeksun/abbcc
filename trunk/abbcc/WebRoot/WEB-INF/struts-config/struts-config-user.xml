@@ -45,7 +45,7 @@
 			<form-property name="cz" type="java.lang.String" initial=""></form-property>
 			<form-property name="sj" type="java.lang.String" initial=""></form-property>
 			<form-property name="gslx" type="java.lang.String"></form-property>
-			<form-property name="gsmc" type="java.lang.String"></form-property>
+		 
 			<form-property name="gsszd" type="java.lang.String"></form-property>
 			<form-property name="jydz" type="java.lang.String"></form-property>
 			<form-property name="zyhy" type="java.lang.String"></form-property>
@@ -78,6 +78,7 @@
 	    </action>
 	     <action path="/product"   parameter="method" type="com.abbcc.admin.ProductAction">
 	    	<forward name="createProduct" path="/admin/product/createProduct.jsp"></forward>
+	    	<forward name="showProductType" path="/admin/product/showProductType.jsp"></forward>
 	    </action>
 	    <action path="/productInfo"   parameter="method" type="com.abbcc.customer.ProductInfoAction">
 	    	<forward name="product" path="/user/product/product.jsp"></forward>
