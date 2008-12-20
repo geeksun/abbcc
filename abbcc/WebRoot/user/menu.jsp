@@ -47,7 +47,7 @@
      <dl>
      	<dt onclick="toggleDl(this)">系统后台产品</dt>
      	<dd><a href="<%=path%>/product.do?method=showProduct" target="right">添加产品</a></dd>
-     	<dd>子结点2</dd>
+     	<dd><a href="<%=path%>/product.do?method=showProductType" target="right">添加产品类目</a></dd>
      	<dd>子结点3</dd>
      	<dd>子结点4</dd>
      </dl>

@@ -4,15 +4,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
 
 	<bean id="userServiceImpl"
-		class="com.abbcc.service.impl.UserServiceImpl" /> 
+		class="com.abbcc.service.impl.UserServiceImpl" />
 	<bean id="userService" parent="baseTransactionProxy">
 		<property name="target">
 			<ref bean="userServiceImpl" />
 		</property>
 	</bean>
 	<bean id="productServiceImpl"
-		class="com.abbcc.service.impl.ProductServiceImpl" />
-
+		class="com.abbcc.service.impl.ProductServiceImpl">
+		<property name="productDao">
+			<ref bean="productDao" />
+		</property>
+		<property name="productTypeDao">
+			<ref bean="productTypeDao" />
+		</property>
+	</bean> 
 	<bean id="productService" parent="baseTransactionProxy">
 		<property name="target">
 			<ref bean="productServiceImpl" />

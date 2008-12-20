@@ -3,33 +3,18 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-	
-	<bean id="hyjbxxDao" class="com.abbcc.dao.impl.HyjbxxDAOImpl" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="gsjbxxDao" class="com.abbcc.dao.impl.GsjbxxDAOImpl" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
+	 
 	<bean id="hyjbxxService" class="com.abbcc.service.impl.HyjbxxServiceImpl">
 		<property name="hyjbxxDao">
-			<ref local="hyjbxxDao"/>
+			<ref bean="hyjbxxDao"/>
 		</property>
 		<property name="gsjbxxDao">
-			<ref local="gsjbxxDao"/>
+			<ref bean="gsjbxxDao"/>
 		</property>
-	</bean>
-	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
+	</bean> 
 	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
 		<property name="tradeInfoDao">
-			<ref local="tradeInfoDao"/>
+			<ref bean="tradeInfoDao"/>
 		</property>
 	</bean>
 	<bean name="/checkName" class="com.abbcc.customer.CheckName" scope="prototype">    

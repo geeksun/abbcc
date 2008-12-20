@@ -2,17 +2,21 @@ package com.abbcc.service;
 
 import java.util.List;
 
-import com.abbcc.util.pagination.Pagination;
-import com.abbcc.util.product.Product;
+import com.abbcc.pojo.ProductType;
+
 
 public interface ProductService {
- 
-	void createProduct(Product product);
 
-	void updateProduct(Product product);
+	void addProductType(ProductType productType);
 
-	List<Product> productList(Pagination pagination);
+	void updateProductType(ProductType productType);
+
+	void deleteProductTypeById(int id);
+
+	void getProductTypeById(int id);
+
+	List getChildProductTypeById(int id);
 	
-	Product getProduct(long id);
-	 
+	List getProductTypeByParentId(int parentId);
+
 }
