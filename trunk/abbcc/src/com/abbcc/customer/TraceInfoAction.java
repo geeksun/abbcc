@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
@@ -88,5 +89,19 @@ public class TraceInfoAction extends BaseAction {
 			//request.setAttribute("subList", subList);
 			return null;
 	}
+	/**
+	 * 	@see 修改公司基本信息和会员基本信息
+	 */
+	public ActionForward updateBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			DynaActionForm basicInfoForm = (DynaActionForm)form;
+			HttpSession session = request.getSession(false);
+		    
+			Hyjbxx hyjbxx = new Hyjbxx();
+			hyjbxx
+			
+			Gsjbxx gsjbxx = new Gsjbxx();
+	}
+	
 	
 }
