@@ -15,4 +15,5 @@ public interface BaseDao {
 	// 根据 ID 删除用户
 	public void delete(Class clazz,Serializable id);
 	public void update(Object o);
+	 
 }
