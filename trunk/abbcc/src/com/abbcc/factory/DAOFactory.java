@@ -24,9 +24,9 @@ public class DAOFactory {
 		return GlyDAOImpl.getInstance();
 	}
 
-	public static GsjbxxDAO getGsjbxxDAOInstance() {
-		return GsjbxxDAOImpl.getInstance();
-	}
+	/*public static GsjbxxDAO getGsjbxxDAOInstance() {
+		//return GsjbxxDAOImpl.getInstance();
+	}*/
 
 	public static GsxxxxDAO getGsxxxxDAOInstance() {
 		return GsxxxxDAOImpl.getInstance();
