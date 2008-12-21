@@ -1,5 +1,6 @@
 package com.abbcc.common;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -48,9 +49,16 @@ public class StringUtils {
         return n * factorial(n - 1);
     }
     /**
+     * @param str
+     * @return GBK字符串
+     */
+    public static String converse(String str) throws UnsupportedEncodingException{ 
+    	return new String(str.getBytes("ISO-8859-1"),"GBK");
+    }
+    /**
      * 将指定byte数组以16进制的形式打印到控制台
-     * @param hint    String
-     * @param b   byte[]
+     * @param hint String
+     * @param b byte[]
      * @return void
      */
     public static void printHexString(String hint, byte[] b)
