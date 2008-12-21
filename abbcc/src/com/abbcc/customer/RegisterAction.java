@@ -51,12 +51,13 @@ public class RegisterAction extends BaseAction {
 				String registerTime = TimeProcess.timeFormat(date);
 				
 				hyjbxx.setRegistTime(registerTime);
-				hyjbxx.setSfyx("0");
-				hyjbxx.setMemberType("0");
+				hyjbxx.setSfyx("0");			// 是否有效
+				hyjbxx.setMemberType("0");		// 会员类型
 				
 				//保存公司基本信息
 				Gsjbxx gsjbxx = new Gsjbxx();
 				BeanUtils.copyProperties(gsjbxx,registerForm);
+				//System.out.println(gsjbxx.getGsszd());
 				
 				/*int i = hyjbxxService.add(hyjbxx);
 				int k = hyjbxxService.add(gsjbxx);*/ 
