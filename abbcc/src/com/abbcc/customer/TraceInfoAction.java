@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -14,6 +15,7 @@ import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
+import com.abbcc.common.StringUtils;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
@@ -43,18 +45,12 @@ public class TraceInfoAction extends BaseAction {
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession(false);
 			
-			String customer = (String) session.getAttribute("customer");
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
-			//int hyjbxxid = Integer.parseInt(tempId);  
 			
-			//Hyjbxx hyjbxx = hyjbxxService.getCustomerByName(hyjbxxid);
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
-			//List list = hyjbxxService.getMemberById(hyjbxxid);
 			List list = hyjbxxService.getMemberById(hyjbxxid);
 			
-			//Hyjbxx hyjbxx = (Hyjbxx) list.get(0);  
 			Gsjbxx leaguer = (Gsjbxx) list.get(0);
-			//System.out.println(leaguer.getHydlm()+" "+leaguer.getGslx());
 			
 			// Mlist: 会员的全部属性
 			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
@@ -94,13 +90,47 @@ public class TraceInfoAction extends BaseAction {
 	 */
 	public ActionForward updateBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
+			request.setCharacterEncoding("gbk");
+			response.setCharacterEncoding("text/html;charset=gbk");
 			DynaActionForm basicInfoForm = (DynaActionForm)form;
 			HttpSession session = request.getSession(false);
 		    
 			Hyjbxx hyjbxx = new Hyjbxx();
-			 
-			return null;
+			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
+			BeanUtils.copyProperties(hyjbxx, basicInfoForm);
+			System.out.println(hyjbxx.getZsxm()+hyjbxx.getGddh()+hyjbxx.getJydz());
+			
+			hyjbxx.setHyjbxxid(hyjbxxid); 
+			//hyjbxx.setZsxm(StringUtils.converse(hyjbxx.getZsxm()));
+			
+			Gsjbxx gsjbxx = new Gsjbxx();
+			BeanUtils.copyProperties(gsjbxx, basicInfoForm);
+			gsjbxx.setHyjbxxid(hyjbxxid);
+			System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
+			String[] jyms = request.getParameterValues("jyms");
+			String[] zyhy = request.getParameterValues("zyhy");
+			StringBuffer su;
+			if(jyms!=null){
+				su = new StringBuffer();
+				for(int i=0;i<jyms.length;i++){
+					su.append(jyms[i]+",");
+				}
+				gsjbxx.setJyms(su.toString());
+			}
+			System.out.println(gsjbxx.getJyms());
+			if(zyhy!=null){
+				su = new StringBuffer();
+				for(int i=0;i<zyhy.length;i++){
+					su.append(zyhy[i]+",");
+				}
+				gsjbxx.setZyhy(su.toString());
+			}
+			System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
+			
+			hyjbxxService.update(hyjbxx, gsjbxx);
+			
+			//应该返回到管理首页
+			return mapping.findForward("basicinfo");
 	}
-	
 	
 }
