@@ -98,4 +98,15 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		return hyjbxx;
 	}
 
+	public void update(Hyjbxx hyjbxx) {
+		
+		
+	}
+
+	public void update(Hyjbxx hyjbxx, Gsjbxx gsjbxx) {
+		hyjbxxDao.update(hyjbxx);
+		gsjbxxDao.update(gsjbxx);
+		
+	}
+
 }
