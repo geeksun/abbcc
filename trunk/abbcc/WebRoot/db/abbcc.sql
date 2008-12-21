@@ -462,21 +462,20 @@ DROP TABLE IF EXISTS `gsjbxx`;
 
 CREATE TABLE `gsjbxx` (
   `hyjbxxid` int(10) unsigned default NULL,
-  `gslx` varchar(2) default NULL,
-  `gsmc` varchar(32) default NULL,
-  `en_corp_name` varchar(81) default NULL,
-  `gj` varchar(3) default NULL,
-  `sf` varchar(3) default NULL,
-  `djs` varchar(3) default NULL,
-  `xjs` varchar(3) default NULL,
+  `gsmc` varchar(50) default NULL,
+  `qylx` varchar(12) default NULL,
+  `jyms` varchar(18) default NULL,
+  `gsszd` varchar(80) default NULL,
   `jydz` varchar(64) default NULL,
-  `zyhy` varchar(2) default NULL,
-  `zyfx` varchar(2) default NULL,
+  `zyhy` varchar(12) default NULL,
+  `zyfx` varchar(12) default NULL,
   `xsdcp` varchar(32) default NULL,
   `cgdcp` varchar(32) default NULL
 ) ENGINE=MRG_MyISAM DEFAULT CHARSET=gbk INSERT_METHOD=LAST UNION=(`gsjbxx_0`,`gsjbxx_1`,`gsjbxx_2`,`gsjbxx_3`);
 
 /*Data for the table `gsjbxx` */
+
+insert  into `gsjbxx`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`) values (2,'中国集团',NULL,'北京',NULL,'北江','1','3','电子','软件'),(3,'adidas','10','1','china hebei','河北','010202','2','衩子','白菜');
 
 /*Table structure for table `gsjbxx_0` */
 
@@ -484,16 +483,13 @@ DROP TABLE IF EXISTS `gsjbxx_0`;
 
 CREATE TABLE `gsjbxx_0` (
   `hyjbxxid` int(10) unsigned default NULL,
-  `gslx` varchar(2) default NULL,
-  `gsmc` varchar(32) default NULL,
-  `en_corp_name` varchar(81) default NULL,
-  `gj` varchar(3) default NULL,
-  `sf` varchar(3) default NULL,
-  `djs` varchar(3) default NULL,
-  `xjs` varchar(3) default NULL,
+  `gsmc` varchar(50) default NULL,
+  `qylx` varchar(12) default NULL,
+  `jyms` varchar(18) default NULL,
+  `gsszd` varchar(80) default NULL,
   `jydz` varchar(64) default NULL,
-  `zyhy` varchar(2) default NULL,
-  `zyfx` varchar(2) default NULL,
+  `zyhy` varchar(12) default NULL,
+  `zyfx` varchar(12) default NULL,
   `xsdcp` varchar(32) default NULL,
   `cgdcp` varchar(32) default NULL,
   KEY `gsjbxx_idx` (`hyjbxxid`)
@@ -501,22 +497,21 @@ CREATE TABLE `gsjbxx_0` (
 
 /*Data for the table `gsjbxx_0` */
 
+insert  into `gsjbxx_0`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`) values (2,'中国集团',NULL,'北京',NULL,'北江','1','3','电子','软件'),(3,'adidas','10','1','china hebei','河北','010202','2','衩子','白菜');
+
 /*Table structure for table `gsjbxx_1` */
 
 DROP TABLE IF EXISTS `gsjbxx_1`;
 
 CREATE TABLE `gsjbxx_1` (
   `hyjbxxid` int(10) unsigned default NULL,
-  `gslx` varchar(2) default NULL,
-  `gsmc` varchar(32) default NULL,
-  `en_corp_name` varchar(81) default NULL,
-  `gj` varchar(3) default NULL,
-  `sf` varchar(3) default NULL,
-  `djs` varchar(3) default NULL,
-  `xjs` varchar(3) default NULL,
+  `gsmc` varchar(50) default NULL,
+  `qylx` varchar(12) default NULL,
+  `jyms` varchar(18) default NULL,
+  `gsszd` varchar(80) default NULL,
   `jydz` varchar(64) default NULL,
-  `zyhy` varchar(2) default NULL,
-  `zyfx` varchar(2) default NULL,
+  `zyhy` varchar(12) default NULL,
+  `zyfx` varchar(12) default NULL,
   `xsdcp` varchar(32) default NULL,
   `cgdcp` varchar(32) default NULL,
   KEY `gsjbxx_idx` (`hyjbxxid`)
@@ -530,16 +525,13 @@ DROP TABLE IF EXISTS `gsjbxx_2`;
 
 CREATE TABLE `gsjbxx_2` (
   `hyjbxxid` int(10) unsigned default NULL,
-  `gslx` varchar(2) default NULL,
-  `gsmc` varchar(32) default NULL,
-  `en_corp_name` varchar(81) default NULL,
-  `gj` varchar(3) default NULL,
-  `sf` varchar(3) default NULL,
-  `djs` varchar(3) default NULL,
-  `xjs` varchar(3) default NULL,
+  `gsmc` varchar(50) default NULL,
+  `qylx` varchar(12) default NULL,
+  `jyms` varchar(18) default NULL,
+  `gsszd` varchar(80) default NULL,
   `jydz` varchar(64) default NULL,
-  `zyhy` varchar(2) default NULL,
-  `zyfx` varchar(2) default NULL,
+  `zyhy` varchar(12) default NULL,
+  `zyfx` varchar(12) default NULL,
   `xsdcp` varchar(32) default NULL,
   `cgdcp` varchar(32) default NULL,
   KEY `gsjbxx_idx` (`hyjbxxid`)
@@ -553,16 +545,13 @@ DROP TABLE IF EXISTS `gsjbxx_3`;
 
 CREATE TABLE `gsjbxx_3` (
   `hyjbxxid` int(10) unsigned default NULL,
-  `gslx` varchar(2) default NULL,
-  `gsmc` varchar(32) default NULL,
-  `en_corp_name` varchar(81) default NULL,
-  `gj` varchar(3) default NULL,
-  `sf` varchar(3) default NULL,
-  `djs` varchar(3) default NULL,
-  `xjs` varchar(3) default NULL,
+  `gsmc` varchar(50) default NULL,
+  `qylx` varchar(12) default NULL,
+  `jyms` varchar(18) default NULL,
+  `gsszd` varchar(80) default NULL,
   `jydz` varchar(64) default NULL,
-  `zyhy` varchar(2) default NULL,
-  `zyfx` varchar(2) default NULL,
+  `zyhy` varchar(12) default NULL,
+  `zyfx` varchar(12) default NULL,
   `xsdcp` varchar(32) default NULL,
   `cgdcp` varchar(32) default NULL,
   KEY `gsjbxx_idx` (`hyjbxxid`)
@@ -985,7 +974,7 @@ CREATE TABLE `hyjbxx` (
 
 /*Data for the table `hyjbxx` */
 
-insert  into `hyjbxx`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (1,'microsoft','test88','我最欣赏的一位名人？','爱迪生','小李','1','iii@126.com','010-3838389','','','0','0',NULL,'3','清华同方','北京清华','北京海淀','1','2008-12-06 19:57:56'),(2,'test99','aaaaa','我最喜欢的歌曲？','geiek','琪琪','1','geks@163.com','033-99393931','','','0','0',NULL,'1','test','udja','usksk','1','2008-12-15 23:02:17'),(3,'jzq1998','geeksun','我最喜欢的歌曲？','sun','sun','0','sun@gmail.com','010-23883823','','','0','0',NULL,'3','sun','moon','bj','1','2008-12-15 23:28:52'),(5,'jzq1999','geeksun','我最喜欢的颜色？','绿色','姜志强','0','geeksun@163.com','010-3838383','020-10101','1938383838','0','0',NULL,'1','北京航空大学后勤集团二公司','北京大学本校','北京海淀','1','2008-12-02 00:42:37'),(6,'geeksun','ggggg','我最喜欢的歌星？','刘若英','李明','0','tis@tom.com','010-8282828','','','0','0',NULL,'4','英国大使馆','北京三元桥','北京朝阳','1','2008-12-02 23:38:32'),(4,'ttttt','sssss','我最喜欢的颜色？','blue','谢谢','0','usk@126.com','020-2929292','','','0','0',NULL,'1','多一点','库萨克','库斯科','1','2008-12-15 23:37:45'),(10,'jzq9899','geeksun','我最喜欢吃的食物？','鱼','小姜','0','jzq1999@china.cn','010-8383838','132334545','139393939393','0','0',NULL,'1','中国网通北京公司','北京东城','北京东城','1','2008-12-04 22:25:18'),(11,'google','geeksun','我最喜欢的颜色？','green','李开复','0','sun@gmail.com','010-8283845','','','0','0',NULL,'3','谷歌中国','北京海淀','清华科技园','1','2008-12-04 23:07:15');
+insert  into `hyjbxx`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (2,'geeksun','jjjjj','我最喜欢的歌星？','star','姜志强','0','geekxun@163.com','010-9393939','010-9393939','1029282889','0','0',NULL,'4','中国集团','北京','北江','1','2008-12-20 11:24:11'),(3,'jzq9899','geeks','我最喜欢吃的食物？','foot','姜志强','1','engi@yahoo.cn','182920202','0310-8484848','15922273848','0','0',NULL,'3','adidas','china hebei','hebei','1','2008-12-20 11:49:25');
 
 /*Table structure for table `hyjbxx_0` */
 
@@ -1019,7 +1008,7 @@ CREATE TABLE `hyjbxx_0` (
 
 /*Data for the table `hyjbxx_0` */
 
-insert  into `hyjbxx_0`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (1,'microsoft','test88','我最欣赏的一位名人？','爱迪生','小李','1','iii@126.com','010-3838389','','','0','0',NULL,'3','清华同方','北京清华','北京海淀','1','2008-12-06 19:57:56'),(2,'test99','aaaaa','我最喜欢的歌曲？','geiek','琪琪','1','geks@163.com','033-99393931','','','0','0',NULL,'1','test','udja','usksk','1','2008-12-15 23:02:17'),(3,'jzq1998','geeksun','我最喜欢的歌曲？','sun','sun','0','sun@gmail.com','010-23883823','','','0','0',NULL,'3','sun','moon','bj','1','2008-12-15 23:28:52');
+insert  into `hyjbxx_0`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (2,'geeksun','jjjjj','我最喜欢的歌星？','star','姜志强','0','geekxun@163.com','010-9393939','010-9393939','1029282889','0','0',NULL,'4','中国集团','北京','北江','1','2008-12-20 11:24:11'),(3,'jzq9899','geeks','我最喜欢吃的食物？','foot','姜志强','1','engi@yahoo.cn','182920202','0310-8484848','15922273848','0','0',NULL,'3','adidas','china hebei','hebei','1','2008-12-20 11:49:25');
 
 /*Table structure for table `hyjbxx_1` */
 
@@ -1053,8 +1042,6 @@ CREATE TABLE `hyjbxx_1` (
 
 /*Data for the table `hyjbxx_1` */
 
-insert  into `hyjbxx_1`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (5,'jzq1999','geeksun','我最喜欢的颜色？','绿色','姜志强','0','geeksun@163.com','010-3838383','020-10101','1938383838','0','0',NULL,'1','北京航空大学后勤集团二公司','北京大学本校','北京海淀','1','2008-12-02 00:42:37'),(6,'geeksun','ggggg','我最喜欢的歌星？','刘若英','李明','0','tis@tom.com','010-8282828','','','0','0',NULL,'4','英国大使馆','北京三元桥','北京朝阳','1','2008-12-02 23:38:32'),(4,'ttttt','sssss','我最喜欢的颜色？','blue','谢谢','0','usk@126.com','020-2929292','','','0','0',NULL,'1','多一点','库萨克','库斯科','1','2008-12-15 23:37:45');
-
 /*Table structure for table `hyjbxx_2` */
 
 DROP TABLE IF EXISTS `hyjbxx_2`;
@@ -1086,8 +1073,6 @@ CREATE TABLE `hyjbxx_2` (
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 /*Data for the table `hyjbxx_2` */
-
-insert  into `hyjbxx_2`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`) values (10,'jzq9899','geeksun','我最喜欢吃的食物？','鱼','小姜','0','jzq1999@china.cn','010-8383838','132334545','139393939393','0','0',NULL,'1','中国网通北京公司','北京东城','北京东城','1','2008-12-04 22:25:18'),(11,'google','geeksun','我最喜欢的颜色？','green','李开复','0','sun@gmail.com','010-8283845','','','0','0',NULL,'3','谷歌中国','北京海淀','清华科技园','1','2008-12-04 23:07:15');
 
 /*Table structure for table `hyjbxx_3` */
 
@@ -1544,14 +1529,15 @@ CREATE TABLE `jytj_3` (
 DROP TABLE IF EXISTS `pz`;
 
 CREATE TABLE `pz` (
-  `tablename` varchar(32) default NULL,
+  `tablename` varchar(32) NOT NULL,
   `recnum` int(10) unsigned default NULL,
-  `max_count` int(10) unsigned default NULL
+  `max_count` int(10) unsigned default NULL,
+  PRIMARY KEY  (`tablename`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 /*Data for the table `pz` */
 
-insert  into `pz`(`tablename`,`recnum`,`max_count`) values ('hyjbxx',5,5),('hygrzl',0,0),('hygzjl',0,0),('hyjyjl',0,0),('gsjbxx',0,0),('gsxxxx',0,0),('cpgqxx',0,0),('jytj',0,0),('dljmsx',0,0),('jghz',0,0),('fwsx',0,0),('hzsx',0,0),('zpxx',0,0),('hysh',0,0),('xxsh',0,0),('gly',0,0),('wzjbxx',0,0);
+insert  into `pz`(`tablename`,`recnum`,`max_count`) values ('hyjbxx',4,4),('hygrzl',0,0),('hygzjl',0,0),('hyjyjl',0,0),('gsjbxx',4,4),('gsxxxx',0,0),('cpgqxx',0,0),('jytj',0,0),('dljmsx',0,0),('jghz',0,0),('fwsx',0,0),('hzsx',0,0),('zpxx',0,0),('hysh',0,0),('xxsh',0,0),('gly',0,0),('wzjbxx',0,0);
 
 /*Table structure for table `trade_info` */
 
