@@ -10,19 +10,22 @@
          		<column name="hyjbxxid" />
          		<generator class="native"></generator>
          </id>
-         <property name="gslx" type="java.lang.String">
-             <column name="gslx" length="2" />
-         </property>
          <property name="gsmc" type="java.lang.String">
              <column name="gsmc" length="32" />
+         </property>
+         <!--  企业类型  -->
+         <property name="qylx" type="java.lang.String">
+             <column name="qylx" length="12" />
+         </property>
+         <!--  经营模式  -->
+         <property name="jyms" type="java.lang.String">
+             <column name="jyms" length="18" />
          </property>
          <!-- 公司所在地 -->
          <property name="gsszd" type="java.lang.String">
              <column name="gsszd" length="80" />
          </property>
-         <property name="enCorpName" type="java.lang.String">
-             <column name="en_corp_name" length="81" />
-         </property>
+         
          <property name="jydz" type="java.lang.String">
              <column name="jydz" length="64" />
          </property>
