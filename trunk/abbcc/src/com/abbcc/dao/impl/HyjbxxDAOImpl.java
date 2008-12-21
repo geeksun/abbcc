@@ -104,30 +104,34 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		return init;
 	}
 
-	// 修改会员个人资料
-	public void update(Hyjbxx hyjbxx) throws Exception {
-		count = hyjbxx.getHyjbxxid() / Globals.COUNT;
+	// 修改会员基本信息
+	public void update(Hyjbxx hyjbxx) {
+		page = hyjbxx.getHyjbxxid() / Globals.COUNT;
+		//System.out.println(page);
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		sql = "UPDATE hyjbxx_"
-				+ count
-				+ " h SET h.hydlm=?,h.mm=?,h.mmtswt=?,h.mmtsda=?,h.zsxm=?,h.xb=?,h.dzyx=?,h.gddh=?,h.cz=?,h.sj=?,h.sqsj=?,h.sfyx=?,h.scsj=? WHERE h.hyjbxxid=?";
+				+ page
+				+ " h SET h.zsxm=?,h.gddh=?,h.gsszd=?,h.dzyx=? WHERE h.hyjbxxid=?";
+		try{
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, hyjbxx.getHydlm());
-		pstmt.setString(2, hyjbxx.getMm());
-		pstmt.setString(3, hyjbxx.getMmtswt());
-		pstmt.setString(4, hyjbxx.getMmtsda());
-		pstmt.setString(5, hyjbxx.getZsxm());
-		pstmt.setString(6, hyjbxx.getXb());
-		pstmt.setString(7, hyjbxx.getDzyx());
-		pstmt.setString(8, hyjbxx.getGddh());
-		pstmt.setString(9, hyjbxx.getCz());
-		pstmt.setString(10, hyjbxx.getSj());
-		pstmt.setString(11, hyjbxx.getMemberType());	//  用户类型
-		pstmt.setString(12, hyjbxx.getSfyx());
-		pstmt.setString(13, hyjbxx.getScsj());
-		pstmt.setInt(14, hyjbxx.getHyjbxxid());
+		pstmt.setString(1, hyjbxx.getZsxm());
+		pstmt.setString(2, hyjbxx.getGddh());
+		pstmt.setString(3, hyjbxx.getGsszd());
+		pstmt.setString(4, hyjbxx.getDzyx());
+		pstmt.setLong(5, hyjbxx.getHyjbxxid());
 		pstmt.executeUpdate();
-		pstmt.close();
+		}catch(Exception e){
+			log.error("save failed", e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	// 删除会员个人资料
