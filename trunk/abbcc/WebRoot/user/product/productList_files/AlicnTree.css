@@ -1,0 +1,72 @@
+#tree1 {
+	CLEAR: both; BACKGROUND-IMAGE: url(http://img.china.alibaba.com/images/cn/market/myalibaba/newmyali/myali_menubox_bg.gif); WIDTH: 186px
+}
+#tree1 .linkItem {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px
+}
+#tree1 .indexmenu {
+	PADDING-LEFT: 9px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: 0px! important; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
+}
+#tree1 .indexmenu {
+	FONT-WEIGHT: bold; COLOR: #ff7400
+}
+#tree1 .indexmenu A:link {
+	FONT-WEIGHT: bold; COLOR: #ff7400; TEXT-DECORATION: none
+}
+#tree1 .indexmenu A:visited {
+	FONT-WEIGHT: bold; COLOR: #ff7400; TEXT-DECORATION: none
+}
+#tree1 .indexmenu A:hover {
+	FONT-WEIGHT: bold; COLOR: #ff7400; TEXT-DECORATION: none
+}
+#tree1 .menu {
+	BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px! important; WIDTH: 175px; LINE-HEIGHT: 22px! important; PADDING-TOP: 2px! important; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
+}
+#tree1 .activedmenu {
+	BACKGROUND-POSITION: right 50%; BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(images/menu_arrow.gif); PADDING-BOTTOM: 0px! important; WIDTH: 175px; LINE-HEIGHT: 28px; PADDING-TOP: 0px! important; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
+}
+#tree1 .menu A:link {
+	COLOR: #112482; TEXT-DECORATION: none
+}
+#tree1 .menu A:visited {
+	COLOR: #112482; TEXT-DECORATION: none
+}
+#tree1 .activedmenu A:link {
+	COLOR: #112482; TEXT-DECORATION: none
+}
+#tree1 .activedmenu A:visited {
+	COLOR: #112482; TEXT-DECORATION: none
+}
+#tree1 .item2 {
+	MARGIN-TOP: 7px; MARGIN-BOTTOM: 7px; TEXT-ALIGN: left
+}
+#tree1 .selectItem2 {
+	BORDER-TOP: #78bfd9 1px solid; MARGIN-TOP: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: 0px! important; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
+}
+#tree1 .selectItem2 A:link {
+	COLOR: #ff7300; TEXT-DECORATION: none
+}
+#tree1 .itembox {
+	MARGIN-LEFT: 15px
+}
+#tree1 DIV {
+	CLEAR: both
+}
+#tree1 {
+	FONT-SIZE: 14px; COLOR: #112482
+}
+#tree1 A:link {
+	FONT-SIZE: 14px; COLOR: #112482; TEXT-DECORATION: underline
+}
+#tree1 A:visited {
+	FONT-SIZE: 14px; COLOR: #112482; TEXT-DECORATION: underline
+}
+#tree1 A:hover {
+	FONT-SIZE: 14px; COLOR: #112482; TEXT-DECORATION: underline
+}
+#tree1 A:active {
+	FONT-SIZE: 14px; COLOR: #112482; TEXT-DECORATION: underline
+}
+#tree1 .itembox A:hover {
+	COLOR: #ff7300
+}
