@@ -33,7 +33,6 @@ public class StrTools {
 
   /**
    * 替换字符串
-   * 
    * @param from String 原始字符串
    * @param to String 目标字符串
    * @param source String 母字符串
@@ -67,7 +66,6 @@ public class StrTools {
 
   /**
    * 替换字符串，将被编码的转换成原始码（替换成双引号和小于号）
-   * 
    * @param str String
    * @return String
    */
@@ -82,7 +80,6 @@ public class StrTools {
 
   /**
    * 在页面上直接显示文本内容，替换小于号，空格，回车，TAB
-   * 
    * @param str String 原始字符串
    * @return String 替换后的字符串
    */
@@ -139,7 +136,6 @@ public class StrTools {
 
   /**
    * 判断是否为整数
-   * 
    * @param str 传入的字符串
    * @return 是整数返回true,否则返回false
    */
@@ -150,7 +146,6 @@ public class StrTools {
 
   /**
    * 判断是否为浮点数，包括double和float
-   * 
    * @param str 传入的字符串
    * @return 是浮点数返回true,否则返回false
    */
@@ -161,7 +156,6 @@ public class StrTools {
 
   /**
    * 判断输入的字符串是否符合Email样式.
-   * 
    * @param str 传入的字符串
    * @return 是Email样式返回true,否则返回false
    */
@@ -172,7 +166,6 @@ public class StrTools {
 
   /**
    * 判断输入的字符串是否为纯汉字
-   * 
    * @param str 传入的字符窜
    * @return 如果是纯汉字返回true,否则返回false
    */
@@ -183,7 +176,6 @@ public class StrTools {
 
   /**
    * 是否为空白,包括null和""
-   * 
    * @param str
    * @return
    */
@@ -193,7 +185,6 @@ public class StrTools {
 
   /**
    * 判断是否为质数
-   * 
    * @param x
    * @return
    */
