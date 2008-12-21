@@ -78,7 +78,10 @@
 				<value>com/abbcc/pojo/Zpxx.hbm.xml</value>
 				<value>com/abbcc/pojo/Pz.hbm.xml</value>
 				<value>com/abbcc/pojo/TradeInfo.hbm.xml</value>
-				<value>com/abbcc/pojo/ProductType.hbm.xml</value>
+                <value>com/abbcc/pojo/ProductType.hbm.xml</value>
+				<value>com/abbcc/pojo/Message.hbm.xml</value>
+				
+				
 			</list>
 		</property>
 	</bean>

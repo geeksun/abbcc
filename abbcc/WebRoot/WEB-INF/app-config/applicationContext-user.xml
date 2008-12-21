@@ -40,4 +40,14 @@
 			<ref local="tradeInfoService"/>
 		</property>
 	</bean>
+	<bean id="messageDAO" class="com.abbcc.dao.impl.MessageDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="messageService" class="com.abbcc.service.impl.MessageServiceImpl">
+		<property name="messageDao">
+			<ref local="messageDAO"/>
+		</property>
+	</bean>
 </beans>
