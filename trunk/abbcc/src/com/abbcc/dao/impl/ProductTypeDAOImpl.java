@@ -10,7 +10,7 @@ import com.abbcc.pojo.ProductType;
 public class ProductTypeDAOImpl extends BaseDaoImpl implements ProductTypeDAO{
 
 	public List getProductTypeByParentId(int parentId) {
-		String sql="from ProductType p where p.parentId=?";
+		String sql="from ProductType p where p.parentId=? order by p.priority asc";
 		Query query=this.getQuery(sql);
 		query.setParameter(0, parentId);
 		return query.list();

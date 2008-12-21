@@ -1,5 +1,7 @@
 package com.abbcc.util.product;
 
+import com.abbcc.pojo.Product;
+
 public class ProductTemplate {
 	public static final String PRODUCT_KEY = "key";
 
@@ -13,6 +15,9 @@ public class ProductTemplate {
 
 	}
 
+	public String[] getFromName(Product product){
+		return null;
+	}
 	public String getTableStyle(Product product, String servletPath) {
 		if(product==null||servletPath==null)return ""; 
 		String formName = product.getFormName();
@@ -127,137 +132,7 @@ public class ProductTemplate {
 		String template = builder.toString();
 		return template;
 	}
-	public String getTableStyle_bak(Product product, String servletPath) {
-		if(product==null||servletPath==null)return ""; 
-		String formName = product.getFormName();
-		String isShow = product.getIsShow();
-		String isNull = product.getIsNull();
-		String unit = product.getUnit();
-		String propertyName = product.getPropertyName();
-		String type = product.getType();
-		String isHidden = product.getIsHidden();
-
-		String[] formNames = ProductUtil.arrayToString(formName);
-		String[] isShows = ProductUtil.arrayToString(isShow);
-		String[] isNulls = ProductUtil.arrayToString(isNull);
-		String[] units = ProductUtil.arrayToString(unit);
-		String[] propertyNames = ProductUtil.arrayToString(propertyName);
-		String[] types = ProductUtil.arrayToString(type);
-		String[] isHiddens = ProductUtil.arrayToString(isHidden);
-
-		StringBuilder builder = new StringBuilder();
-		StringBuilder hiddendBuilder = new StringBuilder();
-	
-		boolean hasHidden = false;
-		builder.append("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
-		builder.append("<tbody>\n");
-		for (int i = 0; i < formNames.length; i++) {
-			String _formName = formNames[i];
-			String _isShow = isShows[i];
-			String _isNull = isNulls[i];
-			String _unit = units[i];
-			String _propertyNames = propertyNames[i];
-			String _type = types[i];
-			String _isHidden = isHiddens[i];
-			if (_isShow.equals("false")) {
-				continue;
-			} 
-			StringBuilder tempBuilder = new StringBuilder();
-			tempBuilder .append("<tr>\n<td class='list_left_box' align='right' valign='top'>");
-			tempBuilder
-					.append("<img id='img_right_feature112222' "
-							+ "src='"
-							+ servletPath
-							+ "/user/product/product_files/icon_nowhitewhiteright_19x19.gif'"
-							+ " align='absmiddle' width='19' height='16'>");
-
-			if (_type.equals("text")) {
-				tempBuilder.append("<b>" + _propertyNames + "</b>");
-				if (_isNull.equals("true")) {
-					tempBuilder.append("<font color='#ff0000'>*</font>");
-
-				} else {
-					tempBuilder.append("&nbsp;");
-
-				}
-				tempBuilder.append("</td>\n");
-				tempBuilder .append("<td class='list_right_box' style='padding: 2px;'>");
-				tempBuilder.append("<input type='text' name='" + _formName
-						+ "' value='' size='23' maxlength='80'  "
-						// + "onblur='doOnBlur(this.name,true)'
-						// onfocus='doOnFocus(this.name)'"+;
-						+ ">");
-				
-			} else if (_type.equals("select")) {
-				boolean isProperty = ProductUtil.isPropertyMatchType(types,
-						propertyNames);
-				if (!isProperty) {
-
-				} else {
-					String[] temp = _propertyNames.split(":|：");
-
-					tempBuilder.append("<b>" + temp[0] + "</b>");
-					if (_isNull.equals("true")) {
-						tempBuilder.append("<font color='#ff0000'>*</font>");
-
-					} else {
-						tempBuilder.append("&nbsp;");
-
-					}
-					tempBuilder.append("</td>\n");
-					tempBuilder
-							.append("<td class='list_right_box' style='padding: 2px;'>");
-
-					tempBuilder.append("<select  name='" + _formName
-							+ "' maxlength='80' "
-							// + "onchange='javascript:funcSelectOther(112242)'
-							// id='feature112242' "
-							// + "onblur='doOnBlur(this.name, true)'
-							// onfocus='doOnFocus(this.name)'>");
-							+ ">");
-					String[] temp2 = temp[1].split("#");
-					tempBuilder.append("<option value=''>请选择</option>");
-					for (int t = 0; t < temp2.length; t++) {
-						tempBuilder.append("<option value='" + (t + 1) + "'>"
-								+ temp2[t] + "</option>");
-					}
-					tempBuilder.append("</select>");
-				}
-				
-			}
-			if(_unit!=null)
-			    tempBuilder.append(_unit);
-			tempBuilder.append("<span style='padding-left:10px;'>");
-			tempBuilder
-					.append("<span id='wrong_feature112222' class='slh13wrong' style='display:none; width:110px;'> ");
-			tempBuilder
-					.append("<span  class='wrongwords' id='wrong_words_feature112222'>带<font	color='red'>*</font>为必填项。 </span> ");
-			tempBuilder.append("</span></span>"); 
-			tempBuilder.append("</td></tr>\n");
-			if (_isHidden.equals("true")) {
-				hasHidden = true;
-				hiddendBuilder.append(tempBuilder);
-			} else { 
-				builder.append(tempBuilder);
-			} 
-		}
-		if (hasHidden) {
-			builder.append("<tr></td><a style='cursor: pointer;' "
-					+ "onclick='showMore(this)' ");
-			builder.append(" class='Htab2_off' >" + "更多属性</a> </td> </tr>"
-					+ "</tbody></table> ");
-			builder
-					.append("<table id='table_more' style='display: none;' border='0' cellpadding='0' cellspacing='0' width='100%'>");
-			builder.append(" <tbody> ");
-			builder.append(hiddendBuilder);
-		}
-		
-		
-		builder.append("</tbody></table>");
-		String template = builder.toString();
-		return template;
-	}
-	 
+	  
 	public static void main(String[] args){
 		Product product=new Product();
 		product.setIdFiledName("id");

@@ -1,4 +1,4 @@
-package com.abbcc.util.product;
+package com.abbcc.pojo;
 
 import java.util.Date;
 
@@ -12,6 +12,8 @@ public class Product {
 	
 
 	private long id;
+	
+	private String productName;
 
 	private String tableName;//±íÃû
 
@@ -161,6 +163,14 @@ public class Product {
 
 	public void setIsHidden(String isHidden) {
 		this.isHidden = isHidden;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 }

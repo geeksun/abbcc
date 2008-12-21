@@ -12,7 +12,7 @@
  		function gotoPostPage(name)
  		{
  			
- 			window.open("<%=path%>/productInfo.do?method=showProduct","right");
+ 			window.open("<%=path%>/productInfo.do?method=showProductInfo","right");
  		}
 	</script>
 	<LINK rev=stylesheet href="<%=path %>/css/myalibaba.css" 

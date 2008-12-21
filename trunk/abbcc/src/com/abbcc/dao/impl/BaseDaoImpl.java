@@ -117,6 +117,12 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 			startIndex++;
 		} 
 	}
+	protected void setParamter(int startIndex,Query query,String[] paramters){
+		for(int i=0;i<paramters.length;i++){
+			query.setParameter(startIndex, paramters[i]); 
+			startIndex++;
+		} 
+	}
 	public void delete(Class clazz, Serializable id) {
 		getHibernateTemplate().delete(getObject(clazz, id));
 	}

@@ -1,9 +1,13 @@
 package com.abbcc.dao;
 
-import com.abbcc.util.product.Product;
+import com.abbcc.pojo.Product;
 
 public interface ProductDAO {
-	
-	void add(Product product);
+	 
+	Product getProductByStateAndProductTypeId(int state, String productTypeId);
+
+	void addProduct(Product product);
+
+	void excetueSaveProduct(String sql, String[] value);
 	
 }

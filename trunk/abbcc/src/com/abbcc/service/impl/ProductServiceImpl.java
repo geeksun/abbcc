@@ -6,8 +6,10 @@ import java.util.List;
 
 import com.abbcc.dao.ProductDAO;
 import com.abbcc.dao.ProductTypeDAO;
+import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.service.ProductService;
+import com.abbcc.util.product.ProductObject;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -87,6 +89,29 @@ public class ProductServiceImpl implements ProductService {
 
 	public void setProductTypeDao(ProductTypeDAO productTypeDao) {
 		this.productTypeDao = productTypeDao;
+	}
+
+	public Product getProductById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Product getProductByStateAndProductTypeId(int state, String productTypeId) {
+		 
+		return this.productDao.getProductByStateAndProductTypeId(state, productTypeId);
+	}
+
+	public void addProduct(Product product) {
+		this.productDao.addProduct(product);
+		
+	}
+
+	public void addProductInfo(ProductObject obj) {
+		 if(obj==null)return;
+		 String sql=obj.getSql();
+		 String[] value=obj.getValue();
+		 this.productDao.excetueSaveProduct(sql,value);
+		
 	}
 
 	 
