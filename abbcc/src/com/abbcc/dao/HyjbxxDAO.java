@@ -9,7 +9,7 @@ public interface HyjbxxDAO {
 	public int add(Hyjbxx hyjbxx);  
 
 	// 修改会员个人资料
-	public void update(Hyjbxx hyjbxx) throws Exception;
+	public void update(Hyjbxx hyjbxx);
 
 	// 删除会员个人资料
 	public void delete(int hyjbxx) throws Exception;
