@@ -19,7 +19,7 @@ String path = request.getContextPath();
     		var url = "<%=path%>/admin/productType.do?method=productSecondCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
-		    clearThirdSelect();
+		   // clearThirdSelect();
 	  	}
 	  	 function clearThirdSelect()
 	  	{
@@ -103,11 +103,11 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isNull=document.getElementById(isNullId); 
-				      isNull.value='true';    
+				      isNull.value='false';    
 			    }else
 			    {
 			     	  var isNull=document.getElementById(isNullId); 
-				      isNull.value='false';    
+				      isNull.value='true';    
 			    } 
 			}
 			
@@ -130,10 +130,10 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isShow=document.getElementById(isShowId); 
-				      isShow.value='true';    
+				      isShow.value='false';    
 			    }else{
 			     	var isShow=document.getElementById(isShowId); 
-				      isShow.value='false'; 
+				      isShow.value='true'; 
 			    } 
 			}
 		}
@@ -158,12 +158,12 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isHidden=document.getElementById(isHiddenId); 
-				      isHidden.value='true';  
+				      isHidden.value='false';  
 				     
 			    }else
 			    {
 			    	  var isHidden=document.getElementById(isHiddenId); 
-				      isHidden.value='false'; 
+				      isHidden.value='true'; 
 			    } 
 			}
 			 

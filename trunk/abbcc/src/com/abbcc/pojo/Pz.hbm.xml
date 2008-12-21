@@ -7,11 +7,14 @@
 <hibernate-mapping>
     <class name="com.abbcc.pojo.Pz" table="pz">
         <id name="tablename" type="java.lang.String">
-             <column name="tablename" length="32" />
+             <column name="tablename" length="255" />
              <generator  class="native"></generator>
          </id>
-         <property name="recnum" type="java.lang.Integer">
+         <property name="recnum" type="java.lang.Long">
              <column name="recnum" />
+         </property>
+         <property name="maxCount" type="java.lang.Long">
+             <column name="max_count" />
          </property>
     </class>
 </hibernate-mapping>
