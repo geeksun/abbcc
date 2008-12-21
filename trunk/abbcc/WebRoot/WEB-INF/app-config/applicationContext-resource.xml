@@ -20,7 +20,25 @@
                
          <property name="acquireRetryAttempts" value="30" />         
          <property name="testConnectionOnCheckout" value="false" />         
-    </bean>       
+    </bean>    
+   	<!--   
+    <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/abbcc?useUnicode=true&amp;characterEncoding=gbk</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value></value>
+		</property>
+	</bean>   
+       -->
 	<bean id="sessionFactory"	class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
@@ -30,14 +48,15 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">false</prop>
-				<!--   用于支持中文   -->
+				<!--   用于支持中文    加上不支持处理query  删除
 				<prop key="hibernate.query.factory_class">
 					org.hibernate.hql.classic.ClassicQueryTranslatorFactory
-				</prop>
+				</prop>-->
 				<!--  hibernate 批处理量 -->
 				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
 			</props>
-		</property>
+		</property> 
 		<property name="mappingResources">
 			<list>
 				<value>com/abbcc/pojo/Cpgqxx.hbm.xml</value>

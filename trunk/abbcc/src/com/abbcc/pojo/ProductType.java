@@ -4,6 +4,7 @@ public class ProductType {
 	
 	public static final int PRODUCT_TYPE_SHOW=1;
 	public static final int PRODUCT_TYPE_UN_SHOW=2;
+	public static final int PRODUCT_TYPE_PARENT_ID_ROOT=0;
 	private int id;
 
 	private String name;

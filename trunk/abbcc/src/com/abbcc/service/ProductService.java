@@ -3,6 +3,7 @@ package com.abbcc.service;
 import java.util.List;
 
 import com.abbcc.pojo.ProductType;
+ 
 
 
 public interface ProductService {
@@ -11,9 +12,9 @@ public interface ProductService {
 
 	void updateProductType(ProductType productType);
 
-	void deleteProductTypeById(int id);
+	void deleteProductTypeAndChildProductTypeById(int id);
 
-	void getProductTypeById(int id);
+	ProductType getProductTypeById(int id);
 
 	List getChildProductTypeById(int id);
 	

@@ -1,7 +1,6 @@
 package com.abbcc.admin;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,10 +11,8 @@ import org.apache.struts.action.ActionMapping;
 
 import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
-import com.abbcc.util.product.Product; 
+import com.abbcc.util.product.Product;
 import com.abbcc.util.product.ProductUtil;
-import com.abbcc.util.resource.InitResource;
-import com.abbcc.util.resource.ResourceUtil;
 
 public class ProductAction extends BaseAction {
 	 
@@ -142,81 +139,8 @@ public class ProductAction extends BaseAction {
 		return null;
 		
 	}
-	public ActionForward showProductType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) { 
-		try{
-		List<ProductType> topCategory=this.productService.getProductTypeByParentId(0); 
-		if(topCategory!=null&&topCategory.size()>0){
-			request.setAttribute("topCategory", topCategory); 
-			ProductType productType=topCategory.get(0);
-			List<ProductType> secondCategory=this.productService.getProductTypeByParentId(productType.getId()); 
-			request.setAttribute("secondCategory", secondCategory); 
-			if(secondCategory!=null&&secondCategory.size()>0){
-				ProductType secondProductType=secondCategory.get(0);
-				List<ProductType> thirdCategory=this.productService.getProductTypeByParentId(secondProductType.getId()); 
-				request.setAttribute("thirdCategory", thirdCategory);  
-			}  
-		} 
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return mapping.findForward("showProductType");
-	}
-	public ActionForward addProductType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) { 
-		String parentId=request.getParameter("parentId");
-		String name=request.getParameter("name");
-		String typeId=request.getParameter("typeId");
-		String type=request.getParameter("type");
-		String isShow=request.getParameter("isShow");
-	  
-		
-		boolean hasNummParam=ProductUtil.hasNullParam(parentId,name,typeId,type,isShow);
-		
-		if(!hasNummParam){
-			int _parentId=Integer.valueOf(parentId);
-			int _type=Integer.valueOf(type);
-			int _isShow=Integer.valueOf(isShow);
-			ProductType productType=new ProductType();
-			productType.setName(name);
-			productType.setParentId(_parentId);
-			productType.setIsShow(_isShow);
-			productType.setType(_type);
-			productType.setTypeId(typeId); 
-			this.productService.addProductType(productType);
-		}
-		 
-		return this.showProductType(mapping, form, request, response);
-	}
-	public ActionForward updateProductType(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) { 
-		String id=request.getParameter("id");
-		String parentId=request.getParameter("parentId");
-		String name=request.getParameter("name");
-		String typeId=request.getParameter("typeId");
-		String type=request.getParameter("type");
-		String isShow=request.getParameter("isShow");
-	  
-		
-		boolean hasNummParam=ProductUtil.hasNullParam(parentId,name,typeId,type,isShow);
-		
-		if(!hasNummParam){
-			int _id=Integer.valueOf(id);
-			int _parentId=Integer.valueOf(parentId);
-			int _type=Integer.valueOf(type);
-			int _isShow=Integer.valueOf(isShow);
-			ProductType productType=new ProductType();
-			productType.setName(name);
-			productType.setParentId(_parentId);
-			productType.setIsShow(_isShow);
-			productType.setType(_type);
-			productType.setTypeId(typeId); 
-			productType.setId(_id);
-			this.productService.addProductType(productType);
-		}
-		 
-		return this.showProductType(mapping, form, request, response);
-	}
+	
+	
 
 
 }
