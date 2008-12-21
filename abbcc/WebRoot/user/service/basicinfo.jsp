@@ -1,6 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
+	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
 %>
 
@@ -16,7 +17,7 @@
     <script src="<%=path%>/js/json.js"></script>
     <script src="<%=path%>/js/prototype.js"></script> 
 	<script type="text/javascript">
-		 // 检查选择的经营模式，选择不能超过3个，已经超过3个能去除
+		  // 检查选择的经营模式，选择不能超过3个，已经超过3个能去除
           function checkBizType(obj) {
             var counter = 0;
             if (document.getElementById("Type_Manufacturer").checked) { counter++;}
@@ -51,7 +52,12 @@
 										document.getElementsByName("mainProduct2")[2].checked = true;
 											});
 		function updateBasicInfo(){
-			document.basicInfoForm.action = "updateBasicInfo";
+			var zyhy = document.getElementsByName("zyhy");
+			//alert(zyhy.length);
+			//alert(zyhy.options.length);
+			//alert(zyhy.value);
+			//alert('ok');
+			document.basicInfoForm.action.value = "updateBasicInfo";
 			document.basicInfoForm.submit();
 		}
 	</script>
@@ -65,7 +71,7 @@
   	<form action="traceInfo.do" name="basicInfoForm">
   	<input type="hidden" name="action">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
-    	<tr>
+    	<tr> 
     		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${leaguer.gsmc}"  size="40"></td>
     	</tr>
     	<!-- <tr>
@@ -75,7 +81,7 @@
     	<tr>
     		<td align=right>企业类型：*</td>
     		<td><select name="qylx" >
-    			<option value="">其他</option>
+    			<option value="10">其他</option>
 					<option value="1">有限责任公司(独资)</option>
 					<option value="2">股份有限公司(上市)</option>
 					<option value="3" >股份有限公司(非上市)</option>
@@ -104,40 +110,17 @@
     	</tr>
     	<tr>
     		<td align=right>主要经营地点：*</td>
-    		<td><input type="text" name="zyjydd" value="${leaguer.jydz }" size="27">
+    		<td><input type="text" name="jydz" value="${leaguer.jydz }" size="27">
     		<span class=note>（请填写业务部门工作地点）</span></td>
     	</tr>
     	<tr>
-    		<td align=right>主营产品：<font color=red>*</font></td>
-    		<td>
-    			<table>
-    				<tr>
-    					<td>
-    					<INPUT id=productionService_0 maxLength=20 size=10 name=zycp value="${leaguer.xsdcp}">
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp value="${leaguer.cgdcp}">
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					</td>
-    				</tr>
-    				<tr>
-    					<td>
-    					<INPUT id=productionService_0 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					</td>
-    				</tr>
-    				<tr>
-    					<td>
-    					<INPUT id=productionService_0 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<INPUT id=productionService_1 maxLength=20 size=10 name=zycp>
-    					<br>
-    				<span class=note>（每空限填１种产品名称，建议10个字以下，如：钮扣）</span>
-    					</td>
-    				</tr>
-    			</table>
+    		<td align=right>销售的产品：<font color=red>*</font></td>
+    		<td><input type="text" name="xsdcp" value="${leaguer.xsdcp }">
+    		</td>
+    	</tr>
+    	<tr>
+    		<td align=right>采购的产品：<font color=red>*</font></td>
+    		<td><input type="text" name="cgdcp" value="${leaguer.cgdcp }">
     		</td>
     	</tr>
     	<tr>
@@ -176,8 +159,7 @@
               <tr>
               <td>
               <SPAN id=selectedText style="DISPLAY: none"><BR>以下是您已选择的主营行业：</SPAN>
-              <select style="WIDTH: 368px" size=8 name=right_category_id> 
-              	
+              <select style="WIDTH: 368px" size=8 name="zyhy" multiple> 
               </select> 
               </td>
                </tr>
@@ -189,11 +171,11 @@
     	</p>
     	<table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C">
                <tr>
-               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="true_name" value="${hyjbxx.zsxm}"" ><SPAN class=note> 
+               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="zsxm" value="${hyjbxx.zsxm}"" ><SPAN class=note> 
                   请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
                </tr>
                <tr>
-               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="telephone" value="${hyjbxx.gddh}"" ></td>
+               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="gddh" value="${hyjbxx.gddh}"" ></td>
                </tr>
                <tr>
                <td align=right>公司所在地：<font color=red>*</font></td><td><input type=text name="gsszd" value="${hyjbxx.gsszd }" size=54></td>
@@ -348,7 +330,7 @@
 		}
 	  	function doSubmit1(button_clicked){
 	  	   var tmpform = document.basicInfoForm;
-	  	   var selected_categories = tmpform.right_category_id.options;
+	  	   var selected_categories = tmpform.zyhy.options;
 	  	   
 	  	   if(button_clicked &&(button_clicked == "deselect"||button_clicked == "select")) {
 	  	   
@@ -369,7 +351,7 @@
 		      }else{
 		        addOptions(categories, selected_categories,secCategories,topCategories);
 		      }
-		   } else{
+		    }else{
 			   if(button_clicked == 'deselect') {   // Remove from right pane
 			        removeOptions(selected_categories, categories);
 			   }

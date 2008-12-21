@@ -28,10 +28,9 @@
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="lower_right">基本资料管理</a></dd>
      	<dd>后台密码修改</dd>
      	<dd><a href="main.jsp" target="lower_right">公司简介</a></dd>
-     	<dd>荣誉证书</dd>
+     	<dd>荣誉证书(参照东方)</dd>
      	<dd>技术实力</dd>
      	<dd>上传公司标志</dd>
-     	<dd>数据导入</dd>
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">根结点</dt>
