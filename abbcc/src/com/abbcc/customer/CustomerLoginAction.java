@@ -54,6 +54,7 @@ public class CustomerLoginAction extends BaseAction {
 			String hyjbxxid = hyjbxxService.getIdByName(name);
 			session.setAttribute("customer", name);
 			session.setAttribute("hyjbxxid", hyjbxxid);
+			 
 			return actionMapping.findForward("loginsuccess");
 			
 			//if(!hyjbxxid.equals("")){
