@@ -16,7 +16,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	protected final Log log = LogFactory.getLog(getClass());
 
 	 
-	public void save(Object o) {
+	public void add(Object o) {
 		getHibernateTemplate().save(o);
 	}
 	public void update(Object o) {
