@@ -6,11 +6,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.abbcc.pojo.Product;
+import com.abbcc.service.ProductService;
+import com.abbcc.servlet.StartServlet;
 
 public class ProductUtil {
 	private   Log log = LogFactory.getLog(ProductUtil.class);
 
-	public static final String PRODUCT_TABLE_INDEX_NAME="product_";
+	public static final String PRODUCT_TABLE_INDEX_NAME="product_table";
 	
 	public static boolean isEqualLength(String[]... ss){
 		if(ss==null)return false;
@@ -24,7 +26,8 @@ public class ProductUtil {
 		return true;
 	}
 	public static String getNextTableName(){
-		
+		  ProductService productService= (ProductService) StartServlet.getBean("productService");
+		 
 		
 		return "product_";
 	}
@@ -184,7 +187,7 @@ public class ProductUtil {
 					ret.append(",");
 				}else
 				{
-					 ret.append(temp+",");
+					 ret.append( ","+temp);
 				}
 				
 			}
@@ -196,5 +199,21 @@ public class ProductUtil {
 		 if(str==null)return null;
 		 String[] ret=str.split(",|，"); 
 		 return ret;
+	}
+	private void test(){
+		Product product=new Product();
+		product.setIdFiledName("id");
+		product.setIsHidden("false,false,false,true");
+		product.setIsNull("true,true,true,false");
+		product.setIsShow("true,true,true,true");
+		product.setOtherFiledName("f_1,f_2,f_3,f_4");
+		product.setPropertyName("品牌,品牌2,类别:hehe#heihei#lala,品牌3");
+		product.setRemark("ss,ss,ss,ss");
+		product.setType("text,text,select,text");
+		product.setUnit("mm,mm,nn,nn");
+		product.setFormName("f_1,f_2,f_3,f_4"); 
+		product.setProductTypeId("010101");
+		product.setState(Product.PRODUCT_STATE_IN_USED);
+		product.setTableName("t_010101");
 	}
 }

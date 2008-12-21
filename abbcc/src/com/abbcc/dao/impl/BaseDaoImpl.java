@@ -126,5 +126,9 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	public void delete(Class clazz, Serializable id) {
 		getHibernateTemplate().delete(getObject(clazz, id));
 	}
-
+	public void exectueSQLSql(String sql) {
+		 this.getSession().createSQLQuery(sql).executeUpdate(); 
+	}
+	 
+	
 }

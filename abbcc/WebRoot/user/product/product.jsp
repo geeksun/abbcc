@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
-<%@ page import="com.abbcc.common.AppConstants" %>
+<%@ page import="com.abbcc.common.AppConstants"%>
 
 <%
 String path = request.getContextPath();
@@ -9,26 +9,26 @@ String path = request.getContextPath();
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>product</title> 
-		<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
-		<meta name="description" content=""/>
-		<meta name="keywords" content=""/> 
-   		<script src="<%=path%>/js/prototype.js"></script>
+		<title>product</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<script src="<%=path%>/js/prototype.js"></script>
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/AlicnTree.css"
-			type="text/css"/>
+			type="text/css" />
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myali_search_v02.css"
-			type="text/css"/>
+			type="text/css" />
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/mainframe.css"
-			type="text/css"/>
+			type="text/css" />
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/content.css"
-			type="text/css"/>
+			type="text/css" />
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myalibaba.css"
-			type="text/css"/> 
+			type="text/css" />
 		<style>
 <!--
 .tablestyle{
@@ -100,7 +100,7 @@ ul.callinglayout li {
 		
 	}
 --></style>
-<script language="JavaScript" type="text/javascript">
+		<script language="JavaScript" type="text/javascript">
 		 
     	function onChangeTopCategory(value){
     		var paramname = value; 
@@ -108,12 +108,7 @@ ul.callinglayout li {
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
 	  	}
-	  	function clearThirdSelect()
-	  	{
-	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
-	  	   tdleafCatFormKey.removeChild();
-	  	  // tdleafCatFormKey.innerHTML="";
-	  	}
+	   
 	    function showTopChecked(originalRequest){
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
@@ -122,8 +117,8 @@ ul.callinglayout li {
 	  	} 
 	  	function clearThirdSelect()
 	  	{
-	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
-	  	   tdleafCatFormKey.innerHTML="";
+	  	   //var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	   //tdleafCatFormKey.innerHTML="";
 	  	}
 		function onChangeSecondCategory(value){
 			var paramname = value; 
@@ -169,14 +164,14 @@ ul.callinglayout li {
 	  			} 
 	  	} 
 	  	</script>
-	</head> 
-	<body>   
+	</head>
+	<body>
 		<table align="right" class="content_border" border="0" cellpadding="0"
 			cellspacing="0" width="100%">
 			<tbody>
 				<tr>
-					<td> 
-						<form name="mainform" method="post">  
+					<td>
+						<form name="mainform" method="post">
 							<table width="100%">
 								<tbody>
 									<tr>
@@ -190,7 +185,7 @@ ul.callinglayout li {
 												<strong>为了让买家能更精确找到您的产品，您可以做以下几步提高您的信息精度，获得更好的排名：</strong>
 												<br />
 												1、一条信息只发布一个产品；&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												 
+
 
 												<br />
 												2、您的产品名称务必出现在标题中；&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -216,7 +211,8 @@ ul.callinglayout li {
 														onmouseover="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 														onmouseout="document.getElementById('toolbar').style.display = 'none';document.getElementById('Htab').className='Htab_off';"
 														onmousemove="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';">相关帮助
-														<ul style="z-index: 100; background-color: rgb(255, 255, 255);"
+														<ul
+															style="z-index: 100; background-color: rgb(255, 255, 255);"
 															onmousemove="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 															onmouseover="document.getElementById('toolbar').style.display = 'block';document.getElementById('Htab').className='Htab_on';"
 															class="toolbar s2" id="toolbar">
@@ -283,15 +279,18 @@ ul.callinglayout li {
 											<b>信息类型</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box">
-											<input value="<%=AppConstants.PRODUCT_SALE %>" name="xxlx" checked="checked"  type="radio"/>
+											<input value="<%=AppConstants.PRODUCT_SALE%>" name="xxlx"
+												checked="checked" type="radio" />
 											供应
-											<input value="<%=AppConstants.PRODUCT_BUY %>" name="xxlx"   type="radio"/>
+											<input value="<%=AppConstants.PRODUCT_BUY%>" name="xxlx"
+												type="radio" />
 											求购
-											<input value="<%=AppConstants.PRODUCT_QUICK_BUY %>" name="xxlx" type="radio"/>
+											<input value="<%=AppConstants.PRODUCT_QUICK_BUY%>"
+												name="xxlx" type="radio" />
 											紧急求购
 										</td>
 									</tr>
-									 
+
 									<tr>
 										<td class="list_left_box" align="right" valign="top">
 											<img id="img_right__fmo.a._0.k"
@@ -307,8 +306,9 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td class="s lh13 normal" valign="top">
-															<input name="cpmc"  value="" maxlength="16" size="20"  type="text"/>
-															<div class="MB_Menu" id="Banner_Menu"></div> 
+															<input name="cpmc" value="" maxlength="16" size="20"
+																type="text" />
+															<div class="MB_Menu" id="Banner_Menu"></div>
 														</td>
 													</tr>
 												</tbody>
@@ -316,18 +316,17 @@ ul.callinglayout li {
 											<table border="0" bordercolor="#cccccc" cellpadding="3"
 												cellspacing="0" width="100%">
 												<tbody>
-													<tr >
+													<tr>
 														<td class="s lh13 normal" valign="top">
 															产品名称中请勿出现规格、型号、品牌等内容。
 														</td>
 													</tr>
 													<tr id="" style="display: none;">
 														<td class="s lh13 wrong" valign="top">
-															<span class="wrongwords" id="">
-															</span>
+															<span class="wrongwords" id=""> </span>
 														</td>
 													</tr>
-													 
+
 												</tbody>
 											</table>
 										</td>
@@ -348,100 +347,100 @@ ul.callinglayout li {
 													<tr>
 														<td>
 															<table>
-															<tr>
-															  <td  id="tdtopCatFormKey">
-															  <select name="topCatFormKey" size="8"
-																style="width: 129px;" id="topCatFormKey"
-																onchange="onChangeTopCategory(this.value)">
-																<%
-																	List topCategory = (List) request.getAttribute("topCategory");
-																	if (topCategory != null) {
-																		Iterator iter = topCategory.iterator();
-																		while (iter.hasNext()) {
-																			ProductType productType = (ProductType) iter.next();
-																			if (productType != null) {
-																		String name = productType.getName();
-																		int value = productType.getId();
-																		int isShow = productType.getIsShow();
-																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																				: false;
-																		out.print("<option value=\"" + value + "\"");
-																		if (able) {
-																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
-																		}
-																		out.println(" ' >");
-																		out.println(name);
-																		out.println("</option>");
+																<tr>
+																	<td id="tdtopCatFormKey">
+																		<select name="topCatFormKey" size="8"
+																			style="width: 129px;" id="topCatFormKey"
+																			 onchange="onChangeTopCategory(this.value) ">
+																			<%
+																				List topCategory = (List) request.getAttribute("topCategory");
+																				if (topCategory != null) {
+																					Iterator iter = topCategory.iterator();
+																					while (iter.hasNext()) {
+																						ProductType productType = (ProductType) iter.next();
+																						if (productType != null) {
+																							String name = productType.getName();
+																							int value = productType.getId();
+																							int isShow = productType.getIsShow();
+																							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																									: false;
+																							out.print("<option value=\"" + value + "\"");
+																							if (able) {
+																								out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																							}
+																							out.println(">");
+																							out.println(name);
+																							out.println("</option>");
 
-																			}
-																		}
-																	}
-																%>
+																						}
+																					}
+																				}
+																			%>
 
-															</select>
-															</td>
-															<td  id="tdsecondCatFormKey">
-															<select name="secondCatFormKey" size="8"
-																style="width: 129px;" id="secondCatFormKey"
-																onchange="onChangeSecondCategory(this.value)">
-																<%
-																	List secondCategory = (List) request.getAttribute("secondCategory");
-																	if (secondCategory != null) {
-																		Iterator iter = secondCategory.iterator();
-																		while (iter.hasNext()) {
-																			ProductType productType = (ProductType) iter.next();
-																			if (productType != null) {
-																		String name = productType.getName();
-																		int value = productType.getId();
-																		int isShow = productType.getIsShow();
-																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																				: false;
-																		out.print("<option value=\"" + value + "\"");
-																		if (able) {
-																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
-																		}
-																		out.println(" ' >");
-																		out.println(name);
-																		out.println("</option>");
+																		</select>
+																	</td>
+																	<td id="tdsecondCatFormKey">
+																		<select name="secondCatFormKey" size="8"
+																			style="width: 129px;" id="secondCatFormKey"
+																			onchange="onChangeSecondCategory(this.value)">
+																			<%
+																				List secondCategory = (List) request.getAttribute("secondCategory");
+																				if (secondCategory != null) {
+																					Iterator iter = secondCategory.iterator();
+																					while (iter.hasNext()) {
+																						ProductType productType = (ProductType) iter.next();
+																						if (productType != null) {
+																					String name = productType.getName();
+																					int value = productType.getId();
+																					int isShow = productType.getIsShow();
+																					boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																							: false;
+																					out.print("<option value=\"" + value + "\"");
+																					if (able) {
+																						out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																					}
+																					out.println(" >");
+																					out.println(name);
+																					out.println("</option>");
 
-																			}
-																		}
-																	}
-																%>
-															</select>
-															</td>
-															<td  id="tdleafCatFormKey">
-															<select    name="leafCatFormKey" size="8"
-																id="leafCatFormKey" style="width: 129px;"
-																onchange="onChangeLeafCategory(this.value)">
-																<%
-																	List thirdCategory = (List) request.getAttribute("thirdCategory");
-																	if (thirdCategory != null) {
-																		Iterator iter = thirdCategory.iterator();
-																		while (iter.hasNext()) {
-																			ProductType productType = (ProductType) iter.next();
-																			if (productType != null) {
-																		String name = productType.getName();
-																		int value = productType.getId();
-																		int isShow = productType.getIsShow();
-																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																				: false;
-																		out.print("<option value=\"" + value + "\"");
-																		if (able) {
-																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
-																		}
-																		out.println(" ' >");
-																		out.println(name);
-																		out.println("</option>");
+																						}
+																					}
+																				}
+																			%>
+																		</select>
+																	</td>
+																	<td id="tdleafCatFormKey">
+																		<select name="leafCatFormKey" size="8"
+																			id="leafCatFormKey" style="width: 129px;"
+																			onchange="onChangeLeafCategory(this.value)">
+																			<%
+																				List thirdCategory = (List) request.getAttribute("thirdCategory");
+																				if (thirdCategory != null) {
+																					Iterator iter = thirdCategory.iterator();
+																					while (iter.hasNext()) {
+																						ProductType productType = (ProductType) iter.next();
+																						if (productType != null) { 
+																							String name = productType.getName();
+																							int value = productType.getId();
+																							int isShow = productType.getIsShow();
+																							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																									: false;
+																							out.print("<option value=\"" + value + "\"");
+																							if (able) {
+																								out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																							}
+																							out.println(" >");
+																							out.println(name);
+																							out.println("</option>");
 
-																			}
-																		}
-																	}
-																%>
-															</select>
-															</td>
-															</tr>
-															</table> 
+																						}
+																					}
+																				}
+																			%>
+																		</select>
+																	</td>
+																</tr>
+															</table>
 														</td>
 													</tr>
 													<tr>
@@ -476,7 +475,7 @@ ul.callinglayout li {
 										<td class="list_left_box" align="right" valign="top">
 											<img id="img_right__fmo.a._0.s"
 												src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-												align="absmiddle" width="19" height="16"/>
+												align="absmiddle" width="19" height="16" />
 											<b> 信息标题</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box" valign="top">
@@ -485,8 +484,8 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td>
-															<input name="xxbt" value="供应" size="46"
-																  maxlength="25" type="text" />
+															<input name="xxbt" value="供应" size="46" maxlength="25"
+																type="text" />
 														</td>
 													</tr>
 												</tbody>
@@ -529,15 +528,16 @@ ul.callinglayout li {
 										</td>
 										<td class="list_right_box">
 											<div id="div_OfferExpire_normal">
-												<input   value="10" name="xxyxq" type="radio"/>
+												<input value="10" name="xxyxq" type="radio" />
 												10天
-												<input   value="20" name="xxyxq" type="radio"/>
+												<input value="20" name="xxyxq" type="radio" />
 												20天
-												<input   value="30" name="xxyxq" type="radio"/>
+												<input value="30" name="xxyxq" type="radio" />
 												1个月
-												<input  value="90"  name="xxyxq" type="radio" />
+												<input value="90" name="xxyxq" type="radio" />
 												3个月
-												<input  value="180" checked="checked" name="xxyxq" type="radio"/>
+												<input value="180" checked="checked" name="xxyxq"
+													type="radio" />
 												6个月
 											</div>
 											<div id="div_OfferExpire_QUICKBUY" style="display: none;">
@@ -594,15 +594,14 @@ ul.callinglayout li {
 											<style>
 												#div_productfeature input{margin-right:6px}
 											</style>
-											<div style="padding-top: 5px;" id="div_productfeature"> 
-											<%
-												String productTemplate=(String)request.getAttribute("productTemplate");
-												if(productTemplate!=null)
-												{
-													out.println(productTemplate);	
-												}
-												 
-											%>
+											<div style="padding-top: 5px;" id="div_productfeature">
+												<%
+															String productTemplate = (String) request
+															.getAttribute("productTemplate");
+													if (productTemplate != null) {
+														out.println(productTemplate);
+													}
+												%>
 											</div>
 										</td>
 									</tr>
@@ -610,14 +609,14 @@ ul.callinglayout li {
 									<tr>
 										<td class="list_left_box" align="right" valign="top">
 											<a name="flagDetails"></a>
-											<b>详细说明</b><span   style="display: none;"><font
+											<b>详细说明</b><span style="display: none;"><font
 												color="#ff0000">*</font> </span>
-											 
+
 										</td>
 										<td class="list_right_box" valign="top">
 											<div>
-												<textarea id="description" name="xxsm" 
-												style="width: 430px; height: 350px;"></textarea>
+												<textarea id="description" name="xxsm"
+													style="width: 430px; height: 350px;"></textarea>
 											</div>
 											<table border="0" cellpadding="0" cellspacing="0"
 												width="100%">
@@ -644,14 +643,13 @@ ul.callinglayout li {
 														<td class="s lh13 normal" valign="top"></td>
 													</tr>
 												</tbody>
-											</table>   
+											</table>
 											<table style="display: block;" id="inforbox_1055"
 												align="center" cellpadding="0" cellspacing="0" width="98%">
 												<tbody>
 													<tr>
 														<td class="s lh13 normal">
-															<span>1、建议从产品性能、用途、包装、售后服务等方面来描述；<br/> 
-																	</span>
+															<span>1、建议从产品性能、用途、包装、售后服务等方面来描述；<br /> </span>
 														</td>
 													</tr>
 												</tbody>
@@ -663,7 +661,7 @@ ul.callinglayout li {
 										<td class="list_left_box" align="right" valign="top">
 											<b>上传图片</b>&nbsp;
 										</td>
-										<td class="list_right_box" valign="top"> 
+										<td class="list_right_box" valign="top">
 											<div id="uploadpic" style="display: none;"></div>
 											<div id="showpic" style=""></div>
 											<table border="0" cellpadding="3" cellspacing="0" width="50%">
@@ -698,24 +696,20 @@ ul.callinglayout li {
 													</tr>
 													<tr>
 														<td align="center" height="35">
-															<input   value="上传"
-																name="uploadPicBtn0" type="button" />
+															<input value="上传" name="uploadPicBtn0" type="button" />
 															&nbsp;
 
 															<input onclick="delete_picture('0');" value="删除"
 																name="delPicBtn0" type="button" />
 														</td>
 														<td align="center">
-															<input   value="上传"
-																name="uploadPicBtn1" type="button" />
+															<input value="上传" name="uploadPicBtn1" type="button" />
 															&nbsp;
 
-															<input   value="删除"
-																name="delPicBtn1" type="button" />
+															<input value="删除" name="delPicBtn1" type="button" />
 														</td>
 														<td align="center">
-															<input   value="上传"
-																name="uploadPicBtn2" type="button" />
+															<input value="上传" name="uploadPicBtn2" type="button" />
 															&nbsp;
 
 															<input onclick="delete_picture('2');" value="删除"
@@ -723,9 +717,11 @@ ul.callinglayout li {
 														</td>
 													</tr>
 												</tbody>
-											</table> 
-				
-							</td> </tr> </tbody>
+											</table>
+
+										</td>
+									</tr>
+								</tbody>
 							</table>
 							<table id="tab_trade_productfeature" border="0" cellpadding="0"
 								cellspacing="0" width="100%">
@@ -772,7 +768,7 @@ ul.callinglayout li {
 																							<td id="trade_prompt" style="padding: 0px;"
 																								valign="middle">
 																								1、如买家直接按标价购买，您必须按照交易条件履约，否则视为违约；
-																								<br/>
+																								<br />
 																								2、买家如需还价，您可在买家出价后，到“交易管理”中修改价格，达成最后交易。
 																							</td>
 																						</tr>
@@ -789,13 +785,12 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature59238"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>计量单位</b>
 															</td>
-															<td class="list_right_box"> 
-																<input class="tpf_input" name="jldw"
-																	id="feature59238" value="" size="23" maxlength="12"
-																	type="text"/>
+															<td class="list_right_box">
+																<input class="tpf_input" name="jldw" id="feature59238"
+																	value="" size="23" maxlength="12" type="text" />
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59238" class="s lh13 wrong"
 																	style="display: none; width: 110px;"> <span
@@ -812,13 +807,12 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature59240"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>产品单价</b>
 															</td>
 															<td class="list_right_box">
-																 			<input class="tpf_input" name="cpdj"
-																	id="feature59240" value="" size="23" maxlength="12"
-																	 type="text" />
+																<input class="tpf_input" name="cpdj" id="feature59240"
+																	value="" size="23" maxlength="12" type="text" />
 																元/
 																<span id="trade_unit_price">单位</span>
 																<span style="padding-left: 10px;"><span
@@ -837,13 +831,12 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature59239"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>最小起订量</b>
 															</td>
-															<td class="list_right_box"> 
-																<input class="tpf_input" name="zxqdl"
-																	id="feature59239" value="" size="23" maxlength="12" 
-																	type="text" />
+															<td class="list_right_box">
+																<input class="tpf_input" name="zxqdl" id="feature59239"
+																	value="" size="23" maxlength="12" type="text" />
 																<span id="trade_unit_beginamount">单位</span>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59239" class="s lh13 wrong"
@@ -860,13 +853,12 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature59241"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>供货总量</b>
 															</td>
 															<td class="list_right_box">
-															  <input class="tpf_input" name="ghzl"
-																	id="feature59241" value="" size="23" maxlength="12" 
-																	type="text"/>
+																<input class="tpf_input" name="ghzl" id="feature59241"
+																	value="" size="23" maxlength="12" type="text" />
 																<span id="trade_unit_amount">单位</span>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59241" class="s lh13 wrong"
@@ -883,13 +875,12 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature59242"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>发货期限</b>
 															</td>
-															<td class="list_right_box"> 
-																自买家付款之日起 
-																<select name="fhqx" id="feature59242"
-																	maxlength="80"    >
+															<td class="list_right_box">
+																自买家付款之日起
+																<select name="fhqx" id="feature59242" maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
@@ -964,15 +955,14 @@ ul.callinglayout li {
 																height="25">
 																<img id="img_right_feature116330"
 																	src="<%=path%>/user/product/product_files/icon_grayright_19x19.gif"
-																	align="absmiddle" width="19" height="16"/>
+																	align="absmiddle" width="19" height="16" />
 																<b>供应商类型</b><font color="#ff0000">*</font>
 															</td>
 															<td class="list_right_box">
-																 
+
 																我是该产品的
 
-																<select name="gyslx" id="feature116330"
-																	maxlength="80"  >
+																<select name="gyslx" id="feature116330" maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
@@ -1046,20 +1036,20 @@ ul.callinglayout li {
 													</tr>
 												</tbody>
 											</table>
-											 
+
 										</td>
 									</tr>
 
 									<tr>
 										<td>
-											 
+
 
 										</td>
 									</tr>
 								</tbody>
 							</table>
-							<br/>
-							 
+							<br />
+
 							<table border="0" cellpadding="0" cellspacing="0" width="100%">
 								<tbody>
 									<tr>
@@ -1083,8 +1073,7 @@ ul.callinglayout li {
 										<td>
 											<div class="s lh13 normal s2">
 												<a name="aegisAlipay5"></a>请确认您的联系方式，如有误将无法通过审核！
-												<a name="aegisAlipay6"></a><a
-													href="#" target="_blank">点此修改</a>
+												<a name="aegisAlipay6"></a><a href="#" target="_blank">点此修改</a>
 											</div>
 										</td>
 									</tr>
@@ -1137,20 +1126,20 @@ ul.callinglayout li {
 										<td class="C spc16" align="center">
 											<input name="postsubmit"
 												onmousedown="javascript:postOffer(bizTypeVar)"
-												value="同意服务条款，我要发布" class="submitButton" type="button"/>
+												value="同意服务条款，我要发布" class="submitButton" type="button" />
 											<a href="#"
 												onclick="previewPost(document.mainform);return false;">预览这条信息</a>
 										</td>
 									</tr>
 								</tbody>
-							</table>  
-							<br/>
-						</form> 
-						<br/>
-						<br/>
+							</table>
+							<br />
+						</form>
+						<br />
+						<br />
 					</td>
 				</tr>
 			</tbody>
-		</table>   
+		</table>
 	</body>
 </html>

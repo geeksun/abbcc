@@ -18,6 +18,9 @@
 		<property name="productTypeDao">
 			<ref bean="productTypeDao" />
 		</property>
+		<property name="pzDao">
+			<ref bean="pzDao" />
+		</property>
 	</bean> 
 	<bean id="productService" parent="baseTransactionProxy">
 		<property name="target">

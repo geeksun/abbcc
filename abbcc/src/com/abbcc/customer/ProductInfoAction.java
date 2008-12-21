@@ -47,19 +47,13 @@ public class ProductInfoAction extends BaseAction {
 				} 
 			} 
 		}
-		
-			
-		/*	String sql = ProductTemplate.getInstance()
-					.getProductInsertValueSql(request,
-							ProductTemplate.PRODUCT_KEY);
-*/
-			//productService.addProduct(null, null, sql);
+		 
 
 		} catch (Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}
-		return mapping.findForward("");
+		return this.showProductInfo(mapping, form, request, response);
 	}
 
 	public ActionForward productList(ActionMapping mapping, ActionForm form,
@@ -78,6 +72,31 @@ public class ProductInfoAction extends BaseAction {
 			HttpServletRequest request, HttpServletResponse response) {
 
 		return mapping.findForward("");
+	}
+	public ActionForward productTemplate(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+		response.setContentType("text/xml;charset=UTF-8");
+		response.setHeader("Pragma", "No-cache");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setDateHeader("Expires", 0);  
+		String node = RequestUtils.getParameter(request, "key");
+		try{
+		if(node!=null){
+			Product product=this.productService.getProductByStateAndProductTypeId(Product.PRODUCT_STATE_IN_USED, node);
+			
+			String path=request.getContextPath(); 
+			
+			String productTemplate=ProductTemplate.getInstance().getTableStyle(product,path);
+			 
+			PrintWriter out = response.getWriter();
+			
+			out.write(productTemplate);
+			
+		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		 return null;
 	}
  
 
@@ -105,24 +124,11 @@ public class ProductInfoAction extends BaseAction {
 						Product product=this.productService.getProductByStateAndProductTypeId(Product.PRODUCT_STATE_IN_USED, productTypeId);
 						
 						String path=request.getContextPath(); 
-						product=new Product();
-						product.setIdFiledName("id");
-						product.setIsHidden("false,false,false,true");
-						product.setIsNull("true,true,true,false");
-						product.setIsShow("true,true,true,true");
-						product.setOtherFiledName("f_1,f_2,f_3,f_4");
-						product.setPropertyName("品牌,品牌2,类别:hehe#heihei#lala,品牌3");
-						product.setRemark("ss,ss,ss,ss");
-						product.setType("text,text,select,text");
-						product.setUnit("mm,mm,nn,nn");
-						product.setFormName("f_1,f_2,f_3,f_4"); 
-						product.setProductTypeId("010101");
-						product.setState(Product.PRODUCT_STATE_IN_USED);
-						product.setTableName("t_010101");
+						
 						String productTemplate=ProductTemplate.getInstance().getTableStyle(product,path);
 						request.setAttribute("productTemplate", productTemplate);
 					}
-					
+					 
 					
 				}  
 			} 
@@ -133,6 +139,7 @@ public class ProductInfoAction extends BaseAction {
 		
 		
 	}
+	
 	public ActionForward productSecondCategory(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {

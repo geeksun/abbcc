@@ -30,4 +30,6 @@ public interface ProductService {
 	Product getProductByStateAndProductTypeId(int state,String productTypeId);
 
 	void addProductInfo(ProductObject obj);
+	
+	
 }

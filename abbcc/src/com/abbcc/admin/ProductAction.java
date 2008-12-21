@@ -67,15 +67,13 @@ public class ProductAction extends BaseAction {
 				product.setFormName(formName);
 				
 				product.setProductTypeId(productType);
-				product.setState(Product.PRODUCT_STATE_IN_USED);
+				//product.setState(Product.PRODUCT_STATE_IN_USED);
 				 product.setTableName(tableName); 
 				product.setProductName(productName);
 				
 				
 				this.productService.addProduct(product);
-				
-				//String table=TableUtil.getCreateTable(product);
-				//System.out.println(table);
+			 
 			}
 		
 
@@ -83,7 +81,7 @@ public class ProductAction extends BaseAction {
 			log.error(e);
 			e.printStackTrace();
 		}
-		return mapping.findForward("");
+		return this.showProduct(mapping, form, request, response);
 	}
 
 	public ActionForward productList(ActionMapping mapping, ActionForm form,

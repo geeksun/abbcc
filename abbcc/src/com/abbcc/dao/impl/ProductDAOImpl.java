@@ -22,10 +22,7 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 
 	public void addProduct(Product product) {
 		this.save(product);
-		 
-		String table=TableUtil.getCreateTable(product);
-		this.getSession().createSQLQuery(table).executeUpdate();
-		
+		  
 	}
 
 	public void excetueSaveProduct(String sql, String[] value) {

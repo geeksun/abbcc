@@ -50,7 +50,7 @@ public class ProductTemplate {
 			String _propertyNames = propertyNames[i];
 			String _type = types[i];
 			String _isHidden = isHiddens[i];
-			if (_isShow.equals("false")) {
+			if (!_isShow.equals("true")) {
 				continue;
 			} 
 			StringBuilder tempBuilder = new StringBuilder();

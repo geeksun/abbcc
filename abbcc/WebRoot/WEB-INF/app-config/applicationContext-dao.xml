@@ -9,6 +9,11 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
+	<bean id="pzDao" class="com.abbcc.dao.impl.PzDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
 	<bean id="gsjbxxDao" class="com.abbcc.dao.impl.GsjbxxDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>

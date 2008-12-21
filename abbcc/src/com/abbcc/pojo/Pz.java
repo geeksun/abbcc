@@ -10,7 +10,9 @@ public class Pz implements java.io.Serializable {
 
 	private String tablename;
 
-	private Integer recnum;
+	private long recnum;
+	
+	private long maxCount;
 
 	// Constructors
 
@@ -32,13 +34,23 @@ public class Pz implements java.io.Serializable {
 		this.tablename = tablename;
 	}
 
-	public Integer getRecnum() {
+	public long getMaxCount() {
+		return maxCount;
+	}
+
+	public void setMaxCount(long maxCount) {
+		this.maxCount = maxCount;
+	}
+
+	public long getRecnum() {
 		return recnum;
 	}
 
-	public void setRecnum(Integer recnum) {
+	public void setRecnum(long recnum) {
 		this.recnum = recnum;
 	}
+
+	 
 
 
 }
