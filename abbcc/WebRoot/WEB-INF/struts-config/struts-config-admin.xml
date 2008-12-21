@@ -3,23 +3,36 @@
 <struts-config>
 	<data-sources />
 	<form-beans>
-		<form-bean name="adminLoginForm" type="org.apache.struts.validator.DynaValidatorForm">
-			<form-property name="uname" type="java.lang.String"/>
-			<form-property name="upass" type="java.lang.String"/>
+		<form-bean name="adminLoginForm"
+			type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="uname" type="java.lang.String" />
+			<form-property name="upass" type="java.lang.String" />
 		</form-bean>
 	</form-beans>
-	<global-exceptions>
-	</global-exceptions>
-	<global-forwards>
-	</global-forwards>
+	<global-exceptions></global-exceptions>
+	<global-forwards></global-forwards>
 	<action-mappings>
-	  <action path="/adminlogin" attribute="adminLoginForm" name="adminLoginForm" scope="request"  type="" >
-      	
-      </action>
-      <action attribute="adminLoginForm" name="adminLoginForm" input="/admin/index.jsp"
-			parameter="adminstatus" path="/adminlogin" scope="request"
-			type="com.abbcc.struts.action.adminLoginAction" validate="true">
+		<action path="/adminlogin" attribute="adminLoginForm"
+			name="adminLoginForm" scope="request" type="">
+
+		</action>
+		<action attribute="adminLoginForm" name="adminLoginForm"
+			input="/admin/index.jsp" parameter="adminstatus" path="/adminlogin"
+			scope="request" type="com.abbcc.struts.action.adminLoginAction"
+			validate="true">
 			<forward name="adminlogin" path="/admin/"></forward>
+		</action>
+		<action path="/admin/productType" parameter="method"
+			type="com.abbcc.admin.ProductTypeAction">
+			<forward name="showProductType"
+				path="/admin/product/showProductType.jsp">
+			</forward>
+		</action>
+		<action path="/admin/product" parameter="method"
+			type="com.abbcc.admin.ProductAction">
+			<forward name="createProduct"
+				path="/admin/product/createProduct.jsp">
+			</forward>
 		</action>
 	</action-mappings>
 </struts-config>

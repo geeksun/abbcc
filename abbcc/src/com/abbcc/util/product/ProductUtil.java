@@ -6,6 +6,7 @@ import org.apache.commons.logging.LogFactory;
 public class ProductUtil {
 	private   Log log = LogFactory.getLog(ProductUtil.class);
 
+	
 	public static boolean isEqualLength(String[]... ss){
 		if(ss==null)return false;
 		int size=ss.length;

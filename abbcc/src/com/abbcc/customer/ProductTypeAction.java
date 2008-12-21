@@ -13,16 +13,35 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
-import com.abbcc.util.RequestUtils;
-import com.abbcc.util.product.ProductType;
+import com.abbcc.util.RequestUtils; 
+import com.abbcc.util.product.ProductUtil;
 import com.abbcc.util.resource.InitResource;
 import com.abbcc.util.resource.ProductTemplate;
-import com.abbcc.util.resource.ResourceUtil;
 import com.abbcc.util.resource.property.Form;
 
 public class ProductTypeAction extends BaseAction {
-	  
+	public ActionForward showProductType(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) { 
+		try{
+		List<ProductType> topCategory=this.productService.getProductTypeByParentId(0); 
+		if(topCategory!=null&&topCategory.size()>0){
+			request.setAttribute("topCategory", topCategory); 
+			ProductType productType=topCategory.get(0);
+			List<ProductType> secondCategory=this.productService.getProductTypeByParentId(productType.getId()); 
+			request.setAttribute("secondCategory", secondCategory); 
+			if(secondCategory!=null&&secondCategory.size()>0){
+				ProductType secondProductType=secondCategory.get(0);
+				List<ProductType> thirdCategory=this.productService.getProductTypeByParentId(secondProductType.getId()); 
+				request.setAttribute("thirdCategory", thirdCategory);  
+			}  
+		} 
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return mapping.findForward("showProductType");
+	}
 	public ActionForward productSecondCategory(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -34,7 +53,7 @@ public class ProductTypeAction extends BaseAction {
 		try {
 			PrintWriter out = response.getWriter();
 			StringBuilder result = new StringBuilder(); 
-			Map<String, List<ProductType>> map = InitResource.getProductType();
+			 
 			String node = RequestUtils.getParameter(request, "key");
 			
 			
@@ -42,15 +61,17 @@ public class ProductTypeAction extends BaseAction {
 				" style=\"width: 129px;\" id=\"secondCatFormKey\""+
 				" onchange=\"onChangeSecondCategory(this.value)\">");
 			if (node != null) { 
-				List secondCategory=(List) map.get(node);
+				int parentId=Integer.valueOf(node);
+				List secondCategory=this.productService.getProductTypeByParentId(parentId);
 				if(secondCategory!=null){
 					Iterator iter=secondCategory.iterator();
 					while(iter.hasNext()){
 						ProductType productType=(ProductType)iter.next();
 						if(productType!=null){
 							String name=productType.getName();
-							String value=productType.getId();
-							boolean able=productType.isAble();
+							int value = productType.getId();
+							int isShow = productType.getIsShow();
+							boolean able=isShow==ProductType.PRODUCT_TYPE_SHOW?true:false;
 							result.append("<option value='"+value+"'");
 							if(able){
 								result.append(" style=\"color: rgb(204, 204, 204);\" ");
@@ -111,23 +132,26 @@ public class ProductTypeAction extends BaseAction {
 		try {
 			PrintWriter out = response.getWriter();
 			StringBuilder result = new StringBuilder(); 
-			Map<String, List<ProductType>> map = InitResource.getProductType();
-			String node = RequestUtils.getParameter(request, "key");
+			  String node = RequestUtils.getParameter(request, "key");
 			
 			
 			result.append("<select name=\"secondCatFormKey\" size=\"8\""+
 				" style=\"width: 129px;\" id=\"secondCatFormKey\""+
 				" onchange=\"onChangeLeafCategory(this.value)\">");
 			if (node != null) { 
-				List secondCategory=(List) map.get(node);
+				int parentId=Integer.valueOf(node);
+				
+				List secondCategory=(List)this.productService.getProductTypeByParentId(parentId);
 				if(secondCategory!=null){
 					Iterator iter=secondCategory.iterator();
 					while(iter.hasNext()){
 						ProductType productType=(ProductType)iter.next();
 						if(productType!=null){
 							String name=productType.getName();
-							String value=productType.getId();
-							boolean able=productType.isAble();
+							int value = productType.getId();
+							int isShow = productType.getIsShow();
+							boolean able=isShow==ProductType.PRODUCT_TYPE_SHOW?true:false;
+						
 							result.append("<option value='"+value+"'");
 							if(able){
 								result.append(" style=\"color: rgb(204, 204, 204);\" ");
@@ -152,42 +176,5 @@ public class ProductTypeAction extends BaseAction {
 
 	}
 
-	public ActionForward showProduct(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		Map<String, List<ProductType>> map = InitResource.getProductType();
-		List<ProductType> topCategory = map.get(ResourceUtil.PRODUCT_ROOT);
-		if(topCategory!=null&&topCategory.size()>0){
-			ProductType productType=topCategory.get(0); 
-			List<ProductType> secondCategory= map.get(productType.getId());
-			request.setAttribute("secondCategory", secondCategory); 
-			if(secondCategory!=null&&secondCategory.size()>0){
-				
-				ProductType secondProductType=secondCategory.get(0); 
-				List<ProductType> thirdCategory= map.get(secondProductType.getId());
-				request.setAttribute("thirdCategory", thirdCategory);
-				if(thirdCategory!=null&&thirdCategory.size()>0){
-					ProductType thirdProductType=thirdCategory.get(0); 
-				   
-					Map<String, Form> formMap=InitResource.getFormMap();
-					Form f=formMap.get(thirdProductType.getId());
-					String path=request.getContextPath(); 
-					String productTemplate=ProductTemplate.getInstance().getProductTemplate(f,path);
-					request.setAttribute("productTemplate", productTemplate);
-					
-				}
-				
-			}
-		} 
-		InitResource initResource=new InitResource();
-		try {
-			String path=request.getRealPath("/");
-			initResource.init(path );
-		} catch ( Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		request.setAttribute("topCategory", topCategory);  
-		return mapping.findForward("product");
-	}
 
 }
