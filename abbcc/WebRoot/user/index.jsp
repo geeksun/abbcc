@@ -66,16 +66,14 @@
 		<html:form action="login.do" method="post">
 			<table align="center" >
 				<tr>
-				<td align="center">
-				
-				</td>
-				</tr>
+				<td>
+				<table>
 				<tr>
 					<td>
 						用户名:
 					</td>
 					<td>
-						<input type="text" name="hydlm">&nbsp;<a href="http://www.google.cn/member/retrieve_login_id.htm">忘了登录名？</a>
+						<input type="text" name="hydlm" size=18>&nbsp;
 					</td>
 				</tr>
 				<tr>
@@ -83,8 +81,25 @@
 						密&nbsp;&nbsp;码:
 					</td>
 					<td>
-						<input type="password" name="mm" onKeyDown="inspire()">&nbsp;<a href="javascript:goToRetrievePWD()">忘了密码？</a>
+						<input type="password" name="mm" onKeyDown="inspire()" size=19>&nbsp;
 					</td> 
+				</tr>
+				</table>
+				</td>
+				<td>
+				<table>
+				<tr>
+				<td>
+				<a href="http://www.google.cn/member/retrieve_login_id.htm">忘了登录名？</a>
+				</td>
+				</tr>
+				<tr>
+				<td>
+				<a href="javascript:goToRetrievePWD()">忘了密码？</a>
+				</td>
+				</tr>
+				</table>
+				</td>
 				</tr>
 				<tr>
 					<!-- 登陆状态 -->

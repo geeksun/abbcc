@@ -5,17 +5,12 @@
 <html>
   <head>
    <title>用户管理</title>
-    <meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page"> 
-	<link href="css/style.css" rel="stylesheet" type="text/css">
   </head>
  <frameset rows="103,*" cols="*" frameborder="no"   border="0" framespacing="0" >
 	  <frame src="<%=path%>/user/top.jsp" name="top" scrolling="no" id="top" noresize>
-	  <frameset rows="*" cols="187,*" frameborder="no" border="0" framespacing="0">
-		   <frame src="<%=path%>/user/menu.jsp" name="left" scrolling="auto" noresize>
+	  <frameset rows="*" cols="160,10,*" frameborder="no" border="0" framespacing="0" id="attachucp">
+		   <frame src="<%=path%>/user/menu.jsp" name="left" scrolling="auto" noresize >
+		   <frame src="<%=path%>/user/mainswitch.html" name="middle" id="leftbar" name="switchFrame" noresize="noresize" scrolling="no">
 		   <frame src="<%=path%>/user/right.jsp" name="right" noresize>
 	  </frameset>
  </frameset>

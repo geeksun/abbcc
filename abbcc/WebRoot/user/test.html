@@ -51,5 +51,111 @@
   <body>
      <input type="button" onBlur="trim('  g ');" value="trim">
      <img border=0 src='/abbcc/images/gif/loadding_indicator_remembermilk_orange.gif'/>
+     <script language="JavaScript1.2">
+
+function move(x) {
+if (document.all) {
+object1.style.pixelLeft += x;
+object1.style.visibility = "visible"}
+else if (document.layers) {
+document.object1.left += x;
+document.object1.visibility = "show"}};
+
+function makeStatic() {
+if (document.all) {object1.style.pixelTop=document.body.scrollTop+20}
+else {eval(document.object1.top=eval(window.pageYOffset+20));}
+setTimeout("makeStatic()",0);}
+</script>
+
+<style>
+<!--
+
+.hl	{
+		Background-Color : yellow;
+		Cursor:hand;
+	}
+.n	{
+		Cursor:hand;
+	}
+-->
+</style>
+<LAYER visibility="hide" top="20" name="object1" bgcolor="black" left="0" onmouseover="move(132)" onmouseout="move(-132)">
+
+<script language="JavaScript1.2">
+
+function positionmenu(){
+move(-132)
+}
+
+if (document.all) {document.write('<DIV ID="object1" style="visibility:hidden;cursor:hand; Position : Absolute ;Left : 0px ;Top : 20px ;Z-Index : 20" onmouseover="move(132)" onmouseout="move(-132)">')}
+</script>
+<table border="0" cellpadding="0" cellspacing="1" width="150" bgcolor="#000000">
+<tr><td bgcolor="#0099FF"> <font size="4" face="Arial"><b>Menu</b></font></td>
+
+<script language="JavaScript1.2">
+document.write('<td align="center" rowspan="100" width="16" bgcolor="#FF6666"><span style="font-size:13px"><p align="center"><font face="Arial Black">S<br>I<br>D<br>E<br>M<br>E<br>N<BR>U</font></p></span></TD>')
+</script>
+
+</tr>
+
+<script language="JavaScript1.2"><!--
+if (document.all||document.layers) {
+makeStatic();}
+
+var text=new Array();
+var thelink=new Array();
+
+//修改下面的链接地址和名称
+text[0]="网络编程";
+text[1]="网易";
+text[2]="新浪";
+text[3]="搜狐";
+text[4]="雅虎";
+text[5]="江苏音符";
+text[6]="常州信息港";
+text[7]="南京有线台";
+
+thelink[0]="http://www.1stscript.com";
+thelink[1]="http://www.163.ocm";
+thelink[2]="http://www.sina.com.cn";
+thelink[3]="http://www.sohu.com";
+thelink[4]="http://www.yahoo.com";
+thelink[5]="http://www.jsinfo.net";
+thelink[6]="http://www.cz.jsinfo.net";
+thelink[7]="http://www.njcatv.net";
+
+
+//enter target of above links
+//Valid values are '', 'new', or 'framename' (where 'framename' is the name of the frame you wish the links to target)
+var linktarget=''
+
+///DO NOT EDIT BELOW THIS LINE////////////////
+
+function navigateie(which){
+if (linktarget=='')
+window.location=thelink[which]
+else if (linktarget=='new')
+window.open(thelink[which])
+else{
+temp_var=eval("window.parent."+linktarget)
+temp_var.location=thelink[which]
+}
+}
+
+for (i=0;i<=text.length-1;i++)
+if (document.all) {document.write('<TR><TD height=20 bgcolor=white onclick="navigateie('+i+')" onmouseover="className=\'hl\'" onmouseout="className=\'n\'"><FONT SIZE=2 FACE=ARIAL> '+text[i]+'</FONT></TD></TR>')}
+else {document.write('<TR><TD bgcolor="white"><ILAYER><LAYER HEIGHT="18" onmouseover="this.bgColor=\'yellow\'" onmouseout="this.bgColor=\'white\'" width=131><FONT SIZE=2 FACE=ARIAL> <A HREF="'+thelink[i]+'" target="'+linktarget+'" id="nounderline">'+text[i]+'</A></FONT></LAYER></ILAYER></TD></TR>')}
+
+//-->
+</script>
+<tr>
+<td bgcolor="#0099FF"><font size="1" face="Arial"> </font></td>
+</TR>
+</table>
+<script language="text/JavaScript">
+if (document.all) {document.write('</DIV>')}
+window.onload=positionmenu
+</script>
+</LAYER>
   </body>
 </html>

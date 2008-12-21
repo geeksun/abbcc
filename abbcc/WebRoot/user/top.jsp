@@ -5,6 +5,10 @@
 		<title></title>
 	</head>
 	<body>
+		<%
+			String customer = (String)session.getAttribute("customer");
+		 %>
+		 <%=customer %>,»¶Ó­ÄúµÇÂ¼
 		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="FFBB00">
             <tr>
               <td bgcolor="FFFFE6" style="padding:5px 10px 5px 20px "><strong> top</strong></td>
