@@ -2,16 +2,16 @@ package com.abbcc.pojo;
 
 /**
  * @author geeksun
- *  公司基本信息
+ *  公司基本信息：忌改来改去
  */
 public class Gsjbxx implements java.io.Serializable {
 	// Fields
 	private static final long serialVersionUID = -8545252426423419636L;
 	private Integer hyjbxxid;		//会员基本信息ID
-	private String gslx;			//公司类型
 	private String gsmc;			//公司名称
+	private String qylx;			//企业类型    new
+	private String jyms;			//经营模式	new
 	private String gsszd;			//公司所在地
-	private String enCorpName;		//公司英文名称
 	private String jydz;			//经营地址
 	private String zyhy;			//主营行业
 	private String zyfx;			//主营方向
@@ -20,13 +20,13 @@ public class Gsjbxx implements java.io.Serializable {
 	public Gsjbxx() {
 	}
 	/** full constructor */
-	public Gsjbxx(Integer hyjbxxid, String gslx, String gsmc, String gsszd, String enCorpName,
+	public Gsjbxx(Integer hyjbxxid, String gsmc, String qylx, String jyms,  String gsszd,
 			String jydz,String zyhy, String zyfx, String xsdcp, String cgdcp) {
 		this.hyjbxxid = hyjbxxid;
-		this.gslx = gslx;
 		this.gsmc = gsmc;
+		this.qylx = qylx;
+		this.jyms = jyms;
 		this.gsszd = gsszd;
-		this.enCorpName = enCorpName;
 		this.jydz = jydz;
 		this.zyhy = zyhy;
 		this.zyfx = zyfx;
@@ -40,14 +40,6 @@ public class Gsjbxx implements java.io.Serializable {
 
 	public void setHyjbxxid(Integer hyjbxxid) {
 		this.hyjbxxid = hyjbxxid;
-	}
-
-	public String getGslx() {
-		return this.gslx;
-	}
-
-	public void setGslx(String gslx) {
-		this.gslx = gslx;
 	}
 
 	public String getGsmc() {
@@ -106,11 +98,16 @@ public class Gsjbxx implements java.io.Serializable {
 		this.gsszd = gsszd;
 	}
 
-	public String getEnCorpName() {
-		return enCorpName;
+	public String getQylx() {
+		return qylx;
 	}
-
-	public void setEnCorpName(String enCorpName) {
-		this.enCorpName = enCorpName;
+	public void setQylx(String qylx) {
+		this.qylx = qylx;
+	}
+	public String getJyms() {
+		return jyms;
+	}
+	public void setJyms(String jyms) {
+		this.jyms = jyms;
 	}
 }

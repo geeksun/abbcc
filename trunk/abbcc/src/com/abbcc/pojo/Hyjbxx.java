@@ -16,7 +16,7 @@ public class Hyjbxx implements java.io.Serializable {
 	private String zsxm;
 	private String xb;
 	private String dzyx;
-	private String gddh;				//  公司电话
+	private String gddh;				//  公司电话,固定电话
 	private String cz;
 	private String sj;
 	private String memberType;			//  会员类型  
