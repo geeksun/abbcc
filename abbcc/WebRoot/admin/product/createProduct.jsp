@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=gbk"
 	pageEncoding="gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
-<%@ page import="com.abbcc.util.product.ProductType"%>
+<%@ page import="com.abbcc.pojo.ProductType"%>
 <%
 String path = request.getContextPath();
 %>
@@ -14,22 +14,27 @@ String path = request.getContextPath();
 	<script src="<%=path%>/js/prototype.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		 
-    	function onChangeTopCategory(value){
-    		var paramname = value; 
-    		var url = "<%=path%>/productType.do?method=productSecondCategory";  
+    	function onChangeTopCategory(select){
+    		var paramname =select.value; 
+    		var url = "<%=path%>/admin/productType.do?method=productSecondCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
+		    clearThirdSelect();
 	  	}
-	  	 
+	  	 function clearThirdSelect()
+	  	{
+	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	   tdleafCatFormKey.innerHTML="";
+	  	}
 	    function showTopChecked(originalRequest){
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
 		     secondCatForm.innerHTML=result;
 	  
 	  	} 
-		function onChangeSecondCategory(value){
-			var paramname = value; 
-    		var url = "<%=path%>/productType.do?method=productThirdCategory";  
+		function onChangeSecondCategory(select){
+			var paramname = select.value; 
+    		var url = "<%=path%>/admin/productType.do?method=productThirdCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showSecondChecked});
 	
@@ -41,9 +46,9 @@ String path = request.getContextPath();
 	  
 	  	} 
 		
-		function onChangeLeafCategory(value){ 
+		function onChangeLeafCategory(select){ 
     		 var productType=document.getElementById('productType');   
-			 productType.value=value;
+			 productType.value=select.value;
 			
 		}  
 		
@@ -61,29 +66,29 @@ String path = request.getContextPath();
 						            "<font color='#ff0000'>*</font>"+
 							    "</td>"+
 							    "<td align='center' width='12%'>"+
-							 		"<input  id='checkbox"+count+"' type='checkbox' value='1' checked  >"+
-									"<input  id='isNull"+count+"' name='isNull' type='hidden' value='2'>"+
+							 		"<input  id='checkbox"+count+"' type='checkbox' value='false' checked  >"+
+									"<input  id='isNull"+count+"' name='isNull' type='hidden' value='false'>"+
 								"</td>"+
 								"<td align='center' width='10%'>"+
 									 "<input name='unit' type='text'   size='5' value='mm'>"+ 
 								"</td>"+
 								"<td align='center' width='10%'>"+
 									 "<select id='select"+count+"'>"+
-							        	 "<option value='1' selected> 文本 </option>"+
-							    		 "<option value='2'> 下拉 </option>"+
+							        	 "<option value='text' selected> 文本 </option>"+
+							    		 "<option value='select'> 下拉 </option>"+
 									 "</select>"+
-									 "<input id='type"+count+"' name='type' type='hidden' value='1'>"+
+									 "<input id='type"+count+"' name='type' type='hidden' value='text'>"+
 							    "</td>"+
 							    "<td align='center' width='10%'>"+ 
-									 "<input  id='isHiddenCheckbox"+count+"' type='checkbox' onclick='changeRadio(this)' name='radioname' value='1' ></td>"+
-									 "<input  id='isHidden"+count+"' name='isHidden' type='hidden' value='2'>"+
+									 "<input  id='isHiddenCheckbox"+count+"' type='checkbox' onclick='changeRadio(this)' name='radioname' value='false' ></td>"+
+									 "<input  id='isHidden"+count+"' name='isHidden' type='hidden' value='false'>"+
 								"</td>"+ 
 							 	"<td align='center' width='18%'>"+
 							 		"<input name='remark' type='text' >"+
 							  	"</td>"+ 
 							  	"<td align='center' width='10%'>"+
-							 		"<input  id='isShowCheckbox"+count+"' type='checkbox' value='1' checked  ></td>"+
-									"<input  id='isShow"+count+"' name='isShow' type='hidden' value='2'>"+
+							 		"<input  id='isShowCheckbox"+count+"' type='checkbox' value='false' checked  ></td>"+
+									"<input  id='isShow"+count+"' name='isShow' type='hidden' value='false'>"+
 							 	"</td>"+
 							  "</tr><table>";
 			 return property;
@@ -98,7 +103,11 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isNull=document.getElementById(isNullId); 
-				      isNull.value='1';    
+				      isNull.value='true';    
+			    }else
+			    {
+			     	  var isNull=document.getElementById(isNullId); 
+				      isNull.value='false';    
 			    } 
 			}
 			
@@ -121,7 +130,10 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isShow=document.getElementById(isShowId); 
-				      isShow.value='1';    
+				      isShow.value='true';    
+			    }else{
+			     	var isShow=document.getElementById(isShowId); 
+				      isShow.value='false'; 
 			    } 
 			}
 		}
@@ -146,12 +158,12 @@ String path = request.getContextPath();
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isHidden=document.getElementById(isHiddenId); 
-				      isHidden.value='1';  
+				      isHidden.value='true';  
 				     
 			    }else
 			    {
 			    	  var isHidden=document.getElementById(isHiddenId); 
-				      isHidden.value='2'; 
+				      isHidden.value='false'; 
 			    } 
 			}
 			 
@@ -164,7 +176,7 @@ String path = request.getContextPath();
 			if(checkValue())
 			{
 				 
-				document.form_product.action="<%=path%>/product.do?method=createProduct";
+				document.form_product.action="<%=path%>/admin/product.do?method=createProduct";
 				document.form_product.submit();
 			}
 		}
@@ -316,8 +328,7 @@ String path = request.getContextPath();
 										<tr>
 											<td id="tdtopCatFormKey">
 												<select name="topCatFormKey" size="8" style="width: 129px;"
-													id="topCatFormKey"
-													onchange="onChangeTopCategory(this.value)">
+													id="topCatFormKey" onchange="onChangeTopCategory(this)">
 													<%
 														List topCategory = (List) request.getAttribute("topCategory");
 														if (topCategory != null) {
@@ -326,13 +337,16 @@ String path = request.getContextPath();
 																ProductType productType = (ProductType) iter.next();
 																if (productType != null) {
 															String name = productType.getName();
-															String value = productType.getId();
-															boolean able = productType.isAble();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
 															out.print("<option value=\"" + value + "\"");
 															if (able) {
 																out.print(" style=\"color: rgb(204, 204, 204);\" ");
 															}
-															out.println(">");
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
 															out.println(name);
 															out.println("</option>");
 
@@ -346,7 +360,7 @@ String path = request.getContextPath();
 											<td id="tdsecondCatFormKey">
 												<select name="secondCatFormKey" size="8"
 													style="width: 129px;" id="secondCatFormKey"
-													onchange="onChangeSecondCategory(this.value)">
+													onchange="onChangeSecondCategory(this)">
 													<%
 														List secondCategory = (List) request.getAttribute("secondCategory");
 														if (secondCategory != null) {
@@ -355,13 +369,16 @@ String path = request.getContextPath();
 																ProductType productType = (ProductType) iter.next();
 																if (productType != null) {
 															String name = productType.getName();
-															String value = productType.getId();
-															boolean able = productType.isAble();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
 															out.print("<option value=\"" + value + "\"");
 															if (able) {
 																out.print(" style=\"color: rgb(204, 204, 204);\" ");
 															}
-															out.println(">");
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
 															out.println(name);
 															out.println("</option>");
 
@@ -373,8 +390,7 @@ String path = request.getContextPath();
 											</td>
 											<td id="tdleafCatFormKey">
 												<select name="leafCatFormKey" size="8" id="leafCatFormKey"
-													style="width: 129px;"
-													onchange="onChangeLeafCategory(this.value)">
+													style="width: 129px;" onchange="onChangeLeafCategory(this)">
 													<%
 														List thirdCategory = (List) request.getAttribute("thirdCategory");
 														if (thirdCategory != null) {
@@ -383,13 +399,16 @@ String path = request.getContextPath();
 																ProductType productType = (ProductType) iter.next();
 																if (productType != null) {
 															String name = productType.getName();
-															String value = productType.getId();
-															boolean able = productType.isAble();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
 															out.print("<option value=\"" + value + "\"");
 															if (able) {
 																out.print(" style=\"color: rgb(204, 204, 204);\" ");
 															}
-															out.println(">");
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
 															out.println(name);
 															out.println("</option>");
 
@@ -427,16 +446,16 @@ String path = request.getContextPath();
 				<tr>
 					<td>
 						<div>
-							<table width='100%' >
+							<table width='100%'>
 								<tr>
 									<td align='center' width='4%'>
 										序号
 									</td>
 									<td align='center' width='10%'>
-										 &nbsp;&nbsp;&nbsp;名称
+										&nbsp;&nbsp;&nbsp;名称
 									</td>
 									<td align='center' width='12%'>
-										 不能为空
+										不能为空
 									</td>
 									<td align='center' width='10%'>
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单位

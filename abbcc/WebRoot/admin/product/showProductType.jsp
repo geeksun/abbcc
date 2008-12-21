@@ -23,6 +23,12 @@ String path = request.getContextPath();
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
 		   setEditVaule(select);
 		   setDeleteVaule(select);
+		  clearThirdSelect();
+	  	}
+	  	function clearThirdSelect()
+	  	{
+	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	   tdleafCatFormKey.innerHTML="";
 	  	}
 	  	function setEditVaule(select){
 	  	 	
@@ -39,6 +45,8 @@ String path = request.getContextPath();
 			 
 			 var editTypeId=document.getElementById("editTypeId"); 
 			 editTypeId.value=option.value;
+			 
+			 document.form_update.priority.value=option.priority;
 	  	}
 	  	function setDeleteVaule(select){
 	  	 	
@@ -94,6 +102,7 @@ String path = request.getContextPath();
 		  	var typeName=document.form_add.typeName; 
 		  	if(isNull(typeName.value)){
 		  		alert("名称不能为空");
+		  		return;
 		  	} 
 		  	
 		   var hasSet= setProductType();
@@ -102,10 +111,12 @@ String path = request.getContextPath();
 	  	}
 	  	function checkUpdate(){
 	  		var typeName=document.form_update.typeName; 
+	  		var priority=document.form_update.priority; 
 		  	if(isNull(typeName.value)){
 		  		alert("名称不能为空");
-		  	} 
-		  	
+		  		return;
+		  	}
+		  	 
 		   //var hasSet= setProductType();
 		    //if(!hasSet)return;
 		   	document.form_update.submit();
@@ -189,6 +200,7 @@ String path = request.getContextPath();
 											String name = productType.getName();
 											int value = productType.getId();
 											int isShow = productType.getIsShow();
+											int priority= productType.getPriority();
 											boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 													: false;
 											out.print("<option value=\"" + value + "\"");
@@ -196,7 +208,7 @@ String path = request.getContextPath();
 												out.print(" style=\"color: rgb(204, 204, 204);\" ");
 											}
 											out.println(" isShow='" + isShow + "' name='" + name
-													+ "' >");
+													+ "' priority='"+priority+"' >");
 											out.println(name);
 											out.println("</option>");
 
@@ -220,6 +232,7 @@ String path = request.getContextPath();
 											String name = productType.getName();
 											int value = productType.getId();
 											int isShow = productType.getIsShow();
+											int priority= productType.getPriority();
 											boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 													: false;
 											out.print("<option value=\"" + value + "\"");
@@ -227,7 +240,7 @@ String path = request.getContextPath();
 												out.print(" style=\"color: rgb(204, 204, 204);\" ");
 											}
 											out.println(" isShow='" + isShow + "' name='" + name
-													+ "' >");
+													+ "' priority='"+priority+"' >");
 											out.println(name);
 											out.println("</option>");
 
@@ -250,6 +263,7 @@ String path = request.getContextPath();
 											String name = productType.getName();
 											int value = productType.getId();
 											int isShow = productType.getIsShow();
+											int priority= productType.getPriority();
 											boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 													: false;
 											out.print("<option value=\"" + value + "\"");
@@ -257,7 +271,7 @@ String path = request.getContextPath();
 												out.print(" style=\"color: rgb(204, 204, 204);\" ");
 											}
 											out.println(" isShow='" + isShow + "' name='" + name
-													+ "' >");
+													+ "' priority='"+priority+"' >");
 											out.println(name);
 											out.println("</option>");
 
@@ -329,6 +343,7 @@ String path = request.getContextPath();
 								<td>
 									名称
 									<input type="text" name="typeName" value="">
+									<input type="text" name="priority" value="">
 									<font color='#ff0000'>*</font> 是否显示
 									<input type="checkbox" name="isShow" value="1">
 									<input type="button" value="修改" onclick="checkUpdate()">

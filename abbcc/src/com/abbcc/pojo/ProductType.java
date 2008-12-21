@@ -17,6 +17,7 @@ public class ProductType {
 
 	private int isShow;
 	
+	private int priority;
 	
 
 	public ProductType() {
@@ -76,6 +77,16 @@ public class ProductType {
 
 	public void setTypeId(String typeId) {
 		this.typeId = typeId;
+	}
+
+
+	public int getPriority() {
+		return priority;
+	}
+
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 	 

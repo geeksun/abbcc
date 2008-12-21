@@ -1,18 +1,38 @@
 package com.abbcc.dao.impl;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+ 
 
 import com.abbcc.dao.ProductDAO;
-import com.abbcc.servlet.StartServlet;
-import com.abbcc.util.product.Product;
+import com.abbcc.pojo.Product; 
+import com.abbcc.util.product.TableUtil;
 
 public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 
-	public void add(Product product) { 
-		JdbcTemplate jdbc=(JdbcTemplate)StartServlet.getBean("jdbcTemplate");
-		/*String sql=product.getInsertSql();
-		String[] value=null;//product.getValues();
-		jdbc.update(sql, value);*/
+	 
+
+	public Product getProductByStateAndProductTypeId(int state, String productTypeId) {
+		String sql="from Product p where p.state=? and p.productTypeId=?";
+		Query query=this.getQuery(sql);
+		query.setParameter(0, state);
+		query.setParameter(1, productTypeId);
+		return (Product )query.uniqueResult();
+	}
+
+	public void addProduct(Product product) {
+		this.save(product);
+		 
+		String table=TableUtil.getCreateTable(product);
+		this.getSession().createSQLQuery(table).executeUpdate();
+		
+	}
+
+	public void excetueSaveProduct(String sql, String[] value) {
+		 
+		SQLQuery query=this.getSession().createSQLQuery(sql);
+		this.setParamter(0, query, value);
+		query.executeUpdate();
 	}
 
 }

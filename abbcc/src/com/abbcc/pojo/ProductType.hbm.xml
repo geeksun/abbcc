@@ -19,6 +19,9 @@
         <property name="type" type="java.lang.Integer">
             <column name="type" not-null="true"/>
         </property>
+        <property name="priority" type="java.lang.Integer">
+            <column name="priority" not-null="true"/>
+        </property>
         <property name="isShow" type="java.lang.Integer">
             <column name="isShow" not-null="true" />
         </property> 

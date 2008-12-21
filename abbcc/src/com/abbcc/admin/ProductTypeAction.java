@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +16,6 @@ import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
 import com.abbcc.util.RequestUtils;
 import com.abbcc.util.product.ProductUtil;
-import com.abbcc.util.resource.InitResource;
-import com.abbcc.util.resource.ProductTemplate;
-import com.abbcc.util.resource.property.Form;
 
 public class ProductTypeAction extends BaseAction {
 	public ActionForward showProductType(ActionMapping mapping, ActionForm form,
@@ -75,6 +71,7 @@ public class ProductTypeAction extends BaseAction {
 							String name = productType.getName();
 							int value = productType.getId();
 							int isShow = productType.getIsShow();
+							int priority= productType.getPriority();
 							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 									: false;
 							result.append("<option value=\"" + value + "\"");
@@ -82,7 +79,7 @@ public class ProductTypeAction extends BaseAction {
 								result.append(" style=\"color: rgb(204, 204, 204);\" ");
 							}
 							result.append(" isShow='" + isShow + "' name='"
-									+ name + "' >");
+									+ name +  "' priority='"+priority+"' >");
 							result.append(name);
 							result.append("</option>");
 
@@ -108,20 +105,7 @@ public class ProductTypeAction extends BaseAction {
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setDateHeader("Expires", 0);  
-		String node = RequestUtils.getParameter(request, "key");
-		Map<String, Form> map=InitResource.getFormMap();
-		Form f=map.get(node);
-		String path=request.getContextPath();
-		
-		
-		String template=ProductTemplate.getInstance().getProductTemplate(f,path);
-		try {  
-			PrintWriter out = response.getWriter();
-			out.write(template);
-		} catch (IOException e) {
-			log.error(e);
-			e.printStackTrace();
-		}
+	 	 
 
 		return null;
 	 
@@ -156,6 +140,7 @@ public class ProductTypeAction extends BaseAction {
 							String name = productType.getName();
 							int value = productType.getId();
 							int isShow = productType.getIsShow();
+							int priority= productType.getPriority();
 							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 									: false;
 							result.append("<option value=\"" + value + "\"");
@@ -163,7 +148,7 @@ public class ProductTypeAction extends BaseAction {
 								result.append(" style=\"color: rgb(204, 204, 204);\" ");
 							}
 							result.append(" isShow='" + isShow + "' name='"
-									+ name + "' >");
+									+ name +  "' priority='"+priority+"' >");
 							result.append(name);
 							result.append("</option>");
 
@@ -189,6 +174,7 @@ public class ProductTypeAction extends BaseAction {
 		String name=request.getParameter("typeName");
 		String typeId=request.getParameter("typeId");
 		String type=request.getParameter("type");
+		
 		type="1";
 		String isShow=request.getParameter("isShow");
 		if(isShow==null)isShow="1";
@@ -199,12 +185,14 @@ public class ProductTypeAction extends BaseAction {
 			int _parentId=Integer.valueOf(parentId);
 			int _type=Integer.valueOf(type);
 			int _isShow=Integer.valueOf(isShow);
+			 
 			ProductType productType=new ProductType();
 			productType.setName(name);
 			productType.setParentId(_parentId);
 			productType.setIsShow(_isShow);
 			productType.setType(_type);
 			productType.setTypeId(typeId); 
+			productType.setPriority(100);
 			this.productService.addProductType(productType);
 		}
 		}catch(Exception e){
@@ -237,6 +225,8 @@ public class ProductTypeAction extends BaseAction {
 		String name=request.getParameter("typeName");
 		String typeId=request.getParameter("typeId");
 		String type=request.getParameter("type");
+		String priority=request.getParameter("priority");
+		//if(priority==null)priority="100";
 		type="1";
 		String isShow=request.getParameter("isShow");
 		if(isShow==null||isShow.equals("")){
@@ -249,8 +239,13 @@ public class ProductTypeAction extends BaseAction {
 			int _id=Integer.valueOf(id); 
 			int _type=Integer.valueOf(type);
 			int _isShow=Integer.valueOf(isShow);
+		
 			ProductType productType=productService.getProductTypeById(_id);
 			if(productType!=null){
+
+				if(priority!=null){
+					productType.setPriority(Integer.valueOf(priority));
+				}
 				productType.setName(name);
 				productType.setIsShow(_isShow); 
 				productType.setType(_type);

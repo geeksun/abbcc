@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
-<%@ page import="com.abbcc.util.product.ProductType"%>
+<%@ page import="com.abbcc.pojo.ProductType"%>
 <%@ page import="com.abbcc.common.AppConstants" %>
 
 <%
@@ -104,20 +104,30 @@ ul.callinglayout li {
 		 
     	function onChangeTopCategory(value){
     		var paramname = value; 
-    		var url = "<%=path%>/product.do?method=productSecondCategory";  
+    		var url = "<%=path%>/productInfo.do?method=productSecondCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
 	  	}
-	  	 
+	  	function clearThirdSelect()
+	  	{
+	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	   tdleafCatFormKey.removeChild();
+	  	  // tdleafCatFormKey.innerHTML="";
+	  	}
 	    function showTopChecked(originalRequest){
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
 		     secondCatForm.innerHTML=result;
 	  
 	  	} 
+	  	function clearThirdSelect()
+	  	{
+	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	   tdleafCatFormKey.innerHTML="";
+	  	}
 		function onChangeSecondCategory(value){
 			var paramname = value; 
-    		var url = "<%=path%>/product.do?method=productThirdCategory";  
+    		var url = "<%=path%>/productInfo.do?method=productThirdCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showSecondChecked});
 	
@@ -131,7 +141,7 @@ ul.callinglayout li {
 		
 		function onChangeLeafCategory(value){
 			var paramname = value; 
-    		var url = "<%=path%>/product.do?method=productTemplate";  
+    		var url = "<%=path%>/productInfo.do?method=productTemplate";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showLeafChecked});
 	
@@ -351,13 +361,15 @@ ul.callinglayout li {
 																			ProductType productType = (ProductType) iter.next();
 																			if (productType != null) {
 																		String name = productType.getName();
-																		String value = productType.getId();
-																		boolean able = productType.isAble();
+																		int value = productType.getId();
+																		int isShow = productType.getIsShow();
+																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																				: false;
 																		out.print("<option value=\"" + value + "\"");
 																		if (able) {
 																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
 																		}
-																		out.println(">");
+																		out.println(" ' >");
 																		out.println(name);
 																		out.println("</option>");
 
@@ -380,13 +392,15 @@ ul.callinglayout li {
 																			ProductType productType = (ProductType) iter.next();
 																			if (productType != null) {
 																		String name = productType.getName();
-																		String value = productType.getId();
-																		boolean able = productType.isAble();
+																		int value = productType.getId();
+																		int isShow = productType.getIsShow();
+																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																				: false;
 																		out.print("<option value=\"" + value + "\"");
 																		if (able) {
 																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
 																		}
-																		out.println(">");
+																		out.println(" ' >");
 																		out.println(name);
 																		out.println("</option>");
 
@@ -408,13 +422,15 @@ ul.callinglayout li {
 																			ProductType productType = (ProductType) iter.next();
 																			if (productType != null) {
 																		String name = productType.getName();
-																		String value = productType.getId();
-																		boolean able = productType.isAble();
+																		int value = productType.getId();
+																		int isShow = productType.getIsShow();
+																		boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																				: false;
 																		out.print("<option value=\"" + value + "\"");
 																		if (able) {
 																			out.print(" style=\"color: rgb(204, 204, 204);\" ");
 																		}
-																		out.println(">");
+																		out.println(" ' >");
 																		out.println(name);
 																		out.println("</option>");
 
