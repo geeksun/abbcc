@@ -2,9 +2,7 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
 <struts-config>
 	<data-sources />
-	
 	<form-beans>
-	
 		<form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="hydlm" type="java.lang.String"></form-property>
 			<form-property name="mm" type="java.lang.String"></form-property>
@@ -31,34 +29,28 @@
 			<form-property name="zyfx" type="java.lang.String"></form-property>
 			<form-property name="xsdcp" type="java.lang.String"></form-property>
 			<form-property name="cgdcp" type="java.lang.String"></form-property>
-		
+			
 		</form-bean>
 		<!--  basicInfoForm  -->
 		<form-bean name="basicInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司基本信息表单 -->
 			<form-property name="gsmc" type="java.lang.String"></form-property>
 			<form-property name="qylx" type="java.lang.String"></form-property>
 			<form-property name="jyms" type="java.lang.String"></form-property>
-			<form-property name="zyjydd" type="java.lang.String"></form-property>
-			<form-property name="zycp" type="java.lang.String"></form-property>
-			<form-property name="right_category_id" type="java.lang.String"></form-property>
-			<form-property name="true_name" type="java.lang.String"></form-property>
-			<form-property name="dzyx" type="java.lang.String"></form-property>
-			<form-property name="gddh" type="java.lang.String"></form-property>
-			<form-property name="cz" type="java.lang.String" initial=""></form-property>
-			<form-property name="sj" type="java.lang.String" initial=""></form-property>
-			<form-property name="gslx" type="java.lang.String"></form-property>
-		 
-			<form-property name="gsszd" type="java.lang.String"></form-property>
 			<form-property name="jydz" type="java.lang.String"></form-property>
-			<form-property name="zyhy" type="java.lang.String"></form-property>
-			<!-- 主营方向 -->
-			<form-property name="zyfx" type="java.lang.String"></form-property>
 			<form-property name="xsdcp" type="java.lang.String"></form-property>
 			<form-property name="cgdcp" type="java.lang.String"></form-property>
+			<form-property name="zyhy" type="java.lang.String"></form-property>
+			
+			<!-- 会员基本信息表单 -->
+			<form-property name="zsxm" type="java.lang.String"></form-property>
+			<form-property name="gddh" type="java.lang.String"></form-property>
+			<form-property name="gsszd" type="java.lang.String"></form-property>
+			<form-property name="dzyx" type="java.lang.String" initial=""></form-property>
 			
 		</form-bean>
 	</form-beans>
-
+ 
 	<global-exceptions>
 		<exception key="error.invalidlogin" type="java.lang.Exception" path="/index.jsp" scope="request"></exception>
 	</global-exceptions>
@@ -67,28 +59,20 @@
 		<forward name="fail" path="/fail.jsp"></forward>
 	</global-forwards>
 	<action-mappings>
-		<action path="/message" type="com.abbcc.customer.MessageAction" parameter="method">
-	     	<forward name="addMessage" path="/user/message/addMessage.jsp"></forward>
-	     	<forward name="allMessageList" path="/user/message/allMessageList.jsp"></forward>
-	     	<forward name="showMessage" path="/user/message/getMessage.jsp"></forward>
-	    </action>
 	    <action path="/login" input="/user/index.jsp" name="loginForm" attribute="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
 	     	<forward name="loginsuccess" path="/user/main.jsp"></forward>
 	    </action>
 	    <action path="/register" input="/user/register.jsp" name="registerForm" attribute="registerForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
-	      		<forward name="registersuccess" path="/user/main.jsp"></forward>
+	      	<forward name="registersuccess" path="/user/main.jsp"></forward>
 	    </action>
 	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 	    </action>
-	    <action path="/traceInfo" scope="request" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    </action>
-	    
-	    <action path="/productInfo"   parameter="method" type="com.abbcc.customer.ProductInfoAction">
+	     <action path="/product"   parameter="method" type="com.abbcc.struts.action.ProductAction">
 	    	<forward name="product" path="/user/product/product.jsp"></forward>
 	    </action>
-	   
-	     
 	</action-mappings>
 	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
