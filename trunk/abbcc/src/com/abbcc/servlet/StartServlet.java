@@ -1,7 +1,5 @@
 package com.abbcc.servlet;
 
-import java.io.FileNotFoundException;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +13,7 @@ import com.abbcc.exception.XmlException;
 
 public class StartServlet extends HttpServlet {
 	private   Log log = LogFactory.getLog(StartServlet.class);
-
+ 
 	private static ApplicationContext context;
 
 	public void init(ServletConfig config) {
@@ -29,18 +27,9 @@ public class StartServlet extends HttpServlet {
 		context = WebApplicationContextUtils.getWebApplicationContext(servlet);
 	
 
-	}
-	private void initResource(ServletContext servlet){
-		//InitResource initResource=new InitResource();
-		try {
-			String path = servlet.getRealPath("/");
-			//initResource.init(path);
-		} catch ( Exception e) {
-			e.printStackTrace();
-		} 
-	}
-
+	} 
 	public static Object getBean(String name) {
+		 
 		 
 		return context.getBean(name);
 	}
