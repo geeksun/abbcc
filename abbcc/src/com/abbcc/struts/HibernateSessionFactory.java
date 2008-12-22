@@ -1,7 +1,7 @@
 package com.abbcc.struts;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import org.hibernate.HibernateException; 
+import org.hibernate.Session; 
 import org.hibernate.cfg.Configuration;
 
 /**
