@@ -11,7 +11,7 @@ import com.abbcc.pojo.Message;
 public class MessageDAOImpl extends BaseDaoImpl implements MessageDAO {
 
 	public void addMessage(Message message) {
-		this.save(message);
+		this.add(message);
 		
 	}
 

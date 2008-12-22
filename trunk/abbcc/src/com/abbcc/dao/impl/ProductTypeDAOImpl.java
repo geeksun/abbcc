@@ -17,7 +17,7 @@ public class ProductTypeDAOImpl extends BaseDaoImpl implements ProductTypeDAO{
 	}
 
 	public void addProductType(ProductType productType) {
-		this.save(productType);
+		this.add(productType);
 		
 	}
 
