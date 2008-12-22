@@ -12,7 +12,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.abbcc.exception.XmlException;
-import com.abbcc.util.resource.InitResource;
 
 public class StartServlet extends HttpServlet {
 	private   Log log = LogFactory.getLog(StartServlet.class);
@@ -32,12 +31,11 @@ public class StartServlet extends HttpServlet {
 
 	}
 	private void initResource(ServletContext servlet){
-		InitResource initResource=new InitResource();
+		//InitResource initResource=new InitResource();
 		try {
 			String path = servlet.getRealPath("/");
-			initResource.init(path);
+			//initResource.init(path);
 		} catch ( Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
