@@ -125,12 +125,16 @@ ul.callinglayout li {
     		var url = "<%=path%>/productInfo.do?method=productThirdCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showSecondChecked});
+		  
 	
 		}
 		function showSecondChecked(originalRequest){
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdleafCatFormKey"); 
+		 
 		     secondCatForm.innerHTML=result;
+		     
+		     
 	  
 	  	} 
 		
@@ -139,7 +143,8 @@ ul.callinglayout li {
     		var url = "<%=path%>/productInfo.do?method=productTemplate";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showLeafChecked});
-	
+	  		   var productTypeId=document.getElementById("productTypeId");  
+	  		productTypeId.value=value;
 		} 
 		function showLeafChecked(originalRequest){
 			var result= originalRequest.responseText;	    
@@ -163,6 +168,11 @@ ul.callinglayout li {
 	  			   
 	  			} 
 	  	} 
+	  	function checkSubmit(){
+	  	
+	  		document.mainform.action="<%=path%>/productInfo.do?method=addProductInfo";
+	  		document.mainform.submit();
+	  	}
 	  	</script>
 	</head>
 	<body>
@@ -171,7 +181,8 @@ ul.callinglayout li {
 			<tbody>
 				<tr>
 					<td>
-						<form name="mainform" method="post">
+						<form name="mainform" method="post" >
+						<input id="productTypeId" type="hidden" name="productTypeId" value=""/>
 							<table width="100%">
 								<tbody>
 									<tr>
@@ -1019,7 +1030,7 @@ ul.callinglayout li {
 															是&nbsp;
 
 															<input name="rBizType" value="checkbox"
-																onclick="changeBizType('N')" type="radio">
+																onclick="changeBizType('N')" type="radio"/>
 															否
 															<table align="left" cellpadding="0" cellspacing="0"
 																width="100%">
@@ -1110,8 +1121,8 @@ ul.callinglayout li {
 									</tr>
 								</tbody>
 							</table>
-							<br>
-							<br>
+							<br/>
+							<br/>
 							<table border="0" cellpadding="0" cellspacing="0" width="99%">
 								<tbody>
 									<tr>
@@ -1125,7 +1136,7 @@ ul.callinglayout li {
 									<tr>
 										<td class="C spc16" align="center">
 											<input name="postsubmit"
-												onmousedown="javascript:postOffer(bizTypeVar)"
+												 onclick="checkSubmit()"
 												value="同意服务条款，我要发布" class="submitButton" type="button" />
 											<a href="#"
 												onclick="previewPost(document.mainform);return false;">预览这条信息</a>

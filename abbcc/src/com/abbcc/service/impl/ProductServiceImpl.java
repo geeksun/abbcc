@@ -150,6 +150,7 @@ public class ProductServiceImpl implements ProductService {
 			return;
 		String sql = obj.getSql();
 		String[] value = obj.getValue();
+		System.out.println(sql);
 		this.productDao.excetueSaveProduct(sql, value);
 
 	}

@@ -175,8 +175,8 @@ String path = request.getContextPath();
 	<body>
 		<table>
 			<tr>
-				<td valign="top">
-					 产品所属类目
+				<td valign="top">&nbsp; 
+					 产品所属类目 
 				</td>
 			</tr>
 
@@ -343,7 +343,7 @@ String path = request.getContextPath();
 								<td>
 									名称
 									<input type="text" name="typeName" value="">
-									<input type="text" name="priority" value="">
+									优先级<input type="text" size='5' name="priority" value="">
 									<font color='#ff0000'>*</font> 是否显示
 									<input type="checkbox" name="isShow" value="1">
 									<input type="button" value="修改" onclick="checkUpdate()">

@@ -12,33 +12,24 @@ import javax.servlet.http.HttpServlet;
 
 public class EncodingFilter extends HttpServlet implements Filter {
 	private String encoding = "GBK";
-	private FilterConfig filterConfig;
+	 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filterChain) throws IOException, ServletException {
-		try
-		{
+		 
 			request.setCharacterEncoding(encoding);
 			filterChain.doFilter(request, response);                  
-		}
-		catch (ServletException sx)
-		{
-			filterConfig.getServletContext().log(sx.getMessage(),sx);
-		}
-		catch (IOException iox)
-		{
-			filterConfig.getServletContext().log(iox.getMessage());
-		}
+		 
 	}
 	public void init(FilterConfig filterConfig) throws ServletException {
 		this.encoding = filterConfig.getInitParameter("encoding");
-		this.filterConfig = filterConfig;
+		 
 	}
 	public EncodingFilter() {
 		super();
 	}
 	public void destroy() {
 		this.encoding = null;
-		this.filterConfig = null;
+	 
 	}
 	public void init() throws ServletException {
 		// Put your code here
