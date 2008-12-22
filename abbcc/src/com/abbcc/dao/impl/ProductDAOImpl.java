@@ -21,7 +21,7 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 	}
 
 	public void addProduct(Product product) {
-		this.save(product);
+		this.add(product);
 		  
 	}
 

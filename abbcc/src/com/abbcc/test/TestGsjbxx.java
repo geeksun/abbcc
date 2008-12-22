@@ -12,7 +12,7 @@ public class TestGsjbxx {
 	public static void main(String[] args) throws Exception {
 //		 假设现在已有会员基本信息id
 		int  hyjbxxid = 13;
-		GsjbxxDAO gd = DAOFactory.getGsjbxxDAOInstance();
+		GsjbxxDAO gd =null;// DAOFactory.getGsjbxxDAOInstance();
 		Gsjbxx g = new Gsjbxx();
 		
 //		g.setHyjbxxid(hyjbxxid);
