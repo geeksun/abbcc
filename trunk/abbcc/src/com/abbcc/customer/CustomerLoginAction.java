@@ -37,7 +37,7 @@ public class CustomerLoginAction extends BaseAction {
 	    }*/
 		
 		DynaActionForm loginForm = (DynaActionForm)actionForm;
-		String name = loginForm.getString("hydlm");
+		String name = loginForm.getString("hydlm");    
 		String pass = loginForm.getString("mm");
 		
 		//UserService as = ServiceFactory.getUserService();
