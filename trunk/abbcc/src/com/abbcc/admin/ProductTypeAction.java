@@ -90,7 +90,7 @@ public class ProductTypeAction extends BaseAction {
 			}
 			result.append("</select>");
 			out.write(result.toString());
-		} catch (IOException e) {
+		} catch ( Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}
@@ -159,7 +159,7 @@ public class ProductTypeAction extends BaseAction {
 			}
 			result.append("</select>");
 			out.write(result.toString());
-		} catch (IOException e) {
+		} catch ( Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}

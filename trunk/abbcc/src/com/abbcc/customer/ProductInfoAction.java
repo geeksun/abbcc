@@ -22,8 +22,10 @@ import com.abbcc.util.product.ProductUtil;
 
 public class ProductInfoAction extends BaseAction {
 	public ActionForward addProductInfo(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response)  {
+	 
 		try {
+			 
 			
 		String	productTypeId =request.getParameter("productTypeId");
 		boolean hasNull=ProductUtil.hasNullParam(productTypeId);
@@ -53,6 +55,7 @@ public class ProductInfoAction extends BaseAction {
 			log.error(e);
 			e.printStackTrace();
 		}
+		 
 		return this.showProductInfo(mapping, form, request, response);
 	}
 
@@ -104,9 +107,11 @@ public class ProductInfoAction extends BaseAction {
 			HttpServletRequest request, HttpServletResponse response) {
 		
 		 
-		try{
+	
 		 	int parentid=0;
+		  
 			List<ProductType> topCategory=this.productService.getProductTypeByParentId(parentid); 
+			try{
 			if(topCategory!=null&&topCategory.size()>0){
 				request.setAttribute("topCategory", topCategory); 
 				ProductType productType=topCategory.get(0);
@@ -153,11 +158,11 @@ public class ProductInfoAction extends BaseAction {
 			StringBuilder result = new StringBuilder(); 
 			 
 			String node = RequestUtils.getParameter(request, "key");
-			
-			
+			 
 			result.append("<select name=\"secondCatFormKey\" size=\"8\""+
 				" style=\"width: 129px;\" id=\"secondCatFormKey\""+
 				" onchange=\"onChangeSecondCategory(this.value)\">");
+			
 			if (node != null) { 
 				int parentId=Integer.valueOf(node);
 				List secondCategory=this.productService.getProductTypeByParentId(parentId);
@@ -185,7 +190,7 @@ public class ProductInfoAction extends BaseAction {
 			}
 			result.append("</select>");
 			out.write(result.toString());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}
@@ -205,9 +210,8 @@ public class ProductInfoAction extends BaseAction {
 		try {
 			PrintWriter out = response.getWriter();
 			StringBuilder result = new StringBuilder(); 
-			  String node = RequestUtils.getParameter(request, "key");
-			
-			
+			String node = RequestUtils.getParameter(request, "key");
+			 
 			result.append("<select name=\"secondCatFormKey\" size=\"8\""+
 				" style=\"width: 129px;\" id=\"secondCatFormKey\""+
 				" onchange=\"onChangeLeafCategory(this.value)\">");
@@ -240,7 +244,7 @@ public class ProductInfoAction extends BaseAction {
 			}
 			result.append("</select>");
 			out.write(result.toString());
-		} catch (IOException e) {
+		} catch (Exception e) {
 			log.error(e);
 			e.printStackTrace();
 		}
