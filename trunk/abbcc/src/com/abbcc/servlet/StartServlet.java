@@ -19,6 +19,7 @@ public class StartServlet extends HttpServlet {
 	public void init(ServletConfig config) {
 		ServletContext servlet=config.getServletContext();
 		this.initContext(servlet); 
+		
 		 // initResource(servlet);
 	}
 
