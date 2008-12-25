@@ -200,7 +200,8 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		log.debug("finding Hyjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
 		try{
 			String queryString = "from Gsjbxx as model where model." + HYJBXXID + "= ?";
-			return getHibernateTemplate().find(queryString, hyjbxxid);
+			int hyid = Integer.parseInt(hyjbxxid);
+			return getHibernateTemplate().find(queryString, hyid);
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
