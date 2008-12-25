@@ -1,5 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java"  import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
@@ -52,12 +52,9 @@
 										document.getElementsByName("mainProduct2")[2].checked = true;
 											});
 		function updateBasicInfo(){
-			var zyhy = document.getElementsByName("zyhy");
-			//alert(zyhy.length);
-			//alert(zyhy.options.length);
-			//alert(zyhy.value);
-			//alert('ok');
+			//var zyhy = document.getElementsByName("zyhy");
 			document.basicInfoForm.action.value = "updateBasicInfo";
+			document.basicInfoForm.product.value = zyhy;
 			document.basicInfoForm.submit();
 		}
 	</script>
@@ -70,6 +67,7 @@
   	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
   	<form action="traceInfo.do" name="basicInfoForm">
   	<input type="hidden" name="action">
+  	<input type="hidden" name="product">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr> 
     		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${leaguer.gsmc}"  size="40"></td>
@@ -189,6 +187,8 @@
     	</p>
     </form>		
     <script type="text/javascript">
+    	//global variable zyhy
+    	var zyhy = [];
     	//一级菜单
     	function onChangeTopCategory(){
     		var paramname = $F("topCatFormKey");
@@ -224,9 +224,11 @@
 	  		//alert(0);
 	  		
 	  	}
-	   function addOptions(src, dst,secCategories,topCategories) {
-		    var selected_value = [];
-		    var selected_text = [];
+	  	
+	  	//添加选项
+	    function addOptions(src, dst,secCategories,topCategories) {
+		   var selected_value = [];
+		   var selected_text = [];
 		   var secV = secCategories;
 		   var topV = topCategories;
 		   var topFlag = false;
@@ -246,24 +248,27 @@
 		 for(var i = 0;i<topCategories.length;i++)
 		 {
 		   if(topCategories[i].selected)
-		  {topV= topCategories[i].text;
-		   topFlag = true;
-		  break;
-		  }
+		   {topV= topCategories[i].text;
+			   topFlag = true;
+			   break;
+		   }
 		 }
-		    // Get items from dst
-		    for(var i = 0; i < dst.length; i++) {
-		
-		      selected_value[selected_value.length] = dst[i].value;
-		      selected_text[selected_text.length] = dst[i].text;
-		    }
+		 
+		//alert(dst.length);
+		// Get items from dst
+		for(var i = 0; i < dst.length; i++) {
+			//alert(dst[i].value);
+		    selected_value[selected_value.length] = dst[i].value;
+		    selected_text[selected_text.length] = dst[i].text;
+		}
 		var len = selected_value.length;
-		        if( len >= 6 ) {
-		          alert('您最多可选择6个“主营行业”！');
-		          return ;
-		        }
-		    // Get items from src
-		    for(var i = 0; i < src.length; i++) {
+		if( len >= 6 ) {
+		    alert('您最多可选择6个“主营行业”！');
+		    return ;
+		}
+		
+		// Get items from src
+		for(var i = 0; i < src.length; i++) {
 		      if(src[i].selected) {
 		        var exists = 0;
 		        leafFlag  = true;
@@ -276,27 +281,27 @@
 		
 		     if(exists&&exists==1)
 		     {
-		     alert('您已经选择过该“主营行业”！');
-		     return;
+			     alert('您已经选择过该“主营行业”！');
+			     return;
 		     }
 		        if(!exists) {
-		          selected_value[selected_value.length] = src[i].value;
-		          if(secV==src[i].text)
-		          selected_text[selected_text.length] = topV+"/"+src[i].text;
+		           selected_value[selected_value.length] = src[i].value;
+		           if(secV==src[i].text)
+		          	  selected_text[selected_text.length] = topV+"/"+src[i].text;
 		        else
-		           {
-		          if(topV==src[i].text)
 		          {
-		          selected_text[selected_text.length] = topV;
+		             if(topV==src[i].text)
+		          {
+		          	 selected_text[selected_text.length] = topV;
 		          }
 		          else
 		          {
-		          selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
-		            }
+		          	 selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
 		          }
-		        }
+		         }
 		      }
-		    }
+		   }
+		}
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
 		        alert("您还未选择“主营行业”！");
 		        return ;
@@ -317,10 +322,13 @@
 		    // Clear dst except the first item
 		    while(dst.length > 1) dst[1] = null;
 		
+			//alert(selected_value.length);
 		    // Fill the dst box
 		    for(var j = 0; j < selected_value.length; j++) {
-		      dst[j] = new Option(selected_text[j], selected_value[j]);
+		       //alert(selected_value[j]);
+		       dst[j] = new Option(selected_text[j], selected_value[j]);
 		    }
+		    zyhy = selected_value;
   	  	}
   
   		function removeOptions(src, dst) {
@@ -328,38 +336,45 @@
 		    	if(src[i].selected) src[i] =null;
 		    }
 		}
+		//添加或删除主营行业
 	  	function doSubmit1(button_clicked){
 	  	   var tmpform = document.basicInfoForm;
-	  	   var selected_categories = tmpform.zyhy.options;
+	  	   
+	  	   //主营行业
+	  	   var zyhy = tmpform.zyhy.options;
 	  	   
 	  	   if(button_clicked &&(button_clicked == "deselect"||button_clicked == "select")) {
 	  	   
+	  	   //三级菜单
 		   var categories = tmpform.leafCatFormKey.options;
 		   var secCategories = tmpform.secondCatFormKey.options;
 		   var topCategories = tmpform.topCatFormKey.options;
 		   if(button_clicked == 'select')
-		   {        // Move to right pane
+		   {  // Move to right pane
+		   	  //alert("3"+categories.length);
 		      if(categories.length==0)
 		      {
+		      	//alert(secCategories.length);
         		if(secCategories.length==0)
         		{
-        		addOptions(topCategories, selected_categories,secCategories,topCategories);
+        			addOptions(topCategories, zyhy,secCategories,topCategories);
         		}else
 		        {
-		        addOptions(secCategories, selected_categories,secCategories,topCategories);
+		        	addOptions(secCategories, zyhy,secCategories,topCategories);
 		        }
 		      }else{
-		        addOptions(categories, selected_categories,secCategories,topCategories);
+		      	  //alert("4"+categories.length);
+		          addOptions(categories, zyhy,secCategories,topCategories);
 		      }
-		    }else{
+		   }else{
 			   if(button_clicked == 'deselect') {   // Remove from right pane
-			        removeOptions(selected_categories, categories);
+			        removeOptions(zyhy, categories);
 			   }
 	        	button_clicked = '';
 	        	return false;
          }
        }
-	 }
+	}
     </script>
   </body>
 </html>
