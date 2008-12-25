@@ -98,7 +98,7 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx hyjbxx = new Hyjbxx();
 			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
 			BeanUtils.copyProperties(hyjbxx, basicInfoForm);
-			System.out.println(hyjbxx.getZsxm()+hyjbxx.getGddh()+hyjbxx.getJydz());
+			//System.out.println(hyjbxx.getZsxm()+hyjbxx.getGddh()+hyjbxx.getJydz());
 			
 			hyjbxx.setHyjbxxid(hyjbxxid); 
 			//hyjbxx.setZsxm(StringUtils.converse(hyjbxx.getZsxm()));
@@ -106,9 +106,10 @@ public class TraceInfoAction extends BaseAction {
 			Gsjbxx gsjbxx = new Gsjbxx();
 			BeanUtils.copyProperties(gsjbxx, basicInfoForm);
 			gsjbxx.setHyjbxxid(hyjbxxid);
-			System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
+			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			String[] jyms = request.getParameterValues("jyms");
-			String[] zyhy = request.getParameterValues("zyhy");
+			//主营行业
+			String[] zyhy = request.getParameterValues("product");
 			StringBuffer su;
 			if(jyms!=null){
 				su = new StringBuffer();
@@ -117,7 +118,7 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setJyms(su.toString());
 			}
-			System.out.println(gsjbxx.getJyms());
+			//System.out.println(gsjbxx.getJyms());
 			if(zyhy!=null){
 				su = new StringBuffer();
 				for(int i=0;i<zyhy.length;i++){
@@ -125,7 +126,7 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setZyhy(su.toString());
 			}
-			System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
+			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			
 			hyjbxxService.update(hyjbxx, gsjbxx);
 			
