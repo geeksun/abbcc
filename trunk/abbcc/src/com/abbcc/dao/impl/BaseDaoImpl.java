@@ -11,6 +11,7 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.abbcc.dao.BaseDao;
+import com.abbcc.pojo.Pz;
 
 public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	protected final Log log = LogFactory.getLog(getClass());
@@ -130,6 +131,34 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	public void exectueSQLSql(String sql) {
 		 this.getSession().createSQLQuery(sql).executeUpdate(); 
 	}
-	 
 	
+	public Pz getPzByTableName(String tableName) {
+		
+		 String sql="from Pz p where p.tablename=?";
+		 Query query=this.getQuery(sql);
+		 query.setParameter(0, tableName); 
+		 return (Pz)query.uniqueResult();
+	}
+
+	public void updatePz(Pz pz) {
+		 this.update(pz); 
+	}
+	
+	public void updateTableID(String tableName) {
+		 String sql="update Pz set pz.recnum=pz.recnum+1 where p.tablename=?";
+		 Query query=this.getQuery(sql);
+		 query.setParameter(0, tableName); 
+		 query.executeUpdate(); 
+	}
+	public void updateTableCount(String tableName) {
+		 String sql="update Pz set pz.maxCount=pz.maxCount+1 where p.tablename=?";
+		 Query query=this.getQuery(sql);
+		 query.setParameter(0, tableName); 
+		 query.executeUpdate(); 
+	}
+ 
+	public Pz updateAndGetPz(String tableName) {
+			this.updateTableID(tableName);
+			return this.getPzByTableName(tableName);
+	}
 }
