@@ -6,15 +6,15 @@ import java.util.List;
 import com.abbcc.dao.CpgqxxDAO;
 import com.abbcc.factory.DAOFactory;
 import com.abbcc.factory.PubAbbcc;
-import com.abbcc.pojo.Cpgqxx;
+import com.abbcc.pojo.Cpgqxx_bak2;
 
 public class TestCpgqxx {
 	public static void main(String[] args) throws Exception {
 		// �����������л�Ա����Ϣid
 		PubAbbcc pa = new PubAbbcc();
 		// int hyjbxxid = pa.getRecNum("cpgqxx");
-		CpgqxxDAO cd = DAOFactory.getCpgqxxDAOInstance();
-		Cpgqxx c = new Cpgqxx();
+		CpgqxxDAO cd = null;//nullDAOFactory.getCpgqxxDAOInstance();
+		Cpgqxx_bak2 c = new Cpgqxx_bak2();
 
 		// c.setHyjbxxid(hyjbxxid);
 		// c.setXxlx("a");
@@ -51,7 +51,7 @@ public class TestCpgqxx {
 		List list = cd.queryAll(4, 2, 3);
 		Iterator iter = list.iterator();
 		while (iter.hasNext()) {
-			c = (Cpgqxx) iter.next();
+			c = (Cpgqxx_bak2) iter.next();
 			System.out.println(c.getCpgqxxid());
 		}
 	}
