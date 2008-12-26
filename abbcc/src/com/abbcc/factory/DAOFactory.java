@@ -8,9 +8,7 @@ public class DAOFactory {
 		return PubAbbcc.getInstance();
 	}
 
-	public static CpgqxxDAO getCpgqxxDAOInstance() {
-		return CpgqxxDAOImpl.getInstance();
-	}
+	 
 
 	public static DljmsxDAO getDljmsxDAOInstance() {
 		return DljmsxDAOImpl.getInstance();
