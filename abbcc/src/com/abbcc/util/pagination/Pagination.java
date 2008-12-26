@@ -1,7 +1,6 @@
 package com.abbcc.util.pagination;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 /**
