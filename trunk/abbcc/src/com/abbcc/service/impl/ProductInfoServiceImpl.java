@@ -2,7 +2,7 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
-import com.abbcc.pojo.Cpgqxx_bak2;
+import com.abbcc.pojo.Cpgqxx;
 import com.abbcc.pojo.Jytj;
 import com.abbcc.service.ProductInfoService;
 import com.abbcc.util.JdbcTemplateUtil;
@@ -12,7 +12,7 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 	
 	 
 
-	public void addProduct(Cpgqxx_bak2 cpgqxx, Jytj jyty, String productInsertSql) {
+	public void addProduct(Cpgqxx cpgqxx, Jytj jyty, String productInsertSql) {
 		
 		
 		JdbcTemplateUtil.updateObject(productInsertSql);
@@ -29,17 +29,17 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 		return null;
 	}
 
-	public List<Cpgqxx_bak2> productList(int userId) {
+	public List<Cpgqxx> productList(int userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void updateProduct(int userId, Cpgqxx_bak2 cpgqxx, Jytj jyty, String type) {
+	public void updateProduct(int userId, Cpgqxx cpgqxx, Jytj jyty, String type) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public Cpgqxx_bak2 getCpgqxx(int userId, int cpgqxxId) {
+	public Cpgqxx getCpgqxx(int userId, int cpgqxxId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -49,7 +49,7 @@ public class ProductInfoServiceImpl implements ProductInfoService{
 		return null;
 	}
 
-	public Cpgqxx_bak2 getCpgqxx(int cpgqxxId) {
+	public Cpgqxx getCpgqxx(int cpgqxxId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
