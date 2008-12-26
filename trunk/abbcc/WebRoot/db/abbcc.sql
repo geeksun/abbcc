@@ -21,8 +21,8 @@ USE `abbcc`;
 DROP TABLE IF EXISTS `cpgqxx`;
 
 CREATE TABLE `cpgqxx` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
   `xxlx` varchar(1) default NULL,
   `cpmc` varchar(16) default NULL,
   `cpshlm` varchar(8) default NULL,
@@ -1736,33 +1736,4 @@ CREATE TABLE `zpxx_3` (
   KEY `zpxx_idx` (`hyjbxxid`,`zpxxid`),
   KEY `sqsj_idx` (`sqsj`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
-
-/*Data for the table `zpxx_3` */
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-SET FOREIGN_KEY_CHECKS=0;
-		-- ----------------------------
-		-- Table structure for producttype
-		-- ----------------------------
-		CREATE TABLE `producttype` (
-		  `id` int(11) NOT NULL auto_increment COMMENT '产品类目表',
-		  `parentid` int(11) NOT NULL,
-		  `name` varchar(255) NOT NULL,
-		  `typeid` varchar(100) default NULL,
-		  `type` int(1) NOT NULL,
-		  `isshow` int(1) NOT NULL,
-		  PRIMARY KEY  (`id`)
-		) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=gbk;
-
-		-- ----------------------------
-		-- Records 
-		-- ----------------------------
-		INSERT INTO `producttype` VALUES ('1', '0', 'aaaaa', '010101', '1', '1');
-		INSERT INTO `producttype` VALUES ('2', '0', 'bbbb', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('3', '0', 'ccccc', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('4', '0', 'ddddd', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('5', '1', 'aaa_aaaa', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('6', '1', 'aaaa_bbbb', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('7', '1', 'aaaa_cccc', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('8', '5', 'aaaa_aaaa_aaaa', null, '1', '1');
+ 
