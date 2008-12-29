@@ -9,7 +9,7 @@ import com.abbcc.pojo.Hyjbxx;
 
 public class CheckSerivceImpl implements CheckService {
 	//private Hyjbxx hyj;
-	private HyjbxxDAO hyj = DAOFactory.getHyjbxxDAOInstance();
+	private HyjbxxDAO hyj = null;//DAOFactory.getHyjbxxDAOInstance();
 	private static CheckService cs;
 	public boolean checkName(String name) {
 		List<Hyjbxx> list = hyj.findByName(name);
