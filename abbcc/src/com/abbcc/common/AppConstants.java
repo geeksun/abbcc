@@ -21,9 +21,13 @@ public class AppConstants {
 	public static final int PRODUCT_BUY=2;
 	public static final int PRODUCT_QUICK_BUY=3;
 	
+	//短消息
+	public static final int MESSAGE_STATE_ALL=0;
+	public static final int MESSAGE_STATE_UN_READ=1;
+	public static final int MESSAGE_STATE_READ=2;
+	public static final int MESSAGE_STATE_REPLAY=2;
+	public static final int MESSAGE_TYPE_BUY=1;
+	public static final int MESSAGE_TYPE_SALE=2;
 	public static final String CPGQXX_SFYX_1="1";//无效
 	public static final String CPGQXX_SFYX_2="2";//有效
-	
-	
-	
 }
