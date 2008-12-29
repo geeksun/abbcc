@@ -125,10 +125,12 @@
 	            }
     }
 </SCRIPT>
+<%
 
+ %>
       <FORM style="MARGIN: 0px" name=feedbackForm 
-      action="<%=path %>/message.do?method=replayMessage&id=<%=fromid %>" 
-      method=post encType=multipart/form-data>
+      action="<%=path %>/message.do?method=huifuMessage&fromid=<%=fromid %>" 
+      method=post>
       <INPUT type=hidden value=feedback name=action> 
       <INPUT type=hidden value=anything name=eventSubmitDoSend> 
       <INPUT type=hidden name=_fmme.f._0.as> 
@@ -149,23 +151,24 @@
           <TD class=list_left_box><STRONG>发送给：</STRONG></TD>
           <TD class=list_right_box align=left>
             <DIV id=overDiv style="Z-INDEX: 1; POSITION: absolute"></DIV>
-            <SCRIPT language=JavaScript 
-src="<%=path%>/user/message/link/myalibaba.js"></SCRIPT>
+            <SCRIPT language=JavaScript src="<%=path%>/user/message/link/myalibaba.js"></SCRIPT>
             <A onmouseover="drs('pjttiy'); return true;" 
             onmouseout="nd(); return true;" 
             href="http://pjttiy.profile.china.alibaba.com/" target=_blank><%=fromid %>
-            </A><INPUT type=hidden maxLength=20 size=15 value=pjttiy 
-            name=_fmme.f._0.t> </TD></TR>
+            </A>
+            <INPUT type=hidden maxLength=20 size=15 value=pjttiy 
+            name=ss> </TD></TR>
         <TR>
           <TD class=list_left_box><STRONG>主题：</STRONG></TD>
-          <TD class=list_right_box align=left><INPUT maxLength=50 size=58 
-            value=回复：紧急信息，请注意查收。 name=_fmme.f._0.ti> <BR><SPAN 
-            class=note>建议您修改主题，吸引对方注意,得到优先回复!</SPAN> </TD></TR>
+          <TD class=list_right_box align=left>
+          <INPUT maxLength=50 size=58 value=回复：紧急信息，请注意查收。 name=huifutitle> <BR>
+          <SPAN class=note>建议您修改主题，吸引对方注意,得到优先回复!</SPAN> </TD></TR>
         <TR>
           <TD class=list_left_box><STRONG>正文：</STRONG></TD>
-          <TD class=list_right_box align=left><TEXTAREA name=_fmme.f._0.c rows=10 cols=58></TEXTAREA> 
+          <TD class=list_right_box align=left><TEXTAREA name=huifucontent rows=10 cols=58></TEXTAREA> 
             <BR><SPAN class=note>本留言系统不支持html代码，请不要在文本框中输入html代码</SPAN> 
-        </TD></TR><INPUT type=hidden value=false name=_fmme.f._0.o> 
+        </TD></TR>
+        <INPUT type=hidden value=false name=_fmme.f._0.o> 
         <TR>
           <TD class=list_left_box><STRONG>附件：</STRONG></TD>
           <TD class=list_right_box align=left><SPAN>附件一： <INPUT type=file 
@@ -199,10 +202,11 @@ src="<%=path%>/user/message/link/myalibaba.js"></SCRIPT>
             target=_blank>检查我的联系信息是否有误</A></TD></TR>
         <TR>
           <TD align=middle height=15>
-          <INPUT class=c  type=button value=回复留言 name=send> 
+          <INPUT   type=submit value=回复留言 name=send> 
             &nbsp;&nbsp; 
-          <INPUT class=C type=reset value=" 重填 " name=reset> 
-          </TD></TR></TBODY></TABLE></FORM></DIV><BR><BR><BR>
+          <INPUT  type=reset value=" 重填 " name=reset> 
+          </TD></TR></TBODY></TABLE>
+          </FORM></DIV><BR><BR><BR>
           </TD></TR></TBODY></TABLE><BR>
 <SCRIPT src="<%=path%>/user/message/link/alitalk.js" type=text/javascript></SCRIPT>
 
