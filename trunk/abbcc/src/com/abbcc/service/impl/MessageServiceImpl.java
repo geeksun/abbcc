@@ -2,28 +2,17 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
-import com.abbcc.dao.MessageDAO;
-import com.abbcc.dao.impl.MessageDAOImpl;
 import com.abbcc.pojo.Message;
 import com.abbcc.service.MessageService;
 
-public class MessageServiceImpl implements MessageService {
+public class MessageServiceImpl extends BaseServiceImpl implements MessageService {
 
-	MessageDAO messageDao;
-
+ 
 	public void addMessage(Message message) {
 		messageDao.addMessage(message);
 
 	}
-
-	public MessageDAO getMessageDao() {
-		return messageDao;
-	}
-
-	public void setMessageDao(MessageDAO messageDao) {
-		this.messageDao = messageDao;
-	}
-
+  
 	public List listMessage() {
 		List list=messageDao.list();
 		return list;

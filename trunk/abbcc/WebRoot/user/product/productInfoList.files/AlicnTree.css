@@ -5,7 +5,7 @@
 	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px
 }
 #tree1 .indexmenu {
-	PADDING-LEFT: 9px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: 0px! important; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
+	PADDING-LEFT: 9px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: -1px; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
 }
 #tree1 .indexmenu {
 	FONT-WEIGHT: bold; COLOR: #ff7400
@@ -20,10 +20,10 @@
 	FONT-WEIGHT: bold; COLOR: #ff7400; TEXT-DECORATION: none
 }
 #tree1 .menu {
-	BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px! important; WIDTH: 175px; LINE-HEIGHT: 22px! important; PADDING-TOP: 2px! important; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
+	BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; PADDING-BOTTOM: 6px; WIDTH: 175px; LINE-HEIGHT: 28px; PADDING-TOP: 6px; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
 }
 #tree1 .activedmenu {
-	BACKGROUND-POSITION: right 50%; BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(images/menu_arrow.gif); PADDING-BOTTOM: 0px! important; WIDTH: 175px; LINE-HEIGHT: 28px; PADDING-TOP: 0px! important; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
+	BACKGROUND-POSITION: right 50%; BORDER-TOP: #dcedfc 2px solid; PADDING-LEFT: 10px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(images/menu_arrow.gif); PADDING-BOTTOM: 6px; WIDTH: 175px; LINE-HEIGHT: 28px; PADDING-TOP: 6px; BORDER-BOTTOM: #a5b7dc 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #b9ddfe
 }
 #tree1 .menu A:link {
 	COLOR: #112482; TEXT-DECORATION: none
@@ -41,7 +41,7 @@
 	MARGIN-TOP: 7px; MARGIN-BOTTOM: 7px; TEXT-ALIGN: left
 }
 #tree1 .selectItem2 {
-	BORDER-TOP: #78bfd9 1px solid; MARGIN-TOP: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: 0px! important; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
+	BORDER-TOP: #78bfd9 1px solid; MARGIN-TOP: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #78bfd9 1px solid; MARGIN-RIGHT: -1px; PADDING-TOP: 5px; BORDER-BOTTOM: #78bfd9 1px solid; BACKGROUND-COLOR: #ffffff
 }
 #tree1 .selectItem2 A:link {
 	COLOR: #ff7300; TEXT-DECORATION: none

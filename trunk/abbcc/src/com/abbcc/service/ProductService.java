@@ -3,6 +3,8 @@ package com.abbcc.service;
 import java.util.List;
 
 import com.abbcc.exception.AppException;
+import com.abbcc.pojo.Cpgqxx;
+import com.abbcc.pojo.Jytj;
 import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.util.product.ProductObject;
@@ -30,7 +32,11 @@ public interface ProductService {
 
 	Product getProductByStateAndProductTypeId(int state,String productTypeId)throws AppException ;
 
-	void addProductInfo(ProductObject obj)throws AppException;
+ 	
+	void addProductInfo(ProductObject obj,Cpgqxx cpgqxx,Jytj jytj)throws AppException;
+
+ 
+	List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue) throws AppException;
 	
 	
 }

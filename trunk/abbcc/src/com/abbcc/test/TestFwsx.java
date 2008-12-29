@@ -15,7 +15,7 @@ public class TestFwsx {
 	public static void main(String[] args) throws Exception {
 //		 假设现在已有会员基本信息id
 		int  hyjbxxid = 13;
-		FwsxDAO fd = DAOFactory.getFwsxDAOInstance();
+		FwsxDAO fd = null;//DAOFactory.getFwsxDAOInstance();
 		Fwsx f = new Fwsx();
 		
 //		f.setHyjbxxid(hyjbxxid);

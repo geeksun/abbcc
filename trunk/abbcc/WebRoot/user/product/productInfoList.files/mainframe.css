@@ -185,5 +185,5 @@ INPUT {
 	LEFT: 460px; WIDTH: 20px; CURSOR: pointer; POSITION: relative; TOP: 20px
 }
 #Shade {
-	Z-INDEX: 2007; FILTER: alpha(opacity=20); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #000; -moz-opacity: .2; opacity: .2
+	Z-INDEX: 2007; FILTER: alpha(opacity=20); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #000; moz-opacity: .2; opacity: .2
 }

@@ -3,9 +3,9 @@ package com.abbcc.util.product;
 public class ProductObject {
 	private String sql;
 
-	private String[] value;
+	private Object[] value;
 
-	public ProductObject(String sql, String[] value) {
+	public ProductObject(String sql, Object[] value) {
 		super();
 		this.sql = sql;
 		this.value = value;
@@ -24,12 +24,14 @@ public class ProductObject {
 		this.sql = sql;
 	}
 
-	public String[] getValue() {
+	public Object[] getValue() {
 		return value;
 	}
 
-	public void setValue(String[] value) {
+	public void setValue(Object[] value) {
 		this.value = value;
 	}
+
+ 
 
 }

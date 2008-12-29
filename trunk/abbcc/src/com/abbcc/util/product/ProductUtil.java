@@ -34,6 +34,9 @@ public class ProductUtil {
 	public static String getTableIdFiled(){
 		return "id";
 	}
+	public static String getTableCpgqxxIdFiled(){
+		return "cpgqxxid";
+	}
 	public static String getTableCreateTimeFiled(){
 		return "createtime";
 	}
@@ -41,15 +44,15 @@ public class ProductUtil {
 	public static ProductObject getProductObject(Product product ,HttpServletRequest request){
 		if(product==null||request==null)return null;
 		String sql=getProductInsertSql(product);
-		String[] value=getValueByFromName(product,request);
+		Object[] value=getValueByFromName(product,request);
 		ProductObject obj=new ProductObject(sql,value);
 		return obj;
 	}
-	private static String[] getValueByFromName(Product product,HttpServletRequest request){
+	private static Object[] getValueByFromName(Product product,HttpServletRequest request){
 		if(product==null)return null; 
 		String[] formName  = ProductUtil.arrayToString(product.getFormName());
-		String[] ret=new String[formName.length] ;
-		for(int i=0;i<ret.length;i++){
+		Object[] ret=new Object[formName.length+1] ;
+		for(int i=0;i<formName.length;i++){
 			String param=formName[i];  
 			String value=request.getParameter(param);
 			if(value==null)
@@ -70,24 +73,17 @@ public class ProductUtil {
 		String[] filedNames=arrayToString(filedName);
 		String tableName=product.getTableName(); 
 		builder.append(tableName + "(");
-		 
+		String cpgqxxidFiled=product.getCpgqxxIdFiled();
 		for (int i = 0; i < filedNames.length; i++) {
 			String name = filedNames[i];
-			if (i == filedNames.length - 1) {
-				builder.append(name + ")");
-			} else {
-				builder.append(name + ",");
-			}
-
+			 builder.append(name + ","); 
 		}
+		builder.append(cpgqxxidFiled+")");
 		builder.append(" value (");
 		for (int i = 0; i < filedNames.length; i++) {
-			if (i == filedNames.length - 1) {
-				builder.append("?)");
-			} else {
-				builder.append("?,");
-			} 
+			  builder.append("?,"); 
 		}
+		builder.append("?)");
 		return builder.toString();
 	}
  
@@ -114,7 +110,48 @@ public class ProductUtil {
 		}
 		return true;
 	}
-	
+	public static boolean IsMathValue(Object...object){
+		if(object==null)
+		{
+			return false; 
+		}
+		for(int i=0;i<object.length;i++){
+			Object o=object[i];
+			if(o==null)return false;
+			if(o instanceof String){
+				String s=(String)o;
+				try{
+					Integer.parseInt(s);
+				} catch (Exception e) {
+					try {
+						Float.parseFloat(s);
+					} catch (Exception e1) {
+						return false;
+					}
+					 
+				} 
+			}else if(o instanceof String[]){
+				String[] ss=(String[])o;
+				for(int j=0;j<ss.length;j++){
+					String sss=ss[j];
+					if(sss==null)return false;
+					try{
+						Integer.parseInt(sss);
+					} catch (Exception e) {
+						try {
+							Float.parseFloat(sss);
+						} catch (Exception e1) {
+							return false;
+						}
+						 
+					} 
+				}
+			}
+		}
+		 
+		 return true;
+		
+	}
 	public static boolean hasNullParam(Object...object){
 		if(object==null)
 		{

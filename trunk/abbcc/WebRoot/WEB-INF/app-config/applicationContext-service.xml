@@ -2,16 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
-
-	<bean id="userServiceImpl"
-		class="com.abbcc.service.impl.UserServiceImpl" />
-	<bean id="userService" parent="baseTransactionProxy">
-		<property name="target">
-			<ref bean="userServiceImpl" />
-		</property>
-	</bean>
-	<bean id="productServiceImpl"
-		class="com.abbcc.service.impl.ProductServiceImpl">
+	<bean id="baseServiceImpl"
+		class="com.abbcc.service.impl.BaseServiceImpl">
 		<property name="productDao">
 			<ref bean="productDao" />
 		</property>
@@ -21,10 +13,30 @@
 		<property name="pzDao">
 			<ref bean="pzDao" />
 		</property>
+		<property name="cpgqxxDao">
+			<ref bean="cpgqxxDao" />
+		</property>
+		<property name="jytjDao">
+			<ref bean="jytjDao" />
+		</property>
+		<property name="messageDao">
+			<ref bean="messageDao"/>
+		</property>
 	</bean> 
+	 
+	<bean id="productServiceImpl" class="com.abbcc.service.impl.ProductServiceImpl" parent="baseServiceImpl"/>
+		  
 	<bean id="productService" parent="baseTransactionProxy">
 		<property name="target">
 			<ref bean="productServiceImpl" />
 		</property>
 	</bean>
+	<bean id="messageServiceImpl" class="com.abbcc.service.impl.MessageServiceImpl" parent="baseServiceImpl"/>
+		  
+	<bean id="messageService" parent="baseTransactionProxy">
+		<property name="target">
+			<ref bean="messageServiceImpl" />
+		</property>
+	</bean>
+ 		 
 </beans>
