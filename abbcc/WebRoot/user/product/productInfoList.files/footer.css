@@ -23,7 +23,7 @@
 	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 3px auto; WIDTH: 100%; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; TEXT-ALIGN: center
 }
 .footer LI {
-	BORDER-RIGHT: #666 1px solid; PADDING-RIGHT: 4px! important; DISPLAY: inline; PADDING-LEFT: 9px! important; PADDING-BOTTOM: 0px! important; PADDING-TOP: 0px! important
+	BORDER-RIGHT: #666 1px solid; PADDING-RIGHT: 4px; DISPLAY: inline; PADDING-LEFT: 9px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
 }
 .footer LI.sli {
 	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px

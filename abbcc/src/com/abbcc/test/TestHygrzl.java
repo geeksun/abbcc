@@ -8,7 +8,7 @@ public class TestHygrzl {
 	public static void main(String[] args) throws Exception {
 //		 假设现在已有会员基本信息id
 		int  hyjbxxid = 13;
-		HygrzlDAO hd = DAOFactory.getHygrzlDAOInstance();
+		HygrzlDAO hd =null;//  DAOFactory.getHygrzlDAOInstance();
 		Hygrzl g = new Hygrzl();
 		
 //		g.setHyjbxxid(hyjbxxid);

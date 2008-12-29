@@ -11,7 +11,7 @@ public class TestHyjyjl {
 	public static void main(String[] args) throws Exception {
 //		 假设现在已有会员基本信息id
 		int  hyjbxxid = 3;
-		HyjyjlDAO hd = DAOFactory.getHyjyjlDAOInstance();
+		HyjyjlDAO hd =null;//  DAOFactory.getHyjyjlDAOInstance();
 		Hyjyjl h = new Hyjyjl();
 		
 //		h.setHyjbxxid(hyjbxxid);

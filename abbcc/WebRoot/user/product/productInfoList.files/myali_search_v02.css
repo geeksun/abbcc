@@ -20,7 +20,7 @@ DIV#searchBarN {
 	FONT-SIZE: 12px; FLOAT: left; WIDTH: 372px; COLOR: #ffffff
 }
 DIV.searchT {
-	PADDING-LEFT: 2px; MARGIN-LEFT: -1px! important
+	PADDING-LEFT: 2px; MARGIN-LEFT: 0px
 }
 .searchT UL {
 	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
