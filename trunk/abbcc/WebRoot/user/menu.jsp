@@ -52,10 +52,10 @@
      	<dt onclick="">留言管理</dt>
      	<dd><a href="<%=path %>/user/message/addMessage.jsp" target="right">留言</a></dd>
      	<dd><a href="<%=path%>/message.do?method=listAllMessage&currentPage=1" target="right">我收到的留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=sendAllMessage" target="right">我发出的留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=sellMessage" target="right">供应信息留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=buyMessage" target="right">求购信息留言</a></dd>
- 
+     	<dd><a href="<%=path %>/message.do?method=listSendMessage" target="right">我发出的留言</a></dd>
+     	<dd><a href="<%=path %>/message.do?method=listSellMessage&type=1" target="right">供应信息留言</a></dd>
+     	<dd><a href="<%=path %>/message.do?method=listBuyMessage&type=2" target="right">求购信息留言</a></dd>
+ 		<dd><a href="<%=path %>/message.do?method=userList" target="right">留言测试</a></dd>
      	<dt onclick="toggleDl(this)">系统后台产品</dt>
      	<dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd>
      	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">添加产品类目</a></dd>
