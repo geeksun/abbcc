@@ -52,7 +52,6 @@
 	</form-beans>
  
 	<global-exceptions>
-		<exception key="error.invalidlogin" type="java.lang.Exception" path="/index.jsp" scope="request"></exception>
 	</global-exceptions>
 	<global-forwards>
 		<forward name="login" path="/user/index.jsp"></forward>
@@ -62,7 +61,12 @@
 		<action path="/message" type="com.abbcc.customer.MessageAction" parameter="method">
 	     	<forward name="addMessage" path="/user/message/addMessage.jsp"></forward>
 	     	<forward name="allMessageList" path="/user/message/allMessageList.jsp"></forward>
+	     	<forward name="huifuMessage" path="/user/message/huifuMessage.jsp"></forward>
+	     	<forward name="listSendMess" path="/user/message/sendMessageList.jsp"></forward>
+	     	<forward name="listSellMess" path="/user/message/saleMessageList.jsp"></forward>
+	     	<forward name="listBuyMess" path="/user/message/buyMessageList.jsp"></forward>
 	     	<forward name="showMessage" path="/user/message/getMessage.jsp"></forward>
+	     		<forward name="userList" path="/user/message/userList.jsp"></forward>
 	    </action>
 	    <action path="/login" input="/user/index.jsp" name="loginForm" attribute="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
 	     	<forward name="loginsuccess" path="/user/main.jsp"></forward>
