@@ -7,7 +7,7 @@ import com.abbcc.vo.GlyBean;
 
 public class AdminServiceImpl implements AdminService {
 	private static AdminService as;
-	private GlyDAO gd = DAOFactory.getGlyDAOInstance();
+	//private GlyDAO gd = DAOFactory.getGlyDAOInstance();
 	public static AdminService getInstance(){
 		if(as==null){
 			as = new AdminServiceImpl();

@@ -20,4 +20,8 @@ public class AppConstants {
 	public static final int PRODUCT_SALE=1;
 	public static final int PRODUCT_BUY=2;
 	public static final int PRODUCT_QUICK_BUY=3;
+	
+	public static final String CPGQXX_SFYX_1="1";//无效
+	public static final String CPGQXX_SFYX_2="2";//有效
+	
 }

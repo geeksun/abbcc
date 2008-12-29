@@ -8,7 +8,7 @@ public interface ProductDAO extends BaseDao{
 
 	void addProduct(Product product);
 
-	void excetueSaveProduct(String sql, String[] value);
+	void excetueSaveProduct(String sql, Object[] value);
 	
 
 	
