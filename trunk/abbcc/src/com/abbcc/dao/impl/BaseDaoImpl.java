@@ -1,16 +1,20 @@
 package com.abbcc.dao.impl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.abbcc.dao.BaseDao;
+import com.abbcc.factory.HibernateSessionFactory;
 import com.abbcc.pojo.Pz;
 
 public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
@@ -119,9 +123,28 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 		} 
 	}
 	 
-	protected void setParamter(int startIndex,Query query,String[] paramters){
+	protected void setParamter(int startIndex,Query query,Object[] paramters){
 		for(int i=0;i<paramters.length;i++){
 			query.setParameter(startIndex, paramters[i]); 
+			startIndex++;
+		} 
+	}
+	protected void setParamter(int startIndex,SQLQuery query,Object[] paramters){
+		for(int i=0;i<paramters.length;i++){
+			Object obj=paramters[i];
+			if(obj==null){
+				query.setParameter(startIndex, null);
+			}else{
+				if(obj instanceof String){
+					query.setString(startIndex, (String)obj);
+				}else if(obj instanceof Integer){
+					query.setInteger(startIndex, (Integer)obj);
+				}else if(obj instanceof Long){
+					query.setLong(startIndex, (Long)obj);
+				}else if(obj instanceof Date){
+					query.setTime(startIndex, (Date)obj);
+				}
+			} 
 			startIndex++;
 		} 
 	}
@@ -145,13 +168,13 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	}
 	
 	public void updateTableID(String tableName) {
-		 String sql="update Pz set pz.recnum=pz.recnum+1 where p.tablename=?";
+		 String sql="update Pz as p set p.recnum=p.recnum+1 where p.tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
 	}
 	public void updateTableCount(String tableName) {
-		 String sql="update Pz set pz.maxCount=pz.maxCount+1 where p.tablename=?";
+		 String sql="update Pz as p set p.maxCount=p.maxCount+1 where p.tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
@@ -160,5 +183,10 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	public Pz updateAndGetPz(String tableName) {
 			this.updateTableID(tableName);
 			return this.getPzByTableName(tableName);
+	}
+	public static void main(String[] args){
+		Session session=HibernateSessionFactory.getSession();
+		
+		
 	}
 }

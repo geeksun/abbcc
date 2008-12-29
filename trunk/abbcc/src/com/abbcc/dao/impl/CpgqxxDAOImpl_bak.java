@@ -14,7 +14,7 @@ import com.abbcc.factory.HibernateUtil;
 import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Cpgqxx; 
 
-public class CpgqxxDAOImpl_bak implements CpgqxxDAO {
+public class CpgqxxDAOImpl_bak  {
 	private static CpgqxxDAOImpl_bak cpgqxxdaoimpl;
 
 	private static int count = 0;
@@ -108,7 +108,7 @@ public class CpgqxxDAOImpl_bak implements CpgqxxDAO {
 		pstmt.setString(13, cpgqxx.getSfyx());
 		pstmt.setString(14, cpgqxx.getScsj());
 		pstmt.setInt(15, cpgqxx.getHyjbxxid());
-		pstmt.setInt(16, cpgqxx.getCpgqxxid());
+		//pstmt.setInt(16, cpgqxx.getCpgqxxid());
 		pstmt.executeUpdate();
 		pstmt.close();
 	}
@@ -136,7 +136,7 @@ public class CpgqxxDAOImpl_bak implements CpgqxxDAO {
 		pstmt.setInt(2, cpgqxxid);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
-			c.setCpgqxxid(rs.getInt(1));
+		//	c.setCpgqxxid(rs.getInt(1));
 			c.setHyjbxxid(rs.getInt(2));
 			c.setXxlx(rs.getString(3));
 			c.setCpmc(rs.getString(4));
@@ -177,7 +177,7 @@ public class CpgqxxDAOImpl_bak implements CpgqxxDAO {
 		while (rs.next()) {
 			Cpgqxx c = new Cpgqxx();
 			c.setHyjbxxid(rs.getInt(1));
-			c.setCpgqxxid(rs.getInt(2));
+		//	c.setCpgqxxid(rs.getInt(2));
 			c.setXxlx(rs.getString(3));
 			c.setCpmc(rs.getString(4));
 			c.setCpshlm(rs.getString(5));

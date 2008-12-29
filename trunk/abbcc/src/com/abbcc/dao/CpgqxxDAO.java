@@ -23,5 +23,8 @@ public interface CpgqxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws DaoException;
 
+	public List getCpgqxxList(int hyjbxxid, String xxlx, String cpmc,String sfyx,String xxbt)throws DaoException;
+
+	 
 	 
 }
