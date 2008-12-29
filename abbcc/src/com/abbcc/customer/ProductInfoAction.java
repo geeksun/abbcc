@@ -71,7 +71,7 @@ public class ProductInfoAction extends BaseAction {
 						 cpgqxx.setCpshlm(productTypeId);//产品所属类目
 						 cpgqxx.setXxsm(desc);//详细说明 
 						 cpgqxx.setXxyxq(ableDate);//有效时间
-						 cpgqxx.setSfyx(AppConstants.CPGQXX_SFYX_1);//是否有效
+						 cpgqxx.setSfyx(AppConstants.CPGQXX_SFYX_2);//是否有效
 						 cpgqxx.setXxlx(orderType);
 						  
 						 
@@ -98,7 +98,29 @@ public class ProductInfoAction extends BaseAction {
 	public ActionForward productList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 
-		return mapping.findForward("");
+		String userid = (String) request.getSession().getAttribute("hyjbxxid");
+
+		String orderType = request.getParameter("orderType"); 
+		String productName =request.getParameter("productName");
+		int _userId = Integer.valueOf(userid);
+		String auditType =request.getParameter("auditType");
+		String overdue = null;//request.getParameter("");
+		boolean hasNull = ProductUtil.hasNullParam(userid,orderType);
+		if(hasNull){
+			return mapping.findForward("error");
+		}
+		try {
+			List productInfoList = this.productService.getProductInfoList(
+					_userId, orderType, productName, auditType, overdue);
+
+			request.setAttribute("productInfoList", productInfoList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e);
+		}
+
+		return mapping.findForward("productInfoList");
 	}
 
 	public ActionForward deleteProduct(ActionMapping mapping, ActionForm form,

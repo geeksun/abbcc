@@ -4,16 +4,11 @@ import com.abbcc.dao.*;
 import com.abbcc.dao.impl.*;
 
 public class DAOFactory {
-	public static PubAbbcc getPubAbbcc() {
+	/*public static PubAbbcc getPubAbbcc() {
 		return PubAbbcc.getInstance();
 	}
 
-	 
-
-	public static DljmsxDAO getDljmsxDAOInstance() {
-		return DljmsxDAOImpl.getInstance();
-	}
-
+	  
 	public static FwsxDAO getFwsxDAOInstance() {
 		return FwsxDAOImpl.getInstance();
 	}
@@ -22,9 +17,9 @@ public class DAOFactory {
 		return GlyDAOImpl.getInstance();
 	}
 
-	/*public static GsjbxxDAO getGsjbxxDAOInstance() {
+	public static GsjbxxDAO getGsjbxxDAOInstance() {
 		//return GsjbxxDAOImpl.getInstance();
-	}*/
+	}
 
 	public static GsxxxxDAO getGsxxxxDAOInstance() {
 		return GsxxxxDAOImpl.getInstance();
@@ -72,5 +67,5 @@ public class DAOFactory {
 
 	public static ZpxxDAO getZpxxDAOInstance() {
 		return ZpxxDAOImpl.getInstance();
-	}
+	}*/
 }
