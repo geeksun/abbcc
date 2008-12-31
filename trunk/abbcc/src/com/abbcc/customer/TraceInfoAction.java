@@ -134,4 +134,16 @@ public class TraceInfoAction extends BaseAction {
 			return mapping.findForward("basicinfo");
 	}
 	
+	/**
+	 * @see 公司简介-->公司详细资料管理
+	 */
+	public ActionForward displayDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			
+			
+			return mapping.findForward("detailinfo");
+	}
 }
