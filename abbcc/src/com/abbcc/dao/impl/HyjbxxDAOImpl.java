@@ -49,6 +49,8 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	public int add(Hyjbxx hyjbxx) { 
 		log.debug("saving Hyjbxx instance");
 		int[] track = pa.updateRecNum("hyjbxx");
+		pa.updateNum("hyjbxx");
+		
 		count = track[0];
 		int maxCount = track[1];		//×î´óµÄID
 		
@@ -86,7 +88,6 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		
 		init = pstmt.executeUpdate();
 		//pa.updateNum(track[0],track[1],"hyjbxx");
-		pa.updateNum("hyjbxx");
 		log.debug("save successful");
 		//System.out.println("sql:"+sql);
 		pstmt.close();
