@@ -13,7 +13,7 @@ public class PubAbbcc {
 	private static PubAbbcc pa;
 
 	public static PubAbbcc getInstance() {
-		if (pa == null) {
+		if(pa == null){
 			pa = new PubAbbcc();
 		}
 		return pa;
@@ -49,7 +49,7 @@ public class PubAbbcc {
 
 	/**
 	 * @param tablename
-	 * @return  返回最大ID和总数的数组
+	 * @return  返回最大ID和纪录总数的数组
 	 */
 	public int[] updateRecNum(String tablename) {
 		int[] track = new int[2];
