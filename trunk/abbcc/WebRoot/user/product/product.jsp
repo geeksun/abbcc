@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=gbk"%>
+productInfoList<%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
 <%@ page import="com.abbcc.common.AppConstants"%>
