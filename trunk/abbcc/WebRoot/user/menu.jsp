@@ -1,5 +1,4 @@
 <%@ page language="java"  pageEncoding="gbk"%>
-<%@page import="com.abbcc.common.AppConstants" %>
 <%
 	String path = request.getContextPath();
 %> 
@@ -26,7 +25,7 @@
      	<dt onclick="toggleDl(this)">基本信息设置</dt>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="right">基本资料管理</a></dd>
      	<dd>后台密码修改</dd>
-     	<dd><a href="#" target="" >公司简介</a></dd> 
+     	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">公司简介</a></dd> 
      	<dd>荣誉证书</dd>
      	<dd>技术实力</dd>
      	<dd>上传公司标志</dd>
@@ -34,7 +33,7 @@
      <dl>
      	<dt onclick="toggleDl(this)">供求管理</dt>
      	<dd><a href="<%=path%>/user/product/category.jsp" target="right">供求信息</a></dd>
-     	<dd><a href="<%=path%>/productInfo.do?method=productList&orderType=<%=AppConstants.CPGQXX_SFYX_2 %>" target="right">管理供求信息</a></dd>
+     	<dd><a href="product/productList.jsp" target="right">管理供求信息</a></dd>
      </dl>
      <dl>	
      	<dt onclick="toggleDl(this)">产品管理</dt>
@@ -52,10 +51,10 @@
      	<dt onclick="">留言管理</dt>
      	<dd><a href="<%=path %>/user/message/addMessage.jsp" target="right">留言</a></dd>
      	<dd><a href="<%=path%>/message.do?method=listAllMessage&currentPage=1" target="right">我收到的留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=listSendMessage" target="right">我发出的留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=listSellMessage&type=1" target="right">供应信息留言</a></dd>
-     	<dd><a href="<%=path %>/message.do?method=listBuyMessage&type=2" target="right">求购信息留言</a></dd>
- 		<dd><a href="<%=path %>/message.do?method=userList" target="right">留言测试</a></dd>
+     	<dd><a href="<%=path %>/message.do?method=sendAllMessage" target="right">我发出的留言</a></dd>
+     	<dd><a href="<%=path %>/message.do?method=sellMessage" target="right">供应信息留言</a></dd>
+     	<dd><a href="<%=path %>/message.do?method=buyMessage" target="right">求购信息留言</a></dd>
+ 
      	<dt onclick="toggleDl(this)">系统后台产品</dt>
      	<dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd>
      	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">添加产品类目</a></dd>
