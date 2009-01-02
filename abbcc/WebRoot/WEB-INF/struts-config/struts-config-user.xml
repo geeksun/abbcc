@@ -33,7 +33,7 @@
 		</form-bean>
 		<!--  basicInfoForm  -->
 		<form-bean name="basicInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
-			<!-- 公司基本信息表单 -->
+			<!-- 公司基本信息 -->
 			<form-property name="gsmc" type="java.lang.String"></form-property>
 			<form-property name="qylx" type="java.lang.String"></form-property>
 			<form-property name="jyms" type="java.lang.String"></form-property>
@@ -42,16 +42,42 @@
 			<form-property name="cgdcp" type="java.lang.String"></form-property>
 			<form-property name="zyhy" type="java.lang.String"></form-property>
 			
-			<!-- 会员基本信息表单 -->
 			<form-property name="zsxm" type="java.lang.String"></form-property>
 			<form-property name="gddh" type="java.lang.String"></form-property>
 			<form-property name="gsszd" type="java.lang.String"></form-property>
 			<form-property name="dzyx" type="java.lang.String" initial=""></form-property>
+			<form-property name="gsjs" type="java.lang.String"></form-property>
+		</form-bean>
+		<!-- detailInfo -->
+		<form-bean name="detailInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司详细信息 -->
+			<form-property name="zczb" type="java.lang.String"></form-property>
+			<form-property name="gsclsj" type="java.lang.String"></form-property>
+			<form-property name="gszcd" type="java.lang.String"></form-property>
+			<form-property name="fddbr" type="java.lang.String"></form-property>
+			<form-property name="khyh" type="java.lang.String"></form-property>
+			<form-property name="zh" type="java.lang.String"></form-property>
+			<form-property name="cfmj" type="java.lang.String"></form-property>
 			
+			<form-property name="ygrs" type="java.lang.String"></form-property>
+			<form-property name="yfbmrs" type="java.lang.String"></form-property>
+			<form-property name="jypp" type="java.lang.String"></form-property>
+			<form-property name="monthProduction" type="java.lang.String" ></form-property>
+			<form-property name="unit" type="java.lang.String"></form-property>
+			<form-property name="nyye" type="java.lang.String"></form-property>
+			<form-property name="njke" type="java.lang.String"></form-property>
+			<form-property name="ncke" type="java.lang.String"></form-property>
+			<form-property name="gltxrz" type="java.lang.String"></form-property>
+			
+			<form-property name="zlkz" type="java.lang.String"></form-property>
+			<form-property name="zysc" type="java.lang.String"></form-property>
+			<form-property name="zykhq" type="java.lang.String"></form-property>			
+			<form-property name="oem" type="java.lang.String"></form-property>
 		</form-bean>
 	</form-beans>
  
 	<global-exceptions>
+		<exception key="error.invalidlogin" type="java.lang.Exception" path="/index.jsp" scope="request"></exception>
 	</global-exceptions>
 	<global-forwards>
 		<forward name="login" path="/user/index.jsp"></forward>
@@ -61,12 +87,7 @@
 		<action path="/message" type="com.abbcc.customer.MessageAction" parameter="method">
 	     	<forward name="addMessage" path="/user/message/addMessage.jsp"></forward>
 	     	<forward name="allMessageList" path="/user/message/allMessageList.jsp"></forward>
-	     	<forward name="huifuMessage" path="/user/message/huifuMessage.jsp"></forward>
-	     	<forward name="listSendMess" path="/user/message/sendMessageList.jsp"></forward>
-	     	<forward name="listSellMess" path="/user/message/saleMessageList.jsp"></forward>
-	     	<forward name="listBuyMess" path="/user/message/buyMessageList.jsp"></forward>
 	     	<forward name="showMessage" path="/user/message/getMessage.jsp"></forward>
-	     		<forward name="userList" path="/user/message/userList.jsp"></forward>
 	    </action>
 	    <action path="/login" input="/user/index.jsp" name="loginForm" attribute="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
 	     	<forward name="loginsuccess" path="/user/main.jsp"></forward>
@@ -78,12 +99,14 @@
 	    </action>
 	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
+	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
+	    </action>
+	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
 	    
 	    <action path="/productInfo"   parameter="method" type="com.abbcc.customer.ProductInfoAction">
 	    	<forward name="product" path="/user/product/product.jsp"></forward>
-	    	
-	    	<forward name="productInfoList" path="/user/product/productInfoList.jsp"></forward>
 	    </action>
 	</action-mappings>
 	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
