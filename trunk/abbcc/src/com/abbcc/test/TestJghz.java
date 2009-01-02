@@ -11,7 +11,7 @@ public class TestJghz {
 	public static void main(String[] args) throws Exception {
 	// 假设现在已有会员基本信息id
 	int  hyjbxxid = 14;
-	JghzDAO cd = null;// DAOFactory.getJghzDAOInstance();
+	JghzDAO cd = DAOFactory.getJghzDAOInstance();
 	Jghz c = new Jghz();
 	
 //	c.setHyjbxxid(hyjbxxid);

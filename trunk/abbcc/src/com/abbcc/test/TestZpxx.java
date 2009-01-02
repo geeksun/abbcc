@@ -11,7 +11,7 @@ public class TestZpxx {
 	public static void main(String[] args) throws Exception {
 	// 假设现在已有会员基本信息id
 	int  hyjbxxid = 14;
-	ZpxxDAO cd = null;// DAOFactory.getZpxxDAOInstance();
+	ZpxxDAO cd = DAOFactory.getZpxxDAOInstance();
 	Zpxx c = new Zpxx();
 	
 //	c.setHyjbxxid(hyjbxxid);
