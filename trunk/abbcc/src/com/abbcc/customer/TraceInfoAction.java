@@ -15,8 +15,8 @@ import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
-import com.abbcc.common.StringUtils;
 import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.service.TradeInfoService;
@@ -61,6 +61,28 @@ public class TraceInfoAction extends BaseAction {
 			 
 			return mapping.findForward("basicinfo"); 
 	}
+	
+	/**
+	 * @see 公司简介-->公司详细资料管理
+	 */
+	public ActionForward displayDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			
+			/*Gsxxxx gsxxxxx = new Gsxxxx();
+			DynaActionForm detailInfoForm = (DynaActionForm)form;
+			BeanUtils.copyProperties(gsxxxxx, detailInfoForm);
+			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
+			gsxxxxx.setHyjbxxid(hyjbxxid);
+			String ycl = request.getParameter("monthProduction")+request.getParameter("unit"); 
+			gsxxxxx.setYcl(ycl);
+			
+ 			System.out.println(gsxxxxx.getZczb()+gsxxxxx.getGsclsj()+gsxxxxx.getGszcd());
+			
+			hyjbxxService.add(gsxxxxx);*/
+			
+			return mapping.findForward("detailinfo");
+	}
 	/**
 	 * @see得到上级行业的对应子行业
 	 * @return subCategoryList
@@ -98,7 +120,6 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx hyjbxx = new Hyjbxx();
 			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
 			BeanUtils.copyProperties(hyjbxx, basicInfoForm);
-			//System.out.println(hyjbxx.getZsxm()+hyjbxx.getGddh()+hyjbxx.getJydz());
 			
 			hyjbxx.setHyjbxxid(hyjbxxid); 
 			//hyjbxx.setZsxm(StringUtils.converse(hyjbxx.getZsxm()));
@@ -106,7 +127,6 @@ public class TraceInfoAction extends BaseAction {
 			Gsjbxx gsjbxx = new Gsjbxx();
 			BeanUtils.copyProperties(gsjbxx, basicInfoForm);
 			gsjbxx.setHyjbxxid(hyjbxxid);
-			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			String[] jyms = request.getParameterValues("jyms");
 			//主营行业
 			String[] zyhy = request.getParameterValues("product");
@@ -114,7 +134,8 @@ public class TraceInfoAction extends BaseAction {
 			if(jyms!=null){
 				su = new StringBuffer();
 				for(int i=0;i<jyms.length;i++){
-					su.append(jyms[i]+",");
+					su.append(jyms[i]);
+					su.append(",");
 				}
 				gsjbxx.setJyms(su.toString());
 			}
@@ -122,7 +143,8 @@ public class TraceInfoAction extends BaseAction {
 			if(zyhy!=null){
 				su = new StringBuffer();
 				for(int i=0;i<zyhy.length;i++){
-					su.append(zyhy[i]+",");
+					su.append(zyhy[i]);
+					su.append(",");
 				}
 				gsjbxx.setZyhy(su.toString());
 			}
@@ -135,15 +157,50 @@ public class TraceInfoAction extends BaseAction {
 	}
 	
 	/**
-	 * @see 公司简介-->公司详细资料管理
+	 * @see 公司简介-->公司详细资料管理-->修改公司详细信息
 	 */
-	public ActionForward displayDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+	public ActionForward updateDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession(false);
+			request.setCharacterEncoding("gbk");
+			response.setCharacterEncoding("text/html;charset=gbk");
 			
-			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			Gsxxxx gsxxxx = new Gsxxxx();
+			DynaActionForm detailInfoForm = (DynaActionForm)form;
+			BeanUtils.copyProperties(gsxxxx, detailInfoForm);
+			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
+			gsxxxx.setHyjbxxid(hyjbxxid);
+			String ycl = request.getParameter("monthProduction")+request.getParameter("unit"); 
+			gsxxxx.setYcl(ycl);
+			//管理体系认证
+			String[] gltxrz = request.getParameterValues("gltxrz");
+			//主要市场
+			String[] zysc = request.getParameterValues("zysc"); 
+			StringBuffer sub;
+			if(gltxrz!=null){
+				sub = new StringBuffer();
+				for(int i=0;i<gltxrz.length;i++){
+					sub.append(gltxrz[i]);
+					sub.append(",");
+				}
+				gsxxxx.setGltxrz(sub.toString());
+			}
 			
+			if(zysc!=null){
+				sub = new StringBuffer();
+				for(int i=0;i<zysc.length;i++){
+					sub.append(zysc[i]);
+					sub.append(",");
+				}
+				gsxxxx.setZysc(sub.toString());
+			}
+			
+ 			System.out.println(gsxxxx.getZczb()+gsxxxx.getGsclsj()+gsxxxx.getGszcd()+gsxxxx.getGltxrz());
+			
+			hyjbxxService.add(gsxxxx);
 			
 			return mapping.findForward("detailinfo");
 	}
+	
+	
 }
