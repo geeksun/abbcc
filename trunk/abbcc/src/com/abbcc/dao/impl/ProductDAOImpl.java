@@ -1,10 +1,10 @@
 package com.abbcc.dao.impl;
 
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 
 import com.abbcc.dao.ProductDAO;
 import com.abbcc.pojo.Product;
+import com.abbcc.util.JdbcTemplateUtil;
 
 public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 
@@ -23,13 +23,14 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 		  
 	}
 
-	public void excetueSaveProduct(String sql, Object[] value) {
+	public void excetueSaveProduct(String sql, String[] value) {
 		 
 		
-		//JdbcTemplateUtil.updateObject(sql,value );
-		SQLQuery query=this.getSession().createSQLQuery(sql);
-		this.setParamter(0, query, value);
-		 query.executeUpdate();
+		JdbcTemplateUtil.updateObject(sql,value );
+		
+		//SQLQuery query=this.getSession().createSQLQuery(sql);
+		//this.setParamter(0, query, value);
+		//query.executeUpdate();
 	}
 
 }

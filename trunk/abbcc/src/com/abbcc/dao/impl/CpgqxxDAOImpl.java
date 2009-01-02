@@ -1,100 +1,209 @@
 package com.abbcc.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 
 import com.abbcc.dao.CpgqxxDAO;
-import com.abbcc.exception.DaoException;
 import com.abbcc.factory.Globals;
-import com.abbcc.pojo.Cpgqxx;
-import com.abbcc.pojo.Pz;
+import com.abbcc.factory.HibernateUtil;
+import com.abbcc.factory.PubAbbcc;
+import com.abbcc.pojo.Cpgqxx; 
 
-public class CpgqxxDAOImpl extends BaseDaoImpl  implements CpgqxxDAO {
+public class CpgqxxDAOImpl implements CpgqxxDAO {
+	private static CpgqxxDAOImpl cpgqxxdaoimpl;
 
-	private String tableName="cpgqxx";
-	 
+	private static int count = 0;
+
+	private static ResultSet rs = null;
+
+	private static int hid = 0;
+
+	private static int page = 0;
+
+	private static String sql = null;
+
+	private static PubAbbcc pa = null;
+
+	private static PreparedStatement pstmt = null;
+
+	private static Connection conn = null;
+
+	private Session session = null;
+
+	public CpgqxxDAOImpl() {
+		session = HibernateUtil.currentSession();
+		conn = session.connection();
+		pa = new PubAbbcc();
+	}
 	
-	public void delete(int hyjbxxid, int cpgqxxid) throws DaoException {
-		  
-	} 
-	   
-	public void insert(Cpgqxx cpgqxx) throws DaoException {
-		if(cpgqxx==null)return;
-		Pz pz= this.updateAndGetPz(tableName);
-		long id=pz.getRecnum();  
-		long page=id/ Globals.COUNT;
-		cpgqxx.setCpgqxxid(id);
-		String sql = "INSERT INTO cpgqxx_" + page +  
-				" (cpgqxxid,hyjbxxid,xxlx,cpmc,cpshlm, xxbt,  cpsxid," +
-				" xxsm, tp1,  tp2,  tp3, xxyxq,  jytjid, sqsj, sfyx, scsj)" +
-				" VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		 Object[] params=new Object[]{
-		  cpgqxx.getCpgqxxid() ,cpgqxx.getHyjbxxid(),cpgqxx.getXxlx(),cpgqxx.getCpmc()
-		 ,cpgqxx.getCpshlm(),cpgqxx.getXxbt(),cpgqxx.getCpsxid()
-		 ,cpgqxx.getXxsm(),cpgqxx.getTp1(),cpgqxx.getTp2(),cpgqxx.getTp3()
-		 ,cpgqxx.getXxyxq(),cpgqxx.getJytjid(),cpgqxx.getSqsj()
-		 ,cpgqxx.getSfyx(),cpgqxx.getScsj()
-				
-		};
-		SQLQuery query=this.getSession().createSQLQuery(sql);
-		this.setParamter(0, query, params);
-		query.executeUpdate();
-		//	JdbcTemplateUtil.updateObject(sql,params);
-		this.updateTableCount(tableName);
+	public static CpgqxxDAOImpl getInstance() {
+		if (cpgqxxdaoimpl == null) {
+			cpgqxxdaoimpl = new CpgqxxDAOImpl();
+		}
+		return cpgqxxdaoimpl;
 	}
 
-	public List queryAll(int hyjbxxid, int currentPage, int lineSize) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+	public void insert(Cpgqxx cpgqxx) throws Exception {
+		hid = cpgqxx.getHyjbxxid();
+		int[] track = pa.updateRecNum("hyjbxx");
+		track = pa.updateRecNum("cpgqxx");
+		page = hid / Globals.COUNT;
+		sql = "INSERT INTO cpgqxx_" + page
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		System.out.println(sql);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, hid);
+		pstmt.setInt(2, count);
+		pstmt.setString(3, cpgqxx.getXxlx());
+		pstmt.setString(4, cpgqxx.getCpmc());
+		pstmt.setString(5, cpgqxx.getCpshlm());
+		pstmt.setString(6, cpgqxx.getXxbt());
+		pstmt.setString(7, cpgqxx.getCpsxid());
+		pstmt.setString(8, cpgqxx.getXxsm());
+		pstmt.setString(9, cpgqxx.getTp1());
+		pstmt.setString(10, cpgqxx.getTp2());
+		pstmt.setString(11, cpgqxx.getTp3());
+		pstmt.setString(12, cpgqxx.getXxyxq());
+		pstmt.setString(13, cpgqxx.getJytjid());
+		pstmt.setString(14, cpgqxx.getSqsj());
+		pstmt.setString(15, cpgqxx.getSfyx());
+		pstmt.setString(16, cpgqxx.getScsj());
+		pstmt.executeUpdate();
+		pstmt.close();
 	}
 
-	public Cpgqxx queryById(int hyjbxxid, int cpgqxxid) throws DaoException {
-		// TODO Auto-generated method stub
-		return null;
+	// �޸Ĳ�Ʒ������Ϣ
+	public void update(Cpgqxx cpgqxx) throws Exception {
+		hid = cpgqxx.getHyjbxxid();
+		System.out.println(hid);
+		page = hid / Globals.COUNT;
+		System.out.println(page);
+		sql = "UPDATE cpgqxx_" + page
+				+ " h SET h.xxlx=?,h.cpmc=?,h.cpshlm=?,h.xxbt=?,"
+				+ "h.cpsxid=?,h.xxsm=?,h.tp1=?,h.tp2=?,h.tp3=?,"
+				+ "h.xxyxq=?,h.jytjid=?,h.sqsj=?,h.sfyx=?,h.scsj=? "
+				+ "WHERE h.hyjbxxid=? AND h.cpgqxxid=?";
+		System.out.println(sql);
+		System.out.println(cpgqxx.getXxlx());
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, cpgqxx.getXxlx());
+		pstmt.setString(2, cpgqxx.getCpmc());
+		pstmt.setString(3, cpgqxx.getCpshlm());
+		pstmt.setString(4, cpgqxx.getXxbt());
+		pstmt.setString(5, cpgqxx.getCpsxid());
+		pstmt.setString(6, cpgqxx.getXxsm());
+		pstmt.setString(7, cpgqxx.getTp1());
+		pstmt.setString(8, cpgqxx.getTp2());
+		pstmt.setString(9, cpgqxx.getTp3());
+		pstmt.setString(10, cpgqxx.getXxyxq());
+		pstmt.setString(11, cpgqxx.getJytjid());
+		pstmt.setString(12, cpgqxx.getSqsj());
+		pstmt.setString(13, cpgqxx.getSfyx());
+		pstmt.setString(14, cpgqxx.getScsj());
+		pstmt.setInt(15, cpgqxx.getHyjbxxid());
+		pstmt.setInt(16, cpgqxx.getCpgqxxid());
+		pstmt.executeUpdate();
+		pstmt.close();
 	}
 
-	public void update(Cpgqxx cpgqxx) throws DaoException {
-		// TODO Auto-generated method stub
-		
+	// ɾ���Ʒ�������
+	public void delete(int hyjbxxid, int cpgqxxid) throws Exception {
+		pa.deleteRecNum("cpgqxx");
+		page = hyjbxxid / Globals.COUNT;
+		sql = "DELETE FROM cpgqxx_" + page + " WHERE hyjbxxid=? AND cpgqxxid=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, hyjbxxid);
+		pstmt.setInt(2, cpgqxxid);
+		pstmt.executeUpdate();
+		pstmt.close();
 	}
 
-	public List getCpgqxxList(int hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt) {
-		String hql = "from Cpgqxx c where c.hyjbxxid=?";
-		if (xxlx != null) {
-			hql += " and c.xxlx=?";
+	// ��������Ҳ�Ʒ�������
+	public Cpgqxx queryById(int hyjbxxid, int cpgqxxid) throws Exception {
+		Cpgqxx c = new Cpgqxx();
+		page = hyjbxxid / Globals.COUNT;
+		sql = "SELECT * FROM cpgqxx_" + page
+				+ " c WHERE c.hyjbxxid=? AND c.cpgqxxid=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, hyjbxxid);
+		pstmt.setInt(2, cpgqxxid);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			c.setCpgqxxid(rs.getInt(1));
+			c.setHyjbxxid(rs.getInt(2));
+			c.setXxlx(rs.getString(3));
+			c.setCpmc(rs.getString(4));
+			c.setCpshlm(rs.getString(5));
+			c.setXxbt(rs.getString(6));
+			c.setCpsxid(rs.getString(7));
+			c.setXxsm(rs.getString(8));
+			c.setTp1(rs.getString(9));
+			c.setTp2(rs.getString(10));
+			c.setTp3(rs.getString(11));
+			c.setXxyxq(rs.getString(12));
+			c.setJytjid(rs.getString(13));
+			c.setSqsj(rs.getString(14));
+			c.setSfyx(rs.getString(15));
+			c.setScsj(rs.getString(16));
 		}
-		if (cpmc != null) {
-			hql += " and c.cpmc=?";
-		}
-		if (sfyx != null) {
-			hql += " and c.sfyx=?";
-		}
-		if (xxbt != null) {
-			hql += " and c.xxbt=?";
-		}
-		Query query = this.getQuery(hql);
-		query.setInteger(0, hyjbxxid);
-		int index = 1;
-		if (xxlx != null) {
-			query.setParameter(index, xxlx);
-			index++;
-		}
-		if (cpmc != null) {
-			query.setParameter(index, cpmc);
-			index++;
-		}
-		if (sfyx != null) {
-			query.setParameter(index, sfyx);
-			index++;
-		}
-		if (xxbt != null) {
-			query.setParameter(index, xxbt);
-			index++;
-		}
+		rs.close();
+		pstmt.close();
+		return c;
+	}
 
-		return query.list();
-	} 
+	// ���ʱ��������ʾ����δ��˵Ĳ�Ʒ������Ϣ
+	@SuppressWarnings("unchecked")
+	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
+			throws Exception {
+		page = hyjbxxid / Globals.COUNT;
+
+		List<Cpgqxx> list = new ArrayList<Cpgqxx>();
+
+		sql = "SELECT * FROM cpgqxx_" + page
+				+ " c WHERE c.hyjbxxid=? ORDER BY c.cpgqxxid DESC LIMIT "
+				+ (currentPage - 1) * lineSize + "," + lineSize;
+		System.out.println(sql);
+		System.out.println("hyjbxxid=" + hyjbxxid);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, hyjbxxid);
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			Cpgqxx c = new Cpgqxx();
+			c.setHyjbxxid(rs.getInt(1));
+			c.setCpgqxxid(rs.getInt(2));
+			c.setXxlx(rs.getString(3));
+			c.setCpmc(rs.getString(4));
+			c.setCpshlm(rs.getString(5));
+			c.setXxbt(rs.getString(6));
+			c.setCpsxid(rs.getString(7));
+			c.setXxsm(rs.getString(8));
+			c.setTp1(rs.getString(9));
+			c.setTp2(rs.getString(10));
+			c.setTp3(rs.getString(11));
+			c.setXxyxq(rs.getString(12));
+			c.setJytjid(rs.getString(13));
+			c.setSqsj(rs.getString(14));
+			c.setSfyx(rs.getString(15));
+			c.setScsj(rs.getString(16));
+			list.add(c);
+		}
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+
+	// ��ݻ�ԱIDɾ�����й�j��¼
+	public void deleteByHyjbxxid(int hyjbxxid) throws Exception {
+		page = hyjbxxid / Globals.COUNT;
+		sql = "DELETE FROM cpgqxx_" + page + " WHERE hyjbxxid=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, hyjbxxid);
+		pstmt.executeUpdate();
+		pstmt.close();
+	}
 }
