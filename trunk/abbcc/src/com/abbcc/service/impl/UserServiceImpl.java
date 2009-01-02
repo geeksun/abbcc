@@ -9,7 +9,7 @@ public class UserServiceImpl implements UserService {
 	//private static final Log log = LogFactory.getLog(UserServiceImpl.class);
 	private static UserService us;
 	//  must be static !
-	private static HyjbxxDAO hyd = null;//DAOFactory.getHyjbxxDAOInstance();
+	private static HyjbxxDAO hyd = DAOFactory.getHyjbxxDAOInstance();
 	public static UserService getInstance(){
 		if(us==null){
 			us = new UserServiceImpl();

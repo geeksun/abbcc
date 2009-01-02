@@ -4,14 +4,21 @@ import java.util.List;
 
 import com.abbcc.common.AppConstants;
 import com.abbcc.dao.GsjbxxDAO;
+import com.abbcc.dao.GsxxxxDAO;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 
 public class HyjbxxServiceImpl implements HyjbxxService { 
 	private HyjbxxDAO hyjbxxDao;
 	private GsjbxxDAO gsjbxxDao;
+	private GsxxxxDAO gsxxxxDao;
+
+	public void setGsxxxxDao(GsxxxxDAO gsxxxxDao) {
+		this.gsxxxxDao = gsxxxxDao;
+	}
 
 	public void setGsjbxxDao(GsjbxxDAO gsjbxxDao) {
 		this.gsjbxxDao = gsjbxxDao;
@@ -107,6 +114,10 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		hyjbxxDao.update(hyjbxx);
 		gsjbxxDao.update(gsjbxx);
 		
+	}
+
+	public void add(Gsxxxx gsxxxxx) {
+		gsxxxxDao.add(gsxxxxx);
 	}
 
 }
