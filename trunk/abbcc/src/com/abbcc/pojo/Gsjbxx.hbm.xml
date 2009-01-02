@@ -41,5 +41,8 @@
          <property name="cgdcp" type="java.lang.String">
              <column name="cgdcp" length="32" />
          </property>
+         <property name="gsjs" type="java.lang.String">
+             <column name="gsjs" length="2000" />
+         </property>
     </class>
 </hibernate-mapping>

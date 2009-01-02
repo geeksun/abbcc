@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="com.abbcc.pojo.Cpgqxx" table="cpgqxx">
-        <id name="cpgqxxid" type="java.lang.Long">
+        <id name="cpgqxxid" type="java.lang.Integer">
             <column name="cpgqxxid" />
             <generator class="native"></generator>
         </id>
@@ -46,14 +46,14 @@
         <property name="jytjid" type="java.lang.String">
             <column name="jytjid" length="32" />
         </property>
-        <property name="sqsj" type="timestamp">
-            <column name="sqsj" />
+        <property name="sqsj" type="java.lang.String">
+            <column name="sqsj" length="20" />
         </property>
         <property name="sfyx" type="java.lang.String">
             <column name="sfyx" length="1" />
         </property>
-        <property name="scsj" type="timestamp">
-            <column name="scsj"   />
+        <property name="scsj" type="java.lang.String">
+            <column name="scsj" length="20" />
         </property>
     </class>
 </hibernate-mapping>

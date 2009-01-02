@@ -18,8 +18,6 @@ public class Product {
 	private String tableName;//表名
 
 	private String idFiledName;//字段id
-	
-	private String cpgqxxIdFiled;
 
 	private String otherFiledName;//其它字段
 
@@ -44,14 +42,6 @@ public class Product {
 	private int state;//1 used ,other is used
 	
 	private Date createTime;
-  
-	public String getCpgqxxIdFiled() {
-		return cpgqxxIdFiled;
-	}
-
-	public void setCpgqxxIdFiled(String cpgqxxIdFiled) {
-		this.cpgqxxIdFiled = cpgqxxIdFiled;
-	}
 
 	public String getFormName() {
 		return formName;

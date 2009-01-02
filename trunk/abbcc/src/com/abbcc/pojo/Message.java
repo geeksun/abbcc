@@ -1,8 +1,6 @@
 package com.abbcc.pojo;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @author xj
@@ -16,7 +14,6 @@ public class Message implements Serializable {
 	private int type;
 	private String title;
 	private String content;
-	private Date createTime;
 	
 	
 	public Message() {
@@ -32,13 +29,6 @@ public class Message implements Serializable {
 		this.type = type;
 		this.title = title;
 		this.content = content;
-	}
-	
-	public Date getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
 	}
 	public String getContent() {
 		return content;
@@ -83,11 +73,7 @@ public class Message implements Serializable {
 	public void setType(int type) {
 		this.type = type;
 	}
-	public static void main(String[] args){
-		Date  ddd=new Date();
-		SimpleDateFormat sf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println(sf.format(ddd));
-	}
+	
  
 	
 }

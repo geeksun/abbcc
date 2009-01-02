@@ -8,46 +8,20 @@ public class Jytj implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 交易条件ID
-	 */
-	private Long jytjid;
+	private Integer jytjid;
 
-	/**
-	 * 会员ID
-	 */
 	private Integer hyjbxxid;
-	
-	private Long cpgqxxId;
 
-	/**
-	 * 计量单位
-	 */
 	private String jldw;
 
-	/**
-	 * 产品单价
-	 */
 	private String cpdj;
 
-	/**
-	 * 最小起订量
-	 */
 	private String zxqdl;
 
-	/**
-	 * 供货总量
-	 */
 	private String ghzl;
 
-	/**
-	 * 发货期限
-	 */
 	private String fhqx;
 
-	/**
-	 * 供应商类型
-	 */
 	private String gyslc;
 
 	// Constructors
@@ -56,15 +30,25 @@ public class Jytj implements java.io.Serializable {
 	public Jytj() {
 	}
 
-	 
+	/** full constructor */
+	public Jytj(Integer hyjbxxid, String jldw, String cpdj, String zxqdl,
+			String ghzl, String fhqx, String gyslc) {
+		this.hyjbxxid = hyjbxxid;
+		this.jldw = jldw;
+		this.cpdj = cpdj;
+		this.zxqdl = zxqdl;
+		this.ghzl = ghzl;
+		this.fhqx = fhqx;
+		this.gyslc = gyslc;
+	}
 
 	// Property accessors
 
-	public Long getJytjid() {
+	public Integer getJytjid() {
 		return this.jytjid;
 	}
 
-	public void setJytjid(Long jytjid) {
+	public void setJytjid(Integer jytjid) {
 		this.jytjid = jytjid;
 	}
 
@@ -122,18 +106,6 @@ public class Jytj implements java.io.Serializable {
 
 	public void setGyslc(String gyslc) {
 		this.gyslc = gyslc;
-	}
-
-
-
-	public Long getCpgqxxId() {
-		return cpgqxxId;
-	}
-
-
-
-	public void setCpgqxxId(Long cpgqxxId) {
-		this.cpgqxxId = cpgqxxId;
 	}
 
 }

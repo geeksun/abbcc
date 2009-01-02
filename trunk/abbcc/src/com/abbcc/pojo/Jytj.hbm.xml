@@ -6,15 +6,12 @@
 -->
 <hibernate-mapping>
     <class name="com.abbcc.pojo.Jytj" table="jytj">
-        <id name="jytjid" type="java.lang.Long">
+        <id name="jytjid" type="java.lang.Integer">
             <column name="jytjid" />
             <generator class="native"></generator>
         </id>
         <property name="hyjbxxid" type="java.lang.Integer">
-            <column name="hyjbxxid"  />
-        </property>
-         <property name="cpgqxxId" type="java.lang.Long">
-            <column name="cpgqxxId"  not-null="true" />
+            <column name="hyjbxxid" />
         </property>
         <property name="jldw" type="java.lang.String">
             <column name="jldw" length="8" />
@@ -34,6 +31,5 @@
         <property name="gyslc" type="java.lang.String">
             <column name="gyslc" length="1" />
         </property>
-        
     </class>
 </hibernate-mapping>
