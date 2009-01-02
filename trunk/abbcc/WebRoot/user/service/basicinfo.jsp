@@ -163,6 +163,14 @@
                </tr>
               </tbody>
     		</table>
+    		<tr>
+    		<td>公司简介：<font color=red>*</font>(50-1000 字)</td>
+    		<td>
+            <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
+    		<textarea name="gsjs" rows=10 cols=50  maxLength="1000">
+    		</textarea>
+    		</td>
+    		</tr>
     	</table>
     	<p>
     	联系方式的确认与修改
