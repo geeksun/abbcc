@@ -10,7 +10,7 @@ import org.hibernate.Session;
 
 import com.abbcc.dao.CpgqxxDAO;
 import com.abbcc.factory.Globals;
-import com.abbcc.factory.HibernateUtil;
+import com.abbcc.factory.HibernateUtil; 
 import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Cpgqxx; 
 
