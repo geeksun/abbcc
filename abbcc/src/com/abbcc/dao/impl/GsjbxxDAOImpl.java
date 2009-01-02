@@ -17,7 +17,7 @@ import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Gsjbxx;
 
 public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
-	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
+	private static final Log log = LogFactory.getLog(GsjbxxDAOImpl.class);
 	public static final String HYJBXXID = "hyjbxxid";
 	private static int count = 0;
 	private static ResultSet rs = null;
@@ -47,7 +47,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		Connection	conn = session.connection();
 		
 		sql = "INSERT INTO gsjbxx_" + page 
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -62,6 +62,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 			pstmt.setString(8, gsjbxx.getZyfx());
 			pstmt.setString(9, gsjbxx.getXsdcp());
 			pstmt.setString(10, gsjbxx.getCgdcp());
+			pstmt.setString(11, gsjbxx.getGsjs());
 			flag = pstmt.executeUpdate();
 			//pa.updateNum(track[0],track[1],"gsjbxx");
 			
@@ -88,7 +89,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		//System.out.println(page);
 		sql = "UPDATE gsjbxx_" + page
 				+ " h SET h.gsmc=?,h.qylx=?,h.jyms=?,h.gsszd=?,"
-				+ "h.jydz=?,h.xsdcp=?,h.cgdcp=?,h.zyhy=? WHERE h.hyjbxxid=?";
+				+ "h.jydz=?,h.xsdcp=?,h.cgdcp=?,h.zyhy=?,h.gsjs=? WHERE h.hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		try{
@@ -103,7 +104,8 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		pstmt.setString(6, gsjbxx.getXsdcp());
 		pstmt.setString(7, gsjbxx.getCgdcp());
 		pstmt.setString(8, gsjbxx.getZyhy());
-		pstmt.setLong(9, gsjbxx.getHyjbxxid());
+		pstmt.setString(9, gsjbxx.getGsjs());
+		pstmt.setLong(10, gsjbxx.getHyjbxxid());
 		pstmt.executeUpdate();
 		pstmt.close();
 		}catch(Exception e){
