@@ -1,4 +1,4 @@
-productInfoList<%@ page contentType="text/html; charset=gbk"%>
+<%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
 <%@ page import="com.abbcc.common.AppConstants"%>
@@ -290,14 +290,14 @@ ul.callinglayout li {
 											<b>信息类型</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box">
-											<input value="<%=AppConstants.PRODUCT_SALE%>" name="orderType"
+											<input value="<%=AppConstants.PRODUCT_SALE%>" name="xxlx"
 												checked="checked" type="radio" />
 											供应
-											<input value="<%=AppConstants.PRODUCT_BUY%>" name="orderType"
+											<input value="<%=AppConstants.PRODUCT_BUY%>" name="xxlx"
 												type="radio" />
 											求购
 											<input value="<%=AppConstants.PRODUCT_QUICK_BUY%>"
-												name="orderType" type="radio" />
+												name="xxlx" type="radio" />
 											紧急求购
 										</td>
 									</tr>
@@ -317,7 +317,7 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td class="s lh13 normal" valign="top">
-															<input name="productName" value="" maxlength="16" size="20"
+															<input name="cpmc" value="" maxlength="16" size="20"
 																type="text" />
 															<div class="MB_Menu" id="Banner_Menu"></div>
 														</td>
@@ -495,7 +495,7 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td>
-															<input name="prodcutTitle" value="供应" size="46" maxlength="25"
+															<input name="xxbt" value="供应" size="46" maxlength="25"
 																type="text" />
 														</td>
 													</tr>
@@ -539,15 +539,15 @@ ul.callinglayout li {
 										</td>
 										<td class="list_right_box">
 											<div id="div_OfferExpire_normal">
-												<input value="1" name="ableDate" type="radio" />
+												<input value="10" name="xxyxq" type="radio" />
 												10天
-												<input value="2" name="ableDate" type="radio" />
+												<input value="20" name="xxyxq" type="radio" />
 												20天
-												<input value="3" name="ableDate" type="radio" />
+												<input value="30" name="xxyxq" type="radio" />
 												1个月
-												<input value="4" name="ableDate" type="radio" />
+												<input value="90" name="xxyxq" type="radio" />
 												3个月
-												<input value="5" checked="checked" name="ableDate"
+												<input value="180" checked="checked" name="xxyxq"
 													type="radio" />
 												6个月
 											</div>
@@ -626,7 +626,7 @@ ul.callinglayout li {
 										</td>
 										<td class="list_right_box" valign="top">
 											<div>
-												<textarea id="description" name="desc"
+												<textarea id="description" name="xxsm"
 													style="width: 430px; height: 350px;"></textarea>
 											</div>
 											<table border="0" cellpadding="0" cellspacing="0"
@@ -800,7 +800,7 @@ ul.callinglayout li {
 																<b>计量单位</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="unit" id="feature59238"
+																<input class="tpf_input" name="jldw" id="feature59238"
 																	value="" size="23" maxlength="12" type="text" />
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59238" class="s lh13 wrong"
@@ -822,7 +822,7 @@ ul.callinglayout li {
 																<b>产品单价</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="price" id="feature59240"
+																<input class="tpf_input" name="cpdj" id="feature59240"
 																	value="" size="23" maxlength="12" type="text" />
 																元/
 																<span id="trade_unit_price">单位</span>
@@ -846,7 +846,7 @@ ul.callinglayout li {
 																<b>最小起订量</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="orderCount" id="feature59239"
+																<input class="tpf_input" name="zxqdl" id="feature59239"
 																	value="" size="23" maxlength="12" type="text" />
 																<span id="trade_unit_beginamount">单位</span>
 																<span style="padding-left: 10px;"><span
@@ -868,7 +868,7 @@ ul.callinglayout li {
 																<b>供货总量</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="productCount" id="feature59241"
+																<input class="tpf_input" name="ghzl" id="feature59241"
 																	value="" size="23" maxlength="12" type="text" />
 																<span id="trade_unit_amount">单位</span>
 																<span style="padding-left: 10px;"><span
@@ -891,7 +891,7 @@ ul.callinglayout li {
 															</td>
 															<td class="list_right_box">
 																自买家付款之日起
-																<select name="freightDate" id="feature59242" maxlength="80">
+																<select name="fhqx" id="feature59242" maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
@@ -973,23 +973,23 @@ ul.callinglayout li {
 
 																我是该产品的
 
-																<select name="merchantType" id="feature116330" maxlength="80">
+																<select name="gyslx" id="feature116330" maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
-																	<option value="1">
+																	<option value="自主生产厂商">
 																		自主生产厂商
 																	</option>
-																	<option value="2">
+																	<option value="加工商">
 																		加工商
 																	</option>
-																	<option value="3">
+																	<option value="代理商">
 																		代理商
 																	</option>
-																	<option value="4">
+																	<option value="经销商">
 																		经销商
 																	</option>
-																	<option value="5">
+																	<option value="其他">
 																		其他
 																	</option>
 																</select>
