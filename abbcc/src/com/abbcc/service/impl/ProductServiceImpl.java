@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.abbcc.exception.AppException;
-import com.abbcc.exception.DaoException;
-import com.abbcc.pojo.Cpgqxx;
-import com.abbcc.pojo.Jytj;
+import com.abbcc.dao.ProductDAO;
+import com.abbcc.dao.ProductTypeDAO;
+import com.abbcc.dao.PzDAO;
 import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.pojo.Pz;
@@ -16,9 +15,38 @@ import com.abbcc.util.product.ProductObject;
 import com.abbcc.util.product.ProductUtil;
 import com.abbcc.util.product.TableUtil;
 
-public class ProductServiceImpl extends BaseServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
-	 
+	private ProductDAO productDao;
+
+	private ProductTypeDAO productTypeDao;
+
+	private PzDAO pzDao;
+
+	public ProductDAO getProductDao() {
+		return productDao;
+	}
+
+	public void setProductDao(ProductDAO productDao) {
+		this.productDao = productDao;
+	}
+
+	public ProductTypeDAO getProductTypeDao() {
+		return productTypeDao;
+	}
+
+	public void setProductTypeDao(ProductTypeDAO productTypeDao) {
+		this.productTypeDao = productTypeDao;
+	}
+
+	public PzDAO getPzDao() {
+		return pzDao;
+	}
+
+	public void setPzDao(PzDAO pzDao) {
+		this.pzDao = pzDao;
+	}
+
 	public void addProductType(ProductType productType) {
 		this.productTypeDao.addProductType(productType);
 
@@ -91,7 +119,8 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 				productTypeId);
 	}
 
-	public void addProduct(Product product) { 
+	public void addProduct(Product product) {
+
 		String productTypeId = product.getProductTypeId();
 		Product _product = productDao.getProductByStateAndProductTypeId(
 				Product.PRODUCT_STATE_IN_USED, productTypeId);
@@ -100,70 +129,30 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			this.productDao.update(_product);
 
 		}
-		
+		product.setState(Product.PRODUCT_STATE_IN_USED);
+		this.productDao.addProduct(product);
 		String productTable = ProductUtil.PRODUCT_TABLE_INDEX_NAME;
-		Pz pz = this.pzDao.updateAndGetPz (productTable);
+		Pz pz = this.pzDao.getPzByTableName(productTable);
 		if (pz != null) {
-			long index = pz.getRecnum(); 
+			long index = pz.getRecnum();
+			index = index + 1;
 			product.setTableName(productTable + "_" + index);
-			product.setState(Product.PRODUCT_STATE_IN_USED); 
-			this.productDao.addProduct(product);
 			String table = TableUtil.getCreateTable(product);
-			this.productDao.exectueSQLSql(table); 
+			this.productDao.exectueSQLSql(table);
+			pz.setRecnum(index);
 			pz.setMaxCount(pz.getMaxCount() + 1);
 			pzDao.updatePz(pz);
 		}
 	}
 
-	private void addProductObj(ProductObject obj) {
+	public void addProductInfo(ProductObject obj) {
 		if (obj == null)
 			return;
 		String sql = obj.getSql();
-		Object[] value = obj.getValue();
+		String[] value = obj.getValue();
 		System.out.println(sql);
 		this.productDao.excetueSaveProduct(sql, value);
 
-	}
-	private void addCpgqxx(Cpgqxx cpgqxx) throws DaoException{
-		this.cpgqxxDao.insert(cpgqxx);
-	
-		
-	}
-	private void addJytj(Jytj jytj) throws DaoException{
-		this.jytjDao.insert(jytj);
-		
-	}
-
-	public void addProductInfo(ProductObject obj, Cpgqxx cpgqxx, Jytj jytj) throws AppException {
-		try{
-		if(obj==null||cpgqxx==null||jytj==null)return; 
-		this.addCpgqxx(cpgqxx);   
-		Object[] values=obj.getValue();
-		values[values.length-1]=cpgqxx.getCpgqxxid();
-		this.addProductObj(obj);
-		jytj.setCpgqxxId(cpgqxx.getCpgqxxid());
-		this.addJytj(jytj); 
-		  
-		}catch(Exception e){
-			log.error(e);
-			e.printStackTrace();
-			throw new AppException(e);
-		}
-	}
-
-	 
-
-	public List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue) throws AppException {
-		
-		
-		try {
-			return this.cpgqxxDao.getCpgqxxList(userId,orderType,productName,auditType ,null);
-		} catch (DaoException e) {
-			log.error(e);
-			e.printStackTrace();
-			throw new AppException(e);
-			
-		}
 	}
 
 }
