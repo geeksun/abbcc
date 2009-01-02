@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.abbcc.dao.CpgqxxDAO;
+import com.abbcc.factory.DAOFactory;
 import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Cpgqxx;
 
@@ -12,7 +13,7 @@ public class TestCpgqxx {
 		// �����������л�Ա����Ϣid
 		PubAbbcc pa = new PubAbbcc();
 		// int hyjbxxid = pa.getRecNum("cpgqxx");
-		CpgqxxDAO cd = null;//nullDAOFactory.getCpgqxxDAOInstance();
+		CpgqxxDAO cd = DAOFactory.getCpgqxxDAOInstance();
 		Cpgqxx c = new Cpgqxx();
 
 		// c.setHyjbxxid(hyjbxxid);

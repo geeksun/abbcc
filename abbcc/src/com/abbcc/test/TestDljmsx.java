@@ -15,7 +15,7 @@ public class TestDljmsx {
 	public static void main(String[] args) throws Exception {
 //		 假设现在已有会员基本信息id
 		int  hyjbxxid = 13;
-		DljmsxDAO dd = null;//DAOFactory.getDljmsxDAOInstance();
+		DljmsxDAO dd = DAOFactory.getDljmsxDAOInstance();
 		Dljmsx d = new Dljmsx();
 		
 //		d.setHyjbxxid(hyjbxxid);
