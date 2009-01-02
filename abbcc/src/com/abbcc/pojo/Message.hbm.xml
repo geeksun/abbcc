@@ -28,8 +28,5 @@
         <property name="content" type="java.lang.String">
             <column name="content" />
         </property>
-      <property name="createTime" type="timestamp">
-            <column name="createTime" />
-        </property>
     </class>
 </hibernate-mapping>
