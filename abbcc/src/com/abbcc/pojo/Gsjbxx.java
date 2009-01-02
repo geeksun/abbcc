@@ -17,11 +17,13 @@ public class Gsjbxx implements java.io.Serializable {
 	private String zyfx;			//主营方向
 	private String xsdcp;			//销售的产品
 	private String cgdcp;			//采购的产品
+	private String gsjs;			//公司简介
+	
 	public Gsjbxx() {
 	}
 	/** full constructor */
 	public Gsjbxx(Integer hyjbxxid, String gsmc, String qylx, String jyms,  String gsszd,
-			String jydz,String zyhy, String zyfx, String xsdcp, String cgdcp) {
+			String jydz,String zyhy, String zyfx, String xsdcp, String cgdcp, String gsjs) {
 		this.hyjbxxid = hyjbxxid;
 		this.gsmc = gsmc;
 		this.qylx = qylx;
@@ -32,8 +34,16 @@ public class Gsjbxx implements java.io.Serializable {
 		this.zyfx = zyfx;
 		this.xsdcp = xsdcp;
 		this.cgdcp = cgdcp;
+		this.gsjs = gsjs;
 	}
 
+	public String getGsjs() {
+		return gsjs;
+	}
+	public void setGsjs(String gsjs) {
+		this.gsjs = gsjs;
+	}
+	
 	public Integer getHyjbxxid(){
 		return this.hyjbxxid;
 	}
