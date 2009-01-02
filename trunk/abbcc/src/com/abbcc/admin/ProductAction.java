@@ -13,6 +13,7 @@ import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
 import com.abbcc.util.product.ProductUtil;
+import com.abbcc.util.product.TableUtil;
 
 public class ProductAction extends BaseAction {
 	 
@@ -51,11 +52,10 @@ public class ProductAction extends BaseAction {
 				String formName=ProductUtil.createFormName(len);
 				String tableFiledName=ProductUtil.createFiled(len);
 				
-				String tableName= ProductUtil.getNextTableName();
+				 String tableName= ProductUtil.getNextTableName();
 				String id= ProductUtil.getTableIdFiled();
-				String cpgqxxId=ProductUtil.getTableCpgqxxIdFiled();
+				
 				product.setIdFiledName(id);
-				product.setCpgqxxIdFiled(cpgqxxId);
 				product.setIsHidden(_isHidden);
 				product.setIsNull(_isNull);
 				product.setIsShow(_isShow);
