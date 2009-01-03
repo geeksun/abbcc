@@ -18,5 +18,6 @@ public class PzDAOImpl extends BaseDaoImpl implements PzDAO{
 	public void updatePz(Pz pz) {
 		 this.update(pz); 
 	}
-
+	
+	
 }

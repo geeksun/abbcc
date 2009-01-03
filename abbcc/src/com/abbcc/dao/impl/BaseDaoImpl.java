@@ -20,7 +20,6 @@ import com.abbcc.pojo.Pz;
 
 public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	protected final Log log = LogFactory.getLog(getClass());
-
 	 
 	public void add(Object o) {
 		getHibernateTemplate().save(o);
@@ -28,8 +27,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	public void update(Object o) {
 		getHibernateTemplate().update(o);
 	}
-
-	 
+	
 	public Object getObject(Class clazz, Serializable id) {
 		Object o = getHibernateTemplate().get(clazz, id);
 
@@ -39,12 +37,10 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 
 		return o;
 	}
-
 	 
 	public List getObjects(Class clazz) {
 		return getHibernateTemplate().loadAll(clazz);
 	}
- 
  
 	public Query getQuery(String querySql, Serializable param) {
 		Query q = this.getSession().createQuery(querySql);
@@ -110,6 +106,7 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 		return ret.toString();
 		
 	}
+	
 	/**
 	 * 设置 查询的 paramters
 	 * @param startIndex 开始设置的位置
@@ -169,13 +166,13 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	}
 	
 	public void updateTableID(String tableName) {
-		 String sql="update Pz as p set p.recnum=p.recnum+1 where p.tablename=?";
+		 String sql="update Pz set recnum=recnum+1 where tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
 	}
 	public void updateTableCount(String tableName) {
-		 String sql="update Pz as p set p.maxCount=p.maxCount+1 where p.tablename=?";
+		 String sql="update Pz set maxCount=maxCount+1 where tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
@@ -187,7 +184,6 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	}
 	public static void main(String[] args){
 		Session session=HibernateSessionFactory.getSession();
-		
 		
 	}
 }
