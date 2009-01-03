@@ -13,7 +13,7 @@ public class BaseAction extends DispatchAction {
  	
 	protected MessageService messageService=(MessageService)StartServlet.getBean("messageService");
 	
-	protected HyjbxxService hyjbxxService=(HyjbxxService)StartServlet.getBean("hyjbxxService");
+	//protected HyjbxxService hyjbxxService=(HyjbxxService)StartServlet.getBean("hyjbxxService");
 
 
 
