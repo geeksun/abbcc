@@ -186,7 +186,7 @@ public class TraceInfoAction extends BaseAction {
 				gsxxxx.setGltxrz(sub.toString());
 			}
 			
-			if(zysc!=null){
+			if(zysc!=null){ 
 				sub = new StringBuffer();
 				for(int i=0;i<zysc.length;i++){
 					sub.append(zysc[i]);
