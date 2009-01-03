@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 
  * @author geeksun
  *	»ù±¾DAO interface
  */

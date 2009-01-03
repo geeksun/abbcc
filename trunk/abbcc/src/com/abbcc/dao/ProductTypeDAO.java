@@ -6,6 +6,7 @@ import com.abbcc.pojo.ProductType;
 
 public interface ProductTypeDAO {
 
+	
 	List getProductTypeByParentId(int parentId);
 
 	void addProductType(ProductType productType);
