@@ -21,22 +21,22 @@ USE `abbcc`;
 DROP TABLE IF EXISTS `cpgqxx`;
 
 CREATE TABLE `cpgqxx` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
-  `xxlx` varchar(1) default NULL,
-  `cpmc` varchar(16) default NULL,
-  `cpshlm` varchar(8) default NULL,
-  `xxbt` varchar(64) default NULL,
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
+  `xxlx` varchar(1) NOT NULL,
+  `cpmc` varchar(16) NOT NULL,
+  `cpshlm` varchar(8) NOT NULL,
+  `xxbt` varchar(64) NOT NULL,
   `cpsxid` varchar(32) default NULL,
   `xxsm` varchar(2000) default NULL,
   `tp1` varchar(32) default NULL,
   `tp2` varchar(32) default NULL,
   `tp3` varchar(32) default NULL,
-  `xxyxq` varchar(1) default NULL,
+  `xxyxq` varchar(1) NOT NULL,
   `jytjid` varchar(32) default NULL,
-  `sqsj` varchar(20) default NULL,
-  `sfyx` varchar(1) default NULL,
-  `scsj` varchar(20) default NULL,
+  `sqsj` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `sfyx` varchar(1) NOT NULL,
+  `scsj` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`cpgqxxid`)
 ) ENGINE=MRG_MyISAM DEFAULT CHARSET=gbk INSERT_METHOD=LAST UNION=(`cpgqxx_0`,`cpgqxx_1`,`cpgqxx_2`,`cpgqxx_3`);
 
@@ -47,22 +47,23 @@ CREATE TABLE `cpgqxx` (
 DROP TABLE IF EXISTS `cpgqxx_0`;
 
 CREATE TABLE `cpgqxx_0` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
-  `xxlx` varchar(1) default NULL,
-  `cpmc` varchar(16) default NULL,
-  `cpshlm` varchar(8) default NULL,
-  `xxbt` varchar(64) default NULL,
+ 
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
+  `xxlx` varchar(1) NOT NULL,
+  `cpmc` varchar(16) NOT NULL,
+  `cpshlm` varchar(8) NOT NULL,
+  `xxbt` varchar(64) NOT NULL,
   `cpsxid` varchar(32) default NULL,
   `xxsm` varchar(2000) default NULL,
   `tp1` varchar(32) default NULL,
   `tp2` varchar(32) default NULL,
   `tp3` varchar(32) default NULL,
-  `xxyxq` varchar(1) default NULL,
+  `xxyxq` varchar(1) NOT NULL,
   `jytjid` varchar(32) default NULL,
-  `sqsj` varchar(20) default NULL,
-  `sfyx` varchar(1) default NULL,
-  `scsj` varchar(20) default NULL,
+  `sqsj` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `sfyx` varchar(1) NOT NULL,
+  `scsj` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`cpgqxxid`),
   KEY `cpgqxx_idx` (`hyjbxxid`,`cpgqxxid`),
   KEY `sqsj_idx` (`sqsj`)
@@ -72,25 +73,27 @@ CREATE TABLE `cpgqxx_0` (
 
 /*Table structure for table `cpgqxx_1` */
 
+
 DROP TABLE IF EXISTS `cpgqxx_1`;
 
 CREATE TABLE `cpgqxx_1` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
-  `xxlx` varchar(1) default NULL,
-  `cpmc` varchar(16) default NULL,
-  `cpshlm` varchar(8) default NULL,
-  `xxbt` varchar(64) default NULL,
+  
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
+  `xxlx` varchar(1) NOT NULL,
+  `cpmc` varchar(16) NOT NULL,
+  `cpshlm` varchar(8) NOT NULL,
+  `xxbt` varchar(64) NOT NULL,
   `cpsxid` varchar(32) default NULL,
   `xxsm` varchar(2000) default NULL,
   `tp1` varchar(32) default NULL,
   `tp2` varchar(32) default NULL,
   `tp3` varchar(32) default NULL,
-  `xxyxq` varchar(1) default NULL,
+  `xxyxq` varchar(1) NOT NULL,
   `jytjid` varchar(32) default NULL,
-  `sqsj` varchar(20) default NULL,
-  `sfyx` varchar(1) default NULL,
-  `scsj` varchar(20) default NULL,
+  `sqsj` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `sfyx` varchar(1) NOT NULL,
+  `scsj` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`cpgqxxid`),
   KEY `cpgqxx_idx` (`hyjbxxid`,`cpgqxxid`),
   KEY `sqsj_idx` (`sqsj`)
@@ -103,22 +106,23 @@ CREATE TABLE `cpgqxx_1` (
 DROP TABLE IF EXISTS `cpgqxx_2`;
 
 CREATE TABLE `cpgqxx_2` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
-  `xxlx` varchar(1) default NULL,
-  `cpmc` varchar(16) default NULL,
-  `cpshlm` varchar(8) default NULL,
-  `xxbt` varchar(64) default NULL,
+  
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
+  `xxlx` varchar(1) NOT NULL,
+  `cpmc` varchar(16) NOT NULL,
+  `cpshlm` varchar(8) NOT NULL,
+  `xxbt` varchar(64) NOT NULL,
   `cpsxid` varchar(32) default NULL,
   `xxsm` varchar(2000) default NULL,
   `tp1` varchar(32) default NULL,
   `tp2` varchar(32) default NULL,
   `tp3` varchar(32) default NULL,
-  `xxyxq` varchar(1) default NULL,
+  `xxyxq` varchar(1) NOT NULL,
   `jytjid` varchar(32) default NULL,
-  `sqsj` varchar(20) default NULL,
-  `sfyx` varchar(1) default NULL,
-  `scsj` varchar(20) default NULL,
+  `sqsj` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `sfyx` varchar(1) NOT NULL,
+  `scsj` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`cpgqxxid`),
   KEY `cpgqxx_idx` (`hyjbxxid`,`cpgqxxid`),
   KEY `sqsj_idx` (`sqsj`)
@@ -131,22 +135,23 @@ CREATE TABLE `cpgqxx_2` (
 DROP TABLE IF EXISTS `cpgqxx_3`;
 
 CREATE TABLE `cpgqxx_3` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
-  `cpgqxxid` int(10) unsigned NOT NULL,
-  `xxlx` varchar(1) default NULL,
-  `cpmc` varchar(16) default NULL,
-  `cpshlm` varchar(8) default NULL,
-  `xxbt` varchar(64) default NULL,
+  
+  `hyjbxxid` int(11) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL,
+  `xxlx` varchar(1) NOT NULL,
+  `cpmc` varchar(16) NOT NULL,
+  `cpshlm` varchar(8) NOT NULL,
+  `xxbt` varchar(64) NOT NULL,
   `cpsxid` varchar(32) default NULL,
   `xxsm` varchar(2000) default NULL,
   `tp1` varchar(32) default NULL,
   `tp2` varchar(32) default NULL,
   `tp3` varchar(32) default NULL,
-  `xxyxq` varchar(1) default NULL,
+  `xxyxq` varchar(1) NOT NULL,
   `jytjid` varchar(32) default NULL,
-  `sqsj` varchar(20) default NULL,
-  `sfyx` varchar(1) default NULL,
-  `scsj` varchar(20) default NULL,
+  `sqsj` timestamp NOT NULL default '0000-00-00 00:00:00' on update CURRENT_TIMESTAMP,
+  `sfyx` varchar(1) NOT NULL,
+  `scsj` timestamp NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`cpgqxxid`),
   KEY `cpgqxx_idx` (`hyjbxxid`,`cpgqxxid`),
   KEY `sqsj_idx` (`sqsj`)
@@ -1435,8 +1440,9 @@ CREATE TABLE `jghz_3` (
 DROP TABLE IF EXISTS `jytj`;
 
 CREATE TABLE `jytj` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
+  `hyjbxxid` int(11)  unsigned default NULL,
   `jytjid` int(10) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL, 
   `jldw` varchar(8) default NULL,
   `cpdj` varchar(8) default NULL,
   `zxqdl` varchar(8) default NULL,
@@ -1453,8 +1459,9 @@ CREATE TABLE `jytj` (
 DROP TABLE IF EXISTS `jytj_0`;
 
 CREATE TABLE `jytj_0` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
+  `hyjbxxid` int(11)  unsigned default NULL,
   `jytjid` int(10) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL, 
   `jldw` varchar(8) default NULL,
   `cpdj` varchar(8) default NULL,
   `zxqdl` varchar(8) default NULL,
@@ -1472,8 +1479,9 @@ CREATE TABLE `jytj_0` (
 DROP TABLE IF EXISTS `jytj_1`;
 
 CREATE TABLE `jytj_1` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
+  `hyjbxxid` int(11)  unsigned default NULL,
   `jytjid` int(10) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL, 
   `jldw` varchar(8) default NULL,
   `cpdj` varchar(8) default NULL,
   `zxqdl` varchar(8) default NULL,
@@ -1491,8 +1499,9 @@ CREATE TABLE `jytj_1` (
 DROP TABLE IF EXISTS `jytj_2`;
 
 CREATE TABLE `jytj_2` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
+ `hyjbxxid` int(11)  unsigned default NULL,
   `jytjid` int(10) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL, 
   `jldw` varchar(8) default NULL,
   `cpdj` varchar(8) default NULL,
   `zxqdl` varchar(8) default NULL,
@@ -1510,8 +1519,9 @@ CREATE TABLE `jytj_2` (
 DROP TABLE IF EXISTS `jytj_3`;
 
 CREATE TABLE `jytj_3` (
-  `hyjbxxid` int(10) unsigned NOT NULL,
+ `hyjbxxid` int(11)  unsigned default NULL,
   `jytjid` int(10) unsigned NOT NULL,
+  `cpgqxxid` int(11) unsigned NOT NULL, 
   `jldw` varchar(8) default NULL,
   `cpdj` varchar(8) default NULL,
   `zxqdl` varchar(8) default NULL,
@@ -1736,33 +1746,4 @@ CREATE TABLE `zpxx_3` (
   KEY `zpxx_idx` (`hyjbxxid`,`zpxxid`),
   KEY `sqsj_idx` (`sqsj`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
-
-/*Data for the table `zpxx_3` */
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-SET FOREIGN_KEY_CHECKS=0;
-		-- ----------------------------
-		-- Table structure for producttype
-		-- ----------------------------
-		CREATE TABLE `producttype` (
-		  `id` int(11) NOT NULL auto_increment COMMENT '产品类目表',
-		  `parentid` int(11) NOT NULL,
-		  `name` varchar(255) NOT NULL,
-		  `typeid` varchar(100) default NULL,
-		  `type` int(1) NOT NULL,
-		  `isshow` int(1) NOT NULL,
-		  PRIMARY KEY  (`id`)
-		) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=gbk;
-
-		-- ----------------------------
-		-- Records 
-		-- ----------------------------
-		INSERT INTO `producttype` VALUES ('1', '0', 'aaaaa', '010101', '1', '1');
-		INSERT INTO `producttype` VALUES ('2', '0', 'bbbb', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('3', '0', 'ccccc', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('4', '0', 'ddddd', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('5', '1', 'aaa_aaaa', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('6', '1', 'aaaa_bbbb', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('7', '1', 'aaaa_cccc', null, '1', '1');
-		INSERT INTO `producttype` VALUES ('8', '5', 'aaaa_aaaa_aaaa', null, '1', '1');
+ 
