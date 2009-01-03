@@ -24,6 +24,8 @@ public class CustomerLoginAction extends BaseAction {
 
 	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
+		
+		try{
 		//  ∑¿÷π÷ÿ∏¥Ã·Ωª
 		/*if(!isTokenValid(request)) {
 	        ActionMessages messages = new ActionMessages();
@@ -72,5 +74,9 @@ public class CustomerLoginAction extends BaseAction {
 			
 			return actionMapping.getInputForward();
 		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

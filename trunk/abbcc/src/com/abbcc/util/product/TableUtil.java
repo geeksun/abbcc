@@ -17,6 +17,14 @@ public class TableUtil {
 		StringBuilder temp = getCreateFiled(idName, 1, 11, false, 1, null,
 				comment);
 		builder.append(temp);
+		 
+		String cpgqxxId=product.getCpgqxxIdFiled();
+		StringBuilder temp2 = getCreateFiled(cpgqxxId, 1, 11, false, 2, null,
+				comment);
+		builder.append(temp2);
+		
+		
+		
 		String filedName = product.getOtherFiledName();
 		 
 		String[] filedNames = ProductUtil.arrayToString(filedName);
