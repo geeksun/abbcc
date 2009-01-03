@@ -1,10 +1,14 @@
 <%@ page contentType="text/html; charset=GBK"%>
-<%@page import="java.util.List,java.util.Iterator"%>
-<%@page import="com.abbcc.pojo.Message"%>
+<%@page import="java.util.List,java.util.Iterator,java.util.Map,java.util.Date,java.text.SimpleDateFormat"%>
+<%@page import="com.abbcc.pojo.*,com.abbcc.common.AppConstants"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+
 	<%
 	String path = request.getContextPath();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String messageTime=(String)request.getAttribute("messageTime");
+	int replyMess=(Integer)request.getAttribute("reply");
 	%>
 	<head>
 		<title>我收到的留言</title>
@@ -20,6 +24,28 @@
 			rel=stylesheet>
 		<LINK rev=stylesheet href="<%=path%>/user/message/link/content.css" type=text/css
 			rel=stylesheet>
+		<script type="text/javascript">
+			function gotoReply(){
+				document.messageSearchForm.action="<%=path%>/message.do?method=listAllMessage&currentPage=1";
+				document.messageSearchForm.submit();
+			}
+			function gotoMessageTime(){
+				document.messageSearchForm.action="<%=path%>/message.do?method=listAllMessage&currentPage=1";
+				document.messageSearchForm.submit();
+			}
+			function gotoSaleMessage(){
+				document.dealForm.action="<%=path %>/message.do?method=listSellMessage&type=1";
+				document.dealForm.submit();
+			}
+			function gotoBuyMessage(){
+				document.dealForm.action="<%=path %>/message.do?method=listBuyMessage&type=2";
+				document.dealForm.submit();
+			}
+			function gotoPageNum(){
+				document.dealForm.action="<%=path%>/message.do?method=listAllMessage&currentPage=1";
+				document.dealForm.submit();
+			}
+		</script>
 	</head>
 	<body>
 		<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
@@ -45,12 +71,12 @@
 					</TD>
 					<TD class=card_normal onmouseover="this.style.cursor='hand'"
 						style="WIDTH: 120px"
-						onclick="document.getElementById('queryOfferType').value='sale';doSearch();">
+						onclick="gotoSaleMessage()">
 						关于供应信息留言
 					</TD>
 					<TD class=card_normal onmouseover="this.style.cursor='hand'"
 						style="WIDTH: 120px"
-						onclick="document.getElementById('queryOfferType').value='buy';doSearch();">
+						onclick="gotoBuyMessage()">
 						关于求购信息留言
 					</TD>
 					<TD class=card_blank>
@@ -63,7 +89,7 @@
 				</TR>
 			</TBODY>
 		</TABLE>
-		<FORM style="MARGIN: 0px" name=messageSearchForm method=get>
+		<FORM style="MARGIN: 0px" name=messageSearchForm method=post>
 			<INPUT id=tracelog type=hidden name=tracelog>
 			<INPUT type=hidden value=1 name=_fmme.l._0.p>
 			<INPUT type=hidden value=15 name=_fmme.l._0.pa>
@@ -75,37 +101,38 @@
 				<TBODY>
 					<TR>
 						<TD class=list_right_box width="100%">
-							<SPAN class=c><SELECT class=S id=queryReplySelect
-									onchange="document.getElementById('tracelog').value='po_messageaccept_feed';doFilter()"
-									name=replySelect>
-									<OPTION selected>
-										是否回复
-									</OPTION>
-									<OPTION value=true>
-										已回复
-									</OPTION>
-									<OPTION value=false>
-										未回复
-									</OPTION>
+							<SPAN class=c>
+								<SELECT class=S id=queryReplySelect
+									onchange="gotoReply()"
+									name=reply>
+									<OPTION value='0' <%=replyMess==AppConstants.MESSAGE_STATE_ALL ?"selected":"" %>>
+									是否回复
+								    </OPTION>
+								    <OPTION value='<%=AppConstants.MESSAGE_STATE_READ %>' <%=replyMess==AppConstants.MESSAGE_STATE_READ ?"selected":"" %>>
+									已回复
+								    </OPTION>
+								    <OPTION value='<%=AppConstants.MESSAGE_STATE_UN_READ %>' <%=replyMess==AppConstants.MESSAGE_STATE_UN_READ ?"selected":"" %>>
+									未回复
+								    </OPTION>
 								</SELECT> </SPAN>
 							<INPUT id=queryKeywords onclick=cleanDefaultKeywords(this)
 								type=hidden maxLength=100 value=请输入留言标题的关键词 name=_fmme.l._0.k>
 							<SELECT
-								onchange="javascript:document.getElementById('tracelog').value='po_messageaccept_search';doSearch()"
-								name=_fmme.l._0.t>
-								<OPTION value=1week>
+								onchange="gotoMessageTime()"
+								name=messageTime>
+								 <OPTION value=1 <%=messageTime.equals("1")?"selected":" " %>>
 									一个星期内的留言
 								</OPTION>
-								<OPTION value=1month>
+								<OPTION value=2 <%=messageTime.equals("2")?"selected":" " %>>
 									一个月内的留言
 								</OPTION>
-								<OPTION value=3month selected>
+								<OPTION value=3 <%=messageTime.equals("3")?"selected":" " %>>
 									三个月内的留言
 								</OPTION>
-								<OPTION value=3_month_to_1_year>
+								<OPTION value=4 <%=messageTime.equals("4")?"selected":" " %>>
 									三个月到一年内的留言
 								</OPTION>
-								<OPTION value=over1year>
+								<OPTION value=5 <%=messageTime.equals("5")?"selected":" " %>>
 									一年以上的留言
 								</OPTION>
 							</SELECT>
@@ -165,6 +192,8 @@
                 </SCRIPT>
 					<%
 						List list = (List) request.getAttribute("listAll");
+						Map userMap = (Map) request.getAttribute("userMap");
+						
 						String currentPage=(String)request.getAttribute("currentPage");
 						int _currentPage=Integer.valueOf(currentPage);
 						if (list != null) {
@@ -176,6 +205,11 @@
 								String content=message.getContent();
 								long id=message.getId();
 								int fromid=message.getFromid();
+								Hyjbxx hyjbxx=(Hyjbxx)userMap.get(fromid);
+								String fromName=hyjbxx!=null?hyjbxx.getHydlm():"";
+								int state=message.getState();
+								Date createTime=message.getCreateTime();
+								String _createTime=sf.format(createTime);
 					%>
 					<TR>
 						<TD class=list_lb_content align=middle>
@@ -187,17 +221,17 @@
 									align=absMiddle> </SPAN>
 							<SPAN style="FLOAT: left"><A
 								title="&#13;&#10;"
-								href="<%=path %>/message.do?method=showMessage&id=<%=id %>" target=right><%=title %> </A> <BR>2008-10-29
-								03:52:59 </SPAN>
+								href="<%=path %>/message.do?method=showMessage&id=<%=id %>" target=right><%=title %> </A> <BR>
+								<%=_createTime %> </SPAN>
 						</TD>
 						<TD class=list_lb_content>
-							<A title=pjttiy href="" target=right><%=fromid %></A>&nbsp;
+							<A title=pjttiy href="" target=right><%=fromName %></A>&nbsp;
 							<IMG id=alitalkImg1 style="CURSOR: pointer" height=16
 								src="<%=path%>/user/message/link/myt_offline.gif" width=16 align=absMiddle border=0>
 							<SPAN id=alitalkTxt1></SPAN> &nbsp;
 							<BR>
 							<DIV title=会员>
-								<%=fromid %>(个体经营)
+								<%=fromName %>(个体经营)
 							</DIV>
 						</TD>
 						<TD class=list_lb_content>
