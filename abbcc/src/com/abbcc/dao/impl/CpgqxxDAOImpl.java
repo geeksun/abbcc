@@ -2,7 +2,6 @@ package com.abbcc.dao.impl;
 
 import java.util.List;
 
-
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 
@@ -14,6 +13,7 @@ import com.abbcc.pojo.Pz;
 
 public class CpgqxxDAOImpl extends BaseDaoImpl  implements CpgqxxDAO {
 
+	
 	private String tableName="cpgqxx";
 	 
 	
