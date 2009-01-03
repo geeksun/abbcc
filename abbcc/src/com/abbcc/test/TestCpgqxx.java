@@ -13,7 +13,7 @@ public class TestCpgqxx {
 		// �����������л�Ա����Ϣid
 		PubAbbcc pa = new PubAbbcc();
 		// int hyjbxxid = pa.getRecNum("cpgqxx");
-		CpgqxxDAO cd = DAOFactory.getCpgqxxDAOInstance();
+		CpgqxxDAO cd = null;//DAOFactory.getCpgqxxDAOInstance();
 		Cpgqxx c = new Cpgqxx();
 
 		// c.setHyjbxxid(hyjbxxid);
