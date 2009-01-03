@@ -23,7 +23,6 @@ public class CheckName extends BaseAction {
 		response.setContentType("text/xml;charset=GBK");
 		response.setHeader("Cache-Control", "no-cache");
 		PrintWriter out = response.getWriter();
-		//CheckService cs = ServiceFactory.getCheckService();
 		
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("registerStatus");
@@ -32,17 +31,8 @@ public class CheckName extends BaseAction {
 		//  必须是>>>UTF-8
 		hydlm = java.net.URLDecoder.decode(hydlm, "UTF-8").trim();
 
-		//System.out.println("hydlm>>>> " + hydlm);
 		//  少用 boolean 型变量，boolean 型变量占内存,取少量记录
 		boolean i = hyjbxxService.checkName(hydlm);
-		/*if(name == null||name.equals("")){
-			out.print("<font color=red>不允许使用空用户名</font>");
-		}
-		else if(i){
-			out.print("<font color=red>用户名已存在</font>");			
-		}
-		else{
-			out.print("<font color=blue>恭喜,可以注册</font>");*/
 		if(i){ 
 			session.setAttribute("registerStatus", "fail");
 			out.print("fail");
