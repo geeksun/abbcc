@@ -42,17 +42,10 @@ public class CustomerLoginAction extends BaseAction {
 		String name = loginForm.getString("hydlm");    
 		String pass = loginForm.getString("mm");
 		
-		//UserService as = ServiceFactory.getUserService();
-		/*Hyjbxx hy = new Hyjbxx();
-		BeanUtils.copyProperties(hy,loginForm);*/
-		
-		
 		int validate = hyjbxxService.login(name,pass);
 		//System.out.println("validate: "+validate);
 		if(validate>0){
-			//request.getSession(true)==request.getSession()
 			HttpSession session = request.getSession(true);
-			//int hyjbxxid = hyjbxxService.getIdByName(name);
 			String hyjbxxid = hyjbxxService.getIdByName(name);
 			session.setAttribute("customer", name);
 			session.setAttribute("hyjbxxid", hyjbxxid);

@@ -54,18 +54,28 @@ public class RegisterAction extends BaseAction {
 				hyjbxx.setSfyx("0");			// 是否有效
 				hyjbxx.setMemberType("0");		// 会员类型
 				
+				//固定电话
+				String area = request.getParameter("area");
+				String phone = request.getParameter("phone");
+				String extension = request.getParameter("extension");
+				StringBuffer sf;
+				if(!extension.trim().equals("")){
+					sf = new StringBuffer();
+					sf.append(area).append(phone).append(extension);
+					hyjbxx.setGddh(sf.toString());
+				}else{
+					sf = new StringBuffer();
+					sf.append(area).append(phone);
+					hyjbxx.setGddh(sf.toString());
+				}
+				
 				//保存公司基本信息
 				Gsjbxx gsjbxx = new Gsjbxx();
-				BeanUtils.copyProperties(gsjbxx,registerForm);
-				//System.out.println(gsjbxx.getGsszd());
 				
-				/*int i = hyjbxxService.add(hyjbxx);
-				int k = hyjbxxService.add(gsjbxx);*/ 
+				BeanUtils.copyProperties(gsjbxx,registerForm);
 				int flag = hyjbxxService.add(hyjbxx, gsjbxx);
 				
-				//System.out.println("registerStatus: "+i);
 				if(flag>0){
-					//int hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm")); 
 					String hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm"));
 					if(!hyjbxxid.equals("")){
 						session = request.getSession();
