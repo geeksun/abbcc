@@ -6,6 +6,7 @@
 		String path = request.getContextPath();	
  %>
 <head>
+
 <title>我收到的留言</title>
 <SCRIPT language=JavaScript src="<%=path%>/user/message/link/aliclick.js"></SCRIPT>
 <SCRIPT src="<%=path%>/user/message/link/search.js" type=text/javascript charset=gb2312></SCRIPT>
