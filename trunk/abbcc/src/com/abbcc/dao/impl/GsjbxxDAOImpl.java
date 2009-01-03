@@ -6,29 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
 
 import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.factory.Globals;
-import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Pz;
 
 public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	private static final Log log = LogFactory.getLog(GsjbxxDAOImpl.class);
 	public static final String HYJBXXID = "hyjbxxid";
-	private static int count = 0;
-	private static ResultSet rs = null;
-	private static int hid = 0;
-	private static int page = 0;
-	private static String sql = null;
-	private static PubAbbcc pa = null;
-
-	public GsjbxxDAOImpl() {
-		pa = new PubAbbcc();
-	}
+	private String tableName = "gsjbxx";
 
 	/* 
 	 *  @see 插入公司基本信息
@@ -36,22 +26,18 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	public int add(Gsjbxx gsjbxx) { 
 		log.debug("saving Gsjbxx instance");
 		int flag = 0;
-		
-		int[] track = pa.updateRecNum("gsjbxx");
-		pa.updateNum("gsjbxx");
-		
-		int count = track[0];
-		int maxCount = track[1];		//最大的ID
-		page = count / Globals.COUNT;
+		Pz pz= this.updateAndGetPz(tableName);
+		long id=pz.getRecnum();  
+		long page=id/Globals.COUNT;
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		
-		sql = "INSERT INTO gsjbxx_" + page 
+		String sql = "INSERT INTO gsjbxx_" + page 
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, maxCount);
+			pstmt.setLong(1, id);
 			pstmt.setString(2, gsjbxx.getGsmc());
 			pstmt.setString(3, gsjbxx.getQylx());
 			pstmt.setString(4, gsjbxx.getJyms());
@@ -64,7 +50,6 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 			pstmt.setString(10, gsjbxx.getCgdcp());
 			pstmt.setString(11, gsjbxx.getGsjs());
 			flag = pstmt.executeUpdate();
-			//pa.updateNum(track[0],track[1],"gsjbxx");
 			
 			log.debug("save successful");
 			pstmt.close();
@@ -84,10 +69,9 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 
 	// 修改公司基本信息
 	public void update(Gsjbxx gsjbxx) {
-		hid = gsjbxx.getHyjbxxid();
-		page = hid / Globals.COUNT;
-		//System.out.println(page);
-		sql = "UPDATE gsjbxx_" + page
+		int hid = gsjbxx.getHyjbxxid();
+		int page = hid / Globals.COUNT;
+		String sql = "UPDATE gsjbxx_" + page
 				+ " h SET h.gsmc=?,h.qylx=?,h.jyms=?,h.gsszd=?,"
 				+ "h.jydz=?,h.xsdcp=?,h.cgdcp=?,h.zyhy=?,h.gsjs=? WHERE h.hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
@@ -123,9 +107,9 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 
 	// 删除公司基本信息信息
 	public void delete(int hyjbxxid) throws Exception {
-		pa.deleteRecNum("gsjbxx");
-		page = hyjbxxid / Globals.COUNT;
-		sql = "DELETE FROM gsjbxx_" + page + " WHERE hyjbxxid=?";
+		//pa.deleteRecNum("gsjbxx");
+		int page = hyjbxxid / Globals.COUNT;
+		String sql = "DELETE FROM gsjbxx_" + page + " WHERE hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -137,13 +121,13 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	// 根据主键查找公司基本信息信息
 	public Gsjbxx queryById(int hyjbxxid) throws Exception {
 		Gsjbxx g = new Gsjbxx();
-		page = hyjbxxid / Globals.COUNT;
-		sql = "SELECT * FROM gsjbxx_" + page + " c WHERE c.hyjbxxid=?";
+		int page = hyjbxxid / Globals.COUNT;
+		String sql = "SELECT * FROM gsjbxx_" + page + " c WHERE c.hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, hyjbxxid);
-		rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
 			g.setHyjbxxid(rs.getInt(1));
 			g.setGsmc(rs.getString(2));
@@ -165,12 +149,14 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	// 根据时间排列显示所有未审核的公司基本信息
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws Exception {
-		int page1 = 0;
-		page = count / Globals.COUNT;
+		long page1 = 0;
+		Pz pz= this.updateAndGetPz(tableName);
+		long id=pz.getRecnum();  
+		long page=id/Globals.COUNT;
 		List<Gsjbxx> list = new ArrayList<Gsjbxx>();
 		page1 = page - 1;
 
-		sql = "SELECT * FROM gsjbxx_" + page + " a UNION SELECT * FROM gsjbxx_"
+		String sql = "SELECT * FROM gsjbxx_" + page + " a UNION SELECT * FROM gsjbxx_"
 				+ page1 + " b ORDER BY hyjbxxid DESC LIMIT "
 				+ (currentPage - 1) * lineSize + "," + lineSize;
 		// System.out.println(sql);
@@ -178,7 +164,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		Connection	conn = session.connection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, hyjbxxid);
-		rs = pstmt.executeQuery();
+		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			Gsjbxx g = new Gsjbxx();
 			g.setHyjbxxid(rs.getInt(1));
