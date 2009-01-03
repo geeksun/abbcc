@@ -141,15 +141,27 @@
 			return 1; //incorrect format
 		}
 	}
-	function checkPhone(successid,elem,id){
+	function checkArea(successid,elem,id){
 		var str = elem.value;
-		var reg = /^(((\()?\d{2,4}(\))?[-(\s)*]){0,2})?(\d{7,8})$/; 
-		if(reg.test(str)){						// 电话号码格式正确 
+		var reg = /^\d*$/g;
+		if(reg.test(str)&&str!=""){						// 区号格式正确 
 			showSuccess(successid,id);
 			return true;
 		}else{
 			showError(successid,id
-			,"&nbsp;&nbsp;&nbsp;<font color='red'>固定电话格式不正确!正确格式例如：010-81818181</font>");
+			,"&nbsp;&nbsp;&nbsp;<font color='red'>区号格式不正确!请输入数字</font>");
+			return false;
+		}		
+	}
+	function checkPhone(successid,elem,id){
+		var str = elem.value;
+		var reg = /^\d*$/g;
+		if(reg.test(str)&&str!=""){						// 电话号码格式正确 
+			showSuccess(successid,id);
+			return true;
+		}else{
+			showError(successid,id
+			,"&nbsp;&nbsp;&nbsp;<font color='red'>电话号码格式不正确!请输入数字</font>");
 			return false;
 		}		
 	}
@@ -300,12 +312,27 @@
 			</tr>
 			<tr>
 				<td align=right><span id="phone_img"></span>固定电话<font color=red>*</font></td>
-				<td><input type=text id="gddh" name="gddh" onBlur="checkPhone('phone_img',this,'phone_condition')"
-				 onFocus="doEnhance('phone_condition');">
+				<td>
+				 <TABLE cellSpacing=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>区号：</TD>
+                      <TD>电话号码：</TD>
+                      <TD>分机：</TD></TR>
+                    <TR>
+                      <TD><INPUT maxLength=8 size=8  name=area onBlur="checkArea('phone_img',this,'phone_condition')"
+				  onFocus="doEnhance('phone_condition');"></TD>
+                      <TD><INPUT maxLength=8 size=8 name=phone onBlur="checkPhone('phone_img',this,'phone_condition')"
+				  onFocus="doEnhance('phone_condition');"></TD>
+                      <TD><INPUT maxLength=30 size=12 name=extension onFocus="doEnhance('phone_condition');"> 
+                      </TD>
+                    </TR>
+                    </TBODY>
+                    </TABLE>
 				</td>
 				<td>
 					<div id="phone_condition" class="note">
-						请填写您的联系电话，格式：010-81818181
+						请填写您的联系电话,多个分机号吗请用"/"分隔
 					</div>
 				</td>
 			</tr>
@@ -409,7 +436,7 @@
 				</td>
 			</tr>
 			<tr>
-			<td colspan=2 align=center><a href="">点击阅读服务条款</a></td>
+			<td colspan=2 align=center><a href="test.html">点击阅读服务条款</a></td>
 			</tr>
 			<tr align=right>
 				<td colspan=2 align=center>
@@ -494,7 +521,8 @@
 			&& checkTruename('true_name_img',$("zsxm"),'true_name_condition')
 			&& checkPosition('position_img',$("zw"),'position_condition')
 			&& checkEmail('email_img',$("dzyx"),'email_condition')
-			&& checkPhone('phone_img',$("gddh"),'phone_condition')
+			&& checkArea('phone_img',$("area"),'phone_condition')
+			&& checkPhone('phone_img',$("phone"),'phone_condition')
 			&& checkCorpName('corp_name_img',$("gsmc"),'corp_name_condition')
 			&& checkPlace('place_img',$("gsszd"),'place_condition')
 			&& checkBusiness('business_img',$("jydz"),'business_condition')

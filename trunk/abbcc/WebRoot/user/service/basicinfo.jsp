@@ -181,7 +181,9 @@
                   请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
                </tr>
                <tr>
-               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="gddh" value="${hyjbxx.gddh}"" ></td>
+               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="gddh" value="${hyjbxx.gddh}"" >
+               <SPAN class=note>(只能填写固定电话！)</SPAN> 
+               </td>
                </tr>
                <tr>
                <td align=right>公司所在地：<font color=red>*</font></td><td><input type=text name="gsszd" value="${hyjbxx.gsszd }" size=54></td>
