@@ -1,6 +1,5 @@
 package com.abbcc.dao;
 
-
 import com.abbcc.pojo.Pz;
 
 public interface PzDAO {
@@ -13,5 +12,5 @@ public interface PzDAO {
 	public void updateTableCount(String tableName);
 
 	public Pz updateAndGetPz(String tableName);
-
+	
 }
