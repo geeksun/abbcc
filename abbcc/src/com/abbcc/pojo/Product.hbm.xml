@@ -52,8 +52,12 @@
         <property name="state" type="java.lang.Integer">
             <column name="state" not-null="true" />
         </property> 
+        <property name="cpgqxxIdFiled" type="java.lang.String">
+            <column name="cpgqxxIdFiled" not-null="true" />
+        </property> 
          <property name="createTime" type="timestamp">
             <column name="createTime" length="0" />
         </property> 
+
     </class>
 </hibernate-mapping>
