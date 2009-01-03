@@ -8,7 +8,7 @@ import com.abbcc.service.ProductInfoService;
 import com.abbcc.util.JdbcTemplateUtil;
 import com.abbcc.vo.product.bzd.Bzd_csdp;
 
-public class ProductInfoServiceImpl implements ProductInfoService{
+public class ProductInfoServiceImpl extends BaseServiceImpl implements ProductInfoService{
 	
 	 
 
