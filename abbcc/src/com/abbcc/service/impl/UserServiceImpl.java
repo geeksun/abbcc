@@ -9,26 +9,10 @@ public class UserServiceImpl implements UserService {
 	//private static final Log log = LogFactory.getLog(UserServiceImpl.class);
 	private static UserService us;
 	//  must be static !
-	private static HyjbxxDAO hyd = DAOFactory.getHyjbxxDAOInstance();
 	public static UserService getInstance(){
 		if(us==null){
 			us = new UserServiceImpl();
 		}
 		return  us; 
-	}
-	public int login(String name, String pass) {
-		int validate = hyd.findByProperty(name,pass);
-		return validate;
-	}
-	public int add(Hyjbxx hy) {   
-		int i = 0;
-		try {
-			i = hyd.add(hy);
-			return i;
-			//hyd.save(hy);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return i;
 	}
 }
