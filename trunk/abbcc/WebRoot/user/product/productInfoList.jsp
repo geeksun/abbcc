@@ -45,16 +45,17 @@
 							onmousedown="return aliclick(this,'?tracelog=fb_yoursort_tpentry');"
 							style="TEXT-DECORATION: none"
 							href="#"><IMG
-								height=26 src="<%=path%>/user/product/productInfoList.files/myali_custom.gif" width=102
+								height=26 src="productInfoList.files/myali_custom.gif" width=102
 								align=absMiddle border=0>
-							<IMG height=10 src="<%=path%>/user/product/productInfoList.files/icon_new02_12x.gif"
+		
+					<IMG height=10 src="productInfoList.files/icon_new02_12x.gif"
 								width=16 border=0> </A>&nbsp;&nbsp;
 					</TD>
 					<TD align=right width=120>
 						<A
 							onmousedown="return aliclick(this,'?tracelog=gl_onweb_newbutton');"
 							href="#"><IMG
-								height=26 src="<%=path%>/user/product/productInfoList.files/postnewoffer.gif" width=123
+								height=26 src="productInfoList.files/postnewoffer.gif" width=123
 								align=absMiddle border=0> </A>
 					</TD>
 				</TR>
@@ -66,7 +67,7 @@
 			<TBODY>
 				<TR>
 					<TD vAlign=center align=middle width=80 rowSpan=2>
-						<IMG height=53 src="<%=path%>/user/product/productInfoList.files/icon1.gif" width=53>
+						<IMG height=53 src="productInfoList.files/icon1.gif" width=53>
 					</TD>
 					<TD class=tx_title height=20>
 						 
@@ -172,7 +173,7 @@
 												href="#">批量修改价格</A>
 											（
 											<IMG height=16
-												src="<%=path%>/user/product/productInfoList.files/icon_green_help16.gif" width=16
+												src="productInfoList.files/icon_green_help16.gif" width=16
 												align=absMiddle>
 											<A
 												href="#"
@@ -264,7 +265,7 @@
 							href="#"
 							target=_blank>
 							<DIV class=list_picbox>
-								<IMG alt=供应油动遥控船 src="<%=path%>/user/product/productInfoList.files/290577907.summ.jpg"
+								<IMG alt=供应油动遥控船 src="productInfoList.files/290577907.summ.jpg"
 									onload="" border=0>
 							</DIV>
 						</A>
@@ -306,7 +307,7 @@
 							href="#"><IMG
 								onmouseover="swapImage(this,'#')"
 								onmouseout="swapImage(this,'#')"
-								height=20 alt=修改 src="<%=path%>/user/product/productInfoList.files/word3_nor.gif"
+								height=20 alt=修改 src="productInfoList.files/word3_nor.gif"
 								width=56 align=absMiddle border=0>
 						</A>
 					</TD>
@@ -317,7 +318,7 @@
 							href="#"><IMG
 								onmouseover="swapImage(this,'#')"
 								onmouseout="swapImage(this,'#')"
-								height=20 alt=重发 src="<%=path%>/user/product/productInfoList.files/word3a_nor.gif"
+								height=20 alt=重发 src="productInfoList.files/word3a_nor.gif"
 								width=56 align=absMiddle border=0> </A>
 						<DIV id=LayerRepost1
 							onmouseover="MM_showHideLayers('LayerRepost1','','show')"
