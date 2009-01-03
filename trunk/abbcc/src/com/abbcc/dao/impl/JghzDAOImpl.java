@@ -15,6 +15,7 @@ import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Jghz;
 
 public class JghzDAOImpl implements JghzDAO {
+	
 	private static JghzDAOImpl jghzdaoimpl = null;
 
 	private static ResultSet rs = null;
