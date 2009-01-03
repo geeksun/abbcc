@@ -7,6 +7,7 @@ import com.abbcc.pojo.Pz;
 
 public class PzDAOImpl extends BaseDaoImpl implements PzDAO{
 
+	
 	public Pz getPzByTableName(String tableName) {
 		 String sql="from Pz p where p.tablename=?";
 		 Query query=this.getQuery(sql);
