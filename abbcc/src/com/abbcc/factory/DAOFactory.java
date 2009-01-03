@@ -38,12 +38,9 @@ public class DAOFactory {
 		return HygzjlDAOImpl.getInstance();
 	}
 
-	public static HyjbxxDAO getHyjbxxDAOInstance() {
-		return HyjbxxDAOImpl.getInstance();
-	}
-
 	public static HyjyjlDAO getHyjyjlDAOInstance() {
-		return HyjyjlDAOImpl.getInstance();
+		//return HyjyjlDAOImpl.getInstance();
+		return null;
 	}
 
 	public static HzsxDAO getHzsxDAOInstance() {
