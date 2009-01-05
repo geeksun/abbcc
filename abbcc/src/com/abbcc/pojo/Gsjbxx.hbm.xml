@@ -6,7 +6,7 @@
 -->
 <hibernate-mapping>
     <class name="com.abbcc.pojo.Gsjbxx" table="gsjbxx">
-        <id name="hyjbxxid" type="java.lang.Integer">
+         <id name="hyjbxxid" type="java.lang.Integer">
          		<column name="hyjbxxid" />
          		<generator class="native"></generator>
          </id>
@@ -40,9 +40,6 @@
          </property>
          <property name="cgdcp" type="java.lang.String">
              <column name="cgdcp" length="32" />
-         </property>
-         <property name="gsjs" type="java.lang.String">
-             <column name="gsjs" length="2000" />
          </property>
          <!-- 公司介绍 -->
          <property name="gsjs" type="java.lang.String">
