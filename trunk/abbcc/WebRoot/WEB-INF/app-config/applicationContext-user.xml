@@ -11,6 +11,9 @@
 		<property name="gsjbxxDao">
 			<ref bean="gsjbxxDao"/>
 		</property>
+		<property name="gsxxxxDao">
+			<ref bean="gsxxxxDao"/>
+		</property>
 	</bean> 
 	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
 		<property name="tradeInfoDao">
