@@ -53,7 +53,6 @@
 										document.getElementsByName("mainProduct2")[2].checked = true;
 											});
 		function updateBasicInfo(){
-			//var zyhy = document.getElementsByName("zyhy");
 			document.basicInfoForm.action.value = "updateBasicInfo";
 			document.basicInfoForm.product.value = zyhy;
 			document.basicInfoForm.submit();
@@ -142,14 +141,11 @@
 				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
 				    </c:forEach>
     			</select>
-    			
     			<select id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
     			</select>
-    			
     			<select id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeleafCategory() size=8 name=leafCatFormKey>
     			</select> 
     			</span>
-    			
     			<br>
     			<input onclick="doSubmit1('select')" type=button value=添加↓ name=Submit222> 
 				<input onclick="doSubmit1('deselect')" type=button value=×删除 name=Submit2222> 
@@ -173,7 +169,7 @@
     		<td>公司简介：<font color=red>*</font>(50-1000 字)</td>
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
-    		<textarea name="gsjs" rows=10 cols=50  maxLength="1000">
+    		<textarea name="gsjs" rows=10 cols=50  maxLength="1000"><c:out value="${leaguer.gsjs}"/>
     		</textarea>
     		</td>
     		</tr>
@@ -251,46 +247,45 @@
 		   var secFlag = false;
 		   var leafFlag = false;
 		
-		 for(var i = 0;i<secCategories.length;i++)
-		 {
-		   if(secCategories[i].selected)
-		  {secV= secCategories[i].text;
-		    secFlag = true;
-		
-		    break;
-		  }
-		 }
-		
-		 for(var i = 0;i<topCategories.length;i++)
-		 {
-		   if(topCategories[i].selected)
-		   {topV= topCategories[i].text;
-			   topFlag = true;
-			   break;
+		   for(var i = 0;i<secCategories.length;i++)
+		   {
+			   if(secCategories[i].selected)
+			   {secV= secCategories[i].text;
+			      secFlag = true;
+			      break;
+			   }
 		   }
-		 }
-		 
-		 // Get items from dst
-		 for(var i = 0; i < dst.length; i++) {
-		    selected_value[selected_value.length] = dst[i].value;
-		    selected_text[selected_text.length] = dst[i].text;
-		 }
-		 var len = selected_value.length;
-		 if( len >= 6 ) {
-		    alert('您最多可选择6个“主营行业”！');
-		    return ;
-		 }
 		
-		 // Get items from src
-		 for(var i = 0; i < src.length; i++) {
+		   for(var i = 0;i<topCategories.length;i++)
+		   {
+			   if(topCategories[i].selected)
+			   {topV= topCategories[i].text;
+				   topFlag = true;
+				   break;
+			   }
+		   }
+		 
+		   // Get items from dst
+		   for(var i = 0; i < dst.length; i++) {
+		      selected_value[selected_value.length] = dst[i].value;
+		      selected_text[selected_text.length] = dst[i].text;
+		   }
+		   var len = selected_value.length;
+		   if( len >= 6 ) {
+		      alert('您最多可选择6个“主营行业”！');
+		      return ;
+		   }
+		
+		   // Get items from src
+		   for(var i = 0; i < src.length; i++){
 		      if(src[i].selected) {
 		        var exists = 0;
 		        leafFlag  = true;
-		        for(var j = 0; j < dst.length; j++) {
-		          if(dst[j].value == src[i].value) {
-		            exists = 1;
-		            break;
-		          }
+		        for(var j = 0; j < dst.length; j++){
+		           if(dst[j].value == src[i].value){
+		              exists = 1;
+		              break;
+		           }
 		        }
 		
 		     if(exists&&exists==1)
@@ -298,22 +293,22 @@
 			     alert('您已经选择过该“主营行业”！');
 			     return;
 		     }
-		        if(!exists) {
-		           selected_value[selected_value.length] = src[i].value;
-		           if(secV==src[i].text)
-		          	  selected_text[selected_text.length] = topV+"/"+src[i].text;
-		        else
-		          {
-		             if(topV==src[i].text)
-		          {
+		     if(!exists) {
+		         selected_value[selected_value.length] = src[i].value;
+		         if(secV==src[i].text)
+		         selected_text[selected_text.length] = topV+"/"+src[i].text;
+		     else
+		     {
+		         if(topV==src[i].text)
+		         {
 		          	 selected_text[selected_text.length] = topV;
-		          }
-		          else
-		          {
+		         }
+		         else
+		         {
 		          	 selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
-		          }
-		        }
+		         }
 		      }
+		     }
 		    }
 		  }
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
@@ -338,8 +333,8 @@
 		
 		    // Fill the dst box
 		    for(var j = 0; j < selected_value.length; j++) {
-		       //dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
-		       dst[j] = new Option(selected_value[j], selected_value[j]);
+		       dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
+		       //dst[j] = new Option(selected_value[j], selected_value[j]);
 		    }
 		    zyhy = selected_value;
   	  	}
