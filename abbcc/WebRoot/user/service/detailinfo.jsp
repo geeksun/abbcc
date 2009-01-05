@@ -8,11 +8,6 @@
 	<head>
 		<title>公司详细信息</title>
 		<link rel="stylesheet" type="text/css" href="/css/service.css">
-		<style type="text/css">
-    	.note {
-			COLOR: #999999
-		}
-    	</style> 
 		<script type="text/javascript">
 		//blur/Click事件的控制函数打勾图片控制函数
 		function blurEvent(img,dom){
@@ -568,7 +563,7 @@
 						</SELECT>
 						<br>
 						<DIV class=note style="MARGIN-TOP: 5px">
-							(请准确选择您的年进出口额,同时“年出口额”不能大于“年营业额”)
+							请准确选择您的年进出口额,同时“年出口额”不能大于“年营业额”
 						</DIV>
 					</td>
 				</tr>
