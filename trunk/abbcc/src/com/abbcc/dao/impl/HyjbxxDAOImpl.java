@@ -65,6 +65,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(20, hyjbxx.getRegistTime());		//   ×¢²áÊ±¼ä -> 20
 		
 		init = pstmt.executeUpdate();
+		//pa.updateNum(track[0],track[1],"hyjbxx");
 		this.updateTableCount(tableName);
 		log.debug("save successful");
 		pstmt.close();
