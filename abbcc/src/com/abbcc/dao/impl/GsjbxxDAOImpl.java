@@ -27,6 +27,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		log.debug("saving Gsjbxx instance");
 		int flag = 0;
 		Pz pz= this.updateAndGetPz(tableName);
+		
 		long id=pz.getRecnum();  
 		long page=id/Globals.COUNT;
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
@@ -50,7 +51,8 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 			pstmt.setString(10, gsjbxx.getCgdcp());
 			pstmt.setString(11, gsjbxx.getGsjs());
 			flag = pstmt.executeUpdate();
-			
+			//pa.updateNum(track[0],track[1],"gsjbxx");
+			this.updateTableCount(tableName);
 			log.debug("save successful");
 			pstmt.close();
 		}catch(Exception e){
