@@ -24,6 +24,12 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
+	<bean id="gsxxxxDao" class="com.abbcc.dao.impl.GsxxxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
 	<bean id="productDao" class="com.abbcc.dao.impl.ProductDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
