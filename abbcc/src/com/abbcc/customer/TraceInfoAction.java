@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession; 
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
@@ -51,6 +51,8 @@ public class TraceInfoAction extends BaseAction {
 			List list = hyjbxxService.getMemberById(hyjbxxid);
 			
 			Gsjbxx leaguer = (Gsjbxx) list.get(0);
+			//主营行业
+			String  zyhy = leaguer.getZyhy();
 			
 			// Mlist: 会员的全部属性
 			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
@@ -58,6 +60,7 @@ public class TraceInfoAction extends BaseAction {
 			request.setAttribute("hyjbxx", hyjbxx);
 			request.setAttribute("leaguer", leaguer);
 			request.setAttribute("traList", tradeList);
+			request.setAttribute("zyhy", zyhy);
 			 
 			return mapping.findForward("basicinfo"); 
 	}
