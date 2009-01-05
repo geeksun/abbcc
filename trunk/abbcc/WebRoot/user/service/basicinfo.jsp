@@ -1,5 +1,6 @@
 <%@ page language="java"  import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
@@ -10,7 +11,7 @@
   <head>
     <title>basicinfo of company</title>
     <style type="text/css">
-    	.note {
+    	.note { 
 			COLOR: #999999
 		}
     </style>   
@@ -65,6 +66,8 @@
   </p>
   	<c:set var="leaguer" value="${leaguer}" scope="page" ></c:set>
   	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
+  	<c:set var="zyhyValue" value="${zyhy}" scope="page"></c:set>
+  	<c:set var="zyhy" value="${fn:split(zyhyValue,',')}"></c:set>
   	<form action="traceInfo.do" name="basicInfoForm">
   	<input type="hidden" name="action">
   	<input type="hidden" name="product">
@@ -144,7 +147,6 @@
     			</select>
     			
     			<select id=leafCatFormKey style="WIDTH: 120px" onchange=onChangeleafCategory() size=8 name=leafCatFormKey>
-    				<option ></option>
     			</select> 
     			</span>
     			
@@ -157,7 +159,11 @@
               <tr>
               <td>
               <SPAN id=selectedText style="DISPLAY: none"><BR>以下是您已选择的主营行业：</SPAN>
-              <select style="WIDTH: 368px" size=8 name="zyhy" multiple> 
+              <select style="WIDTH: 368px" size=8 name="zyhy" multiple>
+                <!-- 主营行业列表 --> 
+              	<c:forEach var="i"  begin="0" end="5" step="1">
+    				<option value="<c:out value="${zyhy[i]}"/>"><c:out value="${zyhy[i]}"/></option>
+    			</c:forEach>
               </select> 
               </td>
                </tr>
@@ -264,21 +270,19 @@
 		   }
 		 }
 		 
-		//alert(dst.length);
-		// Get items from dst
-		for(var i = 0; i < dst.length; i++) {
-			//alert(dst[i].value);
+		 // Get items from dst
+		 for(var i = 0; i < dst.length; i++) {
 		    selected_value[selected_value.length] = dst[i].value;
 		    selected_text[selected_text.length] = dst[i].text;
-		}
-		var len = selected_value.length;
-		if( len >= 6 ) {
+		 }
+		 var len = selected_value.length;
+		 if( len >= 6 ) {
 		    alert('您最多可选择6个“主营行业”！');
 		    return ;
-		}
+		 }
 		
-		// Get items from src
-		for(var i = 0; i < src.length; i++) {
+		 // Get items from src
+		 for(var i = 0; i < src.length; i++) {
 		      if(src[i].selected) {
 		        var exists = 0;
 		        leafFlag  = true;
@@ -308,10 +312,10 @@
 		          {
 		          	 selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
 		          }
-		         }
+		        }
 		      }
-		   }
-		}
+		    }
+		  }
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
 		        alert("您还未选择“主营行业”！");
 		        return ;
@@ -332,11 +336,10 @@
 		    // Clear dst except the first item
 		    while(dst.length > 1) dst[1] = null;
 		
-			//alert(selected_value.length);
 		    // Fill the dst box
 		    for(var j = 0; j < selected_value.length; j++) {
-		       //alert(selected_value[j]);
-		       dst[j] = new Option(selected_text[j], selected_value[j]);
+		       //dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
+		       dst[j] = new Option(selected_value[j], selected_value[j]);
 		    }
 		    zyhy = selected_value;
   	  	}
@@ -349,42 +352,62 @@
 		//添加或删除主营行业
 	  	function doSubmit1(button_clicked){
 	  	   var tmpform = document.basicInfoForm;
-	  	   
 	  	   //主营行业
 	  	   var zyhy = tmpform.zyhy.options;
-	  	   
 	  	   if(button_clicked &&(button_clicked == "deselect"||button_clicked == "select")) {
-	  	   
-	  	   //三级菜单
-		   var categories = tmpform.leafCatFormKey.options;
-		   var secCategories = tmpform.secondCatFormKey.options;
-		   var topCategories = tmpform.topCatFormKey.options;
-		   if(button_clicked == 'select')
-		   {  // Move to right pane
-		   	  //alert("3"+categories.length);
-		      if(categories.length==0)
-		      {
-		      	//alert(secCategories.length);
-        		if(secCategories.length==0)
-        		{
-        			addOptions(topCategories, zyhy,secCategories,topCategories);
-        		}else
-		        {
-		        	addOptions(secCategories, zyhy,secCategories,topCategories);
-		        }
-		      }else{
-		      	  //alert("4"+categories.length);
-		          addOptions(categories, zyhy,secCategories,topCategories);
-		      }
-		   }else{
-			   if(button_clicked == 'deselect') {   // Remove from right pane
-			        removeOptions(zyhy, categories);
-			   }
-	        	button_clicked = '';
-	        	return false;
+		  	   //三级菜单
+			   var categories = tmpform.leafCatFormKey.options;
+			   var secCategories = tmpform.secondCatFormKey.options;
+			   var topCategories = tmpform.topCatFormKey.options;
+			   if(button_clicked == 'select')
+			   {  // Move to right pane
+			      if(categories.length==0)
+			      {
+	        		if(secCategories.length==0)
+	        		{
+	        			addOptions(topCategories, zyhy,secCategories,topCategories);
+	        		}else
+			        {
+			        	addOptions(secCategories, zyhy,secCategories,topCategories);
+			        }
+			      }else{
+			          addOptions(categories, zyhy,secCategories,topCategories);
+			      }
+			   }else{
+				   if(button_clicked == 'deselect') {   // Remove from right pane
+				        removeOptions(zyhy, categories);
+				   }
+		        	button_clicked = '';
+		        	return false;
+	         }
          }
-       }
-	}
+	 }
+	    //加载主营行业
+	  	function doInit(){
+	  	   var tmpform = document.basicInfoForm;
+	  	   //主营行业
+	  	   var zyhy = tmpform.zyhy.options;
+		  	   //三级菜单
+			   var categories = tmpform.leafCatFormKey.options;
+			   var secCategories = tmpform.secondCatFormKey.options;
+			   var topCategories = tmpform.topCatFormKey.options;
+			   if(button_clicked == 'select')
+			   {  // Move to right pane
+			      if(categories.length==0)
+			      {
+			      	//alert(secCategories.length);
+	        		if(secCategories.length==0)
+	        		{
+	        			addOptions(topCategories, zyhy,secCategories,topCategories);
+	        		}else
+			        {
+			        	addOptions(secCategories, zyhy,secCategories,topCategories);
+			        }
+			      }else{
+			          addOptions(categories, zyhy,secCategories,topCategories);
+			      }
+			}
+	 }
     </script>
   </body>
 </html>
