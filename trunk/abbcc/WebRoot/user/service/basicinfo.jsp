@@ -170,6 +170,7 @@
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
     		<textarea name="gsjs" rows=10 cols=50  maxLength="1000"><c:out value="${leaguer.gsjs}"/>
+    			
     		</textarea>
     		</td>
     		</tr>
@@ -265,6 +266,18 @@
 			   }
 		   }
 		 
+<<<<<<< .mine
+		 // Get items from dst
+		 for(var i = 0; i < dst.length; i++) {
+		    selected_value[selected_value.length] = dst[i].value;
+		    selected_text[selected_text.length] = dst[i].text;
+		 }
+		 var len = selected_value.length;
+		 if( len >= 6 ) {
+		    alert('您最多可选择6个“主营行业”！');
+		    return ;
+		 }
+=======
 		   // Get items from dst
 		   for(var i = 0; i < dst.length; i++) {
 		      selected_value[selected_value.length] = dst[i].value;
@@ -275,9 +288,15 @@
 		      alert('您最多可选择6个“主营行业”！');
 		      return ;
 		   }
+>>>>>>> .r306
 		
+<<<<<<< .mine
+		 // Get items from src
+		 for(var i = 0; i < src.length; i++) {
+=======
 		   // Get items from src
 		   for(var i = 0; i < src.length; i++){
+>>>>>>> .r306
 		      if(src[i].selected) {
 		        var exists = 0;
 		        leafFlag  = true;
@@ -306,11 +325,16 @@
 		         else
 		         {
 		          	 selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
-		         }
+		        }
 		      }
+<<<<<<< .mine
+		    }
+		  }
+=======
 		     }
 		    }
 		  }
+>>>>>>> .r306
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
 		        alert("您还未选择“主营行业”！");
 		        return ;
@@ -333,8 +357,13 @@
 		
 		    // Fill the dst box
 		    for(var j = 0; j < selected_value.length; j++) {
+<<<<<<< .mine
+		       //dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
+		       dst[j] = new Option(selected_value[j], selected_value[j]);
+=======
 		       dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
 		       //dst[j] = new Option(selected_value[j], selected_value[j]);
+>>>>>>> .r306
 		    }
 		    zyhy = selected_value;
   	  	}
