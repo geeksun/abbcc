@@ -151,7 +151,6 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setZyhy(su.toString());
 			}
-			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			
 			hyjbxxService.update(hyjbxx, gsjbxx);
 			
@@ -204,6 +203,5 @@ public class TraceInfoAction extends BaseAction {
 			
 			return mapping.findForward("detailinfo");
 	}
-	
 	
 }
