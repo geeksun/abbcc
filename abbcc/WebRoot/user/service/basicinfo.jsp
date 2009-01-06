@@ -91,6 +91,7 @@
 					<option value="7" >中外合作经营企业</option>
 					<option value="8" >外商独资企业</option>
 					<option value="9" >私营企业</option>
+				</select>
     		</td>
     	</tr>
     	<tr>
@@ -166,11 +167,11 @@
               </tbody>
     		</table>
     		<tr>
-    		<td>公司简介：<font color=red>*</font>(50-1000 字)</td>
+    		<td>公司简介：<font color=red>*</font>(最多可输入1000字，还剩<input readOnly maxLength="4" size="4" value="1000" name="remLen">字)</td>
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
-    		<textarea name="gsjs" rows=10 cols=50  maxLength="1000"><c:out value="${leaguer.gsjs}"/>
-    			
+    		<textarea name="gsjs" rows=10 cols=50  onkeydown="textCounter(this.form.gsjs,this.form.remLen,1000)" 
+    		onkeyup="textCounter(this.form.gsjs,this.form.remLen,1000)"><c:out value="${leaguer.gsjs}"/>
     		</textarea>
     		</td>
     		</tr>
@@ -202,6 +203,13 @@
     <script type="text/javascript">
     	//global variable zyhy
     	var zyhy = [];
+    	//控制输入字数
+    	function textCounter(field, countfield, maxlimit) {
+			if (field.value.length > maxlimit) 
+				field.value = field.value.substring(0,maxlimit);
+			else 
+				countfield.value = maxlimit - field.value.length;
+		}
     	//一级菜单
     	function onChangeTopCategory(){
     		var paramname = $F("topCatFormKey");
@@ -266,18 +274,6 @@
 			   }
 		   }
 		 
-<<<<<<< .mine
-		 // Get items from dst
-		 for(var i = 0; i < dst.length; i++) {
-		    selected_value[selected_value.length] = dst[i].value;
-		    selected_text[selected_text.length] = dst[i].text;
-		 }
-		 var len = selected_value.length;
-		 if( len >= 6 ) {
-		    alert('您最多可选择6个“主营行业”！');
-		    return ;
-		 }
-=======
 		   // Get items from dst
 		   for(var i = 0; i < dst.length; i++) {
 		      selected_value[selected_value.length] = dst[i].value;
@@ -288,15 +284,9 @@
 		      alert('您最多可选择6个“主营行业”！');
 		      return ;
 		   }
->>>>>>> .r306
 		
-<<<<<<< .mine
-		 // Get items from src
-		 for(var i = 0; i < src.length; i++) {
-=======
 		   // Get items from src
 		   for(var i = 0; i < src.length; i++){
->>>>>>> .r306
 		      if(src[i].selected) {
 		        var exists = 0;
 		        leafFlag  = true;
@@ -325,16 +315,11 @@
 		         else
 		         {
 		          	 selected_text[selected_text.length] = topV+"/"+secV+"/"+src[i].text;
-		        }
+		         }
 		      }
-<<<<<<< .mine
-		    }
-		  }
-=======
 		     }
 		    }
 		  }
->>>>>>> .r306
 		      if(topFlag ==false && secFlag==false&& leafFlag==false){
 		        alert("您还未选择“主营行业”！");
 		        return ;
@@ -357,13 +342,8 @@
 		
 		    // Fill the dst box
 		    for(var j = 0; j < selected_value.length; j++) {
-<<<<<<< .mine
-		       //dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
-		       dst[j] = new Option(selected_value[j], selected_value[j]);
-=======
 		       dst[j] = new Option(selected_text[j], selected_value[j]);   //previous
 		       //dst[j] = new Option(selected_value[j], selected_value[j]);
->>>>>>> .r306
 		    }
 		    zyhy = selected_value;
   	  	}
