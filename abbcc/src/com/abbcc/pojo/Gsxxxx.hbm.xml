@@ -10,23 +10,8 @@
             <column name="hyjbxxid" />
             <generator class="native"></generator>
         </id>
-        <property name="zycp" type="java.lang.String">
-            <column name="zycp" length="128" />
-        </property>
-        <property name="zyhy" type="java.lang.String">
-            <column name="zyhy" length="3" />
-        </property>
-        <property name="jyms" type="java.lang.String">
-            <column name="jyms" length="16" />
-        </property>
-        <property name="qylx" type="java.lang.String">
-            <column name="qylx" length="3" />
-        </property>
         <property name="gszcd" type="java.lang.String">
             <column name="gszcd" length="8" />
-        </property>
-        <property name="zyjydd" type="java.lang.String">
-            <column name="zyjydd" length="6" />
         </property>
         <property name="gsclsj" type="java.lang.String">
             <column name="gsclsj" length="11" />
@@ -44,7 +29,7 @@
             <column name="jypp" length="16" />
         </property>
         <property name="zczb" type="java.lang.String">
-            <column name="zczb" length="2" />
+            <column name="zczb" length="12" />
         </property>
         <property name="zykhq" type="java.lang.String">
             <column name="zykhq" length="32" />
@@ -81,9 +66,6 @@
         </property>
         <property name="gltxrz" type="java.lang.String">
             <column name="gltxrz" length="2" />
-        </property>
-        <property name="gsjs" type="java.lang.String">
-            <column name="gsjs" length="2000" />
         </property>
         <property name="gstp" type="java.lang.String">
             <column name="gstp" length="32" />
