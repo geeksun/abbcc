@@ -259,7 +259,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	}
 
 	public Hyjbxx findById(String hyjbxxid) {
-		log.debug("find Hyjbxx List by  property hyjbxxid:" + hyjbxxid);
+		log.debug("find Hyjbxx by  property hyjbxxid:" + hyjbxxid);
 		try{
 			return (Hyjbxx)getHibernateTemplate().get("com.abbcc.pojo.Hyjbxx", new Integer(hyjbxxid));
 		}catch(RuntimeException re){
