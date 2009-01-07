@@ -173,9 +173,7 @@
               				  else
               				    name+=n;
               			}
-              			ProductType  productType=(ProductType)list2.get(size-1);
-              		
-              		
+              		ProductType  productType=(ProductType)list2.get(size-1);
               	 %>
               	 <option value="<%=productType.getId() %>"/><%=name %></option>
               	 
