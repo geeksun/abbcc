@@ -9,57 +9,25 @@ public class Gsxxxx implements java.io.Serializable {
 	// Fields
 
 	private Integer hyjbxxid;
-
-	private String zycp;
-
-	private String zyhy;
-
-	private String jyms;
-
-	private String qylx;
-
 	private String gszcd;
-
-	private String zyjydd;
-
-	private String gsclsj;
-
+	private String gsclsj;		//公司成立时间
 	private String fddbr;
-
 	private String nyye;
-
 	private String ygrs;
-
 	private String jypp;
-
 	private String zczb;
-
 	private String zykhq;
-
 	private String zysc;
-
 	private String ncke;
-
 	private String njke;
-
 	private String khyh;
-
 	private String zh;
-
 	private String oem;
-
 	private String yfbmrs;
-
 	private String ycl;
-
 	private String cfmj;
-
 	private String zlkz;
-
 	private String gltxrz;
-
-	private String gsjs;
-
 	private String gstp;
 
 	// Constructors
@@ -69,19 +37,13 @@ public class Gsxxxx implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Gsxxxx(Integer hyjbxxid, String zycp, String zyhy, String jyms,
-			String qylx, String gszcd, String zyjydd, String gsclsj,
+	public Gsxxxx(Integer hyjbxxid,	String gszcd, String gsclsj,
 			String fddbr, String nyye, String ygrs, String jypp, String zczb,
 			String zykhq, String zysc, String ncke, String njke, String khyh,
 			String zh, String oem, String yfbmrs, String ycl, String cfmj,
-			String zlkz, String gltxrz, String gsjs, String gstp) {
+			String zlkz, String gltxrz, String gstp) {
 		this.hyjbxxid = hyjbxxid;
-		this.zycp = zycp;
-		this.zyhy = zyhy;
-		this.jyms = jyms;
-		this.qylx = qylx;
 		this.gszcd = gszcd;
-		this.zyjydd = zyjydd;
 		this.gsclsj = gsclsj;
 		this.fddbr = fddbr;
 		this.nyye = nyye;
@@ -100,7 +62,6 @@ public class Gsxxxx implements java.io.Serializable {
 		this.cfmj = cfmj;
 		this.zlkz = zlkz;
 		this.gltxrz = gltxrz;
-		this.gsjs = gsjs;
 		this.gstp = gstp;
 	}
 
@@ -114,52 +75,12 @@ public class Gsxxxx implements java.io.Serializable {
 		this.hyjbxxid = hyjbxxid;
 	}
 
-	public String getZycp() {
-		return this.zycp;
-	}
-
-	public void setZycp(String zycp) {
-		this.zycp = zycp;
-	}
-
-	public String getZyhy() {
-		return this.zyhy;
-	}
-
-	public void setZyhy(String zyhy) {
-		this.zyhy = zyhy;
-	}
-
-	public String getJyms() {
-		return this.jyms;
-	}
-
-	public void setJyms(String jyms) {
-		this.jyms = jyms;
-	}
-
-	public String getQylx() {
-		return this.qylx;
-	}
-
-	public void setQylx(String qylx) {
-		this.qylx = qylx;
-	}
-
 	public String getGszcd() {
 		return this.gszcd;
 	}
 
 	public void setGszcd(String gszcd) {
 		this.gszcd = gszcd;
-	}
-
-	public String getZyjydd() {
-		return this.zyjydd;
-	}
-
-	public void setZyjydd(String zyjydd) {
-		this.zyjydd = zyjydd;
 	}
 
 	public String getGsclsj() {
@@ -304,14 +225,6 @@ public class Gsxxxx implements java.io.Serializable {
 
 	public void setGltxrz(String gltxrz) {
 		this.gltxrz = gltxrz;
-	}
-
-	public String getGsjs() {
-		return this.gsjs;
-	}
-
-	public void setGsjs(String gsjs) {
-		this.gsjs = gsjs;
 	}
 
 	public String getGstp() {
