@@ -274,21 +274,23 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 				.getProductTypeByIdList(idsList);
 		Map<Integer, ProductType> productTypeMap2 = getProductTypeMap(productType2);
 		Map<Integer, ProductType> productTypeMap1 = getProductTypeMap(productType1);
+		if(productType3!=null){
+			Iterator<ProductType> iter = productType3.iterator();
 
-		Iterator<ProductType> iter = productType3.iterator();
-
-		while (iter.hasNext()) { 
-			List temp = new LinkedList();
-			ProductType pro3 = iter.next();
-			int id3 = pro3.getParentId();
-			ProductType pro2 = productTypeMap2.get(id3);
-			int id2 = pro2.getParentId();
-			ProductType pro1 = productTypeMap1.get(id2);
-			temp.add(pro1);
-			temp.add(pro2);
-			temp.add(pro3);
-			ret.add(temp);
+			while (iter.hasNext()) { 
+				List temp = new LinkedList();
+				ProductType pro3 = iter.next();
+				int id3 = pro3.getParentId();
+				ProductType pro2 = productTypeMap2.get(id3);
+				int id2 = pro2.getParentId();
+				ProductType pro1 = productTypeMap1.get(id2);
+				temp.add(pro1);
+				temp.add(pro2);
+				temp.add(pro3);
+				ret.add(temp);
+			}
 		}
+		
 
 		return ret;
 	}
