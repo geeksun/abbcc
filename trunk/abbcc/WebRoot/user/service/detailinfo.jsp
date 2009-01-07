@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	request.setCharacterEncoding("gbk");
@@ -42,12 +43,12 @@
 	</head>
 
 	<body>
+		<c:set var="gxxx" value="${gsxxxx}" scope="page"></c:set>
 		<p>
 			公司详细资料
 		</p>
 		<form action="traceDetailInfo.do" name="detailInfoForm">
-			<input type="hidden" name="action" >
-			<input type="hidden" name="">
+			<input type="hidden" name="action">
 			<table width="90%" border="1" cellspacing="0" cellpadding="2"
 				align="CENTER" bordercolor="F0E68C">
 				<tr>
@@ -55,7 +56,7 @@
 						注册资本：
 					</td>
 					<td>
-						<input type="text" name="zczb"  size="10">
+						<input type="text" name="zczb"  size="10" value="${gxxx.zczb }">
 						元
 						<SPAN class=note>（最多选择2种经营模式）</SPAN>
 					</td>
@@ -65,7 +66,7 @@
 						公司成立时间：
 					</td>
 					<td>
-						<input type="text" name="gsclsj"  size="10">
+						<input type="text" name="gsclsj"  size="10" value="${gxxx.gsclsj }">
 						<SPAN class=note>(年份，如：2004)</SPAN>
 					</td>
 				</tr>
@@ -74,7 +75,7 @@
 						公司注册地：
 					</td>
 					<td>
-						<input type="text" name="gszcd"  size="30">
+						<input type="text" name="gszcd"  size="30" value="${gxxx.gszcd }">
 						<SPAN class=note>(省份/城市)</SPAN>
 					</td>
 				</tr>
@@ -83,7 +84,7 @@
 						法定代表人/负责人：
 					</td>
 					<td>
-						<input type="text" name="fddbr"  size="30">
+						<input type="text" name="fddbr"  size="30" value="${gxxx.fddbr }">
 					</td>
 				</tr>
 				<tr>
@@ -91,7 +92,7 @@
 						开户银行：
 					</td>
 					<td>
-						<input type="text" name="khyh"  size="30">
+						<input type="text" name="khyh"  size="30" value="${gxxx.khyh }">
 					</td>
 				</tr>
 				<tr>
@@ -99,7 +100,7 @@
 						帐号：
 					</td>
 					<td>
-						<input type="text" name="zh"  size="30">
+						<input type="text" name="zh"  size="30" value="${gxxx.zh }">
 					</td>
 				</tr>
 				<tr>
@@ -107,7 +108,7 @@
 						厂房面积：
 					</td>
 					<td>
-						<input type="text" name="cfmj"  size="30">
+						<input type="text" name="cfmj"  size="30" value="${gxxx.cfmj }">
 						（平方米）
 					</td>
 				</tr>
@@ -116,9 +117,9 @@
 						员工人数：
 					</td>
 					<td>
-						<!--  <SELECT onchange=blurEvent(7,this) name=ygrs>  -->
 						<SELECT name=ygrs>
-							<OPTION value="" selected>
+							
+							<OPTION value="0">
 								-- 请选择 --
 							</OPTION>
 							<OPTION value=1>
@@ -204,9 +205,8 @@
 					<td align=right>
 						品牌名称：
 					</td>
-					<!-- 品牌名称 -->
 					<td>
-						<input type="text" name="jypp"  size="30">
+						<input type="text" name="jypp"  size="30" value="${gxxx.jypp }">
 					</td>
 				</tr>
 				<tr>
@@ -214,9 +214,7 @@
 						月产量：
 					</td>
 					<td>
-						<!-- <INPUT onblur=blurEvent2(10,this) maxLength=32 size=8 name=_fmc.p._0.pro>  -->
-						<INPUT maxLength=32 size=8 name=monthProduction>
-						<!--<SELECT onblur=blurEvent2(10,this) name=_fmc.p._0.prod>  -->
+						<INPUT maxLength=32 size=8 name=monthProduction >
 						<SELECT name=unit>
 							<OPTION value="" selected>
 								--请选择--
@@ -458,7 +456,6 @@
 						年进口额：
 					</td>
 					<td>
-						<!--  <SELECT onchange=blurEvent(12,this) name=_fmc.p._0.annu>  -->
 						<SELECT name=njke>
 							<OPTION value="" selected>
 								--请选择--
