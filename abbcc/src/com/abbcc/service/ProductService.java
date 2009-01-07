@@ -7,7 +7,13 @@ import com.abbcc.pojo.Cpgqxx;
 import com.abbcc.pojo.Jytj;
 import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
+import com.abbcc.util.pagination.Pagination;
+import com.abbcc.util.product.ProductInfo;
 import com.abbcc.util.product.ProductObject;
+ 
+ 
+
+
 
 public interface ProductService {
 
@@ -33,9 +39,13 @@ public interface ProductService {
 	void addProductInfo(ProductObject obj,Cpgqxx cpgqxx,Jytj jytj)throws AppException;
 
  
-	List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue) throws AppException;
-
-	List getTextAreaProductTypeListByIds(List idsList); 
+	List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException;
 	
+	List getProductInfoList(  String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException;
+
+	void updateProductInfoAuditType(String auditType, long[] productInfoIds)throws AppException;
+
+	ProductInfo getProductInfoById(long infoId);
+	public List<List<ProductType>> getTextAreaProductTypeListByIds(List<Integer> ids)throws AppException;
 	
 }
