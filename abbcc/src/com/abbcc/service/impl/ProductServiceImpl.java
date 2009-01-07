@@ -22,8 +22,6 @@ import com.abbcc.util.product.ProductUtil;
 import com.abbcc.util.product.TableUtil;
 
 public class ProductServiceImpl extends BaseServiceImpl implements ProductService {
-
-
 	 
 	public void addProductType(ProductType productType) {
 		this.productTypeDao.addProductType(productType);
@@ -200,6 +198,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 
 	public void updateProductInfoAuditType(String auditType, long[] productInfoId) throws AppException {
 		try {
+			return this.cpgqxxDao.getCpgqxxList(userId,orderType,productName,auditType ,null); 
 			this.cpgqxxDao.updateCpggxxAuditType(auditType,productInfoId);
 		} catch (DaoException e) {
 			log.error(e);
