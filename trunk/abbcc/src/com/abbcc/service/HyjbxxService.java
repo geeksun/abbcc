@@ -34,5 +34,7 @@ public interface HyjbxxService {
 	//更新会员基本信息和公司的基本信息
 	public void update(Hyjbxx hyjbxx, Gsjbxx gsjbxx);
 
-	public Gsxxxx getGsxxxxById(String hyjbxxid);                    
+	public Gsxxxx getGsxxxxById(String hyjbxxid);
+
+	public void update(Gsxxxx gsxxxx);                     
 }
