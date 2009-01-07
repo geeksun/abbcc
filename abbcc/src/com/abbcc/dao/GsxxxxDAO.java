@@ -21,5 +21,8 @@ public interface GsxxxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws Exception;
 
+	//根据主键查找公司详细信息
+	public Gsxxxx getGsxxxxById(String hyjbxxid); 
+
 	
 }
