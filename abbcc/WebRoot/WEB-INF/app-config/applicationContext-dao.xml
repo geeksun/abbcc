@@ -19,12 +19,12 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+	<bean id="gsxxxxDao" class="com.abbcc.dao.impl.GsxxxxDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<bean id="gsxxxxDao" class="com.abbcc.dao.impl.GsxxxxDAOImpl" >
+	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
@@ -55,54 +55,5 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<!--
-	<bean id="hyjbxxDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="interceptorNames"> 
-			<value> com.abbcc.dao.HyjbxxDAO</value>
-		</property>
-        </property name="target"> 
-        	<ref bean="hyjbxxDao" /> 
-        </property>
-
-	</bean>
-	<bean id="pzDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="gsjbxxDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="tradeInfoDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="productDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="productTypeDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="cpgqxxDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="jytjDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	 <bean id="messageDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>  -->
+	
 </beans>
