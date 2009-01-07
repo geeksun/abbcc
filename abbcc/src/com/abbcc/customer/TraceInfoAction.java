@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.JsonUtil;
+import com.abbcc.exception.CustomerException;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Hyjbxx;
@@ -46,13 +47,10 @@ public class TraceInfoAction extends BaseAction {
 			HttpServletResponse response) {
 			try{
 			HttpSession session = request.getSession(false);
-			
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
 			
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			List list = hyjbxxService.getMemberById(hyjbxxid);
-			
-			
 			
 			Gsjbxx leaguer = (Gsjbxx) list.get(0);
 			
@@ -93,11 +91,18 @@ public class TraceInfoAction extends BaseAction {
 	}
 	
 	/**
+	 * @throws CustomerException 
 	 * @see 公司简介-->公司详细资料管理
 	 */
 	public ActionForward displayDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
-			HttpServletResponse response)	throws Exception{
+			HttpServletResponse response) throws Exception {
 			HttpSession session = request.getSession(false);
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			
+			Gsxxxx gsxxxx = hyjbxxService.getGsxxxxById(hyjbxxid);
+			if(gsxxxx!=null)
+				request.setAttribute("gsxxxx", gsxxxx);
+			
 			
 			/*Gsxxxx gsxxxxx = new Gsxxxx();
 			DynaActionForm detailInfoForm = (DynaActionForm)form;
@@ -180,7 +185,6 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setZyhy(su.toString());
 			}
-			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			
 			hyjbxxService.update(hyjbxx, gsjbxx);
 			
@@ -190,6 +194,7 @@ public class TraceInfoAction extends BaseAction {
 	
 	/**
 	 * @see 公司简介-->公司详细资料管理-->修改公司详细信息
+	 *  traceDetailInfo.do
 	 */
 	public ActionForward updateDetailInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
@@ -229,7 +234,11 @@ public class TraceInfoAction extends BaseAction {
 			
  			System.out.println(gsxxxx.getZczb()+gsxxxx.getGsclsj()+gsxxxx.getGszcd()+gsxxxx.getGltxrz());
 			
-			hyjbxxService.add(gsxxxx);
+ 			Gsxxxx vali = hyjbxxService.getGsxxxxById((String)session.getAttribute("hyjbxxid"));
+ 			if(vali!=null)
+ 				hyjbxxService.update(gsxxxx);
+ 			else
+ 				hyjbxxService.add(gsxxxx);
 			
 			return mapping.findForward("detailinfo");
 	}
