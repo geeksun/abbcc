@@ -120,4 +120,8 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		gsxxxxDao.add(gsxxxxx);
 	}
 
+	public Gsxxxx getGsxxxxById(String hyjbxxid) {
+		return gsxxxxDao.getGsxxxxById(hyjbxxid);
+	}
+
 }
