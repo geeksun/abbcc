@@ -124,4 +124,9 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		return gsxxxxDao.getGsxxxxById(hyjbxxid);
 	}
 
+	public void update(Gsxxxx gsxxxx) {
+		gsxxxxDao.update(gsxxxx);
+		
+	}
+
 }
