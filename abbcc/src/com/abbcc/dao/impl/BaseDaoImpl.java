@@ -247,13 +247,13 @@ public class BaseDaoImpl extends HibernateDaoSupport implements BaseDao{
 	}
 	
 	public void updateTableID(String tableName) {
-		 String sql="update Pz as p set p.recnum=p.recnum+1 where p.tablename=?";
+		 String sql="update Pz set recnum=recnum+1 where tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
 	}
 	public void updateTableCount(String tableName) {
-		 String sql="update Pz as p set p.maxCount=p.maxCount+1 where p.tablename=?";
+		 String sql="update Pz set maxCount=maxCount+1 where tablename=?";
 		 Query query=this.getQuery(sql);
 		 query.setParameter(0, tableName); 
 		 query.executeUpdate(); 
