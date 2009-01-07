@@ -80,7 +80,7 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 	}
 
 	// 修改公司详细信息
-	public void update(Gsxxxx gsxxxx) throws Exception {
+	public void update(Gsxxxx gsxxxx) {
 		int hid = gsxxxx.getHyjbxxid();
 		int page = hid / Globals.COUNT;
 		String sql = "UPDATE gsxxxx_" + page
@@ -91,6 +91,7 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 				+ "h.gstp=? WHERE h.hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
+		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, gsxxxx.getGszcd());
 		pstmt.setString(2, gsxxxx.getGsclsj());
@@ -113,8 +114,20 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		pstmt.setString(19, gsxxxx.getGltxrz());
 		pstmt.setString(20, gsxxxx.getGstp());
 		pstmt.setInt(21, gsxxxx.getHyjbxxid());
+		
 		pstmt.executeUpdate();
 		pstmt.close();
+		}catch(Exception e){
+			log.error("update failed", e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	// 删除公司详细信息
