@@ -1,6 +1,7 @@
 <%@ page language="java"  import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.abbcc.pojo.ProductType" %>
 <%
 	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
@@ -139,7 +140,7 @@
     			<span id=prdMore>
     			<select id=topCatFormKey style="WIDTH: 120px" onClick="onChangeTopCategory()" size=8 name=topCatFormKey>
     				<c:forEach var="trade" items="${traList}" begin="0" end="8" step="1">    
-				   		<option value="<c:out value="${trade.productId}"/>"><c:out value="${trade.tableName}"/></option>    
+				   		<option value="<c:out value="${trade.id}"/>"><c:out value="${trade.name}"/></option>    
 				    </c:forEach>
     			</select>
     			<select id=secondCatFormKey style="WIDTH: 120px" onchange=onChangeSecondCategory() size=8 name=secondCatFormKey>
@@ -157,10 +158,36 @@
               <td>
               <SPAN id=selectedText style="DISPLAY: none"><BR>以下是您已选择的主营行业：</SPAN>
               <select style="WIDTH: 368px" size=8 name="zyhy" multiple>
-                <!-- 主营行业列表 --> 
+              	<%
+              		List list=(List)request.getAttribute("textAreaList");
+              		if(list!=null){
+              		for(int i=0;i<list.size();i++){
+              			List list2=(List)list.get(i);
+              			int size=list2.size();
+              			String name="";
+              			for(int j=0;j<list2.size();j++){
+              				 ProductType temp=(ProductType)list2.get(j);
+              				 String n=temp.getName();
+              				 if(j!=size-1)
+              				    name+=n+"/";
+              				  else
+              				    name+=n;
+              			}
+              			ProductType  productType=(ProductType)list2.get(size-1);
+              		
+              		
+              	 %>
+              	 <option value="<%=productType.getId() %>"/><%=name %></option>
+              	 
+              	 <%
+              	 	}
+              	 }
+              	  %>
+                <!-- 主营行业列表 
               	<c:forEach var="i"  begin="0" end="5" step="1">
     				<option value="<c:out value="${zyhy[i]}"/>"><c:out value="${zyhy[i]}"/></option>
     			</c:forEach>
+    			 -->
               </select> 
               </td>
                </tr>
@@ -223,7 +250,7 @@
 			//清空数组
 			secondCatFormKey.length = 0;
 			for(var i=0;i<result.length;i++){
-				secondCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
+				secondCatFormKey[i] = new Option(result[i].name,result[i].id);
 			}													
 	  	} 
 	  	//二级菜单
@@ -238,7 +265,7 @@
 			var leafCatFormKey = $("leafCatFormKey");
 			leafCatFormKey.length = 0;
 			for(var i=0;i<result.length;i++){
-				leafCatFormKey[i] = new Option(result[i].tableName,result[i].productId);
+				leafCatFormKey[i] = new Option(result[i].name,result[i].id);
 			}													
 	  	} 
 	  	function onChangeleafCategory(){
