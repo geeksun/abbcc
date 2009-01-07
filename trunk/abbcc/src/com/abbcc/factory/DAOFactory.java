@@ -26,9 +26,6 @@ public class DAOFactory {
 		//return GsjbxxDAOImpl.getInstance();
 	}*/
 
-	public static GsxxxxDAO getGsxxxxDAOInstance() {
-		return GsxxxxDAOImpl.getInstance();
-	}
 
 	public static HygrzlDAO getHygrzlDAOInstance() {
 		return HygrzlDAOImpl.getInstance();
