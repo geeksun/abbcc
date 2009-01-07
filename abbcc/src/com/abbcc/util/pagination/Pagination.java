@@ -1,4 +1,4 @@
-package com.abbcc.util.pagination;
+ package com.abbcc.util.pagination;
 
 import java.io.Serializable;
 import java.util.List;

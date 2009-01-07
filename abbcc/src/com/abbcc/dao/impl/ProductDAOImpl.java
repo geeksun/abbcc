@@ -1,5 +1,7 @@
 package com.abbcc.dao.impl;
 
+import java.util.Map;
+
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 
@@ -31,6 +33,14 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 		SQLQuery query=this.getSession().createSQLQuery(sql);
 		this.setParamter(0, query, value);
 		 query.executeUpdate();
+	}
+
+	public Object excetueSelectProduct(String sql,  Object[] value) {
+		SQLQuery query=this.getSession().createSQLQuery(sql);
+		this.setParamter(0, query, value);
+		Object object=query.uniqueResult();
+		
+		return object;
 	}
 
 }

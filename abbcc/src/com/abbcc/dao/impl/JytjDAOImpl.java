@@ -2,18 +2,17 @@ package com.abbcc.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
-
 
 import com.abbcc.dao.JytjDAO;
 import com.abbcc.exception.DaoException;
-import com.abbcc.factory.Globals;
+import com.abbcc.factory.Globals; 
 import com.abbcc.pojo.Jytj;
-import com.abbcc.pojo.Pz;
-import com.abbcc.util.JdbcTemplateUtil;
-
+import com.abbcc.pojo.Pz; 
 public class JytjDAOImpl extends BaseDaoImpl implements JytjDAO {
 	private String tableName="jytj";
+	
 
 	public void delete(int hyjbxxid, int jytjid) throws DaoException {
 		// TODO Auto-generated method stub
@@ -55,4 +54,13 @@ public class JytjDAOImpl extends BaseDaoImpl implements JytjDAO {
 	public void update(Jytj jytj) throws DaoException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Jytj getJytjById(long cpgqxxId) {
+		String hql = "from Jytj j where j.cpgqxxId=?";
+
+		Query query = this.getQuery(hql);
+		query.setLong(0, cpgqxxId);
+
+		return (Jytj) query.uniqueResult();
 	} }

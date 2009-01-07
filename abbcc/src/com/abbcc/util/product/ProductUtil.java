@@ -87,6 +87,15 @@ public class ProductUtil {
 		builder.append("?)");
 		return builder.toString();
 	}
+	public static String getProductSelectSql(Product product,String cpgqxxId){
+		if(product==null)return null;
+		StringBuilder builder = new StringBuilder("select * from "); 
+		String tableName=product.getTableName(); 
+		String cpgqxxidFiled=product.getCpgqxxIdFiled(); 
+		builder.append(tableName + " where "+cpgqxxidFiled+"=?");
+		  
+		return builder.toString();
+	}
  
 	public static boolean isPropertyMatchType(String[] type,String[] property){
 		if(type==null||property==null||type.length!=property.length)return false;
