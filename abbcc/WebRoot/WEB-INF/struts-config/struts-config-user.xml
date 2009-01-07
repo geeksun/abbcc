@@ -109,9 +109,13 @@
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
 	    
-	    <action path="/productInfo"   parameter="method" type="com.abbcc.customer.ProductInfoAction">
-	    	<forward name="product" path="/user/product/product.jsp"></forward>
-	    </action>
+	   <action path="/productInfo" parameter="method"
+			type="com.abbcc.customer.ProductInfoAction">
+			<forward name="product" path="/user/product/product.jsp"></forward>
+			<forward name="productInfoList"
+				path="/user/product/productInfoList.jsp">
+			</forward>
+		</action>
 	</action-mappings>
 	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
