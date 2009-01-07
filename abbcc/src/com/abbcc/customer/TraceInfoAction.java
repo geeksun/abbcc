@@ -1,11 +1,12 @@
 package com.abbcc.customer;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession; 
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.action.ActionForm;
@@ -13,11 +14,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 
-import com.abbcc.common.AppConstants;
 import com.abbcc.common.JsonUtil;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.pojo.ProductType;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.service.TradeInfoService;
 import com.abbcc.struts.action.BaseAction;
@@ -42,7 +43,8 @@ public class TraceInfoAction extends BaseAction {
 	 * @resolve 公司基本资料管理
 	 */
 	public ActionForward displayBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
-			HttpServletResponse response)	throws Exception{
+			HttpServletResponse response) {
+			try{
 			HttpSession session = request.getSession(false);
 			
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
@@ -50,19 +52,44 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			List list = hyjbxxService.getMemberById(hyjbxxid);
 			
+			
+			
 			Gsjbxx leaguer = (Gsjbxx) list.get(0);
-			//主营行业
-			String  zyhy = leaguer.getZyhy();
 			
+			String zyhy=leaguer.getZyhy();
+			List idsList=this.getProdcutTypeIdList(zyhy);
+			List textAreaList=this.productService.getTextAreaProductTypeListByIds(idsList);
 			// Mlist: 会员的全部属性
-			List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
-			
+			//List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
+			int parentid = 0;
+
+			List<ProductType> topCategory = this.productService
+					.getProductTypeByParentId(parentid);
+			request.setAttribute("textAreaList", textAreaList);
 			request.setAttribute("hyjbxx", hyjbxx);
 			request.setAttribute("leaguer", leaguer);
-			request.setAttribute("traList", tradeList);
-			request.setAttribute("zyhy", zyhy);
+			request.setAttribute("traList", topCategory);
+			}catch(Exception e){
+				log.error(e);
+				e.printStackTrace();
+			}
 			 
 			return mapping.findForward("basicinfo"); 
+	}
+	private List<Integer> getProdcutTypeIdList(String ids){
+		if(ids==null)return null;
+		List ret=new ArrayList();
+		String[] tempIds=ids.split(",");
+		for(int i=0;i<tempIds.length;i++){
+			String id=tempIds[i];
+			try{
+				Integer _id=Integer.valueOf(id);
+				ret.add(_id);
+			}catch(Exception e){
+				
+			}
+		}
+		return ret;
 	}
 	
 	/**
@@ -98,7 +125,9 @@ public class TraceInfoAction extends BaseAction {
 			
 			String topCatFormKey = request.getParameter("topCatFormKey");
 			//System.out.println("topCatFormKey:"+topCatFormKey);
-			List subList = tradeInfoService.getTableNameById(topCatFormKey);
+			//List subList = tradeInfoService.getTableNameById(topCatFormKey);
+			
+			List subList=this.productService.getProductTypeByParentId(Integer.valueOf(topCatFormKey));
 			//String subList = tradeInfoService.getSubCategory(topCatFormKey);
 			
 			//String json = "[";
@@ -151,6 +180,7 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setZyhy(su.toString());
 			}
+			//System.out.println(gsjbxx.getJyms()+"|"+gsjbxx.getZyhy());
 			
 			hyjbxxService.update(hyjbxx, gsjbxx);
 			
@@ -203,5 +233,6 @@ public class TraceInfoAction extends BaseAction {
 			
 			return mapping.findForward("detailinfo");
 	}
+	
 	
 }
