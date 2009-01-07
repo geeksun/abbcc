@@ -53,6 +53,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 			flag = pstmt.executeUpdate();
 			//pa.updateNum(track[0],track[1],"gsjbxx");
 			this.updateTableCount(tableName);
+			this.updateTableCount(tableName);
 			log.debug("save successful");
 			pstmt.close();
 		}catch(Exception e){
