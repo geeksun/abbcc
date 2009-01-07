@@ -1,4 +1,4 @@
-<%@ page language="java"  pageEncoding="gbk"%>
+ <%@ page language="java"  pageEncoding="gbk"%>
 <%@page import="com.abbcc.common.AppConstants" %>
 <%
 	String path = request.getContextPath();
@@ -34,7 +34,7 @@
      <dl>
      	<dt onclick="toggleDl(this)">供求管理</dt>
      	<dd><a href="<%=path%>/user/product/category.jsp" target="right">供求信息</a></dd>
-     	<dd><a href="<%=path%>/productInfo.do?method=productList&orderType=<%=AppConstants.CPGQXX_SFYX_2 %>" target="right">管理供求信息</a></dd>
+     	<dd><a href="<%=path%>/productInfo.do?method=productList&auditType=<%=AppConstants.CPGQXX_SFYX_1 %>&orderType=<%=AppConstants.CPGQXX_SFYX_1 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">管理供求信息</a></dd>
      </dl>
      <dl>	
      	<dt onclick="toggleDl(this)">产品管理</dt>
@@ -48,7 +48,6 @@
  
      </dl>
      <dl>
- 
      	<dt onclick="">留言管理</dt>
      	<dd><a href="<%=path %>/user/message/addMessage.jsp" target="right">留言</a></dd>
      	<dd><a href="<%=path%>/message.do?method=listAllMessage&currentPage=1" target="right">我收到的留言</a></dd>
@@ -59,6 +58,7 @@
      	<dt onclick="toggleDl(this)">系统后台产品</dt>
      	<dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd>
      	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">添加产品类目</a></dd>
+     	<dd><a href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_2 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">产品列表</a></dd>
      	<dd>子结点3</dd>
      	<dd>子结点4</dd>
  
