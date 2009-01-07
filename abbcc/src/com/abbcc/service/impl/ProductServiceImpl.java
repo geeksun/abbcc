@@ -198,7 +198,6 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 
 	public void updateProductInfoAuditType(String auditType, long[] productInfoId) throws AppException {
 		try {
-			return this.cpgqxxDao.getCpgqxxList(userId,orderType,productName,auditType ,null); 
 			this.cpgqxxDao.updateCpggxxAuditType(auditType,productInfoId);
 		} catch (DaoException e) {
 			log.error(e);
