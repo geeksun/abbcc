@@ -13,10 +13,7 @@ import org.hibernate.Session;
 
 import com.abbcc.dao.GsxxxxDAO;
 import com.abbcc.factory.Globals;
-import com.abbcc.factory.HibernateUtil;
-import com.abbcc.factory.PubAbbcc;
 import com.abbcc.pojo.Gsxxxx;
-import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.pojo.Pz;
 
 public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
@@ -39,37 +36,31 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		
 		String sql = "INSERT INTO gsxxxx_"
 				+ page
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setLong(1, id);
-		pstmt.setString(2, gsxxxx.getZycp());
-		pstmt.setString(3, gsxxxx.getZyhy());
-		pstmt.setString(4, gsxxxx.getJyms());
-		pstmt.setString(5, gsxxxx.getQylx());
-		pstmt.setString(6, gsxxxx.getGszcd());
-		pstmt.setString(7, gsxxxx.getZyjydd());
-		pstmt.setString(8, gsxxxx.getGsclsj());
-		pstmt.setString(9, gsxxxx.getFddbr());
-		pstmt.setString(10, gsxxxx.getNyye());
-		pstmt.setString(11, gsxxxx.getYgrs());
-		pstmt.setString(12, gsxxxx.getJypp());
-		pstmt.setString(13, gsxxxx.getZczb());
-		pstmt.setString(14, gsxxxx.getZykhq());
-		pstmt.setString(15, gsxxxx.getZysc());
-		pstmt.setString(16, gsxxxx.getNcke());
-		pstmt.setString(17, gsxxxx.getNjke());
-		pstmt.setString(18, gsxxxx.getKhyh());
-		pstmt.setString(19, gsxxxx.getZh());
-		pstmt.setString(20, gsxxxx.getOem());
-		pstmt.setString(21, gsxxxx.getYfbmrs());
-		pstmt.setString(22, gsxxxx.getYcl());
-		pstmt.setString(23, gsxxxx.getCfmj());
-		pstmt.setString(24, gsxxxx.getZlkz());
-		pstmt.setString(25, gsxxxx.getGltxrz());
-		pstmt.setString(26, gsxxxx.getGsjs());
-		pstmt.setString(27, gsxxxx.getGstp());
+		pstmt.setString(2, gsxxxx.getGszcd());
+		pstmt.setString(3, gsxxxx.getGsclsj());
+		pstmt.setString(4, gsxxxx.getFddbr());
+		pstmt.setString(5, gsxxxx.getNyye());
+		pstmt.setString(6, gsxxxx.getYgrs());
+		pstmt.setString(7, gsxxxx.getJypp());
+		pstmt.setString(8, gsxxxx.getZczb());
+		pstmt.setString(9, gsxxxx.getZykhq());
+		pstmt.setString(10, gsxxxx.getZysc());
+		pstmt.setString(11, gsxxxx.getNcke());
+		pstmt.setString(12, gsxxxx.getNjke());
+		pstmt.setString(13, gsxxxx.getKhyh());
+		pstmt.setString(14, gsxxxx.getZh());
+		pstmt.setString(15, gsxxxx.getOem());
+		pstmt.setString(16, gsxxxx.getYfbmrs());
+		pstmt.setString(17, gsxxxx.getYcl());
+		pstmt.setString(18, gsxxxx.getCfmj());
+		pstmt.setString(19, gsxxxx.getZlkz());
+		pstmt.setString(20, gsxxxx.getGltxrz());
+		pstmt.setString(21, gsxxxx.getGstp());
 		pstmt.executeUpdate();
 		
 		this.updateTableCount(tableName);
@@ -93,42 +84,35 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		int hid = gsxxxx.getHyjbxxid();
 		int page = hid / Globals.COUNT;
 		String sql = "UPDATE gsxxxx_" + page
-				+ " h SET h.zycp=?,h.zyhy=?,h.jyms=?,h.qylx=?,"
-				+ "h.gszcd=?,h.zyjydd=?,h.gsclsj=?,h.fddbr=?,h.nyye=?,"
+				+ " h SET h.gszcd=?,h.gsclsj=?,h.fddbr=?,h.nyye=?,"
 				+ "h.ygrs=?,h.jypp=?,h.zczb=?,h.zykhq=?,h.zysc=?,"
 				+ "h.ncke=?,h.njke=?,h.khyh=?,h.zh=?,h.oem=?, "
 				+ "h.yfbmrs=?,h.ycl=?,h.cfmj=?,h.zlkz=?,h.gltxrz=?, "
-				+ "h.gsjs=?,h.gstp=? WHERE h.hyjbxxid=?";
+				+ "h.gstp=? WHERE h.hyjbxxid=?";
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, gsxxxx.getZycp());
-		pstmt.setString(2, gsxxxx.getZyhy());
-		pstmt.setString(3, gsxxxx.getJyms());
-		pstmt.setString(4, gsxxxx.getQylx());
-		pstmt.setString(5, gsxxxx.getGszcd());
-		pstmt.setString(6, gsxxxx.getZyjydd());
-		pstmt.setString(7, gsxxxx.getGsclsj());
-		pstmt.setString(8, gsxxxx.getFddbr());
-		pstmt.setString(9, gsxxxx.getNyye());
-		pstmt.setString(10, gsxxxx.getYgrs());
-		pstmt.setString(11, gsxxxx.getJypp());
-		pstmt.setString(12, gsxxxx.getZczb());
-		pstmt.setString(13, gsxxxx.getZykhq());
-		pstmt.setString(14, gsxxxx.getZysc());
-		pstmt.setString(15, gsxxxx.getNcke());
-		pstmt.setString(16, gsxxxx.getNjke());
-		pstmt.setString(17, gsxxxx.getKhyh());
-		pstmt.setString(18, gsxxxx.getZh());
-		pstmt.setString(19, gsxxxx.getOem());
-		pstmt.setString(20, gsxxxx.getYfbmrs());
-		pstmt.setString(21, gsxxxx.getYcl());
-		pstmt.setString(22, gsxxxx.getCfmj());
-		pstmt.setString(23, gsxxxx.getZlkz());
-		pstmt.setString(24, gsxxxx.getGltxrz());
-		pstmt.setString(25, gsxxxx.getGsjs());
-		pstmt.setString(26, gsxxxx.getGstp());
-		pstmt.setInt(27, gsxxxx.getHyjbxxid());
+		pstmt.setString(1, gsxxxx.getGszcd());
+		pstmt.setString(2, gsxxxx.getGsclsj());
+		pstmt.setString(3, gsxxxx.getFddbr());
+		pstmt.setString(4, gsxxxx.getNyye());
+		pstmt.setString(5, gsxxxx.getYgrs());
+		pstmt.setString(6, gsxxxx.getJypp());
+		pstmt.setString(7, gsxxxx.getZczb());
+		pstmt.setString(8, gsxxxx.getZykhq());
+		pstmt.setString(9, gsxxxx.getZysc());
+		pstmt.setString(10, gsxxxx.getNcke());
+		pstmt.setString(11, gsxxxx.getNjke());
+		pstmt.setString(12, gsxxxx.getKhyh());
+		pstmt.setString(13, gsxxxx.getZh());
+		pstmt.setString(14, gsxxxx.getOem());
+		pstmt.setString(15, gsxxxx.getYfbmrs());
+		pstmt.setString(16, gsxxxx.getYcl());
+		pstmt.setString(17, gsxxxx.getCfmj());
+		pstmt.setString(18, gsxxxx.getZlkz());
+		pstmt.setString(19, gsxxxx.getGltxrz());
+		pstmt.setString(20, gsxxxx.getGstp());
+		pstmt.setInt(21, gsxxxx.getHyjbxxid());
 		pstmt.executeUpdate();
 		pstmt.close();
 	}
@@ -158,32 +142,26 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
 			g.setHyjbxxid(rs.getInt(1));
-			g.setZycp(rs.getString(2));
-			g.setZyhy(rs.getString(3));
-			g.setJyms(rs.getString(4));
-			g.setQylx(rs.getString(5));
-			g.setGszcd(rs.getString(6));
-			g.setZyjydd(rs.getString(7));
-			g.setGsclsj(rs.getString(8));
-			g.setFddbr(rs.getString(9));
-			g.setNyye(rs.getString(10));
-			g.setYgrs(rs.getString(11));
-			g.setJypp(rs.getString(12));
-			g.setZczb(rs.getString(13));
-			g.setZykhq(rs.getString(14));
-			g.setZysc(rs.getString(15));
-			g.setNcke(rs.getString(16));
-			g.setNjke(rs.getString(17));
-			g.setKhyh(rs.getString(18));
-			g.setZh(rs.getString(19));
-			g.setOem(rs.getString(20));
-			g.setYfbmrs(rs.getString(21));
-			g.setYcl(rs.getString(22));
-			g.setCfmj(rs.getString(23));
-			g.setZlkz(rs.getString(24));
-			g.setGltxrz(rs.getString(25));
-			g.setGsjs(rs.getString(26));
-			g.setGstp(rs.getString(27));
+			g.setGszcd(rs.getString(2));
+			g.setGsclsj(rs.getString(3));
+			g.setFddbr(rs.getString(4));
+			g.setNyye(rs.getString(5));
+			g.setYgrs(rs.getString(6));
+			g.setJypp(rs.getString(7));
+			g.setZczb(rs.getString(8));
+			g.setZykhq(rs.getString(9));
+			g.setZysc(rs.getString(10));
+			g.setNcke(rs.getString(11));
+			g.setNjke(rs.getString(12));
+			g.setKhyh(rs.getString(13));
+			g.setZh(rs.getString(14));
+			g.setOem(rs.getString(15));
+			g.setYfbmrs(rs.getString(16));
+			g.setYcl(rs.getString(17));
+			g.setCfmj(rs.getString(18));
+			g.setZlkz(rs.getString(19));
+			g.setGltxrz(rs.getString(20));
+			g.setGstp(rs.getString(21));
 		}
 		rs.close();
 		pstmt.close();
@@ -212,32 +190,26 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		while (rs.next()) {
 			Gsxxxx g = new Gsxxxx();
 			g.setHyjbxxid(rs.getInt(1));
-			g.setZycp(rs.getString(2));
-			g.setZyhy(rs.getString(3));
-			g.setJyms(rs.getString(4));
-			g.setQylx(rs.getString(5));
-			g.setGszcd(rs.getString(6));
-			g.setZyjydd(rs.getString(7));
-			g.setGsclsj(rs.getString(8));
-			g.setFddbr(rs.getString(9));
-			g.setNyye(rs.getString(10));
-			g.setYgrs(rs.getString(11));
-			g.setJypp(rs.getString(12));
-			g.setZczb(rs.getString(13));
-			g.setZykhq(rs.getString(14));
-			g.setZysc(rs.getString(15));
-			g.setNcke(rs.getString(16));
-			g.setNjke(rs.getString(17));
-			g.setKhyh(rs.getString(18));
-			g.setZh(rs.getString(19));
-			g.setOem(rs.getString(20));
-			g.setYfbmrs(rs.getString(21));
-			g.setYcl(rs.getString(22));
-			g.setCfmj(rs.getString(23));
-			g.setZlkz(rs.getString(24));
-			g.setGltxrz(rs.getString(25));
-			g.setGsjs(rs.getString(26));
-			g.setGstp(rs.getString(27));
+			g.setGszcd(rs.getString(2));
+			g.setGsclsj(rs.getString(3));
+			g.setFddbr(rs.getString(4));
+			g.setNyye(rs.getString(5));
+			g.setYgrs(rs.getString(6));
+			g.setJypp(rs.getString(7));
+			g.setZczb(rs.getString(8));
+			g.setZykhq(rs.getString(9));
+			g.setZysc(rs.getString(10));
+			g.setNcke(rs.getString(11));
+			g.setNjke(rs.getString(12));
+			g.setKhyh(rs.getString(13));
+			g.setZh(rs.getString(14));
+			g.setOem(rs.getString(15));
+			g.setYfbmrs(rs.getString(16));
+			g.setYcl(rs.getString(17));
+			g.setCfmj(rs.getString(18));
+			g.setZlkz(rs.getString(19));
+			g.setGltxrz(rs.getString(20));
+			g.setGstp(rs.getString(21));
 			list.add(g);
 		}
 		rs.close();
