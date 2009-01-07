@@ -22,4 +22,6 @@ public interface JytjDAO {
 	// 根据时间排列显示所有未审核的交易条件
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws DaoException;
+
+	public Jytj getJytjById(long cpgqxxId);
 }

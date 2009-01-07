@@ -24,7 +24,13 @@ public interface CpgqxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws DaoException;
 
-	public List getCpgqxxList(int hyjbxxid, String xxlx, String cpmc,String sfyx,String xxbt)throws DaoException;
+	public List getCpgqxxList(Integer hyjbxxid, String xxlx, String cpmc,String sfyx,String xxbt,int start,int maxReults)throws DaoException;
+ 
+	public int getCpgqxxCount(Integer hyjbxxid,String xxlx, String cpmc, String sfyx, String xxbt)throws DaoException;
+
+	public void updateCpggxxAuditType(String auditType, long[] productInfoId)throws DaoException;
+
+	public Cpgqxx getCpgqxxById(long cpgqxxId);
 
 	 
 	 

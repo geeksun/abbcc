@@ -2,8 +2,10 @@ package com.abbcc.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,9 @@ import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
 import com.abbcc.util.RequestUtils;
+import com.abbcc.util.pagination.NormalPagination;
+import com.abbcc.util.pagination.PageConstants;
+import com.abbcc.util.pagination.Pagination;
 import com.abbcc.util.product.ProductObject;
 import com.abbcc.util.product.ProductTemplate;
 import com.abbcc.util.product.ProductUtil;
@@ -101,20 +106,29 @@ public class ProductInfoAction extends BaseAction {
 
 		String userid = (String) request.getSession().getAttribute("hyjbxxid");
 
-		String orderType = request.getParameter("orderType"); 
-		String productName =request.getParameter("productName");
+		String orderType = request.getParameter("orderType"); //信息类型
+		String productName =request.getParameter("productName");//产品名称
 		int _userId = Integer.valueOf(userid);
-		String auditType =request.getParameter("auditType");
-		String overdue = null;//request.getParameter("");
-		boolean hasNull = ProductUtil.hasNullParam(userid,orderType);
+		String auditType =request.getParameter("auditType");//审核类型 
+		String overdue = request.getParameter("overdue");//是否过期 
+		boolean hasNull = ProductUtil.hasNullParam(userid);
 		if(hasNull){
 			return mapping.findForward("error");
 		}
 		try {
-			List productInfoList = this.productService.getProductInfoList(
-					_userId, orderType, productName, auditType, overdue);
+			String action="productInfo.do?method=productList";
+			int currentPage=RequestUtils.getIntParameter(request,PageConstants.PAGINATION_CURRENT_PAGE,1);
+			int onePageSize=RequestUtils.getIntParameter(request,PageConstants.PAGINATION_ONE_PAGE_SIZE,10);
+			Map params=new HashMap();
+			params.put("orderType", orderType);
+			params.put("productName", productName);
+			params.put("auditType", auditType);
+			params.put("overdue", overdue);
+			Pagination pagination=new NormalPagination(currentPage,action,onePageSize,params);
+			List productInfoList = this.productService.getProductInfoList( _userId, orderType, productName, auditType, overdue,pagination);
 
 			request.setAttribute("productInfoList", productInfoList);
+			request.setAttribute("pagination", pagination);
 
 		} catch (Exception e) {
 			e.printStackTrace();

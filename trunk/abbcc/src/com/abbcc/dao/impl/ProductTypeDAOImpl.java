@@ -45,4 +45,15 @@ public class ProductTypeDAOImpl extends BaseDaoImpl implements ProductTypeDAO{
 		query.executeUpdate();
 	}
 
+ 
+
+	public List<ProductType> getProductTypeByIdList(List idsList) {
+		if(idsList==null||idsList.size()==0)return null;
+		String sql="from ProductType p where p.id ";
+		sql=this.getSql(sql, idsList);
+		Query query=this.getQuery(sql);
+		this.setParamter (0, query, idsList);
+		return  query.list();
+	}
+
 }

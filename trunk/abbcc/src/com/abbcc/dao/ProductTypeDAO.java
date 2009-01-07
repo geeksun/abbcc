@@ -17,4 +17,7 @@ public interface ProductTypeDAO {
 
 	void deleteProductTypeByIdList(List ids);
 
+ 
+	List<ProductType> getProductTypeByIdList(List idsList);
+
 }
