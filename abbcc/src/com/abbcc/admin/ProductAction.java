@@ -1,6 +1,8 @@
 package com.abbcc.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,9 +11,16 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.struts.action.BaseAction;
+import com.abbcc.util.RequestUtils;
+import com.abbcc.util.pagination.NormalPagination;
+import com.abbcc.util.pagination.PageConstants;
+import com.abbcc.util.pagination.Pagination;
+import com.abbcc.util.product.ProductInfo;
+import com.abbcc.util.product.ProductTemplate;
 import com.abbcc.util.product.ProductUtil;
 
 public class ProductAction extends BaseAction {
@@ -124,7 +133,119 @@ public class ProductAction extends BaseAction {
 			return mapping.findForward("createProduct");
 		}
 	
-	
+	public ActionForward productInfoList(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
 
+		String userid = (String) request.getSession().getAttribute("hyjbxxid");
+
+		String orderType = RequestUtils.getParameter(request, "orderType"); //信息类型
+		String productName =RequestUtils.getParameter(request, "productName");//产品名称
+	 
+		int _userId = Integer.valueOf(userid);
+		String auditType =RequestUtils.getParameter(request, "auditType");//审核类型 
+		String overdue = RequestUtils.getParameter(request, "overdue");//是否过期 
+		boolean hasNull = ProductUtil.hasNullParam(userid);
+		if(hasNull){
+			return mapping.findForward("error");
+		}
+		try {
+			String action="product.do?method=productInfoList";
+			int currentPage=RequestUtils.getIntParameter(request,PageConstants.PAGINATION_CURRENT_PAGE,1);
+			int onePageSize=RequestUtils.getIntParameter(request,PageConstants.PAGINATION_ONE_PAGE_SIZE,10);
+			Map params=new HashMap();
+			params.put("orderType", orderType);
+			params.put("productName", productName);
+			params.put("auditType", auditType);
+			params.put("overdue", overdue);
+		
+			Pagination pagination=new NormalPagination(currentPage,action,onePageSize,params);
+			List productInfoList = this.productService.getProductInfoList(orderType, productName, auditType, overdue,pagination);
+
+			request.setAttribute("productInfoList", productInfoList);
+			request.setAttribute("pagination", pagination);
+			request.setAttribute("auditType", auditType);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e);
+		}
+
+		return mapping.findForward("productInfoList");
+	}
+	public ActionForward updateProductInfoAuditType(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
+
+		String userid = (String) request.getSession().getAttribute("hyjbxxid");
+		//String[] productInfoId = request.getParameterValues("productInfoIds");//是否过期 
+		long[] productInfoIds=RequestUtils.getLongParameters(request, "productInfoIds");
+		
+		boolean hasNull = ProductUtil.hasNullParam(userid,productInfoIds);
+		if(hasNull){
+			return mapping.findForward("error");
+		}
+		int _userId = Integer.valueOf(userid);
+		String auditType = AppConstants.CPGQXX_SFYX_1;//审核类型 
+		
+		
+		try { 
+			  this.productService.updateProductInfoAuditType(auditType, productInfoIds );
+
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e);
+		}
+
+		return this.productInfoList(mapping, form, request, response) ;
+	}
+	public ActionForward showProductInfo(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) { 
+		try{
+			int parentid = 0;
+
+			List<ProductType> topCategory = this.productService
+					.getProductTypeByParentId(parentid);
+			 
+				if (topCategory != null && topCategory.size() > 0) {
+					request.setAttribute("topCategory", topCategory);
+					ProductType productType = topCategory.get(0);
+					List<ProductType> secondCategory = this.productService
+							.getProductTypeByParentId(productType.getId());
+					request.setAttribute("secondCategory", secondCategory);
+					if (secondCategory != null && secondCategory.size() > 0) {
+						ProductType secondProductType = secondCategory.get(0);
+						List<ProductType> thirdCategory = this.productService
+								.getProductTypeByParentId(secondProductType.getId());
+						request.setAttribute("thirdCategory", thirdCategory);
+
+						if (thirdCategory != null && thirdCategory.size() > 0) {
+							ProductType thridProductType = thirdCategory.get(0);
+							int id = thridProductType.getId();
+							String productTypeId = String.valueOf(id);
+							Product product = this.productService
+									.getProductByStateAndProductTypeId(
+											Product.PRODUCT_STATE_IN_USED,
+											productTypeId);
+
+							String path = request.getContextPath();
+
+							String productTemplate = ProductTemplate.getInstance()
+									.getTableStyle(product, path);
+							request
+									.setAttribute("productTemplate",
+											productTemplate);
+						}
+
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			String productInfoId=RequestUtils.getParameter(request, "productInfoId");
+			long _productInfoId=Long.valueOf(productInfoId);
+			ProductInfo productInfo=productService.getProductInfoById(_productInfoId);
+			return mapping.findForward("showProduct");
+		}
 
 }
