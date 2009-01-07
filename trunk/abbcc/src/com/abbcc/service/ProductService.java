@@ -8,10 +8,6 @@ import com.abbcc.pojo.Jytj;
 import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.util.product.ProductObject;
- 
- 
-
-
 
 public interface ProductService {
 
@@ -38,6 +34,8 @@ public interface ProductService {
 
  
 	List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue) throws AppException;
+
+	List getTextAreaProductTypeListByIds(List idsList); 
 	
 	
 }
