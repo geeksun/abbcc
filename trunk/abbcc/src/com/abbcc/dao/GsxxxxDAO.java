@@ -9,7 +9,7 @@ public interface GsxxxxDAO {
 	public void add(Gsxxxx gsxxxxx); 
 
 	// 修改公司详细信息
-	public void update(Gsxxxx gsxxxx) throws Exception;
+	public void update(Gsxxxx gsxxxx);
 
 	// 删除公司详细信息
 	public void delete(int hyjbxxid) throws Exception;
