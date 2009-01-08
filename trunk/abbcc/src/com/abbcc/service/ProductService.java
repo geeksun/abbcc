@@ -10,10 +10,6 @@ import com.abbcc.pojo.ProductType;
 import com.abbcc.util.pagination.Pagination;
 import com.abbcc.util.product.ProductInfo;
 import com.abbcc.util.product.ProductObject;
- 
- 
-
-
 
 public interface ProductService {
 
@@ -34,10 +30,8 @@ public interface ProductService {
 	void addProduct(Product product)throws AppException;
 
 	Product getProductByStateAndProductTypeId(int state,String productTypeId)throws AppException ;
-
  	
 	void addProductInfo(ProductObject obj,Cpgqxx cpgqxx,Jytj jytj)throws AppException;
-
  
 	List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException;
 	

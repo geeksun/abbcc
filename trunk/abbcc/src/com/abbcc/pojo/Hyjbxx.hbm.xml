@@ -33,7 +33,7 @@
             <column name="dzyx" length="64" />
         </property>
         <property name="gddh" type="java.lang.String">
-            <column name="gddh" length="16" />
+            <column name="gddh" length="32" />
         </property>
         <property name="cz" type="java.lang.String">
             <column name="cz" length="16" />
@@ -61,7 +61,7 @@
             <column name="jydz" length="30" />
         </property>
         <property name="zyhy" type="java.lang.String">
-            <column name="zyhy" length="30" />
+            <column name="zyhy" length="60" />
         </property>
         <property name="gsszd" type="java.lang.String">  
             <column name="gsszd" length="30" />
