@@ -11,7 +11,7 @@ public class Gsjbxx implements java.io.Serializable {
 	private String gsmc;			//公司名称
 	private String qylx;			//企业类型    new
 	private String jyms;			//经营模式	new
-	private String gsszd;			//公司所在地
+	private String gsszd;			//公司所在地（Hyjbxx中也有）
 	private String jydz;			//经营地址
 	private String zyhy;			//主营行业
 	private String zyfx;			//主营方向

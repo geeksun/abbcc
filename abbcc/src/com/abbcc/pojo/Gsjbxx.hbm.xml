@@ -30,16 +30,16 @@
              <column name="jydz" length="64" />
          </property>
          <property name="zyhy" type="java.lang.String"> 
-             <column name="zyhy" length="2" />
+             <column name="zyhy" length="60" />
          </property>
          <property name="zyfx" type="java.lang.String">
              <column name="zyfx" length="2" />
          </property>
          <property name="xsdcp" type="java.lang.String">
-             <column name="xsdcp" length="32" />
+             <column name="xsdcp" length="60" />
          </property>
          <property name="cgdcp" type="java.lang.String">
-             <column name="cgdcp" length="32" />
+             <column name="cgdcp" length="60" />
          </property>
          <!-- 公司介绍 -->
          <property name="gsjs" type="java.lang.String">
