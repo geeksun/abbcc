@@ -52,20 +52,29 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			List list = hyjbxxService.getMemberById(hyjbxxid);
 			
-			Gsjbxx leaguer = (Gsjbxx) list.get(0);
-			
-			String zyhy=leaguer.getZyhy();
-			List idsList=this.getProdcutTypeIdList(zyhy);
-			List textAreaList=this.productService.getTextAreaProductTypeListByIds(idsList);
+			Gsjbxx gsjbxx = (Gsjbxx) list.get(0);
+			//公司基本信息中的主营行业
+			String zyhy=gsjbxx.getZyhy();
+			//判断产品表中是否有此主营行业
+			//ProductType pty = productService.getProductTypeById(Integer.parseInt(zyhy));
+			//if(pty!=null){
+				List idsList=this.getProdcutTypeIdList(zyhy);
+				//List textAreaList = null; 
+				if(idsList!=null){
+					List textAreaList=this.productService.getTextAreaProductTypeListByIds(idsList);
+					//主营行业的文本域
+					request.setAttribute("textAreaList", textAreaList);
+				}
+			//}
 			// Mlist: 会员的全部属性
 			//List tradeList = tradeInfoService.getTableNameById(AppConstants.TOPCATEGORYID);
 			int parentid = 0;
 
 			List<ProductType> topCategory = this.productService
 					.getProductTypeByParentId(parentid);
-			request.setAttribute("textAreaList", textAreaList);
+			
 			request.setAttribute("hyjbxx", hyjbxx);
-			request.setAttribute("leaguer", leaguer);
+			request.setAttribute("gsjbxx", gsjbxx);
 			request.setAttribute("traList", topCategory);
 			}catch(Exception e){
 				log.error(e);
@@ -145,7 +154,7 @@ public class TraceInfoAction extends BaseAction {
 			return null;
 	}
 	/**
-	 * 	@see 修改公司基本信息和会员基本信息
+	 * 	@see 管理会员基本信息和公司基本信息
 	 */
 	public ActionForward updateBasicInfo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
@@ -157,18 +166,31 @@ public class TraceInfoAction extends BaseAction {
 			Hyjbxx hyjbxx = new Hyjbxx();
 			Integer hyjbxxid = Integer.valueOf((String) session.getAttribute("hyjbxxid"));
 			BeanUtils.copyProperties(hyjbxx, basicInfoForm);
-			
 			hyjbxx.setHyjbxxid(hyjbxxid); 
-			//hyjbxx.setZsxm(StringUtils.converse(hyjbxx.getZsxm()));
+			
+			//公司电话（固定电话）
+			String area = request.getParameter("area");
+			String phone = request.getParameter("phone");
+			String extension = request.getParameter("extension");
+			StringBuffer sf;
+			if(!extension.trim().equals("")){
+				sf = new StringBuffer();
+				sf.append(area).append("/").append(phone).append("/").append(extension);
+				hyjbxx.setGddh(sf.toString());
+			}else{
+				sf = new StringBuffer();
+				sf.append(area).append("/").append(phone);
+				hyjbxx.setGddh(sf.toString()); 
+			}
 			
 			Gsjbxx gsjbxx = new Gsjbxx();
 			BeanUtils.copyProperties(gsjbxx, basicInfoForm);
 			gsjbxx.setHyjbxxid(hyjbxxid);
+			
+			//经营模式
 			String[] jyms = request.getParameterValues("jyms");
-			//主营行业
-			String[] zyhy = request.getParameterValues("product");
 			StringBuffer su;
-			if(jyms!=null){
+			if(jyms.length>0){
 				su = new StringBuffer();
 				for(int i=0;i<jyms.length;i++){
 					su.append(jyms[i]);
@@ -176,20 +198,16 @@ public class TraceInfoAction extends BaseAction {
 				}
 				gsjbxx.setJyms(su.toString());
 			}
-			//System.out.println(gsjbxx.getJyms());
-			if(zyhy!=null){
-				su = new StringBuffer();
-				for(int i=0;i<zyhy.length;i++){
-					su.append(zyhy[i]);
-					su.append(",");
-				}
-				gsjbxx.setZyhy(su.toString());
-			}
+			
+			//主营行业
+			String zyhy = request.getParameter("product");
+			//String[] zyhy = request.getParameterValues("product");
+			gsjbxx.setZyhy(zyhy);
 			
 			hyjbxxService.update(hyjbxx, gsjbxx);
 			
-			//应该返回到管理首页
-			return mapping.findForward("basicinfo");
+			//返回修改成功提示页
+			return mapping.findForward("modifySuccess");
 	}
 	
 	/**

@@ -95,6 +95,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, hyjbxx.getZsxm());
 		pstmt.setString(2, hyjbxx.getGddh());
+		//System.out.println(hyjbxx.getGddh());
 		pstmt.setString(3, hyjbxx.getGsszd());
 		pstmt.setString(4, hyjbxx.getDzyx());
 		pstmt.setLong(5, hyjbxx.getHyjbxxid());
