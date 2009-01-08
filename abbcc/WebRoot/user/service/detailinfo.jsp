@@ -37,7 +37,7 @@
 				if(document.getElementsByName('rightImg')[cmd])
 				{
 					document.getElementsByName('rightImg')[cmd].style.display = "";}
-			   }
+			    }
          }
 	</script>
 	</head>
