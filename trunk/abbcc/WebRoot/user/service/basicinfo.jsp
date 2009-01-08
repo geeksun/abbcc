@@ -1,7 +1,7 @@
 <%@ page language="java"  import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page import="com.abbcc.pojo.ProductType" %>
+<%@ page import="com.abbcc.pojo.ProductType,com.abbcc.pojo.Hyjbxx,com.abbcc.pojo.Gsjbxx" %>
 <%
 	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
@@ -55,6 +55,7 @@
 											});
 		function updateBasicInfo(){
 			document.basicInfoForm.action.value = "updateBasicInfo";
+			alert(zyhy);
 			document.basicInfoForm.product.value = zyhy;
 			document.basicInfoForm.submit();
 		}
@@ -64,65 +65,67 @@
   <p>
   	公司基本资料
   </p>
-  	<c:set var="leaguer" value="${leaguer}" scope="page" ></c:set>
+  	<c:set var="gsjbxx" value="${gsjbxx}" scope="page" ></c:set>
   	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
-  	<c:set var="zyhyValue" value="${zyhy}" scope="page"></c:set>
-  	<c:set var="zyhy" value="${fn:split(zyhyValue,',')}"></c:set>
   	<form action="traceInfo.do" name="basicInfoForm">
   	<input type="hidden" name="action">
   	<input type="hidden" name="product">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr> 
-    		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${leaguer.gsmc}"  size="40"></td>
+    		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${gsjbxx.gsmc}"  size="40"></td>
     	</tr>
-    	<!-- <tr>
-    		<td> 公司英文名称：</td><td><input type="text"  name="enCorpName" size="40"></td>
-    	</tr>
-    	 -->
     	<tr>
+    	<%
+    		Gsjbxx gsjbxx = (Gsjbxx)request.getAttribute("gsjbxx");
+    		String qylx = gsjbxx.getQylx();
+    	 %>
     		<td align=right>企业类型：*</td>
     		<td><select name="qylx" >
-    			<option value="10">其他</option>
-					<option value="1">有限责任公司(独资)</option>
-					<option value="2">股份有限公司(上市)</option>
-					<option value="3" >股份有限公司(非上市)</option>
-					<option value="4" >全民所有制企业</option>
-					<option value="5" >集体所有制企业</option>
-					<option value="6" >中外合资经营企业</option>
-					<option value="7" >中外合作经营企业</option>
-					<option value="8" >外商独资企业</option>
-					<option value="9" >私营企业</option>
+    			<option value="10" <%=qylx.equals("10")?"selected":"" %>>其他</option>
+					<option value="1" <%=qylx.equals("1")?"selected":"" %>>有限责任公司(独资)</option>
+					<option value="2" <%=qylx.equals("2")?"selected":"" %>>股份有限公司(上市)</option>
+					<option value="3" <%=qylx.equals("3")?"selected":"" %>>股份有限公司(非上市)</option>
+					<option value="4" <%=qylx.equals("4")?"selected":"" %>>全民所有制企业</option>
+					<option value="5" <%=qylx.equals("5")?"selected":"" %>>集体所有制企业</option>
+					<option value="6" <%=qylx.equals("6")?"selected":"" %>>中外合资经营企业</option>
+					<option value="7" <%=qylx.equals("7")?"selected":"" %>>中外合作经营企业</option>
+					<option value="8" <%=qylx.equals("8")?"selected":"" %>>外商独资企业</option>
+					<option value="9" <%=qylx.equals("9")?"selected":"" %>>私营企业</option>
 				</select>
     		</td>
     	</tr>
     	<tr>
-    		<td align=right>经营模式：*</td>
+    	<%
+    		String jymsTemp = gsjbxx.getJyms();
+    		String[] jyms = jymsTemp.split(",");
+    	%>
+    		<td align=right>经营模式：<font color=red>*</font></td>
     		<td>
     		<INPUT id=Type_Manufacturer title=从事自主生产、代/加工制造业务的厂商  onclick="return checkBizType(this)" 
-            type=checkbox value=1 name=jyms>生产加工&nbsp;
+            type=checkbox value=1 name=jyms <%=(jyms[0].equals("1")||jyms[1].equals("1"))?"checked":"" %>>生产加工&nbsp;
 			<INPUT id=Type_Wholesale title=从事产品经销、批发、分销的商家 onclick="return checkBizType(this)" 
-            type=checkbox value=2 name=jyms>经销批发&nbsp;
+            type=checkbox value=2 name=jyms <%=(jyms[0].equals("2")||jyms[1].equals("2"))?"checked":"" %>>经销批发&nbsp;
             <INPUT id=Type_Investment title=以自己的店号、品牌、产品及其他象征营业的东西招募合作伙伴的商家。包括：代理、加盟、特许经营、连锁合作、专卖等。 
-            onclick="return checkBizType(this)" type=checkbox value=3 name=jyms>招商代理&nbsp;
+            onclick="return checkBizType(this)" type=checkbox value=3 name=jyms <%=(jyms[0].equals("3")||jyms[1].equals("3"))?"checked":"" %>>招商代理&nbsp;
 			<INPUT id=Type_Service title=从事商业服务的商家。包括：培训、设计、物流、展会等。 onclick="return checkBizType(this)" 
-            type=checkbox value=4 name=jyms>商业服务&nbsp;
-			<INPUT id=Type_Other onclick="return checkBizType(this)" type=checkbox value=5 name=jyms>以上都不是<BR>
+            type=checkbox value=4 name=jyms <%=(jyms[0].equals("4")||jyms[1].equals("4"))?"checked":"" %>>商业服务&nbsp;
+			<INPUT id=Type_Other onclick="return checkBizType(this)" type=checkbox value=5 name=jyms <%=(jyms[0].equals("5")||jyms[1].equals("5"))?"checked":"" %>>以上都不是<BR>
 			<SPAN class=note>（最多选择2种经营模式）</SPAN> 
     		</td>
     	</tr>
     	<tr>
     		<td align=right>主要经营地点：*</td>
-    		<td><input type="text" name="jydz" value="${leaguer.jydz }" size="27">
+    		<td><input type="text" name="jydz" value="${gsjbxx.jydz }" size="27">
     		<span class=note>（请填写业务部门工作地点）</span></td>
     	</tr>
     	<tr>
     		<td align=right>销售的产品：<font color=red>*</font></td>
-    		<td><input type="text" name="xsdcp" value="${leaguer.xsdcp }">
+    		<td><input type="text" name="xsdcp" value="${gsjbxx.xsdcp }">
     		</td>
     	</tr>
     	<tr>
     		<td align=right>采购的产品：<font color=red>*</font></td>
-    		<td><input type="text" name="cgdcp" value="${leaguer.cgdcp }">
+    		<td><input type="text" name="cgdcp" value="${gsjbxx.cgdcp }">
     		</td>
     	</tr>
     	<tr>
@@ -175,7 +178,7 @@
               			}
               		ProductType  productType=(ProductType)list2.get(size-1);
               	 %>
-              	 <option value="<%=productType.getId() %>"/><%=name %></option>
+              	 <option value="<%=productType.getId()%>"/><%=name %></option>
               	 
               	 <%
               	 	}
@@ -195,8 +198,7 @@
     		<td>公司简介：<font color=red>*</font>(最多可输入1000字，还剩<input readOnly maxLength="4" size="4" value="1000" name="remLen">字)</td>
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
-    		<textarea name="gsjs" rows=10 cols=50  onkeydown="textCounter(this.form.gsjs,this.form.remLen,1000)" 
-    		onkeyup="textCounter(this.form.gsjs,this.form.remLen,1000)"><c:out value="${leaguer.gsjs}"/>
+    		<textarea name="gsjs" rows=10 cols=50  ><c:out value="${gsjbxx.gsjs}"/>
     		</textarea>
     		</td>
     		</tr>
@@ -210,8 +212,35 @@
                   请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
                </tr>
                <tr>
-               <td align=right>公司电话：<font color=red>*</font></td><td><input type="text" name="gddh" value="${hyjbxx.gddh}"" >
-               <SPAN class=note>(只能填写固定电话！)</SPAN> 
+               <%
+                String[] gddh = {"","",""};
+               	Hyjbxx hyjbxx = (Hyjbxx)request.getAttribute("hyjbxx");
+				String dh = hyjbxx.getGddh();
+				
+				if(dh!=null){
+					String[] temp = new String[3];
+               		temp = dh.split("/");
+               		if(temp.length>0)gddh[0]=temp[0];
+               		if(temp.length>1)gddh[1]=temp[1];
+               		if(temp.length>2)gddh[2]=temp[2];
+               	}
+                %>
+               <td align=right>公司电话：<font color=red>*</font></td>
+               <td>
+               <TABLE cellSpacing=0 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>区号：</TD>
+                      <TD>电话号码：</TD>
+                      <TD>分机：</TD></TR>
+                    <TR>
+                      <TD><INPUT maxLength=8 size=8  name=area value="<%=gddh[0]%>"></TD>
+                      <TD><INPUT maxLength=8 size=8 name=phone value="<%=gddh[1]%>"></TD>
+                      <TD><INPUT maxLength=30 size=12 name=extension value="<%=gddh[2]%>"></TD>
+                    </TR>
+                    </TBODY>
+                    </TABLE>
+                    <SPAN class=note>(只能填写固定电话！)</SPAN>
                </td>
                </tr>
                <tr>
