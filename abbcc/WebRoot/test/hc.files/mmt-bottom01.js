@@ -1,0 +1,21 @@
+document.writeln('<style type=\"text/css\">');
+document.writeln('.mmt-bottom{FONT-WEIGHT:normal;FONT-SIZE:12px;COLOR:#000000;LINE-HEIGHT:20px;}');
+document.writeln('A.mmt:link{FONT-SIZE:12px;COLOR:#000000;TEXT-DECORATION:none;}');
+document.writeln('A.mmt:visited{FONT-SIZE:12px;COLOR:#000000;TEXT-DECORATION:none;}');
+document.writeln('A.mmt:active{FONT-SIZE:12px;COLOR:#000000;TEXT-DECORATION:none;}');
+document.writeln('A.mmt:hover{FONT-SIZE:12px;COLOR:#ff3300;TEXT-DECORATION:underline;}');
+document.writeln('.toptxt{FONT-SIZE:12px;COLOR:#000000;}');
+document.writeln('.s{font-size:12px}');
+document.writeln('</style>');
+document.writeln('<div align=center class=\"mmt-bottom\">');
+//document.writeln('<hr size=4 color=\"#D01725\"/>');
+document.writeln('<span class=\"mmt-bottom\">');
+document.writeln('<a class=\"mmt\" href=\"http://www.hc360.com/hc360-all.htm\" target=\"_blank\">直通64个行业</a> | <a class=\"mmt\" href=\"http://info.news.hc360.com/html/jmdt.htm\" target=\"_blank\">行业资讯</a> | <a class=\"mmt\" href=\"http://bbs.hc360.com\" target=\"_blank\" >商人社区</a> | <a class=\"mmt\" href=\"http://info.news.hc360.com/html/zh.htm\" target=\"_blank\">行业展会</a> | <a class=\"mmt\" href=\"http://my.b2b.hc360.com/my/turbine/template/pubinfo,hr,index.html\" target=\"_blank\" >人才招聘</a> | <a class=\"mmt\" href=\"http://b2b.hc360.com/intro/index.htm\" target=\"_blank\">买卖通服务</a> | <a class=\"mmt\" href=\"http://www.hc360.com/sq/sq.htm\" target=\"_blank\">商情广告</a> | <a class=\"mmt\" href=\"http://www.hc360.com/zxdq/zxdq.htm\" target=\"_blank\">资讯大全</a></span> | <a class=\"mmt\" href=\"http://www.research.hc360.com\" target=\"_blank\">行业研究</a><br>');
+document.writeln('<hr size=1 color=\"#a2a2a2\"/>');
+document.writeln('<a class=\"mmt\" href=\"http://hcgroup.hc360.com\" target=\"_blank\" >关于慧聪</a> | <a class=\"mmt\" href=\"http://hcgroup.hc360.com/english/index.aspx\" target=\"_blank\" >About HC</a> | <a href=\"http://www.madeinchina.com/\" class=\"mmt\" target=\"_blank\" >国际站</a> | <a class=\"mmt\" href=\"http://hcgroup.hc360.com/hcjj_fzjg.htm\" target=\"_blank\" >分支机构</a> | <a class="mmt" href=\"http://www.hc360.com/ad/ad.htm\" target=\"_blank\" >广告服务</a> | <a class="mmt" href=\"http://active.b2b.hc360.com/media_info/jobneed/jobneed.asp\" target=\"_blank\">诚聘英才</a> | <a class="mmt" href=\"http://www.hc360.com/law.htm\" target=\"_blank\" >法律声明</a> | <a class="mmt" href=\"http://www.hc360.com/about/tousu.htm\" target=\"_blank\" >意见反馈</a> | <a class="mmt" href=\"http://help.hc360.com\" target=\"_blank\" >帮助中心</a> | <a class="mmt" href=\"http://www.hc360.com/link.htm\" target=\"_blank\" >友情链接</a> | <a class="mmt" href=\"http://allies.b2b.hc360.com/index.aspx\" target=\"_blank\"><font color=\"#FF0000\">商网联盟</font></a><br>');
+document.writeln('<br/>');
+document.writeln('<font color=\"#FF0000\">客服：010-80707000</font> 客服传真：010-80707000-5　买卖通咨询热线：010-80706099 传真：010-80706099-2<br>');
+document.writeln('版权所有 <a class="mmt" href=\"http://www.hc360.com\" target=\"_blank\">HC360慧聪网</a> 京ICP证010051号<br>');
+document.writeln('Copyright&copy;2000-2008 <a class="mmt" href=\"http://www.hc360.com\" target=\"_blank\">HC360.COM</a>&nbsp;&nbsp;All Rights Reserved<br>');
+document.writeln('</div>');
+

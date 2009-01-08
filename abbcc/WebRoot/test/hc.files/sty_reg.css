@@ -1,0 +1,195 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.page {
+	WIDTH: 100%
+}
+.main {
+	CLEAR: both; MARGIN: 0px auto; WIDTH: 800px
+}
+IMG {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.top {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; HEIGHT: 47px
+}
+.logo {
+	FLOAT: left
+}
+.backhome {
+	FLOAT: right; FONT: 12px/20px '宋体'; COLOR: #00339a; MARGIN-RIGHT: 4px; TEXT-ALIGN: right
+}
+.tblue {
+	MARGIN-TOP: 4px; FONT: lighter 12px/22px '宋体'; COLOR: #00339a; TEXT-ALIGN: center
+}
+.backhome A {
+	COLOR: #00339a; TEXT-DECORATION: underline
+}
+.tblue A {
+	COLOR: #00339a; TEXT-DECORATION: underline
+}
+.backhome SPAN {
+	COLOR: #000000
+}
+.backhome SPAN B {
+	COLOR: #db0000
+}
+.regBox {
+	BORDER-RIGHT: #f20d0d 1px solid; PADDING-RIGHT: 43px; BORDER-TOP: #f20d0d 1px; PADDING-LEFT: 43px; PADDING-BOTTOM: 0px; MARGIN: auto; FONT: 12px '宋体'; BORDER-LEFT: #f20d0d 1px solid; WIDTH: 713px; PADDING-TOP: 0px; BORDER-BOTTOM: #f20d0d 1px; TEXT-ALIGN: center
+}
+.regBox SPAN.Msg {
+	COLOR: #969696
+}
+.regTitle {
+	PADDING-RIGHT: 18px; MARGIN-TOP: 10px; PADDING-LEFT: 18px; BACKGROUND: url(/my/images/reg/reg_11.jpg) no-repeat 0px 6px; PADDING-BOTTOM: 5px; FONT: bold 14px '宋体'; BORDER-TOP-STYLE: none; PADDING-TOP: 5px; BORDER-BOTTOM: #858585 1px dashed; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 16px; TEXT-ALIGN: left
+}
+.regMsg {
+	MARGIN-BOTTOM: 16px; FONT: bold 12px '宋体'; COLOR: #000000; PADDING-TOP: 10px; TEXT-ALIGN: left
+}
+.regMsg #line {
+	CLEAR: both; MARGIN-TOP: 8px; TEXT-ALIGN: right
+}
+.regMsg SPAN#tred {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.redb {
+	BORDER-BOTTOM: #f20d0d 3px solid
+}
+.regLst UL {
+	MARGIN: 0px
+}
+.regLst UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 7px; LIST-STYLE-TYPE: none; HEIGHT: 20px; TEXT-ALIGN: center
+}
+LI#type1 {
+	BACKGROUND: url(http://my.b2b.hc360.com/my/images/reg/tbg.gif) no-repeat; FONT: bold 14px '宋体'; MARGIN-LEFT: 96px; WIDTH: 168px; COLOR: #ffffff
+}
+LI#type2 {
+	FONT: bold 14px '宋体'; MARGIN-LEFT: 17px; COLOR: #969696
+}
+LI#typeMsg {
+	FONT: 12px '宋体'; MARGIN-LEFT: 183px; COLOR: #313131
+}
+LI#typeMsg SPAN {
+	COLOR: #ff0000
+}
+.field2 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field22 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field3 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field4 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field4 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field5 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field6 {
+	MARGIN-TOP: 4px; FLOAT: left; WIDTH: 140px; TEXT-ALIGN: right
+}
+.field2 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.field22 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.field3 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.field4 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.field5 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.field6 SPAN {
+	FONT-WEIGHT: lighter; COLOR: #ff0000
+}
+.promptMsg {
+	PADDING-LEFT: 20px; BACKGROUND: url(/my/images/reg/reg_15.jpg) no-repeat 0px 2px; FONT: lighter 12px/18px '宋体'; COLOR: #00339a; TEXT-ALIGN: left
+}
+.promptMsg2 {
+	MARGIN-TOP: 8px; PADDING-LEFT: 20px; BACKGROUND: url(/my/images/reg/1000216.gif) no-repeat 0px 0px; FONT: lighter 12px/18px '宋体'; COLOR: #ff0000; TEXT-ALIGN: left
+}
+.promptMsg3 {
+	MARGIN-TOP: 8px; PADDING-LEFT: 20px; BACKGROUND: url(/my/images/reg/1000716.gif) no-repeat 0px 0px; FONT: lighter 12px/18px '宋体'; COLOR: #5a8f00; TEXT-ALIGN: left
+}
+.TxtBtn {
+	FLOAT: left; MARGIN-LEFT: 10px
+}
+.TxtBtn INPUT {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; FONT: 12px '宋体'; BORDER-LEFT: #7f9db9 1px solid; WIDTH: 212px; BORDER-BOTTOM: #7f9db9 1px solid; HEIGHT: 16px; TEXT-ALIGN: left
+}
+.RadioBtn {
+	PADDING-LEFT: 22px; FLOAT: left; FONT: lighter 12px '宋体'; WIDTH: 180px; TEXT-ALIGN: left
+}
+.RadioBtn INPUT {
+	WIDTH: 12px; HEIGHT: 12px
+}
+.Txtfield {
+	FONT: lighter 12px '宋体'; MARGIN-LEFT: 8px
+}
+.TxtBtn2 {
+	FLOAT: left; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.TxtBtn2 INPUT {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; BORDER-LEFT: #7f9db9 1px solid; BORDER-BOTTOM: #7f9db9 1px solid
+}
+.SelectBtn {
+	FLOAT: left; MARGIN-LEFT: 20px; TEXT-ALIGN: left
+}
+.SelectBtn SELECT {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; MARGIN-TOP: 2px; BORDER-LEFT: #7f9db9 1px solid; BORDER-BOTTOM: #7f9db9 1px solid
+}
+.Txtfield2 {
+	FONT: lighter 12px/20px '宋体'; MARGIN-LEFT: 160px; TEXT-ALIGN: left
+}
+.Txtfield2 INPUT {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; BORDER-LEFT: #7f9db9 1px solid; WIDTH: 212px; BORDER-BOTTOM: #7f9db9 1px solid
+}
+.ValidBtn {
+	FLOAT: left; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.ValidBtn2 {
+	FLOAT: left; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.ValidBtn3 {
+	FLOAT: left; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.ValidBtn INPUT {
+	BORDER-RIGHT: #7f9db9 1px solid; BORDER-TOP: #7f9db9 1px solid; BORDER-LEFT: #7f9db9 1px solid; BORDER-BOTTOM: #7f9db9 1px solid
+}
+.ValidBtn2 INPUT {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.ValidBtn3 INPUT {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+#Checkline {
+	MARGIN-TOP: 8px; FONT: lighter 12px '宋体'; TEXT-ALIGN: center
+}
+.lightbor {
+	BACKGROUND: url(/my/images/firstview/rightbg.jpg) repeat-y right 50%; MARGIN: auto; WIDTH: 814px
+}
+.lightbor .wbg {
+	DISPLAY: inline; BACKGROUND: #ffffff; MARGIN-LEFT: 808px; OVERFLOW: hidden; WIDTH: 7px; POSITION: absolute; HEIGHT: 8px
+}
+.lightbor .hbg {
+	BACKGROUND: #c2c2c2; FLOAT: right; OVERFLOW: hidden; WIDTH: 800px; HEIGHT: 6px
+}
+.xline {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #858585 1px dashed; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 5px
+}
+.ty {
+	MARGIN-TOP: 3px
+}
+.txt_01 {
+	COLOR: #b7b7b7
+}
