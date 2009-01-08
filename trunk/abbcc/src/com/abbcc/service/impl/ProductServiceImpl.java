@@ -26,11 +26,9 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	 
 	public void addProductType(ProductType productType) {
 		this.productTypeDao.addProductType(productType);
-
 	}
 
 	public void deleteProductTypeAndChildProductTypeById(int id) {
-
 		List ids = new ArrayList();
 		ids.add(id);
 		List prodcutTypeList = this.getProductTypeByParentId(id);
@@ -63,35 +61,27 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	}
 
 	public List getChildProductTypeById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ProductType getProductTypeById(int id) {
-
 		return this.productTypeDao.getProductTypeById(id);
-
 	}
 
 	public void updateProductType(ProductType productType) {
-
 		productTypeDao.updateProductType(productType);
-
 	}
 
 	public List getProductTypeByParentId(int parentId) {
-
 		return productTypeDao.getProductTypeByParentId(parentId);
 	}
 
 	public Product getProductById(long id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Product getProductByStateAndProductTypeId(int state,
 			String productTypeId) {
-
 		return this.productDao.getProductByStateAndProductTypeId(state,
 				productTypeId);
 	}
@@ -162,11 +152,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		}
 	}
 
-	 
-
 	public List getProductInfoList(int userId, String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException {
-		
-		
 		try { 
 			int start=pagination.getFirstResult();
 			int maxReults= pagination.getOnePageSize();
@@ -182,8 +168,6 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	public List getProductInfoList(String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException {
 	try { 
 			//if(orderType==null||productName==null||auditType==null||overdue==null||pagination==null)return null;
-			
-		
 			int count=this.cpgqxxDao.getCpgqxxCount(null, orderType,productName,auditType ,null);
 			pagination.setTotalResults(count);
 			int start=pagination.getFirstResult();
@@ -289,7 +273,6 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		Map<Integer, ProductType> productTypeMap1 = getProductTypeMap(productType1);
 		if(productType3!=null){
 			Iterator<ProductType> iter = productType3.iterator();
-
 			while (iter.hasNext()) { 
 				List temp = new LinkedList();
 				ProductType pro3 = iter.next();
@@ -303,7 +286,6 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 				ret.add(temp);
 			}
 		}
-		
 
 		return ret;
 	}
