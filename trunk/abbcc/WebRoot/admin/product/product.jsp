@@ -1,10 +1,13 @@
 <%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
+<%@ page import="com.abbcc.util.product.ProductInfo"%>
 <%@ page import="com.abbcc.common.AppConstants"%>
 
 <%
 String path = request.getContextPath();
+ProductInfo productInfo=(ProductInfo)request.getAttribute("productInfo");
+ 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -15,6 +15,7 @@ public class AppConstants {
 	public static final int invalidate = -1;
 	//∂•º∂÷÷¿‡ID
 	public static final String TOPCATEGORYID = "0";
+	public static final int PRODUCT_TYPE_TOP_ID=0;
 
 	
 

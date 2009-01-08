@@ -15,6 +15,7 @@ import com.abbcc.pojo.Product;
 import com.abbcc.pojo.ProductType;
 import com.abbcc.pojo.Pz;
 import com.abbcc.service.ProductService;
+import com.abbcc.util.JdbcTemplateUtil;
 import com.abbcc.util.pagination.Pagination;
 import com.abbcc.util.product.ProductInfo;
 import com.abbcc.util.product.ProductObject;
@@ -180,7 +181,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 
 	public List getProductInfoList(String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException {
 	try { 
-			if(orderType==null||productName==null||auditType==null||overdue==null||pagination==null)return null;
+			//if(orderType==null||productName==null||auditType==null||overdue==null||pagination==null)return null;
 			
 		
 			int count=this.cpgqxxDao.getCpgqxxCount(null, orderType,productName,auditType ,null);
@@ -208,8 +209,10 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	}
 
 	public ProductInfo getProductInfoById(long infoId) {
-		
+			
 		try {
+			ProductInfo productInfo=new ProductInfo();
+			
 			Cpgqxx cpgqxx=this.getCpgqxx(infoId);
 			Jytj jytj=this.getJytj(infoId);
 			String productTypeId=cpgqxx.getCpshlm();
@@ -218,15 +221,25 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			String sql=ProductUtil.getProductSelectSql(_product,String.valueOf(infoId));
 			Object[] value=new Object[]{String.valueOf(infoId)};
 			Object objectValue=this.productDao.excetueSelectProduct(sql, value);
-			
-			System.out.print(objectValue);
+			List objectMapList=JdbcTemplateUtil.getProductListBySelectSql(sql,value);
+			Map objecgMap=null;
+			if(objectMapList!=null&&objectMapList.size()>0){
+				objecgMap=(Map)objectMapList.get(0);
+				
+			}
+				 
+			productInfo.setCpggxx(cpgqxx);
+			productInfo.setJytj(jytj);
+			productInfo.setMapValue(objecgMap);
+			productInfo.setProduct(_product);
+			return productInfo;
 			
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// TODO Auto-generated method stub
-		return null;
+		
+		return null; 
 	}
 	
 	private Map<Integer ,ProductType> getProductTypeMap(List<ProductType> productTypeList){
