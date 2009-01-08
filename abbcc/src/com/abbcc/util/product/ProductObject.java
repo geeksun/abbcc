@@ -1,6 +1,9 @@
 package com.abbcc.util.product;
 
 public class ProductObject {
+	
+	
+	
 	private String sql;
 
 	private Object[] value;
