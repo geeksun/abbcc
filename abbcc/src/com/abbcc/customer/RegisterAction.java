@@ -27,6 +27,9 @@ public class RegisterAction extends BaseAction {
 	public void setHyjbxxService(HyjbxxService hyjbxxService) {
 		this.hyjbxxService = hyjbxxService;
 	}
+	/* 
+	 *  会员注册：注册会员基本信息和公司基本信息
+	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession();
@@ -38,7 +41,6 @@ public class RegisterAction extends BaseAction {
 			session.removeAttribute("registerStatus");
 			session.invalidate();
 			
-			//System.out.println("registerStatus: "+registerStatus);
 			if(registerStatus.equals("fail")){
 				return mapping.getInputForward();
 			}			
@@ -54,25 +56,26 @@ public class RegisterAction extends BaseAction {
 				hyjbxx.setSfyx("0");			// 是否有效
 				hyjbxx.setMemberType("0");		// 会员类型
 				
-				//固定电话
+				//固定电话（公司电话）
 				String area = request.getParameter("area");
 				String phone = request.getParameter("phone");
 				String extension = request.getParameter("extension");
 				StringBuffer sf;
 				if(!extension.trim().equals("")){
 					sf = new StringBuffer();
-					sf.append(area).append(phone).append(extension);
+					sf.append(area).append("/").append(phone).append("/").append(extension);
 					hyjbxx.setGddh(sf.toString());
 				}else{
 					sf = new StringBuffer();
-					sf.append(area).append(phone);
-					hyjbxx.setGddh(sf.toString());
+					sf.append(area).append("/").append(phone);
+					hyjbxx.setGddh(sf.toString()); 
 				}
 				
 				//保存公司基本信息
 				Gsjbxx gsjbxx = new Gsjbxx();
-				
 				BeanUtils.copyProperties(gsjbxx,registerForm);
+				//新用户注册时，默认公司基本信息表中的主营行业(zyhy)为null
+				gsjbxx.setZyhy(null);
 				int flag = hyjbxxService.add(hyjbxx, gsjbxx);
 				
 				if(flag>0){

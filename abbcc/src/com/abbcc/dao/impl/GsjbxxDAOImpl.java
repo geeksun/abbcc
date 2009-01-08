@@ -81,7 +81,7 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 		Connection	conn = session.connection();
 		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		//pstmt.setInt(1, maxCount);
+		//System.out.println(gsjbxx.getZyhy());
 		pstmt.setString(1, gsjbxx.getGsmc());
 		pstmt.setString(2, gsjbxx.getQylx());
 		pstmt.setString(3, gsjbxx.getJyms());
