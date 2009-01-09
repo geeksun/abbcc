@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 
 /**
- * @author Csdn  collective:集思广益
+ * 字符操作工具
+ * @author Csdn 姜志强  
+ *  collective:集思广益
  *  create 2008-12-10 23:33:33
  */
 public class StringUtils {	
@@ -76,4 +78,12 @@ public class StringUtils {
         System.out.println("");
     } 
     
+    /**
+     * 是否为空白,包括null和""
+     * @param str
+     * @return
+     */
+    public static boolean isBlank(String str) {
+        return str != null || str.trim().length() != 0;
+    }
 }

@@ -1,10 +1,10 @@
 package com.abbcc.common;
 
 /**
- * Title:        Java Bean 工具
+ * Title:  Java Bean 工具
  * Description:
- * Copyright:    Copyright (c) 2001
- * Company:      JAVA世纪网 http://www.java2000.net
+ * Copyright: Copyright (c) 2001
+ * Company: JAVA世纪网 http://www.java2000.net
  * @author 赵学庆
  * @version 1.0
  */
