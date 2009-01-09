@@ -17,8 +17,8 @@ public class AppConstants {
 	public static final String TOPCATEGORYID = "0";
 	public static final int PRODUCT_TYPE_TOP_ID=0;
 
-	
-
+	//公司基本信息修改成功后,跳转到详细信息页面的提示信息
+	public static final String BASICINFOUPDATED = "basicInfoUpdated";
 	
 	
 	//短消息
