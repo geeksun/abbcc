@@ -102,10 +102,12 @@
 	    </action>
 	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 	    </action>
+	    <!-- 公司基本信息管理 -->
 	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
+	    <!-- 公司详细信息管理&& 公司基本信息管理使用同一个类 -->
 	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
