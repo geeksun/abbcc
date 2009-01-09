@@ -1,3 +1,12 @@
 .note {
-		  COLOR: #000000
-	  }
+	COLOR: #000000
+}
+.tx_box {
+	BORDER-RIGHT: #ffcb99 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffcb99 1px solid; PADDING-LEFT: 2px; BACKGROUND: #fff8ee; PADDING-BOTTOM: 2px; BORDER-LEFT: #ffcb99 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ffcb99 1px solid
+}
+.tx_title {
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff5400; PADDING-TOP: 5px
+}
+.tx_content {
+	PADDING-LEFT: 10px
+}
