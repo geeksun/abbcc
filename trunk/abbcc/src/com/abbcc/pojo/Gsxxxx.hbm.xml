@@ -32,7 +32,7 @@
             <column name="zczb" length="12" />
         </property>
         <property name="zykhq" type="java.lang.String">
-            <column name="zykhq" length="32" />
+            <column name="zykhq" length="60" />
         </property>
         <property name="zysc" type="java.lang.String">
             <column name="zysc" length="32" />
