@@ -16,7 +16,7 @@ public class Gsxxxx implements java.io.Serializable {
 	private String ygrs;
 	private String jypp;
 	private String zczb;
-	private String zykhq;
+	private String zykhq;		//主要客户群
 	private String zysc;
 	private String ncke;
 	private String njke;
