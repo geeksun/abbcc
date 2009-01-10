@@ -25,8 +25,9 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 	}
 
 	// 插入公司详细信息
-	public void add(Gsxxxx gsxxxx) {
+	public int add(Gsxxxx gsxxxx) {
 		log.debug("saving Gsxxxx instance");
+		int flag = 0;
 		
 		Pz pz= this.updateAndGetPz(tableName);
 		long id=pz.getRecnum();  
@@ -61,22 +62,23 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		pstmt.setString(19, gsxxxx.getZlkz());
 		pstmt.setString(20, gsxxxx.getGltxrz());
 		pstmt.setString(21, gsxxxx.getGstp());
-		pstmt.executeUpdate();
+		flag = pstmt.executeUpdate();
 		
 		this.updateTableCount(tableName);
-		log.debug("save successful");
+		log.debug("save Gsxxxx successful");
 		pstmt.close();
-	}catch(Exception e){
-		log.error("save failed", e);
-		e.printStackTrace();
-	}finally{
-		try {
-			conn.close();
-			session.close();
-		} catch (SQLException e) {
+		}catch(Exception e){
+			log.error("save Gsxxxx failed", e);
 			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-	}
+		return flag;
 	}
 
 	// 修改公司详细信息
@@ -237,6 +239,63 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		}catch(RuntimeException re){
 			log.error("find Gsxxxx by property hyjbxxid failed", re);
 			throw re;
+		}
+	}
+
+	/**
+	 * @see com.abbcc.dao.GsxxxxDAO#addLoseObject(com.abbcc.pojo.Gsxxxx)
+	 *  公司详细信息在发生数据遗失时，增加相对应的对象，根据hyjbxxid
+	 */
+	public void addLoseObject(Gsxxxx gsxxxx) {
+		log.debug("adding Gsxxxx lose instance");
+		
+		long id=gsxxxx.getHyjbxxid();  
+		long page=id/Globals.COUNT;
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Connection	conn = session.connection();
+		
+		String sql = "INSERT INTO gsxxxx_"
+				+ page
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try{
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setLong(1, id);
+		pstmt.setString(2, gsxxxx.getGszcd());
+		pstmt.setString(3, gsxxxx.getGsclsj());
+		pstmt.setString(4, gsxxxx.getFddbr());
+		pstmt.setString(5, gsxxxx.getNyye());
+		pstmt.setString(6, gsxxxx.getYgrs());
+		pstmt.setString(7, gsxxxx.getJypp());
+		pstmt.setString(8, gsxxxx.getZczb());
+		pstmt.setString(9, gsxxxx.getZykhq());
+		pstmt.setString(10, gsxxxx.getZysc());
+		pstmt.setString(11, gsxxxx.getNcke());
+		pstmt.setString(12, gsxxxx.getNjke());
+		pstmt.setString(13, gsxxxx.getKhyh());
+		pstmt.setString(14, gsxxxx.getZh());
+		pstmt.setString(15, gsxxxx.getOem());
+		pstmt.setString(16, gsxxxx.getYfbmrs());
+		pstmt.setString(17, gsxxxx.getYcl());
+		pstmt.setString(18, gsxxxx.getCfmj());
+		pstmt.setString(19, gsxxxx.getZlkz());
+		pstmt.setString(20, gsxxxx.getGltxrz());
+		pstmt.setString(21, gsxxxx.getGstp());
+		pstmt.executeUpdate();
+		
+		this.updateTableCount(tableName);
+		log.debug("add Gsxxxx lose instance successful");
+		pstmt.close();
+		}catch(Exception e){
+			log.error("add Gsxxxx lose  instance failed", e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

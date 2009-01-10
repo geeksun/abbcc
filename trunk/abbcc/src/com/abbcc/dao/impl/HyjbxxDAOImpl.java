@@ -93,9 +93,9 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 				+ " h SET h.zsxm=?,h.gddh=?,h.gsszd=?,h.dzyx=? WHERE h.hyjbxxid=?";
 		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
+		//System.out.println(hyjbxx.getGddh());
 		pstmt.setString(1, hyjbxx.getZsxm());
 		pstmt.setString(2, hyjbxx.getGddh());
-		//System.out.println(hyjbxx.getGddh());
 		pstmt.setString(3, hyjbxx.getGsszd());
 		pstmt.setString(4, hyjbxx.getDzyx());
 		pstmt.setLong(5, hyjbxx.getHyjbxxid());
@@ -108,6 +108,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 				conn.close();
 				session.close();
 			} catch (SQLException e) {
+				log.info("session can't closed!");
 				e.printStackTrace();
 			}
 		}
@@ -226,11 +227,6 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		log.debug("find fail");
 		return AppConstants.invalidate;
 	}
-	public void save(Hyjbxx hy){
-		log.debug("save Hyjbxx instance");
-		Session session = getHibernateTemplate().getSessionFactory().openSession();
-		session.saveOrUpdate(hy);
-	}
 
 	public List findByName(String name) {
 		log.debug("find " + HYDLM + " by member register name:" + name);
@@ -259,6 +255,10 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		}
 	}
 
+	/**
+	 * @see com.abbcc.dao.HyjbxxDAO#findById(java.lang.String)
+	 *  根据主键（hyjbxxid）查找会员基本信息
+	 */
 	public Hyjbxx findById(String hyjbxxid) {
 		log.debug("find Hyjbxx by  property hyjbxxid:" + hyjbxxid);
 		try{

@@ -6,7 +6,7 @@ import com.abbcc.pojo.Gsxxxx;
 
 public interface GsxxxxDAO {
 	// 插入公司详细信息
-	public void add(Gsxxxx gsxxxxx); 
+	public int add(Gsxxxx gsxxxx); 
 
 	// 修改公司详细信息
 	public void update(Gsxxxx gsxxxx);
@@ -22,7 +22,10 @@ public interface GsxxxxDAO {
 			throws Exception;
 
 	//根据主键查找公司详细信息
-	public Gsxxxx getGsxxxxById(String hyjbxxid); 
+	public Gsxxxx getGsxxxxById(String hyjbxxid);
+
+	//增加遗漏对象（公司详细信息）
+	public void addLoseObject(Gsxxxx gsxxxx);  
 
 	
 }
