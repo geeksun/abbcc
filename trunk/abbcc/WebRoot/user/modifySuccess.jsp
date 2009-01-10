@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%
-String path = request.getContextPath();
+	String path = request.getContextPath();
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -11,9 +11,11 @@ String path = request.getContextPath();
   
   <body>
       <div align=center>
-      <font color=blue><h2>
-      您的信息已修改成功,请继续执行其他操作！
-      </h2></font>
+      <h2>
+      <font color="blue">
+      	贵公司详细资料已提交成功,请继续进行其他操作！
+      </font>
+       </h2>
       </div>
   </body>
 </html>

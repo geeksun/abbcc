@@ -78,6 +78,11 @@
 			<form-property name="zykhq" type="java.lang.String"></form-property>			
 			<form-property name="oem" type="java.lang.String"></form-property>
 		</form-bean>
+		<!-- modifyPasswordForm -->
+		<form-bean name="modifyPasswordForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 用户修改密码 -->
+			
+		</form-bean>
 	</form-beans>
  
 	<global-exceptions>
@@ -107,10 +112,15 @@
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
-	    <!-- 公司详细信息管理&& 公司基本信息管理使用同一个类 -->
+	    <!-- 公司详细信息管理&&上述公司基本信息管理使用同一个类 -->
 	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
 	    </action>
+	    <!-- 用户修改密码 -->
+	    <action path="/modifyPassword" scope="request" name="modifyPasswordForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="modify_password" path="/user/service/modify_password.jsp"></forward>
+	    </action>
+	    
 	    <action path="/productInfo" parameter="method"
 			type="com.abbcc.customer.ProductInfoAction">
 			<forward name="product" path="/user/product/product.jsp"></forward>

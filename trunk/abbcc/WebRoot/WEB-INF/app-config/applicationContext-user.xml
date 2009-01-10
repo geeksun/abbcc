@@ -48,5 +48,10 @@
 			<ref local="hyjbxxService"/>
 		</property>
 	</bean>
-
+	<bean name="/modifyPassword" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	
 </beans>
