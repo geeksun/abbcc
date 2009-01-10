@@ -1,14 +1,13 @@
 package com.abbcc.service.impl;
 
 import java.util.List;
-
-import com.abbcc.common.AppConstants;
-import com.abbcc.dao.GsjbxxDAO;
-import com.abbcc.dao.GsxxxxDAO;
-import com.abbcc.dao.HyjbxxDAO;
+import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
-import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.dao.HyjbxxDAO;
+import com.abbcc.dao.GsjbxxDAO;
+import com.abbcc.dao.GsxxxxDAO;
+import com.abbcc.common.AppConstants;
 import com.abbcc.service.HyjbxxService;
 
 public class HyjbxxServiceImpl implements HyjbxxService { 
@@ -36,7 +35,6 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	public boolean checkName(String hydlm) {
 		List list = hyjbxxDao.findByName(hydlm);
 		int init = list.size();
-		//System.out.println(init);
 		if(init>0){
 			return true;
 		} else {
@@ -45,12 +43,11 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	}
 
 	public List getMemberByName(String hyjbxxid) { 
-		//List list = hyjbxxDao.getMemberByName(customer);
 		List list = gsjbxxDao.getMemberByName(hyjbxxid);
 		return  list;
 	}
 	
-	public int add(Hyjbxx hyjbxx) { 
+	public int add(Hyjbxx hyjbxx) {  
 		int result = hyjbxxDao.add(hyjbxx);  
 		return result;
 	}
@@ -60,30 +57,11 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		return result;
 	}
 	
-	/*public int getIdByName(String hydlm) {
-		int result = hyjbxxDao.getIdByName(hydlm);
-		return result;
-	}*/
-
 	public String getIdByName(String hydlm) {
 		String result = hyjbxxDao.getIdByName(hydlm);
 		return result;
 	}
 	
-	public int add(Hyjbxx hyjbxx, Gsjbxx gsjbxx) {
-		int flag1 = hyjbxxDao.add(hyjbxx);
-		int flag2 = gsjbxxDao.add(gsjbxx);
-		if(flag1>0&&flag2>0){
-			return AppConstants.validate;
-		}
-		return AppConstants.invalidate;
-	}
-
-	public List getMemberById(int hyjbxxid) {
-		
-		return null;
-	}
-
 	public List getMemberByName(int hyjbxxid) {
 		List list = gsjbxxDao.getMemberById(hyjbxxid);
 		return  list;
@@ -107,13 +85,11 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 
 	public void update(Hyjbxx hyjbxx) {
 		
-		
 	}
 
 	public void update(Hyjbxx hyjbxx, Gsjbxx gsjbxx) {
 		hyjbxxDao.update(hyjbxx);
 		gsjbxxDao.update(gsjbxx);
-		
 	}
 
 	public void add(Gsxxxx gsxxxxx) {
@@ -126,7 +102,20 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 
 	public void update(Gsxxxx gsxxxx) {
 		gsxxxxDao.update(gsxxxx);
-		
 	}
 
+	public int add(Hyjbxx hyjbxx, Gsjbxx gsjbxx, Gsxxxx gsxxxx) {
+		int flag1 = hyjbxxDao.add(hyjbxx);
+		int flag2 = gsjbxxDao.add(gsjbxx);
+		int flag3 = gsxxxxDao.add(gsxxxx);
+		if(flag1>0&&flag2>0&&flag3>0){
+			return AppConstants.validate;
+		}
+		return AppConstants.invalidate; 
+	}
+
+	public void addLoseObject(Gsxxxx gsxxxx) {
+		gsxxxxDao.addLoseObject(gsxxxx);
+	}
+	
 }
