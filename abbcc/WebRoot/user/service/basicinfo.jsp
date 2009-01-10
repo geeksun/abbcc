@@ -55,9 +55,21 @@
 											});
 		function updateBasicInfo(){
 			document.basicInfoForm.action.value = "updateBasicInfo";
-			alert(zyhy);
-			document.basicInfoForm.product.value = zyhy;
-			document.basicInfoForm.submit();
+			if(zyhy!=""){
+				document.basicInfoForm.product.value = zyhy;
+				document.basicInfoForm.submit();
+			}else{
+				//主营行业未做选择时(已经有选择,本次操作未做变动)
+				var zy = document.basicInfoForm.zyhy.options;
+				var zz = [];
+				for(var i=0;i<zy.length;i++){
+					zz[i] = zy[i].value;
+					//zz[zz.length] = zy.value;
+				}
+				//if(zz.length==0)zz=null;
+				document.basicInfoForm.product.value = zz;
+				document.basicInfoForm.submit();
+			}
 		}
 	</script>
   </head>
@@ -95,37 +107,68 @@
     		</td>
     	</tr>
     	<tr>
-    	<%
-    		String jymsTemp = gsjbxx.getJyms();
-    		String[] jyms = jymsTemp.split(",");
-    	%>
-    		<td align=right>经营模式：<font color=red>*</font></td>
-    		<td>
+    	<td align=right>经营模式：<font color=red>*</font></td>
+   		<td>
+    		<script type="text/javascript">
+    			var jymsArray = new Array();
+    			<%
+    				String jyms = "";
+    				if(gsjbxx!=null)
+    					jyms = gsjbxx.getJyms();
+    					if(jyms!=null&&!jyms.equals("")){
+    						String[] jymsStr = jyms.split(",");
+    						for(int i=0;i<jymsStr.length;i++){
+    			%>
+    						jymsArray.length = <%=jymsStr.length%>;
+    						jymsArray[<%=i%>] = <%=jymsStr[i]%>;
+    			<%
+    						}
+    					}
+    			%>
+    			function check(values) {
+							for(var c=0; c<values.length; c++) {
+								isequals(values[c] + '');
+							}
+						}
+				function isequals(v) {
+					var chboxes = document.getElementsByName('jyms'); 
+					if(chboxes.length) {
+						for(var c=0; c<chboxes.length; c++) {
+							if(v == chboxes[c].value) {
+								chboxes[c].checked = 'checked';
+							}
+						}
+					}
+				}
+    		</script>
     		<INPUT id=Type_Manufacturer title=从事自主生产、代/加工制造业务的厂商  onclick="return checkBizType(this)" 
-            type=checkbox value=1 name=jyms <%=(jyms[0].equals("1")||jyms[1].equals("1"))?"checked":"" %>>生产加工&nbsp;
+            type=checkbox value=1 name=jyms >生产加工&nbsp;
 			<INPUT id=Type_Wholesale title=从事产品经销、批发、分销的商家 onclick="return checkBizType(this)" 
-            type=checkbox value=2 name=jyms <%=(jyms[0].equals("2")||jyms[1].equals("2"))?"checked":"" %>>经销批发&nbsp;
+            type=checkbox value=2 name=jyms >经销批发&nbsp;
             <INPUT id=Type_Investment title=以自己的店号、品牌、产品及其他象征营业的东西招募合作伙伴的商家。包括：代理、加盟、特许经营、连锁合作、专卖等。 
-            onclick="return checkBizType(this)" type=checkbox value=3 name=jyms <%=(jyms[0].equals("3")||jyms[1].equals("3"))?"checked":"" %>>招商代理&nbsp;
+            onclick="return checkBizType(this)" type=checkbox value=3 name=jyms >招商代理&nbsp;
 			<INPUT id=Type_Service title=从事商业服务的商家。包括：培训、设计、物流、展会等。 onclick="return checkBizType(this)" 
-            type=checkbox value=4 name=jyms <%=(jyms[0].equals("4")||jyms[1].equals("4"))?"checked":"" %>>商业服务&nbsp;
-			<INPUT id=Type_Other onclick="return checkBizType(this)" type=checkbox value=5 name=jyms <%=(jyms[0].equals("5")||jyms[1].equals("5"))?"checked":"" %>>以上都不是<BR>
+            type=checkbox value=4 name=jyms >商业服务&nbsp;
+			<INPUT id=Type_Other onclick="return checkBizType(this)" type=checkbox value=5 name=jyms >以上都不是<BR>
 			<SPAN class=note>（最多选择2种经营模式）</SPAN> 
+			<script type="text/javascript">
+				check(jymsArray);
+			</script>
     		</td>
     	</tr>
     	<tr>
     		<td align=right>主要经营地点：*</td>
-    		<td><input type="text" name="jydz" value="${gsjbxx.jydz }" size="27">
+    		<td><input type="text" name="jydz" value="${gsjbxx.jydz }" size="40">
     		<span class=note>（请填写业务部门工作地点）</span></td>
     	</tr>
     	<tr>
     		<td align=right>销售的产品：<font color=red>*</font></td>
-    		<td><input type="text" name="xsdcp" value="${gsjbxx.xsdcp }">
+    		<td><input type="text" name="xsdcp" value="${gsjbxx.xsdcp }" size="40">
     		</td>
     	</tr>
     	<tr>
     		<td align=right>采购的产品：<font color=red>*</font></td>
-    		<td><input type="text" name="cgdcp" value="${gsjbxx.cgdcp }">
+    		<td><input type="text" name="cgdcp" value="${gsjbxx.cgdcp }" size="40">
     		</td>
     	</tr>
     	<tr>
@@ -178,17 +221,11 @@
               			}
               		ProductType  productType=(ProductType)list2.get(size-1);
               	 %>
-              	 <option value="<%=productType.getId()%>"/><%=name %></option>
-              	 
+              	 <option value="<%=productType.getId()%>"/><%=name%></option>
               	 <%
               	 	}
               	 }
               	  %>
-                <!-- 主营行业列表 
-              	<c:forEach var="i"  begin="0" end="5" step="1">
-    				<option value="<c:out value="${zyhy[i]}"/>"><c:out value="${zyhy[i]}"/></option>
-    			</c:forEach>
-    			 -->
               </select> 
               </td>
                </tr>
@@ -216,7 +253,6 @@
                 String[] gddh = {"","",""};
                	Hyjbxx hyjbxx = (Hyjbxx)request.getAttribute("hyjbxx");
 				String dh = hyjbxx.getGddh();
-				
 				if(dh!=null){
 					String[] temp = new String[3];
                		temp = dh.split("/");
@@ -295,10 +331,6 @@
 				leafCatFormKey[i] = new Option(result[i].name,result[i].id);
 			}													
 	  	} 
-	  	function onChangeleafCategory(){
-	  		//alert(0);
-	  		
-	  	}
 	  	
 	  	//添加选项
 	    function addOptions(src, dst,secCategories,topCategories) {

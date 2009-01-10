@@ -1,5 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
+<%@ page language="java" import="java.util.*,com.abbcc.pojo.Gsxxxx" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	String path = request.getContextPath();
 	request.setCharacterEncoding("gbk");
@@ -9,15 +10,29 @@
 	<head>
 		<title>公司详细信息</title>
 		<link rel="stylesheet" type="text/css" href="/css/service.css">
+		<style type="text/css">
+	    	.note { 
+				COLOR: #999999
+			}
+			.tx_box {
+				BORDER-RIGHT: #ffcb99 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffcb99 1px solid; PADDING-LEFT: 2px; BACKGROUND: #fff8ee; PADDING-BOTTOM: 2px; BORDER-LEFT: #ffcb99 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ffcb99 1px solid
+			}
+			.tx_title {
+				PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff5400; PADDING-TOP: 5px
+			}
+			.tx_content {
+				PADDING-LEFT: 10px
+			}
+	    </style> 
 		<script type="text/javascript">
 		//blur/Click事件的控制函数打勾图片控制函数
 		function blurEvent(img,dom){
 			if(dom.value==''){
-			rightImg(img,0);
+				rightImg(img,0);
 			}else
-			rightImg(img,1);
+				rightImg(img,1);
 		}
-	//打勾图片控制包括初始化
+		//打勾图片控制包括初始化
 		function rightImg(cmd,state){
 			if(cmd==999){
 			blurEvent3();
@@ -44,10 +59,25 @@
 
 	<body>
 		<c:set var="gxxx" value="${gsxxxx}" scope="page"></c:set>
+		<div><h3><font color="blue">
+		公司介绍
+		</font></h3></div>
+		<c:set var="basicInfoUpdated" value="${basicInfoUpdated}" scope="page"></c:set>
+		<c:if test="${basicInfoUpdated=='basicInfoUpdated'}">
+		<TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
+		<TBODY>
+        	<TR>
+          	<TD vAlign=top align=center width=80 rowSpan=2>
+          	<IMG height=53 src="<%=path%>/images/service/icon3.gif" width=53></TD>
+          	<TD class=tx_title height=20>提交成功：</TD></TR>
+        	<TR><TD class=tx_content height=34>贵公司基本资料已提交，请继续填写公司详细资料！</TD></TR>
+        </TBODY>
+      	</TABLE>
+		</c:if>
 		<p>
 			公司详细资料
 		</p>
-		<form action="traceDetailInfo.do" name="detailInfoForm">
+		<form action="traceDetailInfo.do" name="detailInfoForm" >
 			<input type="hidden" name="action">
 			<table width="90%" border="1" cellspacing="0" cellpadding="2"
 				align="CENTER" bordercolor="F0E68C">
@@ -117,36 +147,36 @@
 						员工人数：
 					</td>
 					<td>
+					
 						<SELECT name=ygrs>
-							
-							<OPTION value="0">
+							<OPTION value="0" <c:if test="${gsxxxx.ygrs=='0'}">selected</c:if>>
 								-- 请选择 --
 							</OPTION>
-							<OPTION value=1>
+							<OPTION value=1 <c:if test="${gsxxxx.ygrs=='1'}">selected</c:if>>
 								5 人以下
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=2 <c:if test="${gsxxxx.ygrs=='2'}">selected</c:if>>
 								5 - 10 人
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=3 <c:if test="${gsxxxx.ygrs=='3'}">selected</c:if>>
 								11 - 50 人
 							</OPTION>
-							<OPTION value=4>
+							<OPTION value=4 <c:if test="${gsxxxx.ygrs=='4'}">selected</c:if>>
 								51 - 100 人
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=5 <c:if test="${gsxxxx.ygrs=='5'}">selected</c:if>>
 								101 - 200人
 							</OPTION>
-							<OPTION value=5>
+							<OPTION value=6 <c:if test="${gsxxxx.ygrs=='6'}">selected</c:if>>
 								201 - 300 人
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=7 <c:if test="${gsxxxx.ygrs=='7'}">selected</c:if>>
 								301 - 500 人
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=8 <c:if test="${gsxxxx.ygrs=='8'}">selected</c:if>>
 								501 - 1000 人
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=9 <c:if test="${gsxxxx.ygrs=='9'}">selected</c:if>>
 								1000 人以上
 							</OPTION>
 						</SELECT>
@@ -157,45 +187,44 @@
 						研发部门人数：
 					</td>
 					<td>
-						<!--  <SELECT  onchange=blurEvent(8,this) name=_fmc.p._0.rn>  -->
 						<SELECT name=yfbmrs>
-							<OPTION value="" selected>
+							<OPTION value="0" <c:if test="${gsxxxx.yfbmrs=='0'}">selected</c:if>>
 								--请选择--
 							</OPTION>
-							<OPTION value=1>
+							<OPTION value=1 <c:if test="${gsxxxx.yfbmrs=='1'}">selected</c:if>>
 								少于5 人
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=2 <c:if test="${gsxxxx.yfbmrs=='2'}">selected</c:if>>
 								5 - 10 人
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=3 <c:if test="${gsxxxx.yfbmrs=='3'}">selected</c:if>>
 								11 - 20 人
 							</OPTION>
-							<OPTION value=4>
+							<OPTION value=4 <c:if test="${gsxxxx.yfbmrs=='4'}">selected</c:if>>
 								21 - 30 人
 							</OPTION>
-							<OPTION value=5>
+							<OPTION value=5 <c:if test="${gsxxxx.yfbmrs=='5'}">selected</c:if>>
 								31 - 40 人
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=6 <c:if test="${gsxxxx.yfbmrs=='6'}">selected</c:if>>
 								41 - 50 人
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=7 <c:if test="${gsxxxx.yfbmrs=='7'}">selected</c:if>>
 								51 - 60 人
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=8 <c:if test="${gsxxxx.yfbmrs=='8'}">selected</c:if>>
 								61 - 70 人
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=9 <c:if test="${gsxxxx.yfbmrs=='9'}">selected</c:if>>
 								71 - 80 人
 							</OPTION>
-							<OPTION value=10>
+							<OPTION value=10 <c:if test="${gsxxxx.yfbmrs=='10'}">selected</c:if>>
 								81 - 90 人
 							</OPTION>
-							<OPTION value=11>
+							<OPTION value=11 <c:if test="${gsxxxx.yfbmrs=='11'}">selected</c:if>>
 								91 - 100 人
 							</OPTION>
-							<OPTION value=20>
+							<OPTION value=12 <c:if test="${gsxxxx.yfbmrs=='12'}">selected</c:if>>
 								100 人以上
 							</OPTION>
 						</SELECT>
@@ -214,183 +243,197 @@
 						月产量：
 					</td>
 					<td>
-						<INPUT maxLength=32 size=8 name=monthProduction >
+					<%
+						Gsxxxx gsxxxx = (Gsxxxx)request.getAttribute("gsxxxx");
+						String ycl = null;
+						if(gsxxxx!=null)
+						ycl = gsxxxx.getYcl();
+						String[] month = {"",""};
+						if(ycl!=null&&ycl.length()>0){
+							String[] ytemp = ycl.split("/");
+							month[0] = ytemp[0];	
+							if(ycl.length()>1)month[1] = ytemp[1];
+						}
+					 %>
+					 
+					 	<!-- 数字＋单位 -->
+						<INPUT maxLength=32 size=8 name=monthProduction value="<%=month[0]%>">
 						<SELECT name=unit>
-							<OPTION value="" selected>
+							<OPTION value="0" <%=month[1].equals("0")?"selected":"" %>>
 								--请选择--
 							</OPTION>
-							<OPTION value=1>
+							<OPTION value=1 <%=month[1].equals("1")?"selected":"" %>>
 								台
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=2 <%=month[1].equals("2")?"selected":"" %>>
 								粒
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=3 <%=month[1].equals("3")?"selected":"" %>>
 								座
 							</OPTION>
-							<OPTION value=4>
+							<OPTION value=4 <%=month[1].equals("4")?"selected":"" %>>
 								辆
 							</OPTION>
-							<OPTION value=5>
+							<OPTION value=5 <%=month[1].equals("5")?"selected":"" %>>
 								只
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=6 <%=month[1].equals("6")?"selected":"" %>>
 								支
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=7 <%=month[1].equals("7")?"selected":"" %>>
 								枝
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=8 <%=month[1].equals("8")?"selected":"" %>>
 								架
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=9 <%=month[1].equals("9")?"selected":"" %>>
 								头
 							</OPTION>
-							<OPTION value=10>
+							<OPTION value=10 <%=month[1].equals("10")?"selected":"" %>>
 								张
 							</OPTION>
-							<OPTION value=PCE>
+							<OPTION value=PCE <%=month[1].equals("PCE")?"selected":"" %>>
 								块
 							</OPTION>
-							<OPTION value=11>
+							<OPTION value=11 <%=month[1].equals("11")?"selected":"" %>>
 								片
 							</OPTION>
-							<OPTION value=12>
+							<OPTION value=12 <%=month[1].equals("12")?"selected":"" %>>
 								匹
 							</OPTION>
-							<OPTION value=13>
+							<OPTION value=13<%=month[1].equals("13")?"selected":"" %>>
 								件
 							</OPTION>
-							<OPTION value=14>
+							<OPTION value=14 <%=month[1].equals("14")?"selected":"" %>>
 								根
 							</OPTION>
-							<OPTION value=15>
+							<OPTION value=15 <%=month[1].equals("15")?"selected":"" %>>
 								条
 							</OPTION>
-							<OPTION value=16>
+							<OPTION value=16 <%=month[1].equals("16")?"selected":"" %>>
 								把
 							</OPTION>
-							<OPTION value=17>
+							<OPTION value=17 <%=month[1].equals("17")?"selected":"" %>>
 								卷
 							</OPTION>
-							<OPTION value=18>
+							<OPTION value=18 <%=month[1].equals("18")?"selected":"" %>>
 								副
 							</OPTION>
-							<OPTION value=19>
+							<OPTION value=19 <%=month[1].equals("19")?"selected":"" %>>
 								幅
 							</OPTION>
-							<OPTION value=PR>
+							<OPTION value=PR <%=month[1].equals("PR")?"selected":"" %>>
 								双
 							</OPTION>
-							<OPTION value=DOZ>
+							<OPTION value=DOZ <%=month[1].equals("DOZ")?"selected":"" %>>
 								一打
 							</OPTION>
-							<OPTION value=20>
+							<OPTION value=20 <%=month[1].equals("20")?"selected":"" %>>
 								份
 							</OPTION>
-							<OPTION value=SET>
+							<OPTION value=SET <%=month[1].equals("SET")?"selected":"" %>>
 								套
 							</OPTION>
-							<OPTION value=21>
+							<OPTION value=21 <%=month[1].equals("21")?"selected":"" %>>
 								棵
 							</OPTION>
-							<OPTION value=22>
+							<OPTION value=22 <%=month[1].equals("22")?"selected":"" %>>
 								箱
 							</OPTION>
-							<OPTION value=23>
+							<OPTION value=23 <%=month[1].equals("23")?"selected":"" %>>
 								袋
 							</OPTION>
-							<OPTION value=24>
+							<OPTION value=24 <%=month[1].equals("24")?"selected":"" %>>
 								盒
 							</OPTION>
-							<OPTION value=25>
+							<OPTION value=25 <%=month[1].equals("25")?"selected":"" %>>
 								包
 							</OPTION>
-							<OPTION value=26>
+							<OPTION value=26 <%=month[1].equals("26")?"selected":"" %>>
 								捆
 							</OPTION>
-							<OPTION value=27>
+							<OPTION value=27 <%=month[1].equals("27")?"selected":"" %>>
 								筐
 							</OPTION>
-							<OPTION value=28>
+							<OPTION value=28 <%=month[1].equals("28")?"selected":"" %>>
 								瓶（罐）
 							</OPTION>
-							<OPTION value=MMT>
+							<OPTION value=MMT <%=month[1].equals("MMT")?"selected":"" %>>
 								毫米
 							</OPTION>
-							<OPTION value=CMT>
+							<OPTION value=CMT <%=month[1].equals("CMT")?"selected":"" %>>
 								厘米
 							</OPTION>
-							<OPTION value=MRT>
+							<OPTION value=MRT <%=month[1].equals("MRT")?"selected":"" %>>
 								米
 							</OPTION>
-							<OPTION value=KMT>
+							<OPTION value=KMT <%=month[1].equals("KMT")?"selected":"" %>>
 								千米
 							</OPTION>
-							<OPTION value=INH>
+							<OPTION value=INH <%=month[1].equals("INH")?"selected":"" %>>
 								英寸
 							</OPTION>
-							<OPTION value=FOT>
+							<OPTION value=FOT <%=month[1].equals("FOT")?"selected":"" %>>
 								英尺
 							</OPTION>
-							<OPTION value=GLI>
+							<OPTION value=GLI <%=month[1].equals("GLI")?"selected":"" %>>
 								加仑 (英)
 							</OPTION>
-							<OPTION value=GLL>
+							<OPTION value=GLL <%=month[1].equals("GLL")?"selected":"" %>>
 								加仑 (美)
 							</OPTION>
-							<OPTION value=GRM>
+							<OPTION value=GRM <%=month[1].equals("GRM")?"selected":"" %>>
 								克
 							</OPTION>
-							<OPTION value=KGM>
+							<OPTION value=KGM <%=month[1].equals("KGM")?"selected":"" %>>
 								千克
 							</OPTION>
-							<OPTION value=LBR>
+							<OPTION value=LBR <%=month[1].equals("LBR")?"selected":"" %>>
 								磅
 							</OPTION>
-							<OPTION value=MTN>
+							<OPTION value=MTN <%=month[1].equals("MTN")?"selected":"" %>>
 								公吨
 							</OPTION>
-							<OPTION value=LTN>
+							<OPTION value=LTN <%=month[1].equals("LTN")?"selected":"" %>>
 								吨 (英)
 							</OPTION>
-							<OPTION value=LTS>
+							<OPTION value=LTS <%=month[1].equals("LTS")?"selected":"" %>>
 								吨 (美)
 							</OPTION>
-							<OPTION value=MLT>
+							<OPTION value=MLT <%=month[1].equals("MLT")?"selected":"" %>>
 								毫升
 							</OPTION>
-							<OPTION value=LTR>
+							<OPTION value=LTR <%=month[1].equals("LTR")?"selected":"" %>>
 								公升
 							</OPTION>
-							<OPTION value=ONZ>
+							<OPTION value=ONZ <%=month[1].equals("ONZ")?"selected":"" %>>
 								盎司
 							</OPTION>
-							<OPTION value=QTI>
+							<OPTION value=QTI <%=month[1].equals("QTI")?"selected":"" %>>
 								夸脱
 							</OPTION>
-							<OPTION value=PTI>
+							<OPTION value=PTI <%=month[1].equals("PTI")?"selected":"" %>>
 								品脱 (英)
 							</OPTION>
-							<OPTION value=PTL>
+							<OPTION value=PTL <%=month[1].equals("PTL")?"selected":"" %>>
 								品脱 (美)
 							</OPTION>
-							<OPTION value=YRD>
+							<OPTION value=YRD <%=month[1].equals("YRD")?"selected":"" %>>
 								码
 							</OPTION>
-							<OPTION value=FTK>
+							<OPTION value=FTK <%=month[1].equals("FTK")?"selected":"" %>>
 								平方英尺
 							</OPTION>
-							<OPTION value=INK>
+							<OPTION value=INK <%=month[1].equals("INK")?"selected":"" %>>
 								平方英寸
 							</OPTION>
-							<OPTION value=MTK>
+							<OPTION value=MTK <%=month[1].equals("MTK")?"selected":"" %>>
 								平方米
 							</OPTION>
-							<OPTION value=YDK>
+							<OPTION value=YDK <%=month[1].equals("YDK")?"selected":"" %>>
 								平方码
 							</OPTION>
-							<OPTION value=MTC>
+							<OPTION value=MTC <%=month[1].equals("MTC")?"selected":"" %>>
 								立方米
 							</OPTION>
 						</SELECT>
@@ -401,51 +444,56 @@
 						年营业额：
 					</td>
 					<td>
-						<!--  <SELECT onchange="check('note3')" name=turnover>  -->
+					<%
+						String nyye = null;
+						if(gsxxxx!=null)
+							nyye = gsxxxx.getNyye();
+							nyye = nyye==null?"0":nyye;
+					 %>
 						<SELECT name=nyye>
-							<OPTION value="" selected>
+							<OPTION value="0" <%=nyye.equals("0")?"selected":"" %>>
 								--请选择--
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=1 <%=nyye.equals("1")?"selected":"" %>>
 								人民币 10 万元/年以下
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=2 <%=nyye.equals("2")?"selected":"" %>>
 								人民币 10 万元/年 - 30 万元/年
 							</OPTION>
-							<OPTION value=10>
+							<OPTION value=3 <%=nyye.equals("3")?"selected":"" %>>
 								人民币 30 万元/年 - 50 万元/年
 							</OPTION>
-							<OPTION value=11>
+							<OPTION value=4 <%=nyye.equals("4")?"selected":"" %>>
 								人民币 50 万元/年 - 100 万元/年
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=5 <%=nyye.equals("5")?"selected":"" %>>
 								人民币 100 万元/年 - 200 万元/年
 							</OPTION>
-							<OPTION value=12>
+							<OPTION value=6 <%=nyye.equals("6")?"selected":"" %>>
 								人民币 200 万元/年 - 300 万元/年
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=7 <%=nyye.equals("7")?"selected":"" %>>
 								人民币 300 万元/年 - 500 万元/年
 							</OPTION>
-							<OPTION value=13>
+							<OPTION value=8 <%=nyye.equals("8")?"selected":"" %>>
 								人民币 500 万元/年 - 700 万元/年
 							</OPTION>
-							<OPTION value=14>
+							<OPTION value=9 <%=nyye.equals("9")?"selected":"" %>>
 								人民币 700 万元/年 - 1000 万元/年
 							</OPTION>
-							<OPTION value=15>
+							<OPTION value=10 <%=nyye.equals("10")?"selected":"" %>>
 								人民币 1000 万元/年 - 2000 万元/年
 							</OPTION>
-							<OPTION value=16>
+							<OPTION value=11 <%=nyye.equals("11")?"selected":"" %>>
 								人民币 2000 万元/年 - 3000 万元/年
 							</OPTION>
-							<OPTION value=17>
+							<OPTION value=12 <%=nyye.equals("12")?"selected":"" %>>
 								人民币 3000 万元/年 - 5000 万元/年
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=13 <%=nyye.equals("13")?"selected":"" %>>
 								人民币 5000 万元/年 - 1 亿元/年
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=14 <%=nyye.equals("14")?"selected":"" %>>
 								人民币 1 亿元/年以上
 							</OPTION>
 						</SELECT>
@@ -456,50 +504,56 @@
 						年进口额：
 					</td>
 					<td>
+					<%
+						String njke = null;
+						if(gsxxxx!=null)
+							njke = gsxxxx.getNjke();
+							njke = njke==null?"0":njke;
+					 %>
 						<SELECT name=njke>
-							<OPTION value="" selected>
+							<OPTION value="0" <%=njke.equals("0")?"selected":"" %>>
 								--请选择--
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=8 <%=njke.equals("8")?"selected":"" %>>
 								人民币 10 万元以下
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=9 <%=njke.equals("9")?"selected":"" %>>
 								人民币 10 万元 - 30 万元
 							</OPTION>
-							<OPTION value=10>
+							<OPTION value=10 <%=njke.equals("10")?"selected":"" %>>
 								人民币 30 万元 - 50 万元
 							</OPTION>
-							<OPTION value=11>
+							<OPTION value=11 <%=njke.equals("11")?"selected":"" %>>
 								人民币 50 万元 - 100 万元
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=2 <%=njke.equals("2")?"selected":"" %>>
 								人民币 100 万元 - 200 万元
 							</OPTION>
-							<OPTION value=12>
+							<OPTION value=12 <%=njke.equals("12")?"selected":"" %>>
 								人民币 200 万元 - 300 万元
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=3 <%=njke.equals("3")?"selected":"" %>>
 								人民币 300 万元 - 500 万元
 							</OPTION>
-							<OPTION value=13>
+							<OPTION value=13 <%=njke.equals("13")?"selected":"" %>>
 								人民币 500 万元 - 700 万元
 							</OPTION>
-							<OPTION value=14>
+							<OPTION value=14 <%=njke.equals("14")?"selected":"" %>>
 								人民币 700 万元 - 1000 万元
 							</OPTION>
-							<OPTION value=15>
+							<OPTION value=15 <%=njke.equals("15")?"selected":"" %>>
 								人民币 1000 万元 - 2000 万元
 							</OPTION>
-							<OPTION value=16>
+							<OPTION value=16 <%=njke.equals("16")?"selected":"" %>>
 								人民币 2000 万元 - 3000 万元
 							</OPTION>
-							<OPTION value=17>
+							<OPTION value=17 <%=njke.equals("17")?"selected":"" %>>
 								人民币 3000 万元 - 5000 万元
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=6 <%=njke.equals("6")?"selected":"" %>>
 								人民币 5000 万元 - 1 亿元
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=7 <%=njke.equals("7")?"selected":"" %>>
 								人民币 1 亿元以上
 							</OPTION>
 						</SELECT>
@@ -510,51 +564,56 @@
 						年出口额：
 					</td>
 					<td>
-						<!--  <SELECT  onchange=check('noteOut')  name=_fmc.p._0.annu>  -->
+					<%
+						String ncke = null;
+						if(gsxxxx!=null)
+							ncke = gsxxxx.getNcke();
+							ncke = ncke==null?"0":ncke;
+					 %>
 						<SELECT name=ncke>
-							<OPTION value="" selected>
+							<OPTION value="0" <%=ncke.equals("0")?"selected":"" %>>
 								--请选择--
 							</OPTION>
-							<OPTION value=8>
+							<OPTION value=8 <%=ncke.equals("8")?"selected":"" %>>
 								人民币 10 万元以下
 							</OPTION>
-							<OPTION value=9>
+							<OPTION value=9 <%=ncke.equals("9")?"selected":"" %>>
 								人民币 10 万元 - 30 万元
 							</OPTION>
-							<OPTION value=10>
+							<OPTION value=10 <%=ncke.equals("10")?"selected":"" %>>
 								人民币 30 万元 - 50 万元
 							</OPTION>
-							<OPTION value=11>
+							<OPTION value=11 <%=ncke.equals("11")?"selected":"" %>>
 								人民币 50 万元 - 100 万元
 							</OPTION>
-							<OPTION value=2>
+							<OPTION value=2 <%=ncke.equals("2")?"selected":"" %>>
 								人民币 100 万元 - 200 万元
 							</OPTION>
-							<OPTION value=12>
+							<OPTION value=12 <%=ncke.equals("12")?"selected":"" %>>
 								人民币 200 万元 - 300 万元
 							</OPTION>
-							<OPTION value=3>
+							<OPTION value=3 <%=ncke.equals("3")?"selected":"" %>>
 								人民币 300 万元 - 500 万元
 							</OPTION>
-							<OPTION value=13>
+							<OPTION value=13 <%=ncke.equals("13")?"selected":"" %>>
 								人民币 500 万元 - 700 万元
 							</OPTION>
-							<OPTION value=14>
+							<OPTION value=14 <%=ncke.equals("14")?"selected":"" %>>
 								人民币 700 万元 - 1000 万元
 							</OPTION>
-							<OPTION value=15>
+							<OPTION value=15 <%=ncke.equals("15")?"selected":"" %>>
 								人民币 1000 万元 - 2000 万元
 							</OPTION>
-							<OPTION value=16>
+							<OPTION value=16 <%=ncke.equals("16")?"selected":"" %> >
 								人民币 2000 万元 - 3000 万元
 							</OPTION>
-							<OPTION value=17>
+							<OPTION value=17 <%=ncke.equals("17")?"selected":"" %>>
 								人民币 3000 万元 - 5000 万元
 							</OPTION>
-							<OPTION value=6>
+							<OPTION value=6 <%=ncke.equals("6")?"selected":"" %>>
 								人民币 5000 万元 - 1 亿元
 							</OPTION>
-							<OPTION value=7>
+							<OPTION value=7 <%=ncke.equals("7")?"selected":"" %>>
 								人民币 1 亿元以上
 							</OPTION>
 						</SELECT>
@@ -569,6 +628,39 @@
 						管理体系认证：
 					</td>
 					<td>
+					<script type="text/javascript">
+						var gltxrzArray = [];
+						<%
+						String gltx = "";
+						if(gsxxxx!=null)
+							gltx = gsxxxx.getGltxrz();
+							if(gltx!=null&&!gltx.equals("")){
+								String[] gltStr = gltx.split(",");
+								for(int i=0;i<gltStr.length;i++){
+							%>
+								gltxrzArray.length = <%=gltStr.length%>;
+								gltxrzArray[<%=i%>] = <%=gltStr[i]%>;
+							<%
+								}
+							}
+							%>
+						
+						function check(values) {
+							for(var c=0; c<values.length; c++) {
+								isequals(values[c] + '');
+							}
+						}
+						function isequals(v) {
+							var chboxes = document.getElementsByName('gltxrz'); 
+							if(chboxes.length) {
+								for(var c=0; c<chboxes.length; c++) {
+									if(v == chboxes[c].value) {
+										chboxes[c].checked = 'checked';
+									}
+								}
+							}
+						}
+					</script>
 						<INPUT id=Certification1 type=checkbox value=1 name=gltxrz>
 						<LABEL for=Certification1>
 							ISO 9000
@@ -593,6 +685,9 @@
 						<LABEL for=Certification6>
 							ISO 14000
 						</LABEL>
+						<script type="text/javascript">
+							check(gltxrzArray);
+						</script>
 					</td>
 				</tr>
 				<tr>
@@ -600,15 +695,15 @@
 						质量控制：
 					</td>
 					<td>
-						<INPUT id=QaQc1 onclick=blurEvent(15,this) type=radio value=内部  name=zlkz>
+						<INPUT id=QaQc1 type=radio value=内部  name=zlkz <c:if test="${gsxxxx.zlkz=='内部'}">checked</c:if>>
 						<LABEL for=QaQc1>
 							内部
 						</LABEL>
-						<INPUT id=QaQc2 onclick=blurEvent(15,this) type=radio value=第三方 name=zlkz>
+						<INPUT id=QaQc2 type=radio value=第三方 name=zlkz <c:if test="${gsxxxx.zlkz=='第三方'}">checked</c:if>>
 						<LABEL for=QaQc2>
 							第三方
 						</LABEL>
-						<INPUT id=QaQc3 onclick=blurEvent(15,this) type=radio value=无	name=zlkz>
+						<INPUT id=QaQc3 type=radio value=无	name=zlkz <c:if test="${gsxxxx.zlkz=='无'}">checked</c:if>>
 						<LABEL for=QaQc3>
 							无
 						</LABEL>
@@ -620,6 +715,37 @@
 						<FONT color=#999999>（请选最主要的3个）</FONT>
 					</td>
 					<td>
+					<script type="text/javascript">
+						var zyscArray = new Array();
+						<%
+							String zysc = "";
+							if(gsxxxx!=null)zysc = gsxxxx.getZysc();
+								if(zysc!=null&&!zysc.equals("")){
+									String[] zyscStr = zysc.split(",");
+									for(int i=0;i<zyscStr.length;i++){
+						%>
+									zyscArray.length = <%=zyscStr.length%>;
+									zyscArray[<%=i%>] = <%=zyscStr[i]%>;						
+						<%
+								}
+							}
+						%>
+						function check2(values) {
+							for(var c=0; c<values.length; c++) {
+								isequals2(values[c] + '');
+							}
+						}
+						function isequals2(v) {
+							var chboxes = document.getElementsByName('zysc'); 
+							if(chboxes.length) {
+								for(var c=0; c<chboxes.length; c++) {
+									if(v == chboxes[c].value) {
+										chboxes[c].checked = 'checked';
+									}
+								}
+							}
+						}
+					</script>
 						<INPUT id=TradeRegion1 type=checkbox value=1 name=zysc>
 						<LABEL for=TradeRegion1>
 							大陆
@@ -672,19 +798,22 @@
 						<LABEL for=TradeRegion13>
 							全球
 						</LABEL>
+						<script type="text/javascript">
+							check2(zyscArray);
+						</script>
 					</td>
 				</tr>
 				<tr>
 				<td>主要客户群：</td>
-				<td><INPUT onblur=blurEvent(17,this) maxLength=64 size=30 name=zykhq> 
+				<td><INPUT  maxLength=64 size=30 name=zykhq value="${gxxx.zykhq}"> 
 				<SPAN class=note>如：超市、服装厂、印染厂</SPAN></td>
 				</tr>
 				<tr>
 				<td>是否提供OEM代加工？</td>
 				<td>
-				<INPUT id=OemOdmYes onclick=blurEvent(18,this) type=radio value=y name=oem>
+				<INPUT id=OemOdmYes type=radio value=y name=oem <c:if test="${gxxx.oem=='y'}">checked</c:if>>
 				<LABEL for=OemOdmYes>是</LABEL> 
-				<INPUT id=OemOdmNo onclick=blurEvent(18,this) type=radio value=n name=oem>
+				<INPUT id=OemOdmNo  type=radio value=n name=oem <c:if test="${gxxx.oem=='n'}">checked</c:if>>
 				<LABEL for=OemOdmNo>否</LABEL> 
 				</td>
 				</tr>
@@ -693,9 +822,7 @@
 				<INPUT onmouseover="this.style.cursor='hand';"  type=button  value=" 确认提交！ " onclick="updateDetailInfo();">
 				</td>
 				</tr>
-				
 			</table>
-			
 		</form>
 		<script type="text/javascript">
 			function updateDetailInfo(){
