@@ -76,6 +76,7 @@
 		<a href="#" onclick="testTemp();">test</a> 
 		<script language="javascript"> 
 			//check(test); 
+			check(temp);
 		</script> 
       
   </body>
