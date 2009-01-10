@@ -14,13 +14,15 @@ import org.apache.struts.action.DynaActionForm;
 
 import com.abbcc.common.TimeProcess;
 import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.struts.action.BaseAction;
 
 /**
  * @author 姜志强
- *  会员注册
+ * @see 注册会员信息
+ * create: 2008-11-09
  */
 public class RegisterAction extends BaseAction {
 	private HyjbxxService hyjbxxService;
@@ -28,13 +30,14 @@ public class RegisterAction extends BaseAction {
 		this.hyjbxxService = hyjbxxService;
 	}
 	/* 
-	 *  会员注册：注册会员基本信息和公司基本信息
+	 *  会员注册：注册会员基本信息和公司基本信息,公司详细信息
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession();
 			String rand = (String) session.getAttribute("rand");
 			String registerStatus = (String) session.getAttribute("registerStatus");
+			//验证码
 			String yzm = request.getParameter("yzm");
 			
 			session.removeAttribute("rand");
@@ -44,7 +47,7 @@ public class RegisterAction extends BaseAction {
 			if(registerStatus.equals("fail")){
 				return mapping.getInputForward();
 			}			
-			 //注册用户表和公司表
+			 //通过验证,注册用户表和公司表
 			 if(rand.equals(yzm)){
 				DynaActionForm registerForm = (DynaActionForm)form;
 				Hyjbxx hyjbxx = new Hyjbxx();
@@ -71,12 +74,16 @@ public class RegisterAction extends BaseAction {
 					hyjbxx.setGddh(sf.toString()); 
 				}
 				
-				//保存公司基本信息
+				//注册公司基本信息
 				Gsjbxx gsjbxx = new Gsjbxx();
 				BeanUtils.copyProperties(gsjbxx,registerForm);
 				//新用户注册时，默认公司基本信息表中的主营行业(zyhy)为null
 				gsjbxx.setZyhy(null);
-				int flag = hyjbxxService.add(hyjbxx, gsjbxx);
+				
+				//注册公司详细信息
+				Gsxxxx gsxxxx = new Gsxxxx();
+				
+				int flag = hyjbxxService.add(hyjbxx, gsjbxx, gsxxxx);
 				
 				if(flag>0){
 					String hyjbxxid = hyjbxxService.getIdByName((String) registerForm.get("hydlm"));
@@ -86,7 +93,7 @@ public class RegisterAction extends BaseAction {
 						session.setAttribute("customer", registerForm.get("hydlm")); 
 						return mapping.findForward("registersuccess");
 					}else{
-						System.out.println("register account "+registerForm.get("hydlm")+ ":hyjbxxid is empty!");
+						log.info("register account "+registerForm.get("hydlm")+ ":hyjbxxid is empty!");
 						return mapping.getInputForward();
 					}
 				}else{
