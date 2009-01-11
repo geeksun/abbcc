@@ -9,21 +9,7 @@
 <html>
 	<head>
 		<title>公司详细信息</title>
-		<link rel="stylesheet" type="text/css" href="/css/service.css">
-		<style type="text/css">
-	    	.note { 
-				COLOR: #999999
-			}
-			.tx_box {
-				BORDER-RIGHT: #ffcb99 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffcb99 1px solid; PADDING-LEFT: 2px; BACKGROUND: #fff8ee; PADDING-BOTTOM: 2px; BORDER-LEFT: #ffcb99 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: #ffcb99 1px solid
-			}
-			.tx_title {
-				PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff5400; PADDING-TOP: 5px
-			}
-			.tx_content {
-				PADDING-LEFT: 10px
-			}
-	    </style> 
+		<link rel="stylesheet" type="text/css" href="<%=path%>/css/service.css">
 		<script type="text/javascript">
 		//blur/Click事件的控制函数打勾图片控制函数
 		function blurEvent(img,dom){

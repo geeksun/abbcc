@@ -29,9 +29,6 @@
 				}
 				return true;
 			}
-			function register(){
-				window.location.href = "<%=path%>/user/register.jsp";
-			}
 			function inspire()
 			{
 				if(event.keyCode==13)
