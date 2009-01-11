@@ -13,10 +13,18 @@ public class AppConstants {
 	
 	public static final int validate = 1;
 	public static final int invalidate = -1;
+	
+	public static final boolean VIRTUAL = false;
+	public static final boolean ACTUAL = true;
+	
 	//顶级种类ID
 	public static final String TOPCATEGORYID = "0";
 	public static final int PRODUCT_TYPE_TOP_ID=0;
 
+	//访问标记
+	public static final String ACCESS_FIRST = "access_first";
+	
+	
 	//公司基本信息修改成功后,跳转到详细信息页面的提示信息
 	public static final String BASICINFOUPDATED = "basicInfoUpdated";
 	

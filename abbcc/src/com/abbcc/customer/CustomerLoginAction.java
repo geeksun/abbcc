@@ -43,7 +43,6 @@ public class CustomerLoginAction extends BaseAction {
 		String pass = loginForm.getString("mm");
 		
 		int validate = hyjbxxService.login(name,pass);
-		//System.out.println("validate: "+validate);
 		if(validate>0){
 			HttpSession session = request.getSession(true);
 			String hyjbxxid = hyjbxxService.getIdByName(name);
@@ -61,7 +60,6 @@ public class CustomerLoginAction extends BaseAction {
 			}*/
 		}else{
 			ActionMessages am = new ActionMessages();
-			//System.out.println("error ");
 			am.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("usernameError")); 
 			this.saveMessages(request, am); 
 			

@@ -28,4 +28,15 @@ public interface HyjbxxDAO {
 	//根据主键查找会员基本信息
 	public Hyjbxx findById(String hyjbxxid);  
 	
+	public List<Hyjbxx> findByProperty(String propertyName, Object value);
+	
+	public List findByPassword(Object password);
+
+	public boolean checkPassword(String hyjbxxid, String old_password);
+
+	public void updatePassword(String hyjbxxid, String new_password);
+
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);  
+
+		
 }
