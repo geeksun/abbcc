@@ -2,6 +2,10 @@ package com.abbcc.common;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletRequest;
 
 /**
  * 字符操作工具
@@ -84,6 +88,27 @@ public class StringUtils {
      * @return
      */
     public static boolean isBlank(String str) {
-        return str != null || str.trim().length() != 0;
+        return str != null && str.trim().length() != 0;
     }
+    
+    /**
+     * @param request
+     * @param paras
+     * @see  把表单的参数封装在map里
+     */
+    public static Map getParameter(ServletRequest request, String[] paras)
+    {
+        Map<String, String> map = new HashMap<String, String>(); 
+        if(paras == null || paras.length == 0)return map;
+        for(int i = 0;i < paras.length;i++)
+        {
+            String para = paras[i];
+            if(para == null || para.trim().length() == 0)continue;
+            String value = request.getParameter(para);
+            if(value == null || value.trim().length() == 0)value = "";
+            else value = value.trim();
+            map.put(para, value);
+        }
+        return map;
+    } 
 }

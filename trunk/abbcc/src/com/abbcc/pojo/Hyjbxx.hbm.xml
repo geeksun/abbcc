@@ -18,10 +18,10 @@
             <column name="mm" length="32" />
         </property>
         <property name="mmtswt" type="java.lang.String">
-            <column name="mmtswt" length="32" />
+            <column name="mmtswt" length="100" />
         </property>
         <property name="mmtsda" type="java.lang.String">
-            <column name="mmtsda" length="16" />
+            <column name="mmtsda" length="40" />
         </property>
         <property name="zsxm" type="java.lang.String">
             <column name="zsxm" length="16" />

@@ -15,10 +15,11 @@ import com.abbcc.pojo.Pz;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.factory.Globals;
 import com.abbcc.common.AppConstants;
- 
+  
 public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
 	public static final String HYDLM = "hydlm";
+	public static final String MM = "mm";
 	public static final String HYJBXXID = "hyjbxxid";
 	private String tableName = "hyjbxx";
 
@@ -29,7 +30,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	 *  先更新 hyjbxx 再更新 pz 表
 	 */
 	public int add(Hyjbxx hyjbxx) { 
-		log.debug("saving Hyjbxx instance");
+		log.info("saving Hyjbxx instance");
 		Pz pz= this.updateAndGetPz(tableName);
 		long id=pz.getRecnum();  
 		long page=id/Globals.COUNT;
@@ -67,16 +68,17 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		init = pstmt.executeUpdate();
 		//pa.updateNum(track[0],track[1],"hyjbxx");
 		this.updateTableCount(tableName);
-		log.debug("save successful");
+		log.info("save Hyjbxx instance successful");
 		pstmt.close();
 		}catch(Exception e){
-			log.error("save failed", e);
+			log.error("save Hyjbxx instance failed", e);
 			e.printStackTrace();
 		}finally{
 			try {
 				conn.close();
 				session.close();
 			} catch (SQLException e) {
+				log.error("session can't closed");
 				e.printStackTrace();
 			}
 		}
@@ -85,6 +87,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 
 	// 修改会员基本信息
 	public void update(Hyjbxx hyjbxx) {
+		log.info("updating Hyjbxx info");
 		int page = hyjbxx.getHyjbxxid() / Globals.COUNT;
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
@@ -100,6 +103,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(4, hyjbxx.getDzyx());
 		pstmt.setLong(5, hyjbxx.getHyjbxxid());
 		pstmt.executeUpdate();
+		log.info("updated Hyjbxx info successed");
 		}catch(Exception e){
 			log.error("save failed", e);
 			e.printStackTrace();
@@ -108,7 +112,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 				conn.close();
 				session.close();
 			} catch (SQLException e) {
-				log.info("session can't closed!");
+				log.error("session can't closed!");
 				e.printStackTrace();
 			}
 		}
@@ -213,23 +217,27 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		return list;
 	}
 
+	/**
+	 * @see com.abbcc.dao.HyjbxxDAO#findByProperty(java.lang.String, java.lang.String)
+	 *  依据会员登录名和密码查找会员用户
+	 */
 	public int findByProperty(String name, String pass) {
-		log.debug("find instance by member name and password");
+		log.info("finding Hyjbxx instance by member hydlm:"+name+" and password:"+pass);
 		String sql = "select h.mm from Hyjbxx h where h.hydlm = ?";
 		List list = getHibernateTemplate().find(sql,name);
 		if(list.size()==1){
 			String mm = (String) list.get(0);
 			if(mm.equals(pass)){
-				log.debug("find success");
+				log.info("finding Hyjbxx instance by member name and password success");
 				return AppConstants.validate;
 			}
 		}
-		log.debug("find fail");
+		log.error("find Hyjbxx instance by member name and password fail");
 		return AppConstants.invalidate;
 	}
 
 	public List findByName(String name) {
-		log.debug("find " + HYDLM + " by member register name:" + name);
+		log.info("find " + HYDLM + " by member register name:" + name);
 		try{
 			String queryString = "select h.hydlm from Hyjbxx h where h." + HYDLM + "= ?";
 			return getHibernateTemplate().find(queryString,name);
@@ -240,7 +248,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	}
 
 	public String getIdByName(String hydlm) {
-		log.debug("find " + HYJBXXID + " by property hydlm:" + hydlm);
+		log.info("find " + HYJBXXID + " by property hydlm:" + hydlm);
 		try{
 			String queryString = "select h.hyjbxxid from Hyjbxx h where h."+ HYDLM + "= ?";
 			List list = getHibernateTemplate().find(queryString,hydlm);
@@ -260,7 +268,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	 *  根据主键（hyjbxxid）查找会员基本信息
 	 */
 	public Hyjbxx findById(String hyjbxxid) {
-		log.debug("find Hyjbxx by  property hyjbxxid:" + hyjbxxid);
+		log.info("find Hyjbxx by  property hyjbxxid:" + hyjbxxid);
 		try{
 			return (Hyjbxx)getHibernateTemplate().get("com.abbcc.pojo.Hyjbxx", new Integer(hyjbxxid));
 		}catch(RuntimeException re){
@@ -268,4 +276,120 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 			throw re;
 		} 
 	}
+	
+	/**
+	 * @param propertyName
+	 * @param value
+	 * @see 依据属性名和属性值找到对象
+	 */
+	public List<Hyjbxx> findByProperty(String propertyName, Object value) {
+	      log.info("finding Hyjbxx instance with property: " + propertyName + ", value: " + value);
+	      try {
+	         String queryString = "from Hyjbxx as model where model." + propertyName + "= ?";
+			 return getHibernateTemplate().find(queryString, value);
+	      } catch (RuntimeException re) {
+	         log.error("find Hyjbxx instance by property name failed", re);
+	         throw re;
+	      }
+	}
+	
+	/**
+	 * @see com.abbcc.dao.HyjbxxDAO#findByPassword(java.lang.Object)
+	 *  依据用户密码查找出对应的用户
+	 */
+	public List findByPassword(Object password) {
+		return findByProperty(MM, password);
+	}
+
+	/**
+	 * @see 检查用户密码是否存在于会员基本信息中
+	 */
+	public boolean checkPassword(String hyjbxxid, String old_password) {
+		log.info("finding Hyjbxx instance with property: " + MM + ", value: " + old_password);
+		try {
+	         String queryString = "from Hyjbxx as model where model." + MM + "= ?";
+			 List list = getHibernateTemplate().find(queryString, old_password);
+			 if(list.size()>0){
+				 Hyjbxx member = (Hyjbxx) list.get(0);
+				 if(hyjbxxid.equals(member.getHyjbxxid().toString())){
+					 return AppConstants.ACTUAL;
+				 }
+			 }
+	    } catch (RuntimeException re) {
+	         log.error("find Hyjbxx instance by property password failed", re);
+	         throw re;
+	    }
+		return AppConstants.VIRTUAL;
+	}
+
+	/**
+	 * @see 用户密码修改
+	 */
+	public void updatePassword(String hyjbxxid, String new_password) {
+		log.info("updating Hyjbxx set new password  by hyjbxxid:"+hyjbxxid);
+		int intHyjbxxid = Integer.valueOf(hyjbxxid);
+		int page = intHyjbxxid / Globals.COUNT;
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Connection	conn = session.connection();
+		String sql = "UPDATE hyjbxx_"
+				+ page
+				+ " h SET h.mm=? WHERE h.hyjbxxid=?";
+		try{
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, new_password);
+		pstmt.setLong(2, intHyjbxxid);
+		pstmt.executeUpdate();
+		log.info("updated Hyjbxx set new password  by hyjbxxid:"+hyjbxxid+" success");
+		}catch(Exception e){
+			log.error("update Hyjbxx set new password failed by hyjbxxid:"+hyjbxxid, e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				log.error("session can't usual closed!");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * @see 设置密码保护问题
+	 */
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer) {
+		log.info("updating Hyjbxx instance question and answer with property question:"+password_question
+				+ " and password_answer:"+password_answer+" by hyjbxxid:"+hyjbxxid);
+		int intHyjbxxid = Integer.valueOf(hyjbxxid);
+		int flag = 0;
+		int page = intHyjbxxid / Globals.COUNT;
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Connection	conn = session.connection();
+		String sql = "UPDATE hyjbxx_"
+				+ page
+				+ " h SET h.mmtswt=?,h.mmtsda=? WHERE h.hyjbxxid=?";
+		try{
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, password_question);
+			pstmt.setString(2, password_answer);
+			pstmt.setLong(3, intHyjbxxid);
+			flag = pstmt.executeUpdate();
+			log.info("updated Hyjbxx instance question and question_answer with property question:"+password_question
+					+ " and password_answer:"+password_answer+" by hyjbxxid:"+hyjbxxid+" success");
+		}catch(Exception e){
+			log.error("update Hyjbxx with property mmtswt:" + password_question + "failed with hyjbxxid:"+hyjbxxid, e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				log.error("session can't usual closed!");
+				e.printStackTrace();
+			}
+		}
+		return flag;
+	}	
+	
+	
 }
