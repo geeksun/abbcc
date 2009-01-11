@@ -41,5 +41,11 @@ public interface HyjbxxService {
 	//注册新用户时，向会员基本信息表，公司基本信息表，公司详细信息表增加纪录
 	public int add(Hyjbxx hyjbxx, Gsjbxx gsjbxx, Gsxxxx gsxxxx);
 
-	public void addLoseObject(Gsxxxx gsxxxx);                      
+	public void addLoseObject(Gsxxxx gsxxxx);
+
+	public boolean checkPassword(String hyjbxxid, String old_password);
+
+	public void updatePassword(String hyjbxxid, String new_password);
+
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);                         
 }

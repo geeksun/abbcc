@@ -117,5 +117,17 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	public void addLoseObject(Gsxxxx gsxxxx) {
 		gsxxxxDao.addLoseObject(gsxxxx);
 	}
+
+	public boolean checkPassword(String hyjbxxid, String old_password) {
+		return hyjbxxDao.checkPassword(hyjbxxid, old_password);
+	}
+
+	public void updatePassword(String hyjbxxid, String new_password) {
+		hyjbxxDao.updatePassword( hyjbxxid,  new_password);
+	}
+
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer) {
+		return hyjbxxDao.updateQuestion( hyjbxxid,  password_question,  password_answer);
+	}
 	
 }
