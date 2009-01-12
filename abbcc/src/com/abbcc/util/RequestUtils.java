@@ -64,6 +64,15 @@ public class RequestUtils
             return null;
         }
     }
+    public static String getParameter(HttpServletRequest request, String paramName, String defaultString)
+    {
+        String temp =  getParameter(request,paramName,false);
+        if(temp != null)
+        {
+        	temp=defaultString;
+        } 
+        return temp;
+    }
 
     public static boolean getBooleanParameter(HttpServletRequest request, String paramName)
     {
