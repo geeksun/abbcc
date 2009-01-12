@@ -13,12 +13,14 @@ public class TypeChange {
 	public static int stringToInt(String intstr) {
 		Integer integer;
 		integer = Integer.valueOf(intstr);
+		//integer.valueOf(i)
 		return integer.intValue();
 	}
 
 	//change int type to the string type
 	public static String intToString(int value) {
-		Integer integer = new Integer(value);
+		//Integer integer = new Integer(value);
+		Integer integer = Integer.valueOf(value);
 		return integer.toString();
 	}
 
@@ -45,8 +47,9 @@ public class TypeChange {
 
 	//change the float type to the string type
 	public static String floatToString(float value) {
-		Float floatee = new Float(value);
-		return floatee.toString();
+		//Float floate = new Float(value);
+		Float floate = Float.valueOf(value);
+		return floate.toString();
 	}
 
 	//change the string type to the sqlDate type
