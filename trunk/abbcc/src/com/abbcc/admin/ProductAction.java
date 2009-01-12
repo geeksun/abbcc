@@ -141,7 +141,7 @@ public class ProductAction extends BaseAction {
 
 		String userid = (String) request.getSession().getAttribute("hyjbxxid");
 
-		String orderType = RequestUtils.getParameter(request, "orderType"); // 信息类型
+		String orderType = RequestUtils.getParameter(request, "orderType",AppConstants.CPGQXX_SFYX_All); // 信息类型
 		String productName = RequestUtils.getParameter(request, "productName");// 产品名称
 
 		int _userId = Integer.valueOf(userid);
