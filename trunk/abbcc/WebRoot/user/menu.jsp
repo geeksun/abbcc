@@ -1,4 +1,4 @@
- <%@ page language="java"  pageEncoding="gbk"%>
+<%@ page language="java"  pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@page import="com.abbcc.common.AppConstants" %>
 <%
 	String path = request.getContextPath();
@@ -25,9 +25,9 @@
      <dl>
      	<dt onclick="toggleDl(this)">基本信息设置</dt>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="right">基本资料管理</a></dd>
-     	<dd><a href="<%=path%>/modifyPassword.do?action=displayModify" target="right">后台密码修改</a></dd>
+     	<dd><a href="<%=path%>/modifyPassword.do?action=displayModifyCipher" target="right">后台密码修改</a></dd>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">公司简介</a></dd> 
-     	<dd><a href="#">荣誉证书</a></dd>
+     	<dd><a href="<%=path%>/traceInfo.do?action=displayHonorCertificate" target="right">荣誉证书</a></dd>
      	<dd><a href="#">技术实力</a></dd>
      	<dd><a href="#">上传公司标志</a></dd>
      </dl>

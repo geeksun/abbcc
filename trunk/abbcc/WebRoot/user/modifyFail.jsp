@@ -3,19 +3,21 @@
 <%
     String path = request.getContextPath();
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>My JSP 'modifyFail.jsp' starting page</title>
+    <title>modifyFail/title>
 	<link rel="stylesheet" type="text/css" href="<%=path%>/css/service.css"/>
   </head>
-  
   <body>
-   <c:if test="${updateQuestionAboutPassword!=null}">
-      <TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
+  <div><h3><font color="blue">
+		操作失败
+  </font></h3></div>
+  
+  <c:if test="${updateQuestionAboutPassword!=null}">
+  <TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
   <TBODY>
   <TR>
-    <TD vAlign=top align=middle width=80 rowSpan=2>
+    <TD vAlign=top align=center width=80 rowSpan=2>
     <IMG height=53 src="<%=path%>/images/service/icon2.gif" width=53></TD>
     <TD class=tx_title height=20>对不起，您的操作失败了</TD></TR>
   <TR>
