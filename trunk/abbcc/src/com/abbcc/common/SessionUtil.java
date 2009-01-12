@@ -2,6 +2,10 @@ package com.abbcc.common;
 
 import java.util.HashMap;
 
+/**
+ * @author 姜志强
+ *  Session工具
+ */
 public class SessionUtil {
 	private static HashMap hmSession = new HashMap();
 
