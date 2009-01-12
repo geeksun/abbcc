@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="abbcc"
+  name="abbcc_new"
   id="myeclipse.1230954770171"
   context-root="/abbcc"
   j2ee-spec="5.0"
-  archive="abbcc.war">
+  archive="abbcc_new.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>
