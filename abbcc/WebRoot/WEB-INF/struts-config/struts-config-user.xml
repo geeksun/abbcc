@@ -90,17 +90,13 @@
 			<form-property name="access_mark" type="java.lang.String"></form-property>
 			<form-property name="truename" type="java.lang.String"></form-property>
 			<form-property name="memberId" type="java.lang.String"></form-property>
-			<form-property name="promptQuestionInfo" type="java.lang.String"></form-property>
-			<form-property name="promptPasswordInfo" type="java.lang.String"></form-property>
 		</form-bean>
 	</form-beans>
  
-	<global-exceptions>
-		<exception key="error.invalidlogin" type="java.lang.Exception" path="/index.jsp" scope="request"></exception>
-	</global-exceptions>
 	<global-forwards>
 		<forward name="login" path="/user/index.jsp"></forward>
 		<forward name="fail" path="/fail.jsp"></forward>
+		<forward name="service_exception" path="/500.jsp"></forward>
 		<forward name="modifySuccess" path="/user/modifySuccess.jsp"></forward>
 		<forward name="modifyFail" path="/user/modifyFail.jsp"></forward>
 	</global-forwards>
@@ -122,6 +118,7 @@
 	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
+	    	<forward name="honor_certificate" path="/user/service/honor_certificate.jsp"></forward>
 	    </action>
 	    <!-- 公司详细信息管理&&上述公司基本信息管理使用同一个类 -->
 	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
