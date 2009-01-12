@@ -270,7 +270,8 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	public Hyjbxx findById(String hyjbxxid) {
 		log.info("find Hyjbxx by  property hyjbxxid:" + hyjbxxid);
 		try{
-			return (Hyjbxx)getHibernateTemplate().get("com.abbcc.pojo.Hyjbxx", new Integer(hyjbxxid));
+			int intHyjbxxid = Integer.parseInt(hyjbxxid);
+			return (Hyjbxx)getHibernateTemplate().get("com.abbcc.pojo.Hyjbxx", Integer.valueOf(intHyjbxxid));
 		}catch(RuntimeException re){
 			log.error("find by property hyjbxxid failed", re);
 			throw re;
@@ -302,21 +303,22 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	}
 
 	/**
-	 * @see 检查用户密码是否存在于会员基本信息中
+	 * @see 检查密码是否和用户的密码相符
 	 */
 	public boolean checkPassword(String hyjbxxid, String old_password) {
-		log.info("finding Hyjbxx instance with property: " + MM + ", value: " + old_password);
+		log.info("checking password with property: " + HYJBXXID + ", value: " + hyjbxxid);
 		try {
-	         String queryString = "from Hyjbxx as model where model." + MM + "= ?";
-			 List list = getHibernateTemplate().find(queryString, old_password);
-			 if(list.size()>0){
-				 Hyjbxx member = (Hyjbxx) list.get(0);
-				 if(hyjbxxid.equals(member.getHyjbxxid().toString())){
+			 Hyjbxx member = this.findById(hyjbxxid);
+			 if(member!=null){
+				 if(old_password.equals(member.getMm())){
 					 return AppConstants.ACTUAL;
+				 }else{
+					 log.error("checked password is not correct with hyjbxxid:"+hyjbxxid);
+					 return AppConstants.VIRTUAL;
 				 }
 			 }
 	    } catch (RuntimeException re) {
-	         log.error("find Hyjbxx instance by property password failed", re);
+	         log.error("check password failed with property hyjbxxid:"+hyjbxxid, re);
 	         throw re;
 	    }
 		return AppConstants.VIRTUAL;
