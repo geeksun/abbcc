@@ -25,6 +25,13 @@ public class AppConstants {
 	public static final String ACCESS_FIRST = "access_first";
 	
 	
+	
+	//操作标记
+	public static final String MODIFY_PASS = "modify_pass";
+	public static final String UPDATE_DATAILINDO = "update_detailInfo";
+	
+	
+	
 	//公司基本信息修改成功后,跳转到详细信息页面的提示信息
 	public static final String BASICINFOUPDATED = "basicInfoUpdated";
 	
