@@ -8,7 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletRequest;
 
 /**
- * 字符操作工具
+ *  字符操作工具
  * @author Csdn 姜志强  
  *  collective:集思广益
  *  create 2008-12-10 23:33:33
@@ -111,4 +111,6 @@ public class StringUtils {
         }
         return map;
     } 
+    
+    
 }
