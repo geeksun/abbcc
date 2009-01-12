@@ -3,6 +3,8 @@ package com.abbcc.common;
 /**
  * @author geeksun
  * @category 工具类
+ * @see 存放操作的常量字符串
+ *  create by 2009-1-12
  */
 public class AppConstants {
 	//	用来存放应用里的常量
@@ -19,16 +21,25 @@ public class AppConstants {
 	
 	//顶级种类ID
 	public static final String TOPCATEGORYID = "0";
-	public static final int PRODUCT_TYPE_TOP_ID=0;
+	public static final int PRODUCT_TYPE_TOP_ID = 0;
 
-	//访问标记
-	public static final String ACCESS_FIRST = "access_first";
 	
-	
-	
-	//操作标记
+	//访问标记和操作标记name
+	public static final String ACCESS_MARK = "access_mark";
+	public static final String OPERA_FLAG = "opera_flag";
+	public static final String DISPLAY_FLAG = "display_flag";
 	public static final String MODIFY_PASS = "modify_pass";
+	
 	public static final String UPDATE_DATAILINDO = "update_detailInfo";
+	
+	
+	//访问标记和操作标记value
+	public static final String ACCESS_FIRST = "access_first";
+	public static final String ACCESS_QUESTION_PASSWORD = "access_question_password";
+	public static final String MODIFY_PASS_QUESTION = "modify_pass_question";
+	//服务异常500
+	public static final String DISPLAY_CRASH = "display_crash";
+	
 	
 	
 	
@@ -57,4 +68,7 @@ public class AppConstants {
 	public static final String PRODUCT_SALE="1";//供应
 	public static final String PRODUCT_BUY="2";//求购
 	public static final String PRODUCT_QUICK_BUY="3";
+	
+	
+	
 }
