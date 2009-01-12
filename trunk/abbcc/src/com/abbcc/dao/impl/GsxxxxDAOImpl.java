@@ -235,7 +235,9 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 	public Gsxxxx getGsxxxxById(String hyjbxxid) {
 		log.debug("find Gsxxxx  by  property hyjbxxid:" + hyjbxxid);
 		try{
-			return (Gsxxxx)getHibernateTemplate().get("com.abbcc.pojo.Gsxxxx", new Integer(hyjbxxid));
+			int intHyjbxxid = Integer.parseInt(hyjbxxid);
+			//return (Gsxxxx)getHibernateTemplate().get("com.abbcc.pojo.Gsxxxx", new Integer(intHyjbxxid));
+			return (Gsxxxx)getHibernateTemplate().get("com.abbcc.pojo.Gsxxxx", Integer.valueOf(intHyjbxxid));
 		}catch(RuntimeException re){
 			log.error("find Gsxxxx by property hyjbxxid failed", re);
 			throw re;
