@@ -10,39 +10,7 @@
 	<head>
 		<title>公司详细信息</title>
 		<link rel="stylesheet" type="text/css" href="<%=path%>/css/service.css">
-		<script type="text/javascript">
-		//blur/Click事件的控制函数打勾图片控制函数
-		function blurEvent(img,dom){
-			if(dom.value==''){
-				rightImg(img,0);
-			}else
-				rightImg(img,1);
-		}
-		//打勾图片控制包括初始化
-		function rightImg(cmd,state){
-			if(cmd==999){
-			blurEvent3();
-			blurEvent4();
-			for(var i=0;i<19;i++){
-			if(document.getElementsByName('rightImg')[i])
-			{
-				document.getElementsByName('rightImg')[i].style.display = "none";}
-			}
-			}
-			else if(state==0){
-			if(document.getElementsByName('rightImg')[cmd])
-			{
-				document.getElementsByName('rightImg')[cmd].style.display = "none";}
-			}
-			else{
-				if(document.getElementsByName('rightImg')[cmd])
-				{
-					document.getElementsByName('rightImg')[cmd].style.display = "";}
-			    }
-         }
-	</script>
 	</head>
-
 	<body>
 		<c:set var="gxxx" value="${gsxxxx}" scope="page"></c:set>
 		<div><h3><font color="blue">
@@ -72,7 +40,7 @@
 						注册资本：
 					</td>
 					<td>
-						<input type="text" name="zczb"  size="10" value="${gxxx.zczb }">
+						<input type="text" name="zczb"  size="14" value="${gxxx.zczb }">
 						元
 						<SPAN class=note>（最多选择2种经营模式）</SPAN>
 					</td>
@@ -82,7 +50,7 @@
 						公司成立时间：
 					</td>
 					<td>
-						<input type="text" name="gsclsj"  size="10" value="${gxxx.gsclsj }">
+						<input type="text" name="gsclsj"  size="14" value="${gxxx.gsclsj }">
 						<SPAN class=note>(年份，如：2004)</SPAN>
 					</td>
 				</tr>
@@ -125,7 +93,7 @@
 					</td>
 					<td>
 						<input type="text" name="cfmj"  size="30" value="${gxxx.cfmj }">
-						（平方米）
+						<SPAN class=note>（平方米）</SPAN>
 					</td>
 				</tr>
 				<tr>
@@ -602,11 +570,10 @@
 							<OPTION value=7 <%=ncke.equals("7")?"selected":"" %>>
 								人民币 1 亿元以上
 							</OPTION>
-						</SELECT>
-						<br>
-						<DIV class=note style="MARGIN-TOP: 5px">
-							请准确选择您的年进出口额,同时“年出口额”不能大于“年营业额”
-						</DIV>
+						</SELECT><br>
+						<FONT class=note>
+							（请准确选择您的年进出口额,同时“年出口额”不能大于“年营业额”）
+						</FONT>
 					</td>
 				</tr>
 				<tr>
@@ -791,7 +758,7 @@
 				</tr>
 				<tr>
 				<td>主要客户群：</td>
-				<td><INPUT  maxLength=64 size=30 name=zykhq value="${gxxx.zykhq}"> 
+				<td><INPUT  maxLength=60 size=30 name=zykhq value="${gxxx.zykhq}" > 
 				<SPAN class=note>如：超市、服装厂、印染厂</SPAN></td>
 				</tr>
 				<tr>

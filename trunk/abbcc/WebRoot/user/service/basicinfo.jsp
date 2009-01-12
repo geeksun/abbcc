@@ -6,16 +6,11 @@
 	request.setCharacterEncoding("gbk");
 	String path = request.getContextPath();
 %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>basicinfo of company</title>
-    <style type="text/css">
-    	.note { 
-			COLOR: #999999
-		}
-    </style>   
+    <link rel="stylesheet" type="text/css" href="<%=path%>/css/service.css">
     <script src="<%=path%>/js/json.js"></script>
     <script src="<%=path%>/js/prototype.js"></script> 
 	<script type="text/javascript">
@@ -74,6 +69,9 @@
 	</script>
   </head>
   <body>
+  <div><h3><font color="blue">
+		公司介绍
+  </font></h3></div>
   <p>
   	公司基本资料
   </p>
@@ -84,25 +82,21 @@
   	<input type="hidden" name="product">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
     	<tr> 
-    		<td align=right>公司名称：*</td><td><input type="text" name="gsmc" value="${gsjbxx.gsmc}"  size="40"></td>
+    		<td align=right>公司名称：<font color=red>*</font></td><td><input type="text" name="gsmc" value="${gsjbxx.gsmc}"  size="40"></td>
     	</tr>
     	<tr>
-    	<%
-    		Gsjbxx gsjbxx = (Gsjbxx)request.getAttribute("gsjbxx");
-    		String qylx = gsjbxx.getQylx();
-    	 %>
-    		<td align=right>企业类型：*</td>
+    		<td align=right>企业类型：<font color=red>*</font></td>
     		<td><select name="qylx" >
-    			<option value="10" <%=qylx.equals("10")?"selected":"" %>>其他</option>
-					<option value="1" <%=qylx.equals("1")?"selected":"" %>>有限责任公司(独资)</option>
-					<option value="2" <%=qylx.equals("2")?"selected":"" %>>股份有限公司(上市)</option>
-					<option value="3" <%=qylx.equals("3")?"selected":"" %>>股份有限公司(非上市)</option>
-					<option value="4" <%=qylx.equals("4")?"selected":"" %>>全民所有制企业</option>
-					<option value="5" <%=qylx.equals("5")?"selected":"" %>>集体所有制企业</option>
-					<option value="6" <%=qylx.equals("6")?"selected":"" %>>中外合资经营企业</option>
-					<option value="7" <%=qylx.equals("7")?"selected":"" %>>中外合作经营企业</option>
-					<option value="8" <%=qylx.equals("8")?"selected":"" %>>外商独资企业</option>
-					<option value="9" <%=qylx.equals("9")?"selected":"" %>>私营企业</option>
+    			<option value="0" <c:if test="${gsjbxx.qylx=='0'}">selected</c:if>>其他</option>
+					<option value="1" <c:if test="${gsjbxx.qylx=='1'}">selected</c:if>>有限责任公司(独资)</option>
+					<option value="2" <c:if test="${gsjbxx.qylx=='2'}">selected</c:if>>股份有限公司(上市)</option>
+					<option value="3" <c:if test="${gsjbxx.qylx=='3'}">selected</c:if>>股份有限公司(非上市)</option>
+					<option value="4" <c:if test="${gsjbxx.qylx=='4'}">selected</c:if>>全民所有制企业</option>
+					<option value="5" <c:if test="${gsjbxx.qylx=='5'}">selected</c:if>>集体所有制企业</option>
+					<option value="6" <c:if test="${gsjbxx.qylx=='6'}">selected</c:if>>中外合资经营企业</option>
+					<option value="7" <c:if test="${gsjbxx.qylx=='7'}">selected</c:if>>中外合作经营企业</option>
+					<option value="8" <c:if test="${gsjbxx.qylx=='8'}">selected</c:if>>外商独资企业</option>
+					<option value="9" <c:if test="${gsjbxx.qylx=='9'}">selected</c:if>>私营企业</option>
 				</select>
     		</td>
     	</tr>
@@ -113,6 +107,7 @@
     			var jymsArray = new Array();
     			<%
     				String jyms = "";
+    				Gsjbxx gsjbxx = (Gsjbxx)request.getAttribute("gsjbxx");
     				if(gsjbxx!=null)
     					jyms = gsjbxx.getJyms();
     					if(jyms!=null&&!jyms.equals("")){
@@ -157,7 +152,7 @@
     		</td>
     	</tr>
     	<tr>
-    		<td align=right>主要经营地点：*</td>
+    		<td align=right>主要经营地点：<font color=red>*</font></td>
     		<td><input type="text" name="jydz" value="${gsjbxx.jydz }" size="40">
     		<span class=note>（请填写业务部门工作地点）</span></td>
     	</tr>
@@ -232,7 +227,7 @@
               </tbody>
     		</table>
     		<tr>
-    		<td>公司简介：<font color=red>*</font>(最多可输入1000字，还剩<input readOnly maxLength="4" size="4" value="1000" name="remLen">字)</td>
+    		<td>公司简介：<font color=red>*</font>(最多可输入1000字)</td>
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
     		<textarea name="gsjs" rows=10 cols=50  ><c:out value="${gsjbxx.gsjs}"/>
@@ -245,7 +240,7 @@
     	</p>
     	<table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C">
                <tr>
-               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="zsxm" value="${hyjbxx.zsxm}"" ><SPAN class=note> 
+               <td align=right> 姓名：<font color=red>*</font></td><td><input type="text" name="zsxm" value="${hyjbxx.zsxm}" size=20><SPAN class=note> 
                   请填写贵公司的联系人(2～30个汉字)。</SPAN></td>
                </tr>
                <tr>
@@ -283,7 +278,7 @@
                <td align=right>公司所在地：<font color=red>*</font></td><td><input type=text name="gsszd" value="${hyjbxx.gsszd }" size=54></td>
                </tr>
                <tr>
-               <td align=right>Email:<font color=red>*</font></td><td><input type=text name="dzyx" value="${hyjbxx.dzyx }" ></td>
+               <td align=right>Email:<font color=red>*</font></td><td><input type=text name="dzyx" value="${hyjbxx.dzyx }" size=27></td>
                </tr>
     	</table>
     	<p align=center>
@@ -331,7 +326,6 @@
 				leafCatFormKey[i] = new Option(result[i].name,result[i].id);
 			}													
 	  	} 
-	  	
 	  	//添加选项
 	    function addOptions(src, dst,secCategories,topCategories) {
 		   var selected_value = [];
@@ -350,7 +344,6 @@
 			      break;
 			   }
 		   }
-		
 		   for(var i = 0;i<topCategories.length;i++)
 		   {
 			   if(topCategories[i].selected)
@@ -359,7 +352,6 @@
 				   break;
 			   }
 		   }
-		 
 		   // Get items from dst
 		   for(var i = 0; i < dst.length; i++) {
 		      selected_value[selected_value.length] = dst[i].value;
@@ -370,7 +362,6 @@
 		      alert('您最多可选择6个“主营行业”！');
 		      return ;
 		   }
-		
 		   // Get items from src
 		   for(var i = 0; i < src.length; i++){
 		      if(src[i].selected) {
@@ -382,7 +373,6 @@
 		              break;
 		           }
 		        }
-		
 		     if(exists&&exists==1)
 		     {
 			     alert('您已经选择过该“主营行业”！');
@@ -433,7 +423,6 @@
 		    }
 		    zyhy = selected_value;
   	  	}
-  
   		function removeOptions(src, dst) {
 		    for(var i = 0; i < src.length; i++) {
 		    	if(src[i].selected) src[i] =null;

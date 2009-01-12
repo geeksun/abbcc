@@ -103,7 +103,7 @@
     </TD></TR>
     </TBODY>
     </TABLE><BR>
-    <c:if test="${access_mark=='access_first'}">
+    <c:if test="${access_mark=='access_first'||access_mark=='access_question_password'}">
 	<TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
 	  <TBODY>
 	  <TR>
@@ -137,8 +137,9 @@
 name=modifyPassword action="modifyPassword.do" method=post>
 <TABLE style="BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid" 
 cellSpacing=0 cellPadding=0 width="100%" border=0>
-<INPUT type="hidden" value="${promptQuestionInfo}" name="promptQuestionInfo"> 
 <INPUT type="hidden" value="ModifyPasswordHandle" name="action"> 
+<INPUT type="hidden" value="${truename }" name="truename"> 
+<INPUT type="hidden" value="${memberId }" name="memberId"> 
   <TBODY>
   <TR>
     <TD class=list_left_box vAlign=top>旧密码：</TD>
@@ -192,10 +193,8 @@ name=setQuestionAboutPassword action="modifyPassword.do" method=post>
 <TABLE style="BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-BOTTOM: #dddddd 1px solid" 
 cellSpacing=0 cellPadding=0 width="100%" border=0>
   <INPUT type="hidden" value="questionAboutPasswordAction" name="action"> 
-  <input type="hidden" value="${access_mark }" name="access_mark">
   <input type="hidden" value="${truename}" name="truename">
   <input type="hidden" value="${memberId}" name="memberId">
-  <input type="hidden" value="${promptPasswordInfo}" name="promptPasswordInfo">
   <TR>
     <TD class=list_left_box vAlign=top>密码保护问题：</TD>
     <TD class=list_right_box>
@@ -221,7 +220,6 @@ cellSpacing=0 cellPadding=0 width="100%" border=0>
   </TR>
  </TABLE>
  </FORM>
-
-    
+ 
   </body>
 </html>
