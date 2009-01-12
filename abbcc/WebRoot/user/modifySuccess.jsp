@@ -27,7 +27,9 @@
     <TD class=c height=20><FONT 
       color=#ff3300><B>设置成功！</B></FONT>
       请牢记您的密码保护问题及答案。您可以通过回答密码保护问题来取回密码。 
-      <INPUT class=M onclick="javascript:document.location='http://china.alibaba.com/member/modify_password.htm'" type=submit value=" 返 回 " name=Submit>
+      <!-- <INPUT class=M onclick="javascript:document.location='http://china.alibaba.com/member/modify_password.htm'" type=submit value=" 返 回 " name=Submit>
+       -->
+       <INPUT class=M onclick="javascript:history.back(1)" type=submit value=" 返 回 " name=Submit>
       </TD></TR></TBODY></TABLE>
       
       
