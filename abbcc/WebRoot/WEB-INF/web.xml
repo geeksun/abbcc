@@ -79,10 +79,12 @@
     <url-pattern>/buildImage</url-pattern>
   </servlet-mapping>
   
-  <!-- FCK editor begin -->
+	<!-- FCK editor begin -->
+	<!-- 浏览文件 -->
     <servlet>
         <servlet-name>Connector</servlet-name>
         <servlet-class>com.fredck.FCKeditor.connector.ConnectorServlet</servlet-class>
+        <!-- 文件位置 -->
         <init-param>
             <param-name>baseDir</param-name>
             <param-value>/UserFiles/</param-value>
@@ -93,9 +95,11 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <!-- 上传文件 -->
     <servlet>
         <servlet-name>SimpleUploader</servlet-name>
         <servlet-class>com.fredck.FCKeditor.uploader.SimpleUploaderServlet</servlet-class>
+        <!-- 文件上传位置 -->
         <init-param>
             <param-name>baseDir</param-name>
             <param-value>/UserFiles/</param-value>
@@ -104,6 +108,7 @@
             <param-name>debug</param-name>
             <param-value>true</param-value>
         </init-param>
+        <!-- 是否上传 -->
         <init-param>
             <param-name>enabled</param-name>
             <param-value>true</param-value>
@@ -137,12 +142,11 @@
 
   <servlet-mapping>
     <servlet-name>Connector</servlet-name>
-    <url-pattern>/fckeditor/connector</url-pattern>
+    <url-pattern>/FCKeditor/editor/filemanager/browser/default/connectors/jsp/connector</url-pattern>
   </servlet-mapping>
-  
   <servlet-mapping>
     <servlet-name>SimpleUploader</servlet-name>
-    <url-pattern>/fckeditor/simpleuploader</url-pattern>
+    <url-pattern>/FCKeditor/editor/filemanager/upload/simpleuploader</url-pattern>
   </servlet-mapping>
   <!-- FCK end -->
   
