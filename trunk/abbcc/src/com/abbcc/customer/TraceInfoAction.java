@@ -3,7 +3,6 @@ package com.abbcc.customer;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +29,7 @@ import com.abbcc.struts.action.BaseAction;
 /**
  * @author geeksun
  *  2008.12.5
- *  会员和公司的信息管理
+ *  会员用户,会员公司的信息管理和用户密码修改
  */
 public class TraceInfoAction extends BaseAction {
 	private HyjbxxService hyjbxxService;
@@ -214,8 +213,10 @@ public class TraceInfoAction extends BaseAction {
 			if(gsxxxx!=null){
 				request.setAttribute("gsxxxx", gsxxxx);
 			}else{
+				// 出现数据丢失或遗漏，增加新详细信息对象
 				log.info("add new Gsxxxx instance because lose the object in handling updateBasicInfo");
- 				gsxxxx.setHyjbxxid(Integer.valueOf(hyjbxxid));
+				gsxxxx = new Gsxxxx();
+ 				gsxxxx.setHyjbxxid(Integer.valueOf(intHyjbxxid));
  				hyjbxxService.addLoseObject(gsxxxx);
 			}
 			
@@ -282,14 +283,15 @@ public class TraceInfoAction extends BaseAction {
  			}
 			
  			//设置公司信息成功提交标记,用来区分不同的提交操作
- 			request.setAttribute("flag", "");
+ 			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.UPDATE_DATAILINDO);
 			return mapping.findForward("modifySuccess");
 	}
 	
 	/**
 	 *  @see 基本信息设置-->用户修改密码
+	 *   show:真实姓名和会员登录名memberId
 	 */
-	public ActionForward displayModify(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+	public ActionForward displayModifyCipher(ActionMapping mapping, ActionForm form,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			HttpSession session = request.getSession(false);
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
@@ -298,9 +300,12 @@ public class TraceInfoAction extends BaseAction {
 			if(hyjbxx!=null){
 				request.setAttribute("truename", hyjbxx.getZsxm());
 				request.setAttribute("memberId", hyjbxx.getHydlm());
-				request.setAttribute("access_mark", AppConstants.ACCESS_FIRST);
+				request.setAttribute(AppConstants.ACCESS_MARK, AppConstants.ACCESS_FIRST);
 			}else{
-				log.debug("modifyPassword handle failed,not find Hyjbxx instance by hyjbxxid");
+				log.debug("modifyPassword handle failed,not find Hyjbxx instance by hyjbxxid："+hyjbxxid);
+				//服务器异常500
+				request.setAttribute(AppConstants.DISPLAY_FLAG, AppConstants.DISPLAY_CRASH);
+				return mapping.findForward("service_exception");
 			}
 			
 			return mapping.findForward("modify_password");
@@ -314,32 +319,28 @@ public class TraceInfoAction extends BaseAction {
 			HttpSession session = request.getSession(false);
 			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
 			
-			/*Map map = StringUtils.getParameter(request, new String[2]);
-			String old_password = (String) map.get("old_password");
-			String new_password = (String) map.get("new_password");*/
-			/*String old_password = (String)request.getParameter("old_password");
-			String new_password = (String)request.getParameter("new_password");*/
 			DynaActionForm modifyPassword = (DynaActionForm)form;
 			String old_password = (String) modifyPassword.get("old_password");
 			String new_password = (String) modifyPassword.get("new_password");
-			String promptQuestionInfo = (String) modifyPassword.get("promptQuestionInfo");
+			
+			String truename = modifyPassword.getString("truename");
+			String memberId = modifyPassword.getString("memberId");
+			if(StringUtils.isBlank(truename)) request.setAttribute("truename", truename);
+			if(StringUtils.isBlank(memberId)) request.setAttribute("memberId", memberId);
+			
+			//下面密码保护的提示信息
+			//String promptQuestionInfo = (String) modifyPassword.get("promptQuestionInfo");
 			
 			if(hyjbxxService.checkPassword(hyjbxxid, old_password)){
 				
 				hyjbxxService.updatePassword(hyjbxxid, new_password);
 			}else{
-				/*ActionMessages acm = new ActionMessages();
-				acm.add("promptPasswordInfo", new ActionMessage("promptPasswordInfo")); 
-				acm.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("promptPasswordInfo")); 
-				this.saveMessages(request, acm); */
 				request.setAttribute("promptPasswordInfo","·旧的密码错误，请重新输入！");
-				if(StringUtils.isBlank(promptQuestionInfo))
-					request.setAttribute("promptQuestionInfo", promptQuestionInfo);
 				return mapping.findForward("modify_password");
 			}
 			
 			//设置用户密码修改成功标记
-			request.setAttribute("flag", "");
+			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.MODIFY_PASS);
 			
 			return mapping.findForward("modifySuccess");
 	}
@@ -357,17 +358,14 @@ public class TraceInfoAction extends BaseAction {
 			String password_answer = (String) questionAboutPassword.get("password_answer");
 			String confirmAnswer = (String) questionAboutPassword.get("confirmAnswer");
 			
-			String access_mark = questionAboutPassword.getString("access_mark");
 			String truename = questionAboutPassword.getString("truename");
 			String memberId = questionAboutPassword.getString("memberId");
-			String promptPasswordInfo = questionAboutPassword.getString("promptPasswordInfo");
+
+			if(StringUtils.isBlank(truename)) request.setAttribute("truename", truename);
+			if(StringUtils.isBlank(memberId)) request.setAttribute("memberId", memberId);
 			
-			//设置密码保护问题设置成功标记
-			//request.setAttribute("flag", "");
-			request.setAttribute("access_mark", access_mark);
-			request.setAttribute("truename", truename);
-			request.setAttribute("memberId", memberId);
-			request.setAttribute("promptPasswordInfo", promptPasswordInfo);
+			//访问标记,密码保护问题
+			request.setAttribute(AppConstants.ACCESS_MARK, AppConstants.ACCESS_QUESTION_PASSWORD);
 			
 			if(password_question.trim().equals("")){
 				request.setAttribute("promptQuestionInfo", "·密码保护问题不能为空");
@@ -393,15 +391,14 @@ public class TraceInfoAction extends BaseAction {
 				return mapping.findForward("modify_password");	
 			}
 			
-			//Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			if(hyjbxxService.updateQuestion(hyjbxxid, password_question, password_answer)>0){
-				
+				request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.MODIFY_PASS_QUESTION);
 				return mapping.findForward("modifySuccess");
 			}else{
+				log.error("update question about password failed by hyjbxxid:"+hyjbxxid);
 				request.setAttribute("updateQuestionAboutPassword", "·机器繁忙，请换个时间段再试。");
 				return mapping.findForward("modifyFail");
 			}
 	}
-	
 	
 }
