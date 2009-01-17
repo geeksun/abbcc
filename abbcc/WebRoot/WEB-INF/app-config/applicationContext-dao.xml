@@ -24,10 +24,17 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
+	<bean id="honorDao" class="com.abbcc.dao.impl.HonorDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean> 
 	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
+	</bean>
+	<bean id="smartUpload" class="com.jspsmart.upload.SmartUpload" >
 	</bean>
 	
 	<bean id="productDao" class="com.abbcc.dao.impl.ProductDAOImpl" >
