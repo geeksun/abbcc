@@ -110,7 +110,8 @@
 	    <TD vAlign=top align=center width=80 rowSpan=2>
 	    <IMG height=53 src="<%=path%>/images/service/icon1.gif" width=53></TD>
 	    <TD class=tx_title height=20>您的姓名是：<c:out value="${truename}"></c:out>
-	<BR>您的会员登录名是：<c:out value="${memberId}"></c:out></TD></TR></TBODY></TABLE><BR>
+	<BR>您的会员登录名是：<c:out value="${memberId}"></c:out></TD></TR></TBODY>
+	</TABLE><BR>
 	</c:if>	
     
   <c:if test="${promptPasswordInfo!=null}">
