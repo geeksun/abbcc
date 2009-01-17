@@ -143,10 +143,9 @@
 	    <!-- 公司实力信息 -->
 	    <action path="/strengthInfo" scope="request" name="honorCertificateForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="honor_certificate" path="/user/service/honor_certificate.jsp"></forward>
-	    	
+	    	<forward name="technology" path="/user/service/technology.jsp"></forward>
+	    	<forward name="company_logo" path="/user/service/company_logo.jsp"></forward>
 	    </action>
-	     <action path="/test" name="test" type="org.springframework.web.struts.DelegatingActionProxy">
-		</action>
 	    
 	    <action path="/productInfo" parameter="method"
 			type="com.abbcc.customer.ProductInfoAction">

@@ -65,5 +65,41 @@
       </TD></TR>
       </TBODY></TABLE> 	
   </c:if>
+  <c:if test="${opera_flag=='technology_refer'}">
+ 	<TABLE cellSpacing=0 cellPadding=0 width="100%">
+  	<TBODY>
+  	<TR>
+    <TD class=bigtitle width="53%">公司技术实力</TD>
+    <TD align=right width="47%">
+    </TD></TR></TBODY>
+    </TABLE><BR>
+  <TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=center width=80 rowSpan=2>
+    <IMG height=53 src="<%=path%>/images/service/icon1.gif" width=53></TD>
+    <TD class=c height=20>
+    <FONT color=#ff3300><B>贵公司技术实力信息已提交成功！</B></FONT>	请继续进行其他操作。
+      </TD></TR>
+      </TBODY></TABLE> 	
+  </c:if>
+    <c:if test="${opera_flag=='companylogo_refer'}">
+ 	<TABLE cellSpacing=0 cellPadding=0 width="100%">
+  	<TBODY>
+  	<TR>
+    <TD class=bigtitle width="53%">公司标志</TD>
+    <TD align=right width="47%">
+    </TD></TR></TBODY>
+    </TABLE><BR>
+  <TABLE class=tx_box cellSpacing=0 cellPadding=0 width="100%" align=center>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=center width=80 rowSpan=2>
+    <IMG height=53 src="<%=path%>/images/service/icon1.gif" width=53></TD>
+    <TD class=c height=20>
+    <FONT color=#ff3300><B>贵公司标志信息已提交成功！</B></FONT>	请继续进行其他操作。
+      </TD></TR>
+      </TBODY></TABLE> 	
+  </c:if>
   </body>
 </html>
