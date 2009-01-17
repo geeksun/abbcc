@@ -68,4 +68,6 @@ public class TypeChange {
 		String strday = TypeChange.dateToString(day);
 		System.out.println(strday);
 	}
+	
+	
 }
