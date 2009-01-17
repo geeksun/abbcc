@@ -28,8 +28,8 @@
      	<dd><a href="<%=path%>/modifyPassword.do?action=displayModifyCipher" target="right">后台密码修改</a></dd>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">公司简介</a></dd> 
      	<dd><a href="<%=path%>/strengthInfo.do?action=displayHonorCertificate" target="right">荣誉证书</a></dd>
-     	<dd><a href="#">技术实力</a></dd>
-     	<dd><a href="#">上传公司标志</a></dd>
+     	<dd><a href="<%=path%>/strengthInfo.do?action=displayTechnology" target="right">技术实力</a></dd>
+     	<dd><a href="<%=path%>/strengthInfo.do?action=displayCompanyLogo" target="right">上传公司标志</a></dd>
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">供求管理</dt>
