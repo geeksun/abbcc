@@ -29,14 +29,21 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean> 
-	<bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+	<!--  <bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean> -->
+	<bean id="companyDao" class="com.abbcc.dao.impl.CompanyLogoDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	<bean id="smartUpload" class="com.jspsmart.upload.SmartUpload" >
+	<bean id="techDao" class="com.abbcc.dao.impl.TechnologyDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
 	</bean>
-	
 	<bean id="productDao" class="com.abbcc.dao.impl.ProductDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
