@@ -1,25 +1,7 @@
 /*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
  * Copyright (C) 2003-2008 Frederico Caldeira Knabben
- *
- * == BEGIN LICENSE ==
- *
- * Licensed under the terms of any of the following licenses at your
- * choice:
- *
- *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
- *
- *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
- *
- *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
- *
- * == END LICENSE ==
- *
  * Editor configuration settings.
- *
  * Follow this link for more information:
  * http://docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/Configuration/Configuration_Options
  */
@@ -120,10 +102,10 @@ FCKConfig.ToolbarSets["Default"] = [
 ] ;
 
 FCKConfig.ToolbarSets["Basic"] = [
-	['Bold','Italic','Underline','-','Preview',/*'Image',*/'-','OrderedList','UnorderedList','-','Cut','Copy','Paste'
+	['Bold','Italic','Underline','-','Preview','Image','-','OrderedList','UnorderedList','-','Cut','Copy','Paste'
 	],
-	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','-','FitWindow','About'],
-	['Style','FontFormat','FontName','FontSize','-','TextColor','BGColor']
+	['JustifyLeft','JustifyCenter','JustifyRight',/*'JustifyFull',*/'-','FitWindow'/*,'About'*/],
+	[/*'Style','FontFormat',*/'FontName','FontSize','-','TextColor','BGColor']
 ] ;
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br
@@ -178,12 +160,12 @@ FCKConfig.DisableObjectResizing = false ;
 FCKConfig.DisableFFTableHandles = true ;
 
 FCKConfig.LinkDlgHideTarget		= false ;
-FCKConfig.LinkDlgHideAdvanced	= false ;
+FCKConfig.LinkDlgHideAdvanced	= true ;
 
-FCKConfig.ImageDlgHideLink		= false ;
-FCKConfig.ImageDlgHideAdvanced	= false ;
+FCKConfig.ImageDlgHideLink		= true ;
+FCKConfig.ImageDlgHideAdvanced	= true ;
 
-FCKConfig.FlashDlgHideAdvanced	= false ;
+FCKConfig.FlashDlgHideAdvanced	= true ;
 
 FCKConfig.ProtectedTags = '' ;
 
@@ -296,9 +278,8 @@ FCKConfig.LinkBrowserWindowWidth	= FCKConfig.ScreenWidth * 0.7 ;		// 70%
 FCKConfig.LinkBrowserWindowHeight	= FCKConfig.ScreenHeight * 0.7 ;	// 70%
 
 //browser image server 
-//FCKConfig.ImageBrowser = true ;
 FCKConfig.ImageBrowser = false ;
-
+//FCKConfig.ImageBrowser = false ;
 //refactor FCKConfig.ImageBrowserURL
 //FCKConfig.ImageBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Image&Connector=' + encodeURIComponent( FCKConfig.BasePath + 'filemanager/connectors/' + _FileBrowserLanguage + '/connector.' + _FileBrowserExtension ) ;
 FCKConfig.ImageBrowserURL = FCKConfig.BasePath + 'filemanager/browser/default/browser.html?Type=Image&Connector=connectors/jsp/connector';
@@ -318,7 +299,7 @@ FCKConfig.LinkUploadURL = FCKConfig.BasePath + 'filemanager/upload/simpleuploade
 FCKConfig.LinkUploadAllowedExtensions	= ".(7z|aiff|asf|avi|bmp|csv|doc|fla|flv|gif|gz|gzip|jpeg|jpg|mid|mov|mp3|mp4|mpc|mpeg|mpg|ods|odt|pdf|png|ppt|pxd|qt|ram|rar|rm|rmi|rmvb|rtf|sdc|sitd|swf|sxc|sxw|tar|tgz|tif|tiff|txt|vsd|wav|wma|wmv|xls|xml|zip)$" ;			// empty for all
 FCKConfig.LinkUploadDeniedExtensions	= "" ;	// empty for no one
 
-FCKConfig.ImageUpload = false ;
+FCKConfig.ImageUpload = true ;
 //FCKConfig.ImageUploadURL = FCKConfig.BasePath + 'filemanager/connectors/' + _QuickUploadLanguage + '/upload.' + _QuickUploadExtension + '?Type=Image' ;
 FCKConfig.ImageUploadURL = FCKConfig.BasePath + 'filemanager/upload/simpleuploader?Type=Image';
 FCKConfig.ImageUploadAllowedExtensions	= ".(jpg|gif|jpeg|png|bmp)$" ;		// empty for all
