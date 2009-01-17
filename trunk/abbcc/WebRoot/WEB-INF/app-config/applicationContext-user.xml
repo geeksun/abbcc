@@ -14,6 +14,9 @@
 		<property name="gsxxxxDao">
 			<ref bean="gsxxxxDao"/>
 		</property>
+		<property name="honorDao">  
+			<ref bean="honorDao"/>
+		</property>
 	</bean> 
 	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
 		<property name="tradeInfoDao">
@@ -53,5 +56,11 @@
 			<ref local="hyjbxxService"/>
 		</property>
 	</bean>
-	
+	<bean name="/strengthInfo" class="com.abbcc.customer.StrengthInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/test" class="com.abbcc.customer.TestAction" scope="prototype">    
+	</bean>
 </beans>
