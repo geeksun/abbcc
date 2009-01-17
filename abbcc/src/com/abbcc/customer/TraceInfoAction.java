@@ -283,7 +283,7 @@ public class TraceInfoAction extends BaseAction {
  			}
 			
  			//设置公司信息成功提交标记,用来区分不同的提交操作
- 			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.UPDATE_DATAILINDO);
+ 			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.UPDATE_DATAILINFO);
 			return mapping.findForward("modifySuccess");
 	}
 	
