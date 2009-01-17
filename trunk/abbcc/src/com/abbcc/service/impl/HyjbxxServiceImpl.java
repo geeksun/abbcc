@@ -2,15 +2,19 @@ package com.abbcc.service.impl;
 
 import java.util.List;
 
-import com.abbcc.pojo.Honor;
-import com.abbcc.pojo.Hyjbxx;
-import com.abbcc.pojo.Gsjbxx;
-import com.abbcc.pojo.Gsxxxx;
-import com.abbcc.dao.HonorDAO;
-import com.abbcc.dao.HyjbxxDAO;
+import com.abbcc.common.AppConstants;
+import com.abbcc.dao.CompanyLogoDAO;
 import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.dao.GsxxxxDAO;
-import com.abbcc.common.AppConstants;
+import com.abbcc.dao.HonorDAO;
+import com.abbcc.dao.HyjbxxDAO;
+import com.abbcc.dao.TechnologyDAO;
+import com.abbcc.pojo.CompanyLogo;
+import com.abbcc.pojo.Gsjbxx;
+import com.abbcc.pojo.Gsxxxx;
+import com.abbcc.pojo.Honor;
+import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.pojo.Technology;
 import com.abbcc.service.HyjbxxService;
 
 public class HyjbxxServiceImpl implements HyjbxxService { 
@@ -18,6 +22,16 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	private GsjbxxDAO gsjbxxDao;
 	private GsxxxxDAO gsxxxxDao;
 	private HonorDAO honorDao;
+	private CompanyLogoDAO companyDao;
+	private TechnologyDAO techDao;
+
+	public void setCompanyDao(CompanyLogoDAO companyDao) {
+		this.companyDao = companyDao;
+	}
+
+	public void setTechDao(TechnologyDAO techDao) {
+		this.techDao = techDao;
+	}
 
 	public void setGsxxxxDao(GsxxxxDAO gsxxxxDao) {
 		this.gsxxxxDao = gsxxxxDao;
@@ -148,6 +162,30 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 
 	public void update(Honor honor) {
 		honorDao.update(honor);
+	}
+
+	public Technology findTechById(String hyjbxxid) {
+		return techDao.findById(hyjbxxid);
+	}
+	
+	public int add(Technology tech) {
+		return techDao.add(tech);
+	}
+
+	public void update(Technology tech) {
+		techDao.update(tech);
+	}
+	
+	public int add(CompanyLogo company) {
+		return companyDao.add(company);
+	}
+
+	public void update(CompanyLogo company) {
+		companyDao.update(company);
+	}
+
+	public CompanyLogo findLogoById(String hyjbxxid) {
+		return companyDao.findById(hyjbxxid);
 	}
 	
 	

@@ -2,10 +2,12 @@ package com.abbcc.service;
 
 import java.util.List;
 
+import com.abbcc.pojo.CompanyLogo;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
 import com.abbcc.pojo.Honor;
 import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.pojo.Technology;
 
 public interface HyjbxxService {
 	public int login(String name, String pass);
@@ -52,10 +54,20 @@ public interface HyjbxxService {
 	
 	public int add(Honor honor);
 	
-	public Honor findById(String hyjbxxid);
+	public Honor findById(String hyjbxxid); 
 	
 	public void update(Honor honor) ;
 	
+	public int add(Technology tech);
 	
+	public Technology findTechById(String hyjbxxid);
+	
+	public void update(Technology tech) ;
+	
+	public int add(CompanyLogo company);
+	
+	public CompanyLogo findLogoById(String hyjbxxid);
+	
+	public void update(CompanyLogo company) ;
 	
 }
