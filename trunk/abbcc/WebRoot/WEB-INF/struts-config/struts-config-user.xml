@@ -91,6 +91,18 @@
 			<form-property name="truename" type="java.lang.String"></form-property>
 			<form-property name="memberId" type="java.lang.String"></form-property>
 		</form-bean>
+		<!-- honorCertificateForm -->
+		<form-bean name="honorCertificateForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司荣誉证书 -->
+			<form-property name="content" type="java.lang.String"></form-property>
+			<form-property name="honorPicture" type="org.apache.struts.upload.FormFile"></form-property>
+			
+		</form-bean>
+		
+		 <form-bean name="test" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="honorPicture" type="org.apache.struts.upload.FormFile"/>
+			
+	</form-bean>
 	</form-beans>
  
 	<global-forwards>
@@ -106,10 +118,10 @@
 	     	<forward name="allMessageList" path="/user/message/allMessageList.jsp"></forward>
 	     	<forward name="showMessage" path="/user/message/getMessage.jsp"></forward>
 	    </action>
-	    <action path="/login" input="/user/index.jsp" name="loginForm" attribute="loginForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
+	    <action path="/login" input="/user/index.jsp" name="loginForm"  scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
 	     	<forward name="loginsuccess" path="/user/main.jsp"></forward>
 	    </action>
-	    <action path="/register" input="/user/register.jsp" name="registerForm" attribute="registerForm" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+	    <action path="/register" input="/user/register.jsp" name="registerForm"  scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
 	      	<forward name="registersuccess" path="/user/main.jsp"></forward>
 	    </action>
 	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
@@ -118,7 +130,7 @@
 	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
 	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
-	    	<forward name="honor_certificate" path="/user/service/honor_certificate.jsp"></forward>
+	    
 	    </action>
 	    <!-- 公司详细信息管理&&上述公司基本信息管理使用同一个类 -->
 	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
@@ -128,6 +140,13 @@
 	    <action path="/modifyPassword" scope="request" name="modifyPasswordForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
 	    	<forward name="modify_password" path="/user/service/modify_password.jsp"></forward>
 	    </action>
+	    <!-- 公司实力信息 -->
+	    <action path="/strengthInfo" scope="request" name="honorCertificateForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="honor_certificate" path="/user/service/honor_certificate.jsp"></forward>
+	    	
+	    </action>
+	     <action path="/test" name="test" type="org.springframework.web.struts.DelegatingActionProxy">
+		</action>
 	    
 	    <action path="/productInfo" parameter="method"
 			type="com.abbcc.customer.ProductInfoAction">
