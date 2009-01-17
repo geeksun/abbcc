@@ -23,7 +23,9 @@ import com.abbcc.common.AppConstants;
 import com.abbcc.common.StringUtils;
 import com.abbcc.common.TimeProcess;
 import com.abbcc.common.UploadUtil;
+import com.abbcc.pojo.CompanyLogo;
 import com.abbcc.pojo.Honor;
+import com.abbcc.pojo.Technology;
 import com.abbcc.service.HyjbxxService;
 import com.abbcc.struts.action.BaseAction;
 
@@ -72,7 +74,6 @@ public class StrengthInfoAction extends BaseAction {
 			Integer intHyjbxxid = Integer.valueOf(hyjbxxid);
 			
 			String content = request.getParameter("content");
-			
 			/*DynaActionForm honorForm = (DynaActionForm) form;
 			//上传的文件
 			FormFile file = (FormFile)honorForm.get("honorPicture");*/	
@@ -117,6 +118,116 @@ public class StrengthInfoAction extends BaseAction {
 				hyjbxxService.update(honor);
 			}
 			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.HONOR_REFER);
+			return mapping.findForward("modifySuccess");
+	}
+	
+	/**
+	 * @see 基本信息设置-->技术实力
+	 */
+	public ActionForward displayTechnology(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			
+			Technology tech = hyjbxxService.findTechById(hyjbxxid);
+			if(tech!=null){
+				//要在页面显示的内容
+				String content = tech.getTechInfo();
+				if(StringUtils.isBlank(content))
+						request.setAttribute("content", content);
+			}
+			
+			return mapping.findForward("technology");
+	}
+	
+	/**
+	 * @see 基本信息设置-->技术实力-->修改技术实力信息
+	 */
+	public ActionForward technologyHandle(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			Integer intHyjbxxid = Integer.valueOf(hyjbxxid);
+			
+			String content = request.getParameter("content");
+			
+			if(!StringUtils.isBlank(content)){
+				request.setAttribute(AppConstants.CHECKFILE_INFO, "提交的内容为空");
+				return mapping.findForward("technology");
+			}
+			Technology tech = hyjbxxService.findTechById(hyjbxxid);
+			if(tech==null){
+				tech = new Technology();
+				tech.setHyjbxxid(intHyjbxxid);
+				tech.setTechInfo(content);
+				Date date = new Date();
+				String handleTime = TimeProcess.timeFormat(date);
+				tech.setHandleTime(handleTime);
+				hyjbxxService.add(tech);
+			}else{
+				tech.setHyjbxxid(intHyjbxxid);
+				tech.setTechInfo(content);
+				Date date = new Date();
+				String handleTime = TimeProcess.timeFormat(date);
+				tech.setHandleTime(handleTime);
+				hyjbxxService.update(tech);
+			}
+			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.TECHNOLOGY_REFER); 
+			return mapping.findForward("modifySuccess");
+	}
+	
+	/**
+	 * @see 基本信息设置-->公司标志Logo
+	 */
+	public ActionForward displayCompanyLogo(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			
+			CompanyLogo company = hyjbxxService.findLogoById(hyjbxxid);
+			if(company!=null){
+				//要在页面显示的内容
+				String content = company.getLogoInfo();
+				if(StringUtils.isBlank(content))
+						request.setAttribute("content", content);
+			}
+			
+			return mapping.findForward("company_logo");
+	}
+	
+	/**
+	 * @see 基本信息设置-->公司标志-->修改公司 Logo信息
+	 */
+	public ActionForward companyLogoHandle(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+			Integer intHyjbxxid = Integer.valueOf(hyjbxxid);
+			
+			String content = request.getParameter("content");
+			
+			if(!StringUtils.isBlank(content)){
+				request.setAttribute(AppConstants.CHECKFILE_INFO, "提交的内容为空");
+				return mapping.findForward("company_logo");
+			}
+			CompanyLogo company = hyjbxxService.findLogoById(hyjbxxid);
+			if(company==null){
+				company = new CompanyLogo();
+				company.setHyjbxxid(intHyjbxxid);
+				company.setLogoInfo(content);
+				Date date = new Date();
+				String handleTime = TimeProcess.timeFormat(date);
+				company.setHandleTime(handleTime);
+				hyjbxxService.add(company);
+			}else{
+				company.setHyjbxxid(intHyjbxxid);
+				company.setLogoInfo(content);
+				Date date = new Date();
+				String handleTime = TimeProcess.timeFormat(date);
+				company.setHandleTime(handleTime);
+				hyjbxxService.update(company);
+			}
+			request.setAttribute(AppConstants.OPERA_FLAG, AppConstants.COMPANYLOGO_REFER);
 			return mapping.findForward("modifySuccess");
 	}
 	

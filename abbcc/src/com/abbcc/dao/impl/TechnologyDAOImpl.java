@@ -57,7 +57,7 @@ public class TechnologyDAOImpl extends BaseDaoImpl implements TechnologyDAO {
 		log.info("find Technology by property hyjbxxid:" + hyjbxxid);
 		try{
 			int intHyjbxxid = Integer.parseInt(hyjbxxid);
-			Technology tech = (Technology) getHibernateTemplate().get("com.abbcc.pojo.CompanyLogo", Integer.valueOf(intHyjbxxid));
+			Technology tech = (Technology) getHibernateTemplate().get("com.abbcc.pojo.Technology", Integer.valueOf(intHyjbxxid));
 			if(tech!=null){
 				return tech;
 			}
