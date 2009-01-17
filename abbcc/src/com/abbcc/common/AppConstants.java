@@ -29,14 +29,15 @@ public class AppConstants {
 	public static final String OPERA_FLAG = "opera_flag";
 	public static final String DISPLAY_FLAG = "display_flag";
 	public static final String MODIFY_PASS = "modify_pass";
-	
-	public static final String UPDATE_DATAILINDO = "update_detailInfo";
+	public static final String UPDATE_DATAILINFO = "update_detailInfo";
+	public static final String CHECKFILE_INFO = "checkfile_Info";
 	
 	
 	//访问标记和操作标记value
 	public static final String ACCESS_FIRST = "access_first";
 	public static final String ACCESS_QUESTION_PASSWORD = "access_question_password";
 	public static final String MODIFY_PASS_QUESTION = "modify_pass_question";
+	public static final String HONOR_REFER = "honor_refer";
 	//服务异常500
 	public static final String DISPLAY_CRASH = "display_crash";
 	
