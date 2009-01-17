@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
+import com.abbcc.pojo.Honor;
 import com.abbcc.pojo.Hyjbxx;
 
 public interface HyjbxxService {
@@ -47,5 +48,14 @@ public interface HyjbxxService {
 
 	public void updatePassword(String hyjbxxid, String new_password);
 
-	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);                         
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);      
+	
+	public int add(Honor honor);
+	
+	public Honor findById(String hyjbxxid);
+	
+	public void update(Honor honor) ;
+	
+	
+	
 }

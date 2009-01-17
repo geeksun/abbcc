@@ -1,9 +1,12 @@
 package com.abbcc.service.impl;
 
 import java.util.List;
+
+import com.abbcc.pojo.Honor;
 import com.abbcc.pojo.Hyjbxx;
 import com.abbcc.pojo.Gsjbxx;
 import com.abbcc.pojo.Gsxxxx;
+import com.abbcc.dao.HonorDAO;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.dao.GsjbxxDAO;
 import com.abbcc.dao.GsxxxxDAO;
@@ -14,6 +17,7 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	private HyjbxxDAO hyjbxxDao;
 	private GsjbxxDAO gsjbxxDao;
 	private GsxxxxDAO gsxxxxDao;
+	private HonorDAO honorDao;
 
 	public void setGsxxxxDao(GsxxxxDAO gsxxxxDao) {
 		this.gsxxxxDao = gsxxxxDao;
@@ -27,6 +31,10 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 		this.hyjbxxDao = hyjbxxDao;
 	}
 
+	public void setHonorDao(HonorDAO honorDao) {
+		this.honorDao = honorDao;
+	}
+	
 	public int login(String name, String pass) {
 		int validate = hyjbxxDao.findByProperty(name,pass);
 		return validate;
@@ -129,5 +137,19 @@ public class HyjbxxServiceImpl implements HyjbxxService {
 	public int updateQuestion(String hyjbxxid, String password_question, String password_answer) {
 		return hyjbxxDao.updateQuestion( hyjbxxid,  password_question,  password_answer);
 	}
+
+	public int add(Honor honor) {
+		return honorDao.add(honor);
+	}
+
+	public Honor findById(String hyjbxxid) {
+		return honorDao.findById(hyjbxxid);
+	}
+
+	public void update(Honor honor) {
+		honorDao.update(honor);
+	}
+	
+	
 	
 }
