@@ -1,23 +1,5 @@
-﻿/*
+/*
  * FCKeditor - The text editor for Internet - http://www.fckeditor.net
- * Copyright (C) 2003-2008 Frederico Caldeira Knabben
- *
- * == BEGIN LICENSE ==
- *
- * Licensed under the terms of any of the following licenses at your
- * choice:
- *
- *  - GNU General Public License Version 2 or later (the "GPL")
- *    http://www.gnu.org/licenses/gpl.html
- *
- *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
- *    http://www.gnu.org/licenses/lgpl.html
- *
- *  - Mozilla Public License Version 1.1 or later (the "MPL")
- *    http://www.mozilla.org/MPL/MPL-1.1.html
- *
- * == END LICENSE ==
- *
  * Scripts related to the Image dialog window (see fck_image.html).
  */
 
@@ -192,7 +174,6 @@ function LoadSelection()
 		GetE('txtLnkUrl').value		= sLinkUrl ;
 		GetE('cmbLnkTarget').value	= oLink.target ;
 	}
-
 	UpdatePreview() ;
 }
 
@@ -210,7 +191,6 @@ function Ok()
 	}
 
 	var bHasImage = ( oImage != null ) ;
-
 	if ( bHasImage && bImageButton && oImage.tagName == 'IMG' )
 	{
 		if ( confirm( 'Do you want to transform the selected image on a image button?' ) )
@@ -236,9 +216,7 @@ function Ok()
 	}
 
 	UpdateImage( oImage ) ;
-
 	var sLnkUrl = GetE('txtLnkUrl').value.Trim() ;
-
 	if ( sLnkUrl.length == 0 )
 	{
 		if ( oLink )
@@ -252,20 +230,16 @@ function Ok()
 		{
 			if ( !bHasImage )
 				oEditor.FCKSelection.SelectNode( oImage ) ;
-
 			oLink = oEditor.FCK.CreateLink( sLnkUrl )[0] ;
-
 			if ( !bHasImage )
 			{
 				oEditor.FCKSelection.SelectNode( oLink ) ;
 				oEditor.FCKSelection.Collapse( false ) ;
 			}
 		}
-
 		SetAttribute( oLink, '_fcksavedurl', sLnkUrl ) ;
 		SetAttribute( oLink, 'target', GetE('cmbLnkTarget').value ) ;
 	}
-
 	return true ;
 }
 
@@ -280,12 +254,10 @@ function UpdateImage( e, skipId )
 	SetAttribute( e, "hspace", GetE('txtHSpace').value ) ;
 	SetAttribute( e, "border", GetE('txtBorder').value ) ;
 	SetAttribute( e, "align" , GetE('cmbAlign').value ) ;
-
 	// Advances Attributes
 
 	if ( ! skipId )
 		SetAttribute( e, 'id', GetE('txtAttId').value ) ;
-
 	SetAttribute( e, 'dir'		, GetE('cmbAttLangDir').value ) ;
 	SetAttribute( e, 'lang'		, GetE('txtAttLangCode').value ) ;
 	SetAttribute( e, 'title'	, GetE('txtAttTitle').value ) ;
@@ -302,7 +274,6 @@ function UpdateImage( e, skipId )
 		SetAttribute( e, 'style', GetE('txtAttStyle').value ) ;
 	}
 }
-
 var eImgPreview ;
 var eImgPreviewLink ;
 
@@ -316,7 +287,6 @@ function SetPreviewElements( imageElement, linkElement )
 
 	bPreviewInitialized = true ;
 }
-
 function UpdatePreview()
 {
 	if ( !eImgPreview || !eImgPreviewLink )
@@ -336,7 +306,6 @@ function UpdatePreview()
 		eImgPreviewLink.style.display = '' ;
 	}
 }
-
 var bLockRatio = true ;
 
 function SwitchLock( lockButton )
@@ -353,7 +322,6 @@ function SwitchLock( lockButton )
 			OnSizeChanged( 'Height', GetE('txtHeight').value ) ;
 	}
 }
-
 // Fired when the width or height input texts change
 function OnSizeChanged( dimension, value )
 {
@@ -367,7 +335,6 @@ function OnSizeChanged( dimension, value )
 			e.value = '' ;
 			return ;
 		}
-
 		if ( dimension == 'Width' )
 			value = value == 0 ? 0 : Math.round( oImageOriginal.height * ( value  / oImageOriginal.width ) ) ;
 		else
@@ -376,10 +343,8 @@ function OnSizeChanged( dimension, value )
 		if ( !isNaN( value ) )
 			e.value = value ;
 	}
-
 	UpdatePreview() ;
 }
-
 // Fired when the Reset Size button is clicked
 function ResetSizes()
 {
@@ -389,13 +354,18 @@ function ResetSizes()
 		setTimeout( ResetSizes, 50 ) ;
 		return ;
 	}
-
-	GetE('txtWidth').value  = oImageOriginal.width ;
-	GetE('txtHeight').value = oImageOriginal.height ;
-
+	//custom pictrue size
+	//GetE('txtWidth').value  = oImageOriginal.width ;
+	//GetE('txtHeight').value = oImageOriginal.height ;
+	if ( oImageOriginal.width < 450 ) {
+	   GetE('txtWidth').value = oImageOriginal.width ;
+	   GetE('txtHeight').value = oImageOriginal.height ;
+	} else {
+	   GetE('txtWidth').value = 450 ;
+	   GetE('txtHeight').value = 450 * oImageOriginal.height / oImageOriginal.width ;
+	}
 	UpdatePreview() ;
 }
-
 function BrowseServer()
 {
 	OpenServerBrowser(
@@ -413,15 +383,12 @@ function LnkBrowseServer()
 		FCKConfig.LinkBrowserWindowWidth,
 		FCKConfig.LinkBrowserWindowHeight ) ;
 }
-
 function OpenServerBrowser( type, url, width, height )
 {
 	sActualBrowser = type ;
 	OpenFileBrowser( url, width, height ) ;
 }
-
 var sActualBrowser ;
-
 function SetUrl( url, width, height, alt )
 {
 	if ( sActualBrowser == 'Link' )
@@ -437,24 +404,20 @@ function SetUrl( url, width, height, alt )
 
 		if ( alt )
 			GetE('txtAlt').value = alt;
-
 		UpdatePreview() ;
 		UpdateOriginal( true ) ;
 	}
-
 	dialog.SetSelectedTab( 'Info' ) ;
 }
-
 function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
 {
 	// Remove animation
 	window.parent.Throbber.Hide() ;
 	GetE( 'divUpload' ).style.display  = '' ;
-
 	switch ( errorNumber )
 	{
 		case 0 :	// No errors
-			alert( 'Your file has been successfully uploaded' ) ;
+			alert( 'Your file has been successfully uploaded' ) ;					
 			break ;
 		case 1 :	// Custom error
 			alert( customMsg ) ;
@@ -463,7 +426,8 @@ function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
 			alert( customMsg ) ;
 			break ;
 		case 201 :
-			alert( 'A file with the same name is already available. The uploaded file has been renamed to "' + fileName + '"' ) ;
+			//custom prompt
+			//alert( 'A file with the same name is already available. The uploaded file has been renamed to "' + fileName + '"' ) ;
 			break ;
 		case 202 :
 			alert( 'Invalid file type' ) ;
@@ -478,35 +442,29 @@ function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
 			alert( 'Error on file upload. Error number: ' + errorNumber ) ;
 			return ;
 	}
-
 	sActualBrowser = '' ;
 	SetUrl( fileUrl ) ;
 	GetE('frmUpload').reset() ;
 }
-
 var oUploadAllowedExtRegex	= new RegExp( FCKConfig.ImageUploadAllowedExtensions, 'i' ) ;
 var oUploadDeniedExtRegex	= new RegExp( FCKConfig.ImageUploadDeniedExtensions, 'i' ) ;
-
 function CheckUpload()
 {
 	var sFile = GetE('txtUploadFile').value ;
-
 	if ( sFile.length == 0 )
 	{
 		alert( 'Please select a file to upload' ) ;
 		return false ;
 	}
-
+	var tempF = GetE('txtUploadFile');	
 	if ( ( FCKConfig.ImageUploadAllowedExtensions.length > 0 && !oUploadAllowedExtRegex.test( sFile ) ) ||
 		( FCKConfig.ImageUploadDeniedExtensions.length > 0 && oUploadDeniedExtRegex.test( sFile ) ) )
 	{
 		OnUploadCompleted( 202 ) ;
 		return false ;
 	}
-
 	// Show animation
 	window.parent.Throbber.Show( 100 ) ;
 	GetE( 'divUpload' ).style.display  = 'none' ;
-
 	return true ;
 }
