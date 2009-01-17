@@ -5,7 +5,8 @@ import java.util.Date;
 
 /**
  * @author geeksun
- *	时间的处理工具
+ *	时间处理工具
+ *  create at 2008-11-18
  */
 public class TimeProcess {
 	/**
