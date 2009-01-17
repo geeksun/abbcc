@@ -26,7 +26,7 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 
 	// 插入公司详细信息
 	public int add(Gsxxxx gsxxxx) {
-		log.debug("saving Gsxxxx instance");
+		log.info("saving Gsxxxx instance");
 		int flag = 0;
 		
 		Pz pz= this.updateAndGetPz(tableName);
@@ -65,7 +65,6 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		flag = pstmt.executeUpdate();
 		
 		this.updateTableCount(tableName);
-		log.debug("save Gsxxxx successful");
 		pstmt.close();
 		}catch(Exception e){
 			log.error("save Gsxxxx failed", e);
@@ -233,7 +232,7 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 	}
 
 	public Gsxxxx getGsxxxxById(String hyjbxxid) {
-		log.debug("find Gsxxxx  by  property hyjbxxid:" + hyjbxxid);
+		log.info("find Gsxxxx  by  property hyjbxxid:" + hyjbxxid);
 		try{
 			int intHyjbxxid = Integer.parseInt(hyjbxxid);
 			//return (Gsxxxx)getHibernateTemplate().get("com.abbcc.pojo.Gsxxxx", new Integer(intHyjbxxid));
@@ -249,7 +248,7 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 	 *  公司详细信息在发生数据遗失时，增加相对应的对象，根据hyjbxxid
 	 */
 	public void addLoseObject(Gsxxxx gsxxxx) {
-		log.debug("adding Gsxxxx lose instance");
+		log.info("adding Gsxxxx lose instance");
 		
 		long id=gsxxxx.getHyjbxxid();  
 		long page=id/Globals.COUNT;
@@ -286,7 +285,6 @@ public class GsxxxxDAOImpl extends BaseDaoImpl implements GsxxxxDAO {
 		pstmt.executeUpdate();
 		
 		this.updateTableCount(tableName);
-		log.debug("add Gsxxxx lose instance successful");
 		pstmt.close();
 		}catch(Exception e){
 			log.error("add Gsxxxx lose  instance failed", e);
