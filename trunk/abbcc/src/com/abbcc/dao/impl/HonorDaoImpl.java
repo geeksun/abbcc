@@ -11,10 +11,9 @@ import org.hibernate.Session;
 import com.abbcc.dao.HonorDAO;
 import com.abbcc.factory.Globals;
 import com.abbcc.pojo.Honor;
-import com.abbcc.pojo.Pz;
 
 public class HonorDaoImpl extends BaseDaoImpl implements HonorDAO {
-	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
+	private static final Log log = LogFactory.getLog(HonorDaoImpl.class);
 	public static final String HYJBXXID = "hyjbxxid";
 	private String tableName = "honor";
 
@@ -26,13 +25,10 @@ public class HonorDaoImpl extends BaseDaoImpl implements HonorDAO {
 		log.info("saving Honor instance");
 		long id = honor.getHyjbxxid();
 		this.updateAndGetPz(tableName);
-		//Pz pz= this.updateAndGetPz(tableName);
-		//long id=pz.getRecnum(); 
 		
-		//需要插入数据的表后缀_(分表序号),可能会造成一些表之间的数据分布不均,
 		long page=id/Globals.COUNT;
 		
-		int sign = 0;							//判断 sql 是否执行
+		int sign = 0;							
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		String sql = "INSERT INTO honor_" + page
@@ -41,11 +37,11 @@ public class HonorDaoImpl extends BaseDaoImpl implements HonorDAO {
 		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setLong(1, id);
-		pstmt.setString(2, honor.getHonorInfo());			//文件位置
-		pstmt.setString(3, honor.getCreateTime());   	//上传时间 
+		pstmt.setString(2, honor.getHonorInfo());		//公司荣誉信息
+		pstmt.setString(3, honor.getCreateTime());   	//操作时间 
 		
 		sign = pstmt.executeUpdate();
-		//this.updateTableCount(tableName);	//此项操作可取消,因为pz表中只能记录honor的总数,不能确定最大的id是多少
+		
 		pstmt.close();
 		}catch(Exception e){
 			log.error("save Honor instance failed by hyjbxxid:"+id, e);
@@ -100,7 +96,7 @@ public class HonorDaoImpl extends BaseDaoImpl implements HonorDAO {
 		pstmt.executeUpdate();
 		pstmt.close();
 		}catch(Exception e){
-			log.error("update failed with hyjbxxid:"+hid, e);
+			log.error("update honor failed with hyjbxxid:"+hid, e);
 			e.printStackTrace();
 		}finally{
 			try {
