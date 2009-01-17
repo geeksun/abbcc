@@ -17,6 +17,12 @@
 		<property name="honorDao">  
 			<ref bean="honorDao"/>
 		</property>
+		<property name="companyDao">  
+			<ref bean="companyDao"/>
+		</property>
+		<property name="techDao">  
+			<ref bean="techDao"/>
+		</property>
 	</bean> 
 	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
 		<property name="tradeInfoDao">
@@ -60,7 +66,5 @@
 		<property name="hyjbxxService">
 			<ref local="hyjbxxService"/>
 		</property>
-	</bean>
-	<bean name="/test" class="com.abbcc.customer.TestAction" scope="prototype">    
 	</bean>
 </beans>
