@@ -4,7 +4,6 @@ import com.abbcc.pojo.Honor;
 
 /**
  * Data access object (DAO) for domain model class Honor.
- * 
  * @see com.temp.util.Honor
  * @author MyEclipse Persistence Tools
  */
