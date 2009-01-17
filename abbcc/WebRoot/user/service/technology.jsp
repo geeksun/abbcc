@@ -6,7 +6,7 @@
 %>
 <html>
   <head>
-    <title>honor_certificate(荣誉证书)</title>
+    <title>技术实力</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gbk">
 	<link rel="stylesheet" type="text/css" href="<%=path%>/css/service.css">
 	<script type="text/javascript" src="<%=path%>/FCKeditor/fckeditor.js"></script>
@@ -45,19 +45,19 @@
   <TABLE cellSpacing=0 cellPadding=0 width="100%">
   <TBODY>
   <TR>
-    <TD class=bigtitle width="53%">公司荣誉证书</TD>
+    <TD class=bigtitle width="53%">公司技术实力</TD>
     <TD align=right width="47%">
     </TD></TR>
     </TBODY>
   </TABLE><BR>
   
   <form action="strengthInfo.do" name="honorCertificateForm" method="post" enctype="multipart/form-data">
-  	<input type="hidden" name="action" value="honorPictureHandle">
+  	<input type="hidden" name="action" value="technologyHandle">
    <table border="0" width="700">
    <tr>
    <td>
    	注:<font color=red>*</font> 上传的图片请不要超过1M
-	<textarea id="content" name="content" style="WIDTH: 100%; HEIGHT: 400px">${content }</textarea>
+	<textarea id="content" name="content" style="WIDTH: 100%; HEIGHT: 400px">${content}</textarea>
 	<script type="text/javascript">
 		var oFCKeditor = new FCKeditor('content') ;		//传入参数为表单元素（由FCKeditor生成的input或textarea）的name
 		oFCKeditor.BasePath = "<%=path%>/FCKeditor/" ;  //指定FCKeditor根路径，也就是fckeditor.js所在的路径

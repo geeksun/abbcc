@@ -24,11 +24,11 @@
 			<ref bean="techDao"/>
 		</property>
 	</bean> 
-	<bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
+	<!--  <bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
 		<property name="tradeInfoDao">
 			<ref bean="tradeInfoDao"/>
 		</property>
-	</bean>
+	</bean>-->
 	<bean name="/checkName" class="com.abbcc.customer.CheckName" scope="prototype">    
 		<property name="hyjbxxService">
 			<ref local="hyjbxxService"/>
@@ -48,9 +48,10 @@
 		<property name="hyjbxxService">
 			<ref local="hyjbxxService"/>
 		</property>
+		<!--  
 		<property name="tradeInfoService">
 			<ref local="tradeInfoService"/>
-		</property>
+		</property>-->
 	</bean>
 	<bean name="/traceDetailInfo" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
 		<property name="hyjbxxService">
