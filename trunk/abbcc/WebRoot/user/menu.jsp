@@ -27,7 +27,7 @@
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="right">基本资料管理</a></dd>
      	<dd><a href="<%=path%>/modifyPassword.do?action=displayModifyCipher" target="right">后台密码修改</a></dd>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">公司简介</a></dd> 
-     	<dd><a href="<%=path%>/traceInfo.do?action=displayHonorCertificate" target="right">荣誉证书</a></dd>
+     	<dd><a href="<%=path%>/strengthInfo.do?action=displayHonorCertificate" target="right">荣誉证书</a></dd>
      	<dd><a href="#">技术实力</a></dd>
      	<dd><a href="#">上传公司标志</a></dd>
      </dl>
