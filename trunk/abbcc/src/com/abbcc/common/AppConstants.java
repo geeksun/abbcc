@@ -38,6 +38,11 @@ public class AppConstants {
 	public static final String ACCESS_QUESTION_PASSWORD = "access_question_password";
 	public static final String MODIFY_PASS_QUESTION = "modify_pass_question";
 	public static final String HONOR_REFER = "honor_refer";
+	public static final String TECHNOLOGY_REFER = "technology_refer";
+	public static final String COMPANYLOGO_REFER = "companylogo_refer";
+	
+	
+	
 	//服务异常500
 	public static final String DISPLAY_CRASH = "display_crash";
 	
@@ -69,6 +74,7 @@ public class AppConstants {
 	public static final String PRODUCT_SALE="1";//供应
 	public static final String PRODUCT_BUY="2";//求购
 	public static final String PRODUCT_QUICK_BUY="3";
+	
 	
 	
 	
