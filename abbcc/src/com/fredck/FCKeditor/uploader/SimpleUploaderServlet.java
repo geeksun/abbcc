@@ -5,12 +5,27 @@
  */ 
 package com.fredck.FCKeditor.uploader;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.util.*;
-import org.apache.commons.fileupload.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.DiskFileUpload;
+import org.apache.commons.fileupload.FileItem;
+
+import com.abbcc.common.AppConstants;
+import com.abbcc.common.StringUtils;
 
 /**
  *  Servlet to upload files.<br>
@@ -19,7 +34,7 @@ import org.apache.commons.fileupload.*;
 
 public class SimpleUploaderServlet extends HttpServlet {
 	
-	private static String baseDir;
+	private static String baseDir;					//上传的基础目录
 	private static boolean debug=false;
 	private static boolean enabled=false;
 	private static Hashtable allowedExtensions;		//允许的扩展名（文件类型）
@@ -32,17 +47,17 @@ public class SimpleUploaderServlet extends HttpServlet {
 	 * 取出从 servlet的配置的“ baseDir ” ，这是根本的档案库如下： <br> 
 	 * 如果没有指定的值为“ / UserFiles / ”将被使用。 <br> 
 	 * 又允许它检索所有，并否认扩展处理。
+	 * 根据从client端的cookie的不同值,把文件传到不同的文件 Directory
 	 */
 	 public void init() throws ServletException {
 	 	debug=(new Boolean(getInitParameter("debug"))).booleanValue();
-	 	
 	 	if(debug) System.out.println("\r\n---- SimpleUploaderServlet initialization started ----");
 	 	
 		baseDir=getInitParameter("baseDir");
 		enabled=(new Boolean(getInitParameter("enabled"))).booleanValue();
 		if(baseDir==null)
 			baseDir="/UserFiles/";
-		//文件目录的绝对路径
+
 		String realBaseDir = getServletContext().getRealPath(baseDir);
 		File baseFile=new File(realBaseDir);
 		if(!baseFile.exists()){
@@ -87,9 +102,37 @@ public class SimpleUploaderServlet extends HttpServlet {
 
 		String typeStr = request.getParameter("Type");
 		
+		//cookie读取,根据cookie的不同把文件上传到不同的dir
+		String strength_cookie = "";
+		Cookie[] strength_path = request.getCookies();
+		if(strength_path!=null){
+			for(int i=0;i<strength_path.length;i++){
+				Cookie cookie = strength_path[i];
+				if(cookie.getName().equals(AppConstants.FCK_UPLOADPATH)){
+					strength_cookie = cookie.getValue();
+					//销毁cookie
+					Cookie cover_path = new Cookie(AppConstants.FCK_UPLOADPATH, "");
+					response.addCookie(cover_path);
+				}
+			}
+		}
+		
 		//要上传到的路径
-		String currentPath = baseDir+typeStr;
+		String currentPath;
+		if(StringUtils.isBlank(strength_cookie)){
+			currentPath = baseDir+strength_cookie;
+		}else{
+			currentPath = baseDir+typeStr;
+		}
+		
 		String currentDirPath=getServletContext().getRealPath(currentPath);
+		//检查文件夹是否存在
+		File validDir = new File(currentDirPath);
+		if(!validDir.exists()){
+			//validDir.createNewFile();
+			validDir.mkdir();
+		}
+		
 		currentPath=request.getContextPath()+currentPath;
 		
 		if (debug) System.out.println(currentDirPath);
@@ -119,9 +162,6 @@ public class SimpleUploaderServlet extends HttpServlet {
 				FileItem uplFile=(FileItem)fields.get("NewFile");
 				String fileNameLong=uplFile.getName();
 				fileNameLong=fileNameLong.replace('\\','/');
-				
-				long size = uplFile.getSize();
-				System.out.println(fileNameLong+":"+size);
 				
 				String[] pathParts=fileNameLong.split("/");
 				String fileName=pathParts[pathParts.length-1];
