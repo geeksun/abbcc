@@ -1,23 +1,9 @@
 /*
  * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2005 Frederico Caldeira Knabben
- * 
- * Licensed under the terms of the GNU Lesser General Public License:
- * 		http://www.opensource.org/licenses/lgpl-license.php
- * 
- * For further information visit:
- * 		http://www.fckeditor.net/
- * 
  * File Name: FCKeditor.java
  * 	FCKeditor control class.
- * 
- * Version:  2.3
- * Modified: 2005-08-11 16:29:00
- * 
- * File Authors:
- * 		Simone Chiaretta (simo@users.sourceforge.net)
+ *  FCK 编辑器的控制类
  */
- 
  
 package com.fredck.FCKeditor;
 
@@ -26,8 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * The main class of the class lib.<br>
  * It's the container for all properties and the class that generate the output based on browser capabilities and configurations passed by the developer.
- *
- * @author Simone Chiaretta (simo@users.sourceforge.net)
+ * 这是容器的所有属性和类产生的基础上的产出能力，并配置浏览器通过开发者。
  */
 public class FCKeditor {
 	
@@ -43,7 +28,7 @@ public class FCKeditor {
 	
     /**
      * Get the unique name of the editor
-     *
+     * @see 得到编辑器的唯一名字
      * @return name
      */
 	public String getInstanceName() {
@@ -52,7 +37,6 @@ public class FCKeditor {
 
     /**
      * Set the unique name of the editor
-     *
      * @param value name
      */	
 	public void setInstanceName(String value) {
@@ -62,7 +46,6 @@ public class FCKeditor {
     /**
      * Get the initial value to be edited.<br>
      * In HTML code
-     *
      * @return value
      */	
 	public String getValue() {
@@ -72,7 +55,6 @@ public class FCKeditor {
     /**
      * Set the initial value to be edited.<br>
      * In HTML code
-     *
      * @param value value
      */		
 	public void setValue(String value) {
@@ -81,7 +63,6 @@ public class FCKeditor {
 
     /**
      * Get the dir where the FCKeditor files reside on the server
-     *
      * @return path
      */		
 	public String getBasePath() {
@@ -93,7 +74,6 @@ public class FCKeditor {
 	 *<b>Remarks</b>:<br>
 	 *Avoid using relative paths. It is preferable to set the base path starting from the root (/).<br>
 	 *Always finish the path with a slash (/).
-	 *
      * @param value path
      */		
 	public void setBasePath(String value) {
@@ -102,7 +82,6 @@ public class FCKeditor {
 
     /**
      * Get the name of the toolbar to display
-     *
      * @return toolbar name
      */	
 	public String getToolbarSet() {
@@ -111,7 +90,6 @@ public class FCKeditor {
 
     /**
      * Set the name of the toolbar to display
-     *
      * @param value toolbar name
      */		
 	public void setToolbarSet(String value) {
@@ -120,7 +98,6 @@ public class FCKeditor {
 
     /**
      * Get the width of the textarea
-     *
      * @return width
      */	
 	public String getWidth() {
@@ -129,7 +106,6 @@ public class FCKeditor {
 
     /**
      * Set the width of the textarea
-     *
      * @param value width
      */		
 	public void setWidth(String value) {
@@ -138,7 +114,6 @@ public class FCKeditor {
 
     /**
      * Get the height of the textarea
-     *
      * @return height
      */	
 	public String getHeight() {
@@ -147,18 +122,15 @@ public class FCKeditor {
 
     /**
      * Set the height of the textarea
-     *
      * @param value height
      */		
 	public void setHeight(String value) {
 		height=value;
 	}
 
-
     /**
      * Get the advanced configuation set.<br>
      * Adding element to this collection you can override the settings specified in the config.js file.
-     *
      * @return configuration collection
      */		
 	public FCKeditorConfigurations getConfig() {
@@ -176,15 +148,10 @@ public class FCKeditor {
 
     /**
      * Initialize the object setting all value to the default ones.
-     * <p>
-     * <ul>
      * <li>width: 100%</li>
      * <li>height: 200</li>
      * <li>toolbar name: Default</li>
      * <li>basePath: context root + "/FCKeditor/"</li>
-     * </ul>
-     * </p>
-     *
      * @param req request object
      */	
 	public FCKeditor(HttpServletRequest req){
@@ -195,15 +162,10 @@ public class FCKeditor {
 
     /**
      * Initialize the object setting the unique name and then all value to the default ones.
-     * <p>
-     * <ul>
      * <li>width: 100%</li>
      * <li>height: 200</li>
      * <li>toolbar name: Default</li>
      * <li>basePath: context root + "/FCKeditor/"</li>
-     * </ul>
-     * </p>
-     *
      * @param req request object
      * @param parInstanceName unique name
      */		
@@ -216,9 +178,7 @@ public class FCKeditor {
 
     /**
      * Initialize the object setting all basic configurations.<br>
-     *
      * The basePath is context root + "/FCKeditor/"
-     *
      * @param req request object
      * @param parInstanceName unique name
      * @param parWidth width
@@ -277,10 +237,8 @@ public class FCKeditor {
 
     /**
      * Generate the HTML Code for the editor.
-     * <br>
      * Evalute the browser capabilities and generate the editor if IE 5.5 or Gecko 20030210 or greater,
      * or a simple textarea otherwise. 
-     *
      * @return html code
      */	
 	public String create() {
@@ -290,12 +248,9 @@ public class FCKeditor {
 		String encodedValue=HTMLEncode(value);
 		
 		if(isCompatible()) {
-		
 			strEditor.append("<input type=\"hidden\" id=\"" + instanceName + "\" name=\"" + instanceName + "\" value=\"" + encodedValue + "\">");
-		
 			strEditor.append(createConfigHTML());
 			strEditor.append(createIFrameHTML());
-		
 		}
 		else{
 			strEditor.append("<TEXTAREA name=\"" + instanceName + "\" rows=\"4\" cols=\"40\" style=\"WIDTH: " + width + "; HEIGHT: " + height + "\" wrap=\"virtual\">"+encodedValue+"</TEXTAREA>");
@@ -306,23 +261,16 @@ public class FCKeditor {
 	
 	private String createConfigHTML() {
 		String configStr=oConfig.getUrlParams();
-		
-		
 		if(!configStr.equals(""))
 			configStr=configStr.substring(1);			
-			
 		return "<input type=\"hidden\" id=\"" + instanceName + "___Config\" value=\"" + configStr + "\">" ;
 	}
 
 	private String createIFrameHTML() {
-	
 		String sLink=basePath + "editor/fckeditor.html?InstanceName=" + instanceName;
-		
 		if (!toolbarSet.equals(""))
 			sLink+="&Toolbar=" + toolbarSet;
-		
 		 return "<iframe id=\"" + instanceName + "___Frame\" src=\"" + sLink + "\" width=\"" + width + "\" height=\"" + height + "\" frameborder=\"no\" scrolling=\"no\"></iframe>";
-		
 	}
 	
 	
