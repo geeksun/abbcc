@@ -424,8 +424,9 @@ function OnUploadCompleted( errorNumber, fileUrl, fileName, customMsg )
 			alert( customMsg ) ;
 			return ;
 		case 101 :	// Custom warning
-			alert( customMsg ) ;
-			break ;
+			alert( '上传图片的大小不可超过1M' ) ;
+			return ;
+			//break;  previous define
 		case 201 :
 			//custom prompt
 			//alert( 'A file with the same name is already available. The uploaded file has been renamed to "' + fileName + '"' ) ;
