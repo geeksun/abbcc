@@ -92,7 +92,7 @@
         <!-- 服务器启动时显示相关信息 -->
         <init-param>
             <param-name>debug</param-name>
-            <param-value>true</param-value>
+            <param-value>false</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -108,7 +108,7 @@
         <!-- 服务器启动时显示相关信息 -->
         <init-param>
             <param-name>debug</param-name>
-            <param-value>true</param-value>
+            <param-value>false</param-value>
         </init-param>
         <!-- 是否上传 true：支持-->
         <init-param>
