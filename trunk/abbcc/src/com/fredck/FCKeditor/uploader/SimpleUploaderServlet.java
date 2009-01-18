@@ -1,47 +1,20 @@
 /*
- * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2005 Frederico Caldeira Knabben
- * 
- * Licensed under the terms of the GNU Lesser General Public License:
- * 		http://www.opensource.org/licenses/lgpl-license.php
- * 
- * For further information visit:
- * 		http://www.fckeditor.net/
- * 
- * File Name: SimpleUploaderServlet.java
- * 	Java File Uploader class.
- * 
- * Version:  2.3
- * Modified: 2005-08-11 16:29:00
- * 
- * File Authors:
- * 		Simone Chiaretta (simo@users.sourceforge.net)
+ *  File Name: SimpleUploaderServlet.java
+ * 	Java File Uploader class. 
+ *  JAVA 文件上传类  
  */ 
- 
 package com.fredck.FCKeditor.uploader;
 
 import java.io.*;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.*;
-
-
 import org.apache.commons.fileupload.*;
 
-
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource; 
-import javax.xml.transform.stream.StreamResult; 
-
-
 /**
- * Servlet to upload files.<br>
- *
- * This servlet accepts just file uploads, eventually with a parameter specifying file type
- *
- * @author Simone Chiaretta (simo@users.sourceforge.net)
+ *  Servlet to upload files.<br>
+ *  This servlet accepts just file uploads, eventually with a parameter specifying file type
  */
 
 public class SimpleUploaderServlet extends HttpServlet {
@@ -49,18 +22,18 @@ public class SimpleUploaderServlet extends HttpServlet {
 	private static String baseDir;
 	private static boolean debug=false;
 	private static boolean enabled=false;
-	private static Hashtable allowedExtensions;
-	private static Hashtable deniedExtensions;
+	private static Hashtable allowedExtensions;		//允许的扩展名（文件类型）
+	private static Hashtable deniedExtensions;		//拒绝的扩展名（文件类型）
 	
 	/**
-	 * Initialize the servlet.<br>
 	 * Retrieve from the servlet configuration the "baseDir" which is the root of the file repository:<br>
 	 * If not specified the value of "/UserFiles/" will be used.<br>
 	 * Also it retrieve all allowed and denied extensions to be handled.
-	 *
+	 * 取出从 servlet的配置的“ baseDir ” ，这是根本的档案库如下： <br> 
+	 * 如果没有指定的值为“ / UserFiles / ”将被使用。 <br> 
+	 * 又允许它检索所有，并否认扩展处理。
 	 */
 	 public void init() throws ServletException {
-	 	
 	 	debug=(new Boolean(getInitParameter("debug"))).booleanValue();
 	 	
 	 	if(debug) System.out.println("\r\n---- SimpleUploaderServlet initialization started ----");
@@ -69,7 +42,8 @@ public class SimpleUploaderServlet extends HttpServlet {
 		enabled=(new Boolean(getInitParameter("enabled"))).booleanValue();
 		if(baseDir==null)
 			baseDir="/UserFiles/";
-		String realBaseDir=getServletContext().getRealPath(baseDir);
+		//文件目录的绝对路径
+		String realBaseDir = getServletContext().getRealPath(baseDir);
 		File baseFile=new File(realBaseDir);
 		if(!baseFile.exists()){
 			baseFile.mkdir();
@@ -88,41 +62,45 @@ public class SimpleUploaderServlet extends HttpServlet {
 		deniedExtensions.put("Flash",stringToArrayList(getInitParameter("DeniedExtensionsFlash")));
 		
 		if(debug) System.out.println("---- SimpleUploaderServlet initialization completed ----\r\n");
-		
 	}
 	
 
 	/**
 	 * Manage the Upload requests.<br>
-	 *
 	 * The servlet accepts commands sent in the following format:<br>
 	 * simpleUploader?Type=ResourceType<br><br>
 	 * It store the file (renaming it in case a file with the same name exists) and then return an HTML file
 	 * with a javascript command in it.
-	 *
+	 * 管理上传请求。 <br> 
+	 * 在接受命令的servlet发送以下面的格式如下： <br> 
+	 * simpleUploader ？类型= ResourceType <br> <br> 
+	 * 它存储文件（重新命名它的情况下一个文件具有相同名称的存在） ，然后返回一个HTML文件
+	 * 使用JavaScript命令它
 	 */	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+		throws ServletException, IOException {
 		if (debug) System.out.println("--- BEGIN DOPOST ---");
 
 		response.setContentType("text/html; charset=UTF-8");
 		response.setHeader("Cache-Control","no-cache");
 		PrintWriter out = response.getWriter();
-		
 
-		String typeStr=request.getParameter("Type");
+		String typeStr = request.getParameter("Type");
 		
-		String currentPath=baseDir+typeStr;
+		//要上传到的路径
+		String currentPath = baseDir+typeStr;
 		String currentDirPath=getServletContext().getRealPath(currentPath);
 		currentPath=request.getContextPath()+currentPath;
 		
 		if (debug) System.out.println(currentDirPath);
 		
+		//操作状态返回值
 		String retVal="0";
 		String newName="";
 		String fileUrl="";
 		String errorMessage="";
 		
+		//可以上传
 		if(enabled) {		
 			DiskFileUpload upload = new DiskFileUpload();
 			try {
@@ -141,23 +119,40 @@ public class SimpleUploaderServlet extends HttpServlet {
 				FileItem uplFile=(FileItem)fields.get("NewFile");
 				String fileNameLong=uplFile.getName();
 				fileNameLong=fileNameLong.replace('\\','/');
+				
+				long size = uplFile.getSize();
+				System.out.println(fileNameLong+":"+size);
+				
 				String[] pathParts=fileNameLong.split("/");
 				String fileName=pathParts[pathParts.length-1];
 				
-				String nameWithoutExt=getNameWithoutExtension(fileName);
+				//去除扩展名的 file名字
+				String nameWithoutExt = getNameWithoutExtension(fileName);
 				String ext=getExtension(fileName);
-				File pathToSave=new File(currentDirPath,fileName);
+				
+				//父路径＋子路径创建新文件实例
+				File pathToSave = new File(currentDirPath,fileName);
 				fileUrl=currentPath+"/"+fileName;
-				if(extIsAllowed(typeStr,ext)) {
-					int counter=1;
-					while(pathToSave.exists()){
-						newName=nameWithoutExt+"("+counter+")"+"."+ext;
-						fileUrl=currentPath+"/"+newName;
-						retVal="201";
-						pathToSave=new File(currentDirPath,newName);
-						counter++;
-						}
-					uplFile.write(pathToSave);
+				
+				//check 文件类型是否允许
+				if(extIsAllowed(typeStr,ext)) 
+				{
+					if(checkFileSize(uplFile))
+					{
+						int counter = 1;
+						//如果有重名文件,默认在文件后加（i）加以识别
+						while(pathToSave.exists()){
+							newName = nameWithoutExt + "("+counter+")" + "." + ext;
+							fileUrl=currentPath+"/"+newName;
+							retVal="201";
+							pathToSave=new File(currentDirPath,newName);
+							counter++;
+							}
+						uplFile.write(pathToSave);
+					}else{
+						if(debug) System.out.println("The capacity of the file too larger");
+						retVal = "101";
+					}
 				}
 				else {
 					retVal="202";
@@ -174,7 +169,6 @@ public class SimpleUploaderServlet extends HttpServlet {
 			errorMessage="This file uploader is disabled. Please check the WEB-INF/web.xml file";
 		}
 		
-		
 		out.println("<script type=\"text/javascript\">");
 		out.println("window.parent.OnUploadCompleted("+retVal+",'"+fileUrl+"','"+newName+"','"+errorMessage+"');");
 		out.println("</script>");
@@ -182,7 +176,19 @@ public class SimpleUploaderServlet extends HttpServlet {
 		out.close();
 	
 		if (debug) System.out.println("--- END DOPOST ---");	
-		
+	}
+
+
+	/**
+	 * @param uplFile
+	 * @return 检查文件的大小是否符合要求 暂定1*M
+	 */
+	private boolean checkFileSize(FileItem uplFile)
+	{
+		long size = uplFile.getSize();
+		if(size>1024000)
+			return false;
+		return true;
 	}
 
 
@@ -200,35 +206,32 @@ public class SimpleUploaderServlet extends HttpServlet {
 		return fileName.substring(fileName.lastIndexOf(".")+1);
 	}
 
-
-
+	
 	/**
 	 * Helper function to convert the configuration string to an ArrayList.
+	 * 助手功能转换配置字符串到ArrayList 
 	 */
-	 
 	 private ArrayList stringToArrayList(String str) {
-	 
-	 if(debug) System.out.println(str);
-	 String[] strArr=str.split("\\|");
-	 	 
-	 ArrayList tmp=new ArrayList();
-	 if(str.length()>0) {
-		 for(int i=0;i<strArr.length;++i) {
-		 		if(debug) System.out.println(i +" - "+strArr[i]);
-		 		tmp.add(strArr[i].toLowerCase());
+		 if(debug) System.out.println(str);
+		 String[] strArr=str.split("\\|");
+		 	 
+		 ArrayList<String> tmp=new ArrayList<String>();
+		 if(str.length()>0) {
+			 for(int i=0;i<strArr.length;++i) {
+			 		if(debug) System.out.println(i +" - "+strArr[i]);
+			 		tmp.add(strArr[i].toLowerCase()); 
+				}
 			}
-		}
-		return tmp;
+			return tmp;
 	 }
 
 
 	/**
-	 * Helper function to verify if a file extension is allowed or not allowed.
+	 *  Helper function to verify if a file extension is allowed or not allowed.
+	 *  辅助功能，以验证如果文件扩展名是允许或不允许的。
 	 */
-	 
 	 private boolean extIsAllowed(String fileType, String ext) {
-	 		
-	 		ext=ext.toLowerCase();
+	 		ext = ext.toLowerCase();
 	 		
 	 		ArrayList allowList=(ArrayList)allowedExtensions.get(fileType);
 	 		ArrayList denyList=(ArrayList)deniedExtensions.get(fileType);

@@ -1,23 +1,9 @@
 /*
- * FCKeditor - The text editor for internet
- * Copyright (C) 2003-2005 Frederico Caldeira Knabben
- * 
- * Licensed under the terms of the GNU Lesser General Public License:
- * 		http://www.opensource.org/licenses/lgpl-license.php
- * 
- * For further information visit:
- * 		http://www.fckeditor.net/
- * 
- * File Name: ConnectorServlet.java
+ *  File Name: ConnectorServlet.java
  * 	Java Connector for Resource Manager class.
- * 
- * Version:  2.3
- * Modified: 2005-08-11 16:29:00
- * 
- * File Authors:
- * 		Simone Chiaretta (simo@users.sourceforge.net)
+ * 	Simone Chiaretta (simo@users.sourceforge.net)
+ *  Java连接器的资源管理器类：创建和浏览文件目录
  */ 
- 
 package com.fredck.FCKeditor.connector;
 
 import java.io.*;
@@ -25,9 +11,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.util.*;
 
-
 import org.apache.commons.fileupload.*;
-
 
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -35,20 +19,22 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource; 
 import javax.xml.transform.stream.StreamResult; 
 
-
 /**
  * Servlet to upload and browse files.<br>
- *
  * This servlet accepts 4 commands used to retrieve and create files and folders from a server directory.
  * The allowed commands are:
- * <ul>
  * <li>GetFolders: Retrive the list of directory under the current folder
  * <li>GetFoldersAndFiles: Retrive the list of files and directory under the current folder
  * <li>CreateFolder: Create a new directory under the current folder
  * <li>FileUpload: Send a new file to the server (must be sent with a POST)
- * </ul>
- *
- * @author Simone Chiaretta (simo@users.sourceforge.net)
+ * 文件连接器
+ * Servlet的上传和浏览文件。 <br> 
+ * 本的servlet接受4命令用于检索和创建文件和文件夹从一个服务器目录。 
+ * 在允许的命令如下： 
+ * <li> GetFolders ：检索的清单目录下的当前文件夹
+ * <li> GetFoldersAndFiles ：检索的文件列表和目录下的当前文件夹
+ * <li> CreateFolder ：创建一个新的目录下的当前文件夹
+ * <li> FileUpload ：发送一个新的文件到服务器（必须发出帖子）
  */
 
 public class ConnectorServlet extends HttpServlet {
@@ -57,10 +43,10 @@ public class ConnectorServlet extends HttpServlet {
 	private static boolean debug=false;
 	
 	/**
-	 * Initialize the servlet.<br>
 	 * Retrieve from the servlet configuration the "baseDir" which is the root of the file repository:<br>
 	 * If not specified the value of "/UserFiles/" will be used.
-	 *
+	 * 从检索的servlet配置的“ baseDir ” ，这是根本的档案库如下： <br> 
+	 * 如果没有指定的值为“ / UserFiles / ”将被使用。
 	 */
 	 public void init() throws ServletException { 
 		baseDir=getInitParameter("baseDir");
@@ -76,14 +62,16 @@ public class ConnectorServlet extends HttpServlet {
 	
 	/**
 	 * Manage the Get requests (GetFolders, GetFoldersAndFiles, CreateFolder).<br>
-	 *
 	 * The servlet accepts commands sent in the following format:<br>
 	 * connector?Command=CommandName&Type=ResourceType&CurrentFolder=FolderPath<br><br>
 	 * It execute the command and then return the results to the client in XML format.
-	 *
+	 * 管理GET请求（ GetFolders ， GetFoldersAndFiles ， CreateFolder ） 。 <br> 
+	 * 在接受命令的servlet发送以下面的格式如下： <br> 
+	 * 连接器？司令部= commandname的＆类型= ResourceType ＆ CurrentFolder = FolderPath <br> <br> 
+	 * 它执行命令，然后返回结果给客户端的XML格式。
 	 */
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+		throws ServletException, IOException {
 		if (debug) System.out.println("--- BEGIN DOGET ---");
 		
 		response.setContentType("text/xml; charset=UTF-8");
@@ -92,9 +80,12 @@ public class ConnectorServlet extends HttpServlet {
 		
 		String commandStr=request.getParameter("Command");
 		String typeStr=request.getParameter("Type");
+		//文件要上传到的文件夹
 		String currentFolderStr=request.getParameter("CurrentFolder");
 		
+		//文件要上传到的路径
 		String currentPath=baseDir+typeStr+currentFolderStr;
+		//文件要上传到的绝对路径
 		String currentDirPath=getServletContext().getRealPath(currentPath);
 		
 		File currentDir=new File(currentDirPath);
@@ -111,8 +102,8 @@ public class ConnectorServlet extends HttpServlet {
 			pce.printStackTrace();
 		}
 		
-		Node root=CreateCommonXml(document,commandStr,typeStr,currentFolderStr,request.getContextPath()+currentPath);
-		
+		Node root=CreateCommonXml(document,commandStr,typeStr,currentFolderStr,
+				request.getContextPath()+currentPath);
 		if (debug) System.out.println("Command = " + commandStr);
 		
 		if(commandStr.equals("GetFolders")) {
@@ -140,7 +131,6 @@ public class ConnectorServlet extends HttpServlet {
 				}catch(SecurityException sex) {
 					retValue="103";
 				}
-				
 			}			
 			setCreateFolderResponse(retValue,root,document);
 		}		
@@ -161,13 +151,9 @@ public class ConnectorServlet extends HttpServlet {
 			System.out.println("");
 			System.out.println("--- END DOGET ---");
 		}
-		
-			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		
 		out.flush();
 		out.close();
 	}
@@ -175,15 +161,17 @@ public class ConnectorServlet extends HttpServlet {
 
 	/**
 	 * Manage the Post requests (FileUpload).<br>
-	 *
 	 * The servlet accepts commands sent in the following format:<br>
 	 * connector?Command=FileUpload&Type=ResourceType&CurrentFolder=FolderPath<br><br>
 	 * It store the file (renaming it in case a file with the same name exists) and then return an HTML file
 	 * with a javascript command in it.
-	 *
+	 * 管理POST请求（ FileUpload ） 。 <br> 
+	 * 在接受命令的servlet发送以下面的格式如下： <br> 
+	 * 连接器？司令部= FileUpload ＆类型= ResourceType ＆ CurrentFolder = FolderPath <br> <br> 
+	 * 它存储文件（重新命名它的情况下一个文件具有相同名称的存在） ，然后返回一个HTML文件
+	 * 使用JavaScript命令它。
 	 */	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		if (debug) System.out.println("--- BEGIN DOPOST ---");
 
 		response.setContentType("text/html; charset=UTF-8");
@@ -194,7 +182,9 @@ public class ConnectorServlet extends HttpServlet {
 		String typeStr=request.getParameter("Type");
 		String currentFolderStr=request.getParameter("CurrentFolder");
 		
+		//要上传到到的路径
 		String currentPath=baseDir+typeStr+currentFolderStr;
+		//要上传的绝对路径
 		String currentDirPath=getServletContext().getRealPath(currentPath);
 		
 		if (debug) System.out.println(currentDirPath);
@@ -259,6 +249,12 @@ public class ConnectorServlet extends HttpServlet {
 	}
 	
 
+	/**
+	 * @param dir
+	 * @param root
+	 * @param doc
+	 *  得到文件夹
+	 */
 	private void getFolders(File dir,Node root,Document doc) {
 		Element folders=doc.createElement("Folders");
 		root.appendChild(folders);
@@ -272,6 +268,12 @@ public class ConnectorServlet extends HttpServlet {
 			}		
 	}
 
+	/**
+	 * @param dir
+	 * @param root
+	 * @param doc
+	 *  得到文件
+	 */
 	private void getFiles(File dir,Node root,Document doc) {
 		Element files=doc.createElement("Files");
 		root.appendChild(files);
@@ -286,8 +288,8 @@ public class ConnectorServlet extends HttpServlet {
 			}	
 	}	
 
-	private Node CreateCommonXml(Document doc,String commandStr, String typeStr,  String currentPath, String currentUrl ) {
-		
+	private Node CreateCommonXml(Document doc,String commandStr, String typeStr,  
+			String currentPath, String currentUrl ) {
 		Element root=doc.createElement("Connector");
 		doc.appendChild(root);
 		root.setAttribute("command",commandStr);
