@@ -57,14 +57,12 @@
    <tr>
    <td>
    	注:<font color=red>*</font> 上传的图片请不要超过1M
-	<textarea id="content" name="content" style="WIDTH: 100%; HEIGHT: 400px">${content }</textarea>
+	<textarea id="content" name="content" style="WIDTH: 100%; HEIGHT: 400px">${content}</textarea>
 	<script type="text/javascript">
 		var oFCKeditor = new FCKeditor('content') ;		//传入参数为表单元素（由FCKeditor生成的input或textarea）的name
 		oFCKeditor.BasePath = "<%=path%>/FCKeditor/" ;  //指定FCKeditor根路径，也就是fckeditor.js所在的路径
 		oFCKeditor.Height = 400;
 		oFCKeditor.ToolbarSet = "Basic" ;				//指定工具栏 Default
-		//oFCKeditor.Value="<=content%>";			      //默认值
-		//oFCKeditor.Create();
 		oFCKeditor.ReplaceTextarea();					//默认值
 	</script>
 	</td></tr>
