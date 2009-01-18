@@ -31,6 +31,8 @@ public class AppConstants {
 	public static final String MODIFY_PASS = "modify_pass";
 	public static final String UPDATE_DATAILINFO = "update_detailInfo";
 	public static final String CHECKFILE_INFO = "checkfile_Info";
+	public static final String FCK_UPLOADPATH = "fck_uploadpath";
+	
 	
 	
 	//访问标记和操作标记value
@@ -40,6 +42,9 @@ public class AppConstants {
 	public static final String HONOR_REFER = "honor_refer";
 	public static final String TECHNOLOGY_REFER = "technology_refer";
 	public static final String COMPANYLOGO_REFER = "companylogo_refer";
+	public static final String FCK_UPLOADDIR_1 = "honor";
+	public static final String FCK_UPLOADDIR_2 = "technology";
+	public static final String FCK_UPLOADDIR_3 = "companylogo";
 	
 	
 	
