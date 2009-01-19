@@ -222,13 +222,12 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	 *  依据会员登录名和密码查找会员用户
 	 */
 	public int findByProperty(String name, String pass) {
-		log.info("finding Hyjbxx instance by member hydlm:"+name+" and password:"+pass);
+		log.info("finding Hyjbxx instance by member hydlm:"+name);
 		String sql = "select h.mm from Hyjbxx h where h.hydlm = ?";
 		List list = getHibernateTemplate().find(sql,name);
 		if(list.size()==1){
 			String mm = (String) list.get(0);
 			if(mm.equals(pass)){
-				log.info("finding Hyjbxx instance by member name and password success");
 				return AppConstants.validate;
 			}
 		}

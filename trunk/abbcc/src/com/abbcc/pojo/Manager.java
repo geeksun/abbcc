@@ -2,26 +2,26 @@ package com.abbcc.pojo;
 
 public class Manager {
 	private int managerid;
-	private String manageName;
+	private String managerName;
 	private String password;
 	private String trueName;
 	private String status;
 	public Manager() {
 		super();
 	}
-	public Manager(int managerid, String manageName, String password, String trueName, String status) {
+	public Manager(int managerid, String managerName, String password, String trueName, String status) {
 		super();
 		this.managerid = managerid;
-		this.manageName = manageName;
+		this.managerName = managerName;
 		this.password = password;
 		this.trueName = trueName;
 		this.status = status;
 	}
-	public String getManageName() {
-		return manageName;
+	public String getManagerName() {
+		return managerName;
 	}
-	public void setManageName(String manageName) {
-		this.manageName = manageName;
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
 	}
 	public int getManagerid() {
 		return managerid;
