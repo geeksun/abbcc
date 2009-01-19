@@ -19,5 +19,4 @@
 		您的浏览器不支持Frame,无法使用本系统
 	</body>
  </noframes>
-</html>
-
+</html> 
