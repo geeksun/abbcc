@@ -3,6 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -17,9 +18,9 @@
 				else return;	
 			}
 			function validate(){
-				if(document.forms[0].manageName.value == null || document.forms[0].manageName.value == ""){
+				if(document.forms[0].managerName.value == null || document.forms[0].managerName.value == ""){
 					alert("用户名不得为空");
-					document.forms[0].manageName.focus();
+					document.forms[0].managerName.focus();
 					return false;
 				}
 				else if(document.forms[0].password.value == null || document.forms[0].password.value == ""){
@@ -42,10 +43,12 @@
 	</head>
 	<body>
 		<br>
-		<p>
+		<p align=center>
+		<c:if test="${manager_logininfo!=null}">
+			<font color=red>${manager_logininfo }</font>
+		</c:if>
 		</p>
-		
-		<form action="managerLogin.do" method="post">
+		<form action="<%=path%>/managerLogin.do" method="post">
 			<table align="center" >
 				<tr>
 				<td>
@@ -55,7 +58,7 @@
 						用户名:
 					</td>
 					<td>
-						<input type="text" name="manageName" size=18>&nbsp;
+						<input type="text" name="managerName" size=18>&nbsp;
 					</td>
 				</tr>
 				<tr>
