@@ -10,8 +10,8 @@
             <column name="managerid" />
             <generator class="native" />
         </id>
-        <property name="manageName" type="java.lang.String"> 
-            <column name="manage_name" length="30" />
+        <property name="managerName" type="java.lang.String"> 
+            <column name="manager_name" length="30" />
         </property>
         <property name="password" type="java.lang.String"> 
             <column name="password" length="30" />
