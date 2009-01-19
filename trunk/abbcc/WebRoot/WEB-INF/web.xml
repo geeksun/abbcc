@@ -54,7 +54,9 @@
     <init-param>
       <param-name>config</param-name>
       <param-value>
-      		/WEB-INF/struts-config/struts-config-user.xml,/WEB-INF/struts-config/struts-config-admin.xml
+      		/WEB-INF/struts-config/struts-config-user.xml,
+      		/WEB-INF/struts-config/struts-config-admin.xml,
+      		/WEB-INF/struts-config/struts-config-system.xml
       </param-value>
     </init-param>
     <init-param>
