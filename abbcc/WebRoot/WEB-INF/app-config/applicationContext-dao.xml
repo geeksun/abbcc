@@ -64,7 +64,12 @@
 			<ref bean="sessionFactory"/>
 		</property>
 	</bean>
-	 <bean id="messageDao" class="com.abbcc.dao.impl.MessageDAOImpl" >
+	<bean id="messageDao" class="com.abbcc.dao.impl.MessageDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="managerDao" class="com.abbcc.dao.impl.ManagerDAOImpl" >
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
