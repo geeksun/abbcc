@@ -38,5 +38,10 @@
 			<ref bean="messageServiceImpl" />
 		</property>
 	</bean>
- 		 
+ 	<bean id="managerService" class="com.abbcc.service.impl.ManagerServiceImpl">
+		<property name="managerDao">
+			<ref bean="managerDao"/>
+		</property>
+		
+	</bean> 	 
 </beans>
