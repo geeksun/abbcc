@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="managerName" type="java.lang.String"></form-property>
+			<form-property name="password" type="java.lang.String"></form-property>
+		</form-bean>
+		
+	</form-beans>
+	<action-mappings>
+		<action path="/managerLogin" input="/manage/index.jsp" name="loginForm"  scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
+	     	<forward name="managerLoginSuccess" path="/manage/main.jsp"></forward>
+	     	
+	    </action>
+	    
+	</action-mappings>
+</struts-config>
