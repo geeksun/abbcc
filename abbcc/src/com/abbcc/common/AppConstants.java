@@ -32,6 +32,7 @@ public class AppConstants {
 	public static final String UPDATE_DATAILINFO = "update_detailInfo";
 	public static final String CHECKFILE_INFO = "checkfile_Info";
 	public static final String FCK_UPLOADPATH = "fck_uploadpath";
+	public static final String MANAGER_LOGININFO = "manager_logininfo";
 	
 	
 	
@@ -42,9 +43,16 @@ public class AppConstants {
 	public static final String HONOR_REFER = "honor_refer";
 	public static final String TECHNOLOGY_REFER = "technology_refer";
 	public static final String COMPANYLOGO_REFER = "companylogo_refer";
+	//FCK 上传的文件夹名称 begin
 	public static final String FCK_UPLOADDIR_1 = "honor";
 	public static final String FCK_UPLOADDIR_2 = "technology";
 	public static final String FCK_UPLOADDIR_3 = "companylogo";
+	//end
+	public static final String MANAGER_LOGININFO_1 = "用户名不能为空";
+	public static final String MANAGER_LOGININFO_2 = "密码不能为空";
+	public static final String MANAGER_LOGININFO_3 = "用户名或密码错误";
+	
+	
 	
 	
 	

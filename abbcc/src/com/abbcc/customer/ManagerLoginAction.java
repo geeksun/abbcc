@@ -9,6 +9,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.service.ManagerService;
 import com.abbcc.struts.action.BaseAction;
 /**
@@ -29,6 +30,14 @@ public class ManagerLoginAction extends BaseAction{
 			String managerName = loginForm.getString("managerName");    
 			String pass = loginForm.getString("password");	
 			
+			if(managerName.trim().equals("")){
+				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_1);
+				return actionMapping.getInputForward();
+			}else if(pass.trim().equals("")){
+				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_2);
+				return actionMapping.getInputForward();
+			}
+			
 			int valid = managerService.login(managerName, pass);
 			if(valid>0){
 				HttpSession session = request.getSession(true);
@@ -36,6 +45,7 @@ public class ManagerLoginAction extends BaseAction{
 				 
 				return actionMapping.findForward("managerLoginSuccess");				
 			}else{
+				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_3);
 				return actionMapping.getInputForward();
 			}
 			

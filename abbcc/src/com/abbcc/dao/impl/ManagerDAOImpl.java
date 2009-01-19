@@ -12,8 +12,8 @@ public class ManagerDAOImpl extends BaseDaoImpl implements ManagerDAO {
 	private static final Log log = LogFactory.getLog(ManagerDAOImpl.class);
 	
 	public int findByProperty(String managerName, String pass) {
-		log.info("Manager "+managerName+" is logining system platform");
-		String sql = "select m.password from Manager m where m.manager_name = ?";
+		log.info("Manager:"+managerName+" is logining system platform");
+		String sql = "select m.password from Manager m where m.managerName = ?";
 		List list = getHibernateTemplate().find(sql,managerName);
 		if(list.size()==1){
 			String mm = (String) list.get(0);
@@ -21,7 +21,7 @@ public class ManagerDAOImpl extends BaseDaoImpl implements ManagerDAO {
 				return AppConstants.validate;
 			}
 		}
-		log.error("find Manager instance by managerName:"+managerName);
+		log.error("find Manager instance failed by managerName:"+managerName);
 		return AppConstants.invalidate;
 	}
 
