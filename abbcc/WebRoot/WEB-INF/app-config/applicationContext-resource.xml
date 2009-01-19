@@ -74,6 +74,8 @@
 				<value>com/abbcc/pojo/Honor.hbm.xml</value>
 				<value>com/abbcc/pojo/Technology.hbm.xml</value>
 				<value>com/abbcc/pojo/CompanyLogo.hbm.xml</value>
+				<value>com/abbcc/pojo/Manager.hbm.xml</value>
+				
 			</list>
 		</property>
 	</bean>
