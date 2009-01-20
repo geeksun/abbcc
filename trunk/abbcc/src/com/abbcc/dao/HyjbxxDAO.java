@@ -41,7 +41,28 @@ public interface HyjbxxDAO {
 
 	public int getTotalRows();
 
-	public ArrayList getData(String sql, int i, int rowsPage);    
+	public ArrayList getData(String sql, int i, int rowsPage);
 
-		
+	public void auditRegisterMember(Hyjbxx hyjbxx);     
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
