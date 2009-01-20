@@ -30,7 +30,6 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	 *  先更新 hyjbxx 再更新 pz 表
 	 */
 	public int add(Hyjbxx hyjbxx) { 
-		log.info("saving Hyjbxx instance");
 		Pz pz= this.updateAndGetPz(tableName);
 		long id=pz.getRecnum();  
 		long page=id/Globals.COUNT;
@@ -68,7 +67,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		init = pstmt.executeUpdate();
 		//pa.updateNum(track[0],track[1],"hyjbxx");
 		this.updateTableCount(tableName);
-		log.info("save Hyjbxx instance successful");
+		log.info("save Hyjbxx instance successful with hyjbxxid:"+id);
 		pstmt.close();
 		}catch(Exception e){
 			log.error("save Hyjbxx instance failed", e);
@@ -105,7 +104,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.executeUpdate();
 		log.info("updated Hyjbxx info successed");
 		}catch(Exception e){
-			log.error("save failed", e);
+			log.error("update Hyjbxx info failed", e);
 			e.printStackTrace();
 		}finally{
 			try {
