@@ -27,27 +27,28 @@ public class ManagerLoginAction extends BaseAction{
 	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm,HttpServletRequest request,
 			HttpServletResponse response)	throws Exception{
 			DynaActionForm loginForm = (DynaActionForm)actionForm;
-			String managerName = loginForm.getString("managerName");    
-			String pass = loginForm.getString("password");	
 			
-			if(managerName.trim().equals("")){
-				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_1);
-				return actionMapping.getInputForward();
-			}else if(pass.trim().equals("")){
-				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_2);
-				return actionMapping.getInputForward();
-			}
-			
-			int valid = managerService.login(managerName, pass);
-			if(valid>0){
-				HttpSession session = request.getSession(true);
-				session.setAttribute("managerName", managerName);
-				 
-				return actionMapping.findForward("managerLoginSuccess");				
-			}else{
-				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_3);
-				return actionMapping.getInputForward();
-			}
+				String managerName = loginForm.getString("managerName");    
+				String pass = loginForm.getString("password");	
+				
+				if(managerName.trim().equals("")){
+					request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_1);
+					return actionMapping.findForward("managerLogin");
+				}else if(pass.trim().equals("")){
+					request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_2);
+					return actionMapping.findForward("managerLogin");
+				}
+				
+				int valid = managerService.login(managerName, pass);
+				if(valid>0){
+					HttpSession session = request.getSession(true);
+					session.setAttribute("managerName", managerName);
+					 
+					return actionMapping.findForward("managerLoginSuccess");				
+				}else{
+					request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_3);
+					return actionMapping.findForward("managerLogin");
+				}
 			
 	}
 	
