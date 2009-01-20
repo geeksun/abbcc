@@ -1,20 +1,24 @@
 package com.abbcc.dao.impl;
 
-import java.util.List;
-import java.sql.ResultSet;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.sql.SQLException;
-import org.hibernate.Session;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 
-import com.abbcc.pojo.Hyjbxx;
-import com.abbcc.pojo.Pz;
+import com.abbcc.common.AppConstants;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.factory.Globals;
-import com.abbcc.common.AppConstants;
+import com.abbcc.pojo.Hyjbxx;
+import com.abbcc.pojo.Pz;
   
 public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 	private static final Log log = LogFactory.getLog(HyjbxxDAOImpl.class);
@@ -389,6 +393,30 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 			}
 		}
 		return flag;
+	}
+
+	/**
+	 * @see  返回分页的总行数
+	 */
+	public int getTotalRows() {
+		int totalRows = getHibernateTemplate().find("from Hyjbxx").size();
+		return totalRows;	
+	}
+
+	/**
+	 * @see return list 对象，已包含一定数量的 Hyjbxx 在内
+	 */
+	public ArrayList getData(final String sql, final int firstRow, final int maxRow) {
+		 return  (ArrayList)this.getHibernateTemplate().executeFind( new  HibernateCallback(){
+             public  Object doInHibernate(Session session)  throws  SQLException,HibernateException {
+               Query q  =  session.createQuery(sql);
+               q.setFirstResult(firstRow);
+               q.setMaxResults(maxRow);	           
+               ArrayList data = (ArrayList) q.list();  
+
+               return  data;  
+               }
+        });      
 	}	
 	
 	
