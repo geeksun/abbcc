@@ -94,7 +94,7 @@ public class StringUtils {
     /**
      * @param request
      * @param paras
-     * @see  把表单的参数封装在map里
+     * @see 把表单的参数封装在map里
      */
     public static Map getParameter(ServletRequest request, String[] paras)
     {
@@ -111,6 +111,9 @@ public class StringUtils {
         }
         return map;
     } 
+    
+    
+    
     
     
 }
