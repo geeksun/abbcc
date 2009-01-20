@@ -21,7 +21,7 @@ public class Hyjbxx implements java.io.Serializable {
 	private String sj;
 	private String memberType;			//会员类型  
 	private String sfyx;
-	private String scsj;				//删除时间,应该改为日期类型（同注册时间）
+	private String scsj;				//删除时间（有效时间）：免费会员默认为一年的有效期
 	private String gslx;				
 	private String gsmc;
 	private String jydz; 
