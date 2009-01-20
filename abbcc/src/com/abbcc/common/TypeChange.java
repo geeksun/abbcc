@@ -1,5 +1,7 @@
 package com.abbcc.common;
 
+import java.sql.Date;
+
 /**
  * @author 姜志强
  *  数据类型转换,String,int,Integer,Date之间
@@ -60,6 +62,16 @@ public class TypeChange {
 	//change the sqlDate type to the string type
 	public static String dateToString(java.sql.Date date) {
 		return date.toString();
+	}
+	
+	/**
+	 * @param date
+	 * @return java.util.Date转化为java.sql.Date
+	 */
+	public static Date dateToDate(java.util.Date date){
+		java.sql.Date sd;
+		sd = new java.sql.Date(date.getTime());
+		return sd;
 	}
 
 	public static void main(String[] args) {

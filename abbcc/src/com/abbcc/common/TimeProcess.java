@@ -49,6 +49,42 @@ public class TimeProcess {
 		
 		return afterDate;
 	}
+	
+	/**
+	 * @param date
+	 * @return 一年后的同一（same）时间
+	 */
+	public static Date sameTimeAfterYear(Date date){
+		long afterTime = (date.getTime()/1000) + 60*60*24*365; 
+		date.setTime(afterTime*1000); 
+		
+		return date;
+	}
+	
+	/**
+	 * @param date
+	 * @return 几年后的同一（same）时间
+	 */
+	public static Date specifyTime(Date date, int value){
+		long afterTime = (date.getTime()/1000) + 60*60*24*365*value; 
+		date.setTime(afterTime*1000); 
+		
+		return date;
+	}
+	
+	/**
+	 * @return 指定时间的字符串,用来改变时间的有效期,如1年，2年
+	 */
+	public static String specifyTime(String time, int value){
+		String year = time.substring(0, 4);
+		int i = Integer.parseInt(year) + value;
+		String purpose = String.valueOf(i);
+		StringBuffer sf = new StringBuffer();
+		sf.append(purpose);
+		sf.append(time.substring(4));
+		return sf.toString();
+	}
+	
 	public static void main(String[] args){
 		convert();
 		//java.sql.Date d = new java.sql.Date();

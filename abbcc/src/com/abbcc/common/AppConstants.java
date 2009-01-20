@@ -51,8 +51,8 @@ public class AppConstants {
 	public static final String MANAGER_LOGININFO_1 = "用户名不能为空";
 	public static final String MANAGER_LOGININFO_2 = "密码不能为空";
 	public static final String MANAGER_LOGININFO_3 = "用户名或密码错误";
-	
-	
+	public static final String MANAGER_LOGININFO_4 = "你无执行此操作权限";
+	public static final String MANAGER_LOGININFO_5 = "你进行了非法操作";
 	
 	
 	

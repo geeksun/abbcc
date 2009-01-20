@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
- 
 public class DateFormater
 {
 	/**
@@ -50,9 +49,7 @@ public class DateFormater
 		try
 		{
 			d = sdf.parse(date);
-		 
 			calendar.setTime(d);
-
 			return calendar;
 		}
 		catch (ParseException e)
