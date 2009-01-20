@@ -1,5 +1,6 @@
 package com.abbcc.common;
 
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import java.util.Date;
  *  create at 2008-11-18
  */
 public class TimeProcess {
+	
 	/**
 	 *  java.sql.Date 和 java.util.Date 互转换
 	 */
@@ -21,9 +23,10 @@ public class TimeProcess {
 		
 		System.out.println(date2+" "+date1);
 	}
+	
 	/**
 	 * @param date
-	 * @return  日期格式化后的字符串:精确到秒，对应mysql中的datetime。
+	 * @return  日期格式化后的字符串:精确到秒，对应 mysql中的datetime。
 	 */
 	public static String timeFormat(Date date){
 		/*SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd ");
@@ -33,10 +36,24 @@ public class TimeProcess {
 		String time = format.format(date); 
 		return time;
 	}
+	
+	/**
+	 * @param date
+	 * @return 一年后的时间
+	 */
+	public static String timeAfterYear(Date date){
+		Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		long afterTime = (date.getTime()/1000) + 60*60*24*365; 
+		date.setTime(afterTime*1000); 
+		String afterDate = formatter.format(date); 
+		
+		return afterDate;
+	}
 	public static void main(String[] args){
 		convert();
 		//java.sql.Date d = new java.sql.Date();
 		Date d = new Date();
+		System.out.println(d);
 		System.out.println(timeFormat(d));
 		System.out.println(new java.sql.Date(System.currentTimeMillis()));
 		System.out.println(new java.sql.Time(System.currentTimeMillis()));
@@ -44,5 +61,6 @@ public class TimeProcess {
 		/*2008-11-29
 		20:26:29
 		2008-11-29 20:26:29.875*/
+		System.out.println(timeAfterYear(d)); 
 	}
 }
