@@ -70,7 +70,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		log.info("save Hyjbxx instance successful with hyjbxxid:"+id);
 		pstmt.close();
 		}catch(Exception e){
-			log.error("save Hyjbxx instance failed", e);
+			log.error("save Hyjbxx instance failed with hyjbxxid:"+id, e);
 			e.printStackTrace();
 		}finally{
 			try {
