@@ -1,5 +1,6 @@
 package com.abbcc.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.abbcc.pojo.Hyjbxx;
 
@@ -36,7 +37,11 @@ public interface HyjbxxDAO {
 
 	public void updatePassword(String hyjbxxid, String new_password);
 
-	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);  
+	public int updateQuestion(String hyjbxxid, String password_question, String password_answer);
+
+	public int getTotalRows();
+
+	public ArrayList getData(String sql, int i, int rowsPage);    
 
 		
 }
