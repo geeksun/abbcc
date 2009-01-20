@@ -54,9 +54,9 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(9, hyjbxx.getGddh());
 		pstmt.setString(10, hyjbxx.getCz());
 		pstmt.setString(11, hyjbxx.getSj());
-		pstmt.setString(12, hyjbxx.getMemberType());		//   用户类型
-		pstmt.setString(13, hyjbxx.getSfyx());		//   是否有效
-		pstmt.setString(14, hyjbxx.getScsj());		//   删除时间 -> 14
+		pstmt.setString(12, hyjbxx.getMemberType());	//   用户类型  0：免费会员  1：收费会员
+		pstmt.setString(13, hyjbxx.getSfyx());		//   是否有效  0：无效  1：有效
+		pstmt.setString(14, hyjbxx.getScsj());		//   删除时间（在注册时间到此时间间有效） -> 14
 		
 		pstmt.setString(15, hyjbxx.getGslx());		//   公司类型
 		pstmt.setString(16, hyjbxx.getGsmc());
