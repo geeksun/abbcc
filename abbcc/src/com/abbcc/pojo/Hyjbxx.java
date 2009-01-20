@@ -14,19 +14,19 @@ public class Hyjbxx implements java.io.Serializable {
 	private String mmtswt;
 	private String mmtsda;
 	private String zsxm;				//真实姓名
-	private String xb;
-	private String dzyx;
+	private String xb;					//性别
+	private String dzyx;				//电子邮箱
 	private String gddh;				//公司电话,固定电话
-	private String cz;
-	private String sj;
+	private String cz;					//传真
+	private String sj;					//手机
 	private String memberType;			//会员类型  
-	private String sfyx;
+	private String sfyx;				//是否有效
 	private String scsj;				//删除时间（有效时间）：免费会员默认为一年的有效期
-	private String gslx;				
-	private String gsmc;
-	private String jydz; 
+	private String gslx;				//公司类型
+	private String gsmc;				//公司名称
+	private String jydz; 				//经营地址
 	private String zyhy;				//主营行业
-	private String gsszd;
+	private String gsszd;				//公司所在地
 	private String registTime;			//注册时间 -> regist_time
 	// Constructors
     
@@ -35,7 +35,6 @@ public class Hyjbxx implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	
 	public Hyjbxx(String hydlm, String mm, String mmtswt, String mmtsda,String zsxm, String xb, String dzyx,
 			String gddh, String cz,String sj, String memberType, String sfyx, String scsj,String gslx,String gsmc,
 			String gsszd,String jydz,String zyhy,String registTime){ 
