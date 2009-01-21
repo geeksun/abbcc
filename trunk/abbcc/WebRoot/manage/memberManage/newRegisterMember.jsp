@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -8,7 +9,13 @@
     <title>新注册会员管理</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-
+	<script type="text/javascript">
+		function examine(thisurl){
+			var url = thisurl;
+			var win = window.open(url,"审核会员","width=270,height=150,top=0,left=0,resizable=no,scrollbars=no");
+    		return;
+		}
+	</script>
   </head>
   
   <body>
@@ -27,10 +34,19 @@
 	           
 	     <c:forEach var="member" items="${page.data}" >
 	     <tr align=center>
-	     	<td>${member.hyjbxxid}</td><td>${member.gsmc}</td><td>${member.memberType}</td>
-	     	<td>${member.registTime}</td><td>${member.scsj}</td>
+	     	<td>${member.hyjbxxid}&nbsp;<input type="checkbox" name="memberid" value="${member.hyjbxxid}"/></td>
+	     	<td>${member.gsmc}&nbsp;&nbsp;<a href="#">发信</a></td>
+	     	<td>
+	     		<c:if test="${member.memberType=='0'}">免费会员</c:if>
+	     		<c:if test="${member.memberType=='1'}">普通会员</c:if>
+	     		<c:if test="${member.memberType=='2'}">互动会员</c:if>
+	     		<c:if test="${member.memberType=='3'}">精致型会员</c:if>
+	     		<c:if test="${member.memberType=='4'}">VIP定制型会员</c:if>
+	     	</td>
+	     	<td><fmt:formatDate pattern="yyyy-MM-dd" value="${member.registTime}" /></td>
+	     	<td><fmt:formatDate pattern="yyyy-MM-dd" value="${member.scsj}" /></td>
 	     <td>
-		<a href="javascript:show_set('user_sh.asp?id=[]')"><img border="0" alt="" src="<%=path %>/images/m_news.gif" /></a>
+		<a href="javascript:examine('<%=path%>/manage/memberManage/auditMember.jsp?hyjbxxid=${member.hyjbxxid}')"><img border="0" alt="" src="<%=path%>/images/m_news.gif"/></a>
 		</td>      
 	     </tr>
 	     </c:forEach>	     

@@ -1,28 +1,32 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'prompt.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+  <head>   
+    <title>会员操作信息</title>
+    <script type="text/javascript">
+    function renovate(){    
+    	var  prompt = document.promptForm;
+    	prompt.submit();
+    	window.close();																				
+    }
+    </script>
   </head>
   
-  <body>
-    This is my JSP page. <br>
-  </body>
-</html>
+  <body><p></p><br><p></p>
+  		<p align="center">
+  		<font color="blue">会员信息审核成功</font>
+  		</p>
+  		<p>
+        <form name="promptForm" method="post" action="<%=path%>/memberManage.do" target="right">
+        	<input type="hidden" name="action" value="displayRegisterMember"> 
+        	<p align=center>
+        	<input type="button" value="关闭" onClick="renovate()">
+        	</p>
+        </form>
+        </p>
+  </body>																							
+</html>																								
+																											
+																									
