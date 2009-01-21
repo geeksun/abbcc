@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk" contentType="text/html;charset=gbk"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -15,6 +16,7 @@
   </head>
   
   <body><p></p><br><p></p>
+  		<c:if test="${opera_flag=='audit_register_member'}">
   		<p align="center">
   		<font color="blue">会员信息审核成功</font>
   		</p>
@@ -26,6 +28,12 @@
         	</p>
         </form>
         </p>
+        </c:if>
+        <c:if test="${opera_flag!=null}">
+        	<p align=center>
+        	<c:out value="${opera_flag}"></c:out>
+        	</p>
+        </c:if>
   </body>																							
 </html>																								
 																											
