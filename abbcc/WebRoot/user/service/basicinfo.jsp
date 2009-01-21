@@ -77,7 +77,7 @@
   </p>
   	<c:set var="gsjbxx" value="${gsjbxx}" scope="page" ></c:set>
   	<c:set var="hyjbxx" value="${hyjbxx}" scope="page"></c:set>
-  	<form action="traceInfo.do" name="basicInfoForm">
+  	<form action="traceInfo.do" name="basicInfoForm" method="post">
   	<input type="hidden" name="action">
   	<input type="hidden" name="product">
     <table width="90%" border="1" cellspacing="0" cellpadding="2" align="CENTER" bordercolor="F0E68C"> 
@@ -247,14 +247,16 @@
                <%
                 String[] gddh = {"","",""};
                	Hyjbxx hyjbxx = (Hyjbxx)request.getAttribute("hyjbxx");
-				String dh = hyjbxx.getGddh();
-				if(dh!=null){
-					String[] temp = new String[3];
-               		temp = dh.split("/");
-               		if(temp.length>0)gddh[0]=temp[0];
-               		if(temp.length>1)gddh[1]=temp[1];
-               		if(temp.length>2)gddh[2]=temp[2];
-               	}
+               	if(hyjbxx!=null){
+					String dh = hyjbxx.getGddh();
+					if(dh!=null){
+						String[] temp = new String[3];
+	               		temp = dh.split("/");
+	               		if(temp.length>0)gddh[0]=temp[0];
+	               		if(temp.length>1)gddh[1]=temp[1];
+	               		if(temp.length>2)gddh[2]=temp[2];
+	               	}
+	            }
                 %>
                <td align=right>公司电话：<font color=red>*</font></td>
                <td>

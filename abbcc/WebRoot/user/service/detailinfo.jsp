@@ -31,7 +31,7 @@
 		<p>
 			公司详细资料
 		</p>
-		<form action="traceDetailInfo.do" name="detailInfoForm" >
+		<form action="traceDetailInfo.do" name="detailInfoForm" method="post">
 			<input type="hidden" name="action">
 			<table width="90%" border="1" cellspacing="0" cellpadding="2"
 				align="CENTER" bordercolor="F0E68C">
