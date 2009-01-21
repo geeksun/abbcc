@@ -90,6 +90,8 @@ public class TimeProcess {
 		//java.sql.Date d = new java.sql.Date();
 		Date d = new Date();
 		System.out.println(d);
+		Date tt = new Date();
+		System.out.println(d+"/"+sameTimeAfterYear(tt)+"/"+d); 
 		System.out.println(timeFormat(d));
 		System.out.println(new java.sql.Date(System.currentTimeMillis()));
 		System.out.println(new java.sql.Time(System.currentTimeMillis()));
@@ -98,5 +100,6 @@ public class TimeProcess {
 		20:26:29
 		2008-11-29 20:26:29.875*/
 		System.out.println(timeAfterYear(d)); 
+		
 	}
 }
