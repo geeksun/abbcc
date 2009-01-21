@@ -53,33 +53,39 @@ public class TraceInfoAction extends BaseAction {
 			
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			List list = hyjbxxService.getMemberById(hyjbxxid);
+			if(list.size()==1){
+				Gsjbxx gsjbxx = (Gsjbxx) list.get(0);
 			
-			Gsjbxx gsjbxx = (Gsjbxx) list.get(0);
-			//公司基本信息中的主营行业
-			String zyhy=gsjbxx.getZyhy();
-			
-			//判断产品表中是否有此主营行业
-			List idsList=this.getProdcutTypeIdList(zyhy);
-			if(idsList!=null){
-				List textAreaList=this.productService.getTextAreaProductTypeListByIds(idsList);
-				//主营行业显示文本
-				request.setAttribute("textAreaList", textAreaList);
+				//公司基本信息中的主营行业
+				String zyhy=gsjbxx.getZyhy();
+				
+				//判断产品表中是否有此主营行业
+				List idsList=this.getProdcutTypeIdList(zyhy);
+				if(idsList!=null){
+					List textAreaList=this.productService.getTextAreaProductTypeListByIds(idsList);
+					//主营行业显示文本
+					request.setAttribute("textAreaList", textAreaList);
+				}else{
+					log.info("table producttype no this idsList object");
+				}
+				int parentid = 0;
+	
+				List<ProductType> topCategory = this.productService
+						.getProductTypeByParentId(parentid);
+				
+				request.setAttribute("hyjbxx", hyjbxx);
+				request.setAttribute("gsjbxx", gsjbxx);
+				request.setAttribute("traList", topCategory);
 			}else{
-				log.info("table producttype no this idsList object");
+				log.error("Hyjbxxid of the table hyjbxx and another table gsjbxx not the same as hyjbxxid with hyjbxxid:"+hyjbxxid);	
+				request.setAttribute(AppConstants.DISPLAY_FLAG, AppConstants.DISPLAY_CRASH_1);
+				return mapping.findForward("service_exception"); 
 			}
-			int parentid = 0;
-
-			List<ProductType> topCategory = this.productService
-					.getProductTypeByParentId(parentid);
-			
-			request.setAttribute("hyjbxx", hyjbxx);
-			request.setAttribute("gsjbxx", gsjbxx);
-			request.setAttribute("traList", topCategory);
 			}catch(Exception e){
 				log.error(e);
 				e.printStackTrace();
 			}
-			 
+			
 			return mapping.findForward("basicinfo"); 
 	}
 	

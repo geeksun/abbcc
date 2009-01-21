@@ -53,14 +53,14 @@ public class RegisterAction extends BaseAction {
 				Hyjbxx hyjbxx = new Hyjbxx();
 				BeanUtils.copyProperties(hyjbxx,registerForm);
 				Date date = new Date();
-				String registerTime = TimeProcess.timeFormat(date);
-				String  effectiveTime =  TimeProcess.timeAfterYear(date);
+				hyjbxx.setRegistTime(date);
 				
-				hyjbxx.setRegistTime(registerTime);
+				Date effective = new Date();
+				Date effectiveTime = TimeProcess.sameTimeAfterYear(effective);
+				
 				hyjbxx.setSfyx("0");			// 是否有效 0:无效 1：有效
 				hyjbxx.setMemberType("0");		// 会员类型 0：免费 1：付费
 				hyjbxx.setScsj(effectiveTime);	// 有效时间（免费会员为1年）
-				
 				
 				//固定电话（公司电话）
 				String area = request.getParameter("area");
