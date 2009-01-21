@@ -9,5 +9,9 @@
 			<ref bean="managerService"/>
 		</property>
 	</bean>
-	
+	<bean name="/memberManage" class="com.abbcc.customer.MemberManageAction" scope="prototype">    
+		<property name="managerService">
+			<ref bean="managerService"/>
+		</property>
+	</bean>
 </beans>
