@@ -107,6 +107,7 @@
  
 	<global-forwards>
 		<forward name="login" path="/user/index.jsp"></forward>
+		<forward name="managerLogin" path="/manage/index.jsp"></forward>
 		<forward name="fail" path="/fail.jsp"></forward>
 		<forward name="service_exception" path="/500.jsp"></forward>
 		<forward name="modifySuccess" path="/user/modifySuccess.jsp"></forward>
