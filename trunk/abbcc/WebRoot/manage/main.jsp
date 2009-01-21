@@ -5,6 +5,8 @@
 <html>
   <head>
    <title>用户管理</title>
+   <meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
   </head>
  <frameset rows="103,*" cols="*" frameborder="no"   border="0" framespacing="0" >
 	  <frame src="<%=path%>/manage/top.jsp" name="top" scrolling="no" id="top" noresize>

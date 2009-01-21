@@ -1,9 +1,7 @@
 <%@ page language="java"  pageEncoding="gbk" contentType="text/html;charset=gbk"%>
-<%@page import="com.abbcc.common.AppConstants" %>
 <%
 	String path = request.getContextPath();
 %> 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>welcome to abbcc</title> 
@@ -20,11 +18,13 @@
 				else dl.className = "collapse";	
 			}
 		</script>
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
   </head> 
   <body>
      <dl>
      	<dt onclick="toggleDl(this)">会员管理</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayBasicInfo" target="right">新用户注册管理</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
      	<dd><a href="<%=path%>/memberManage.do?action=displayModifyCipher" target="right">待审普通会员管理</a></dd>
      	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
      	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
