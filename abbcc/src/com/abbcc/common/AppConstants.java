@@ -53,12 +53,21 @@ public class AppConstants {
 	public static final String MANAGER_LOGININFO_3 = "用户名或密码错误";
 	public static final String MANAGER_LOGININFO_4 = "你无执行此操作权限";
 	public static final String MANAGER_LOGININFO_5 = "你进行了非法操作";
+	public static final String AUDIT_REGISTER_MEMBER = "audit_register_member";
+	public static final Object AUDIT_REGISTER_INFO_1 = "你无权进行此操作";
+	public static final Object AUDIT_REGISTER_INFO_2 = "你的会员ID不存在";
+	public static final Object AUDIT_REGISTER_INFO_3 = "你的会员信息不存在";
+	
+	
+	
+	
+	
 	
 	
 	
 	//服务异常500
 	public static final String DISPLAY_CRASH = "display_crash";
-	
+	public static final String DISPLAY_CRASH_1 = "display_crash_1";
 	
 	
 	
@@ -87,6 +96,7 @@ public class AppConstants {
 	public static final String PRODUCT_SALE="1";//供应
 	public static final String PRODUCT_BUY="2";//求购
 	public static final String PRODUCT_QUICK_BUY="3";
+
 	
 	
 	
