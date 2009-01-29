@@ -85,7 +85,7 @@ public class TableUtil {
 			builder.append(" timestamp ");
 			if (!ableNull) {
 				builder.append("  NOT NULL  ");
-				builder.append("  default '0000-00-00 00:00:00' ");
+				builder.append("  default CURRENT_TIMESTAMP ");
 			} else {
 				builder.append("  default NULL ");
 			}

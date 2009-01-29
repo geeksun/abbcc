@@ -10,7 +10,16 @@
 	List productInfoList=(List)request.getAttribute("productInfoList");
 	Pagination pagination=(Pagination)request.getAttribute("pagination");
 	String auditType=(String)request.getAttribute("auditType");
+	String overdue=(String)request.getAttribute("overdue");
 	if(auditType==null)auditType=AppConstants.CPGQXX_SFYX_3;
+	if(overdue==null)overdue=AppConstants.CPGOXX_UN_OVERDUE;
+	boolean isOverdue=false;
+	 if(overdue.equals(AppConstants.CPGOXX_OVERDUE)){
+	    isOverdue=true;
+	}
+	
+	
+	
 
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
@@ -28,11 +37,18 @@
 		<LINK rev=stylesheet href="<%=path%>/user/product/productInfoList.files/content.css"
 			type=text/css rel=stylesheet> 
 		<script type="text/javascript">
-			function updateAuditType(productInfoId){ 
+			function updateAuditType(productInfoId,auditType){ 
 			var page_form='<%=pagination!=null?pagination.getFormName():""%>'; 
-			var action=document.<%=pagination!=null?pagination.getFormName():""%>.action="<%=path%>/admin/product.do?method=updateProductInfoAuditType&productInfoIds="+productInfoId;
+			var action=document.<%=pagination!=null?pagination.getFormName():""%>.action="<%=path%>/admin/product.do?method=updateProductInfoAuditType&productInfoIds="+productInfoId+"&newAuditType="+auditType;
 			document.<%=pagination!=null?pagination.getFormName():""%>.submit();
 			}
+			
+			function deleteProduct(productInfoId){ 
+			var page_form='<%=pagination!=null?pagination.getFormName():""%>'; 
+			var action=document.<%=pagination!=null?pagination.getFormName():""%>.action="<%=path%>/admin/product.do?method=deleteProductInfo&productInfoIds="+productInfoId;
+			document.<%=pagination!=null?pagination.getFormName():""%>.submit();
+			}
+			
 			function clickSearchButton(){
 			 	
 				document.manageSearchForm.submit();
@@ -45,7 +61,7 @@
 			<TBODY>
 				<TR>
 					<TD class=bigtitle width=200> 
-						=管理供求信息 
+						 管理供求信息 
 					</TD>
 					 
 				</TR>
@@ -60,7 +76,7 @@
 					<TD class=card_blank_73 width=10>
 						&nbsp;
 					</TD>
-						<%if(auditType.equals(AppConstants.CPGQXX_SFYX_3)){
+						<%if(auditType.equals(AppConstants.CPGQXX_SFYX_3)&&!isOverdue){
 						
 						%>
 						<TD class=card_down_73 style="WIDTH: 140px">
@@ -73,13 +89,13 @@
 						%>
 						<TD class=card_normal_73 style="WIDTH: 140px">
 					
-						<A href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_3 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>"> <FONT id=beChangedColor color=#000000>审核未通过(0)</FONT></A>
+						   <A href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_3 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>"> <FONT id=beChangedColor color=#000000>审核未通过(0)</FONT></A>
 						
 						</TD>
 						<%
 						}
 					   %>
-						<%if(auditType.equals(AppConstants.CPGQXX_SFYX_1)){
+						<%if(auditType.equals(AppConstants.CPGQXX_SFYX_1)&&!isOverdue){
 						
 						%>
 						<TD class=card_down_73 style="WIDTH: 140px">
@@ -98,7 +114,7 @@
 						<%
 						}
 					   %>
-					   <%if(auditType.equals(AppConstants.CPGQXX_SFYX_2)){
+					   <%if(auditType.equals(AppConstants.CPGQXX_SFYX_2)&&!isOverdue){
 						
 						%>
 						<TD class=card_down_73 style="WIDTH: 140px">
@@ -117,11 +133,25 @@
 						<%
 						}
 					   %> 
+					 <%if(isOverdue){
+						
+						%>
+						<TD class=card_down_73 style="WIDTH: 140px">
 					
-					 
-					<TD class=card_normal_73 style="WIDTH: 140px">
-						<A   href="#">已过期(0)</A>
-					</TD>
+						 <FONT id=beChangedColor color=#000000>已过期(0)</FONT>
+						</TD>
+						<%
+						}else
+						{
+						%>
+						<TD class=card_normal_73 style="WIDTH: 140px">
+					
+						<A href="<%=path%>/admin/product.do?method=productInfoList&overdue=<%=AppConstants.CPGOXX_OVERDUE %>"> <FONT id=beChangedColor color=#000000>已过期(0)</FONT></A>
+						
+						</TD>
+						<%
+						}
+					   %>   
 					<TD class=card_blank_73>
 						&nbsp;
 					</TD>
@@ -185,22 +215,7 @@
 			</TABLE>
 		</FORM>
 		<BR>
-		<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
-			<TBODY>
-				<TR>
-					<TD vAlign=center height=20>
-						&nbsp;共有
-						<STRONG><FONT color=#ff0000>13</FONT>
-						</STRONG> 条未审核
-					</TD>
-					<TD align=right width=200>
-						<FONT color=#999999>上一页</FONT>
-						<B>1</B>
-						<FONT color=#999999>下一页</FONT>
-					</TD>
-				</TR>
-			</TBODY>
-		</TABLE>	<FORM name=dealForm
+	 	<FORM name=dealForm
 				action=# method=post>
 		<TABLE class=list_lb_loca cellSpacing=1 cellPadding=0 width="100%"> 
 				<COLGROUP>
@@ -227,17 +242,13 @@
 					<TD class=list_lb_title align=middle width=60>
 						到期时间
 					</TD>
-					<%if(!auditType.equals(AppConstants.CPGQXX_SFYX_1)){
-						
-						%>
-					<TD class=list_lb_title align=middle width=50>
-						修改
-					</TD>
-					<%} %>
+					  
 					<TD class=list_lb_title align=middle width=50>
 						用户
 					</TD>
-					 
+					 <TD class=list_lb_title align=middle width=200>
+						操作
+					</TD>
 				</TR>
 				<%
 					if(productInfoList!=null){
@@ -286,20 +297,21 @@
 							href="#">2009-06-22
 						</A>
 						 
-					</TD>
-					<%if(!auditType.equals(AppConstants.CPGQXX_SFYX_1)){
-						
-						%>
-					<TD class=list_lb_content align=middle width=50 onclick="updateAuditType(<%= id%>)">
-						<A href="#">通过审核
-						</A>
-					</TD>
-					<%} %>
+					</TD> 
 					<TD class=list_lb_content align=middle width=50>
 						<A href="#"> 呵呵 </A>
 						 
 					</TD>
-					 
+					 <TD class=list_lb_content align=middle >
+						<A href="#"  onclick="updateAuditType(<%= id%>,<%= AppConstants.CPGQXX_SFYX_1%>)">审核通过
+						</A><br>
+						<A href="#"  onclick="updateAuditType(<%= id%>,<%= AppConstants.CPGQXX_SFYX_3%>)">审核未通过
+						</A><br>
+						<A href="#"  onclick="updateAuditType(<%= id%>,<%= AppConstants.CPGQXX_SFYX_2%>)">审核中
+						</A><br>
+						<A href="#"  onclick="deleteProduct(<%= id%>)">删除
+						</A>
+					</TD>
 				</TR>
 				<% 
 							}
@@ -318,6 +330,12 @@
 						全选&nbsp;&nbsp;  
 						<INPUT onclick=""
 							type=button value=审核通过 name=submit_move>
+						&nbsp;
+						<INPUT onclick=""
+							type=button value=审核未通过 name=submit_move>
+						&nbsp;
+						<INPUT onclick=""
+							type=button value=删除 name=submit_move>
 						&nbsp;
 						 
 					</TD>

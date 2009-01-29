@@ -26,7 +26,7 @@ public class ProductUtil {
 		return true;
 	}
 	public static String getNextTableName(){
-		  ProductService productService= (ProductService) StartServlet.getBean("productService");
+		  //ProductService productService= (ProductService) StartServlet.getBean("productService");
 		 
 		
 		return "product_";
@@ -42,11 +42,19 @@ public class ProductUtil {
 	}
  
  
-	public static ProductObject getProductObject(Product product ,HttpServletRequest request){
+	public static ProductObject getProductInsertObject(Product product ,HttpServletRequest request){
 		if(product==null||request==null)return null;
 		String sql=getProductInsertSql(product);
 		Object[] value=getValueByFromName(product,request);
 		ProductObject obj=new ProductObject(sql,value);
+		return obj;
+	}
+	public static ProductObject getProductDeleteObject(Product product){
+		if(product==null )return null;
+		String sql=getProductDeleteSqlById(product);
+		 
+		ProductObject obj=new ProductObject(  );
+		obj.setSql(sql);
 		return obj;
 	}
 	private static Object[] getValueByFromName(Product product,HttpServletRequest request){
@@ -85,6 +93,16 @@ public class ProductUtil {
 			  builder.append("?,"); 
 		}
 		builder.append("?)");
+		return builder.toString();
+	}
+	
+	private static String getProductDeleteSqlById(Product product){
+		if(product==null)return null;
+		StringBuilder builder = new StringBuilder("delete from ");
+	 
+		String tableName=product.getTableName(); 
+		builder.append(tableName );
+		builder.append(" where id=?" );
 		return builder.toString();
 	}
 	public static String getProductSelectSql(Product product,String cpgqxxId){

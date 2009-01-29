@@ -86,6 +86,8 @@ public class Cpgqxx implements java.io.Serializable {
 	 * É¾³ýÊ±¼ä
 	 */
 	private Date scsj;
+	
+	private Date xxyxsj;
 
  	public Cpgqxx() {
 	}
@@ -303,6 +305,14 @@ public class Cpgqxx implements java.io.Serializable {
 	 */
 	public void setXxyxq(String xxyxq) {
 		this.xxyxq = xxyxq;
+	}
+
+	public Date getXxyxsj() {
+		return xxyxsj;
+	}
+
+	public void setXxyxsj(Date xxyxsj) {
+		this.xxyxsj = xxyxsj;
 	}
 
 	 

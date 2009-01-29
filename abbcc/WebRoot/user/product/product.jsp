@@ -13,10 +13,7 @@ String path = request.getContextPath();
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<script src="<%=path%>/js/prototype.js"></script>
-		<link rel="stylesheet" rev="stylesheet"
-			href="<%=path%>/user/product/product_files/AlicnTree.css"
-			type="text/css" />
+		<script src="<%=path%>/js/prototype.js"></script> 
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myali_search_v02.css"
 			type="text/css" />
@@ -29,77 +26,7 @@ String path = request.getContextPath();
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myalibaba.css"
 			type="text/css" />
-		<style>
-<!--
-.tablestyle{
-		border-top:#ffffff 3px solid; border-bottom:#e0e0e0 1px solid; background:#f6f6f6;
-		}
-.tablestylenobottomline{
-		border-top:#ffffff 3px solid; background:#f6f6f6;
-		}
-.awake{
-		padding:3px; border:#485E00 1px solid; background:#F7FFDD; color:#485e00;
-		}
-.normal{
-		padding:3px; border:#ffffff 1px solid; background:#ffffff; color:#999999;
-		}
-.wrong{
-		text-align:left;
-		padding:2px;
-		line-height:130%;
-		background:#FFF8EE;
-		border:#ff7300 1px solid;
-		background-image:url("http://i03.c.aliimg.com/images/cn/common/icon/icon_noteawake_16x16.gif");
-		background-repeat:no-repeat;
-		background-position:3px 3px;
-		margin:0px;
-		border:1px solid #FFCB99;
-		}
-.wrongwords{
-		margin-left:20px;
-		margin-bottom:0px;
-		margin-top:2px;
-		font-size:12px;
-		font-weight:normal;
-		color:#000000;
-		padding:0px;
-		}
-.M1 {font:bold 14px}
-ul.callinglayout {
-	display:block;
-	margin:0px;
-	padding:3px;
-	list-style:none;
-	text-align:left;
-}
-
-ul.callinglayout li {
-	float:left;
-	margin:0px 4px;
-	white-space:nowrap;
-}
-
-	
-	.OfferPostPic
-	{
-		height:55px
-	}
-	.OfferPostTitle
-	{
-		border-bottom:1px solid #D6D6D6;
-		font-size:14px;
-		word-break:break-all;
-		padding-left:15px;
-	}
-	.OfferPost
-	{
-		border-bottom:1px solid #D6D6D6;
-		font-size:12px;
-		word-break:break-all;
-		padding-left:15px;
 		
-	}
---></style>
 		<script language="JavaScript" type="text/javascript">
 		 
     	function onChangeTopCategory(value){
@@ -113,12 +40,15 @@ ul.callinglayout li {
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
 		     secondCatForm.innerHTML=result;
+		     clearThirdSelect();
 	  
 	  	} 
 	  	function clearThirdSelect()
 	  	{
-	  	   //var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
-	  	   //tdleafCatFormKey.innerHTML="";
+	  	    var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	    tdleafCatFormKey.innerHTML="";
+	  	    var productTypeId=document.getElementById("productTypeId");  
+	  	    productTypeId.value="";
 	  	}
 		function onChangeSecondCategory(value){
 			var paramname = value; 
@@ -130,12 +60,11 @@ ul.callinglayout li {
 		}
 		function showSecondChecked(originalRequest){
 			var result= originalRequest.responseText;	    
-		    var secondCatForm=document.getElementById("tdleafCatFormKey"); 
-		 
+		    var secondCatForm=document.getElementById("tdleafCatFormKey");  
 		     secondCatForm.innerHTML=result;
-		     
-		     
-	  
+		     var productTypeId=document.getElementById("productTypeId");  
+	  	    productTypeId.value="";
+		      
 	  	} 
 		
 		function onChangeLeafCategory(value){
@@ -143,7 +72,7 @@ ul.callinglayout li {
     		var url = "<%=path%>/productInfo.do?method=productTemplate";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showLeafChecked});
-	  		   var productTypeId=document.getElementById("productTypeId");  
+	  		var productTypeId=document.getElementById("productTypeId");  
 	  		productTypeId.value=value;
 		} 
 		function showLeafChecked(originalRequest){
@@ -169,10 +98,42 @@ ul.callinglayout li {
 	  			} 
 	  	} 
 	  	function checkSubmit(){
-	  	
+	  		  
+		    var productName =document.mainform.productName.value;
+		    var productTypeId =document.mainform.productTypeId.value;
+		    var prodcutTitle =document.mainform.prodcutTitle.value;
+		    var merchantType =document.mainform.merchantType.value;
+		    if(isNull(productName)){
+		    	alert("产品名称不能为空"); 
+		    	return;
+		    }
+		     if(isNull(productTypeId)){
+		    	alert("请选择产品所属类目"); 
+		    	return;
+		    }
+		     if(isNull(prodcutTitle)){
+		    	alert("信息标题不能为空"); 
+		    	return;
+		    }
+		     if(isNull(merchantType)){
+		    	alert("请选择供应商类型"); 
+		    	return;
+		    }
+		    if(!checkProduct()){
+		    	return;
+		    }
+		    
+		    
 	  		document.mainform.action="<%=path%>/productInfo.do?method=addProductInfo";
 	  		document.mainform.submit();
 	  	}
+	  	function isNull(value)
+		{
+			if(value==null)return true;
+			value=value.replace(/(^\s*)|(\s*$)/g, "");
+			if(value=="")return true;
+			return false;
+		}
 	  	</script>
 	</head>
 	<body>
@@ -181,7 +142,7 @@ ul.callinglayout li {
 			<tbody>
 				<tr>
 					<td>
-						<form name="mainform" method="post" >
+						<form name="mainform" method="post" enctype ="multipart/form-data" >
 						<input id="productTypeId" type="hidden" name="productTypeId" value=""/>
 							<table width="100%">
 								<tbody>
@@ -539,15 +500,15 @@ ul.callinglayout li {
 										</td>
 										<td class="list_right_box">
 											<div id="div_OfferExpire_normal">
-												<input value="1" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_10_DAY %>" name="ableDate" type="radio" checked/>
 												10天
-												<input value="2" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_20_DAY %>" name="ableDate" type="radio" />
 												20天
-												<input value="3" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_1_MONTH %>" name="ableDate" type="radio" />
 												1个月
-												<input value="4" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_3_MONTH %>" name="ableDate" type="radio" />
 												3个月
-												<input value="5" checked="checked" name="ableDate"
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_6_MONTH %>"  name="ableDate"
 													type="radio" />
 												6个月
 											</div>
@@ -668,6 +629,47 @@ ul.callinglayout li {
 
 										</td>
 									</tr>
+									  <SCRIPT language=JavaScript>
+										   function showimg(index){
+										    var cardpicId="cardpic"+index;
+										    var cardPic=document.getElementById(cardpicId);
+										    
+										    var src=cardPic.value;
+										   
+										    var uploadedId="uploaded"+index;
+										    var uploaded=document.getElementById(uploadedId);
+										    uploaded.src=src; 
+										  
+										    var uploadImgId="uploadImg"+index; 
+										   	var updateImgtr=document.getElementById(uploadImgId);
+										   	updateImgtr.style.display='none'; 
+										    
+										   }
+										   function showUpload(index){ 
+										   	 for(var i=1;i<4;i++)
+										   	 {
+										   	 	  var uploadImgId="uploadImg"+i; 
+										   	 	  var updateImgtr=document.getElementById(uploadImgId);
+										   	 	  if(i==index){
+										   	 	 	 updateImgtr.style.display='block';
+										   	 	  }else
+										   	 	  {
+										   	 	  	 updateImgtr.style.display='none';
+										   	 	  }
+										   	 }
+										   }
+										   function deleteUpload(index){  
+										  
+										       var inputfileId="inputfile"+index;
+										       var inputfile=document.getElementById(inputfileId); 
+										       var noPicSrc='<%=path%>/user/product/product_files/detail_no_pic.gif';
+										   	   var updatetd=  "<input type='file' onchange='showimg("+index+");' id='cardpic"+index+"' name='cardpic"+index+"' value='' />"; 
+										       inputfile.innerHTML=updatetd;
+										       var uploadedId="uploaded"+index; 
+										       var uploaded=document.getElementById(uploadedId);
+										       uploaded.src=noPicSrc;  
+										   }
+									  </SCRIPT>
 									<tr>
 										<td class="list_left_box" align="right" valign="top">
 											<b>上传图片</b>&nbsp;
@@ -690,41 +692,68 @@ ul.callinglayout li {
 													</tr>
 													<tr>
 														<td id="tdpic01" align="center" height="25">
-															<img name="uploaded0"
+															<img name="uploaded1" id="uploaded1";
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
 																width="100" height="100" />
 														</td>
 														<td align="center">
-															<img name="uploaded1"
+															<img name="uploaded2"  id="uploaded2";
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
 																width="100" height="100" />
 														</td>
 														<td align="center">
-															<img name="uploaded2"
+															<img name="uploaded3"  id="uploaded3";
 																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
 																width="100" height="100" />
 														</td>
 													</tr>
 													<tr>
 														<td align="center" height="35">
-															<input value="上传" name="uploadPicBtn0" type="button" />
+															<input value="上传" name="uploadPicBtn0" type="button" onclick="showUpload(1)"/>
 															&nbsp;
 
-															<input onclick="delete_picture('0');" value="删除"
-																name="delPicBtn0" type="button" />
+															<input   value="删除"
+																name="delPicBtn0" type="button"  onclick="deleteUpload(1);cardpic1.select(); document.selection.clear();" />
+															
 														</td>
 														<td align="center">
-															<input value="上传" name="uploadPicBtn1" type="button" />
+															<input value="上传" name="uploadPicBtn1" type="button" onclick="showUpload(2)" />
 															&nbsp;
 
-															<input value="删除" name="delPicBtn1" type="button" />
+															<input value="删除" name="delPicBtn1" type="button" onclick="deleteUpload(2)" />
 														</td>
 														<td align="center">
-															<input value="上传" name="uploadPicBtn2" type="button" />
+															<input value="上传" name="uploadPicBtn2" type="button"  onclick="showUpload(3)"/>
 															&nbsp;
 
-															<input onclick="delete_picture('2');" value="删除"
-																name="delPicBtn2" type="button" />
+															<input   value="删除"
+																name="delPicBtn2" type="button" onclick="deleteUpload(3)" />
+														</td>
+													</tr>
+													<tr id="uploadImg1" style="display:none">
+													 
+														<td colspan="3"> 
+															上传图片&nbsp;&nbsp;
+															<span   id="inputfile1">
+															    <input type="file" onchange="showimg(1);" id="cardpic1" name="updatePic1" value="22" />
+															</span>
+														</td>
+														
+													</tr>
+													<tr id="uploadImg2" style="display:none">
+														<td colspan="3"> 
+															上传图片&nbsp;&nbsp;
+															<span   id="inputfile2">
+															<input type="file" onchange="showimg(2);" id="cardpic2" name="updatePic2" value=""/>
+															</span>
+														</td>
+													</tr>
+													<tr id="uploadImg3" style="display:none">
+														<td colspan="3"> 
+															上传图片&nbsp;&nbsp;
+															<span   id="inputfile3">
+															<input type="file" onchange="showimg(3);" id="cardpic3" name="updatePic3" value=""/>
+															</span>
 														</td>
 													</tr>
 												</tbody>
@@ -846,7 +875,7 @@ ul.callinglayout li {
 																<b>最小起订量</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="orderCount" id="feature59239"
+																<input class="tpf_input" name="minCount" id="feature59239"
 																	value="" size="23" maxlength="12" type="text" />
 																<span id="trade_unit_beginamount">单位</span>
 																<span style="padding-left: 10px;"><span

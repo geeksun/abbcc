@@ -2,6 +2,8 @@
 	pageEncoding="gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
+<%@ page import="com.abbcc.pojo.Product"%>
+<%@ page import="com.abbcc.util.product.ProductUtil"%>
 <%
 String path = request.getContextPath();
 %>
@@ -19,17 +21,20 @@ String path = request.getContextPath();
     		var url = "<%=path%>/admin/productType.do?method=productSecondCategory";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showTopChecked});
-		   // clearThirdSelect();
+		    
 	  	}
 	  	 function clearThirdSelect()
 	  	{
 	  	   var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
 	  	   tdleafCatFormKey.innerHTML="";
+	  	    var productType=document.getElementById('productType');   
+	  	    productType.value="";
 	  	}
 	    function showTopChecked(originalRequest){
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
 		     secondCatForm.innerHTML=result;
+		      clearThirdSelect();
 	  
 	  	} 
 		function onChangeSecondCategory(select){
@@ -43,6 +48,8 @@ String path = request.getContextPath();
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdleafCatFormKey"); 
 		     secondCatForm.innerHTML=result;
+		     var productType=document.getElementById('productType');   
+	  	    productType.value="";
 	  
 	  	} 
 		
@@ -54,8 +61,290 @@ String path = request.getContextPath();
 		
 		
 	  </script>
+	
+	<%
+	Product product=(Product)request.getAttribute("product");
+	 %>
+	<body  >
+		<form name="form_product" method="post" action="">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+					<td align="center">
+						产品管理
+					</td>
+				</tr>
+
+				<tr>
+					<td align="left">
+						<table>
+							<tr>
+								<td>
+									产品名称
+									<font color="#ff0000">*</font>
+									<input id="productName" name="productName" type="text"
+										value="<%=product!=null?product.getProductName():"" %>" size="15">
+								</td>
+
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+						<table>
+							<tr>
+								<td valign="top">
+									产品所属类目
+									<font color="#ff0000">*</font>
+									<%
+									ProductType thirdProductType = (ProductType) request.getAttribute("thirdProductType");
+													
+									 %>
+									<input id="productType" type="hidden" name="productType"
+										value="<%=thirdProductType!=null?thirdProductType.getId():"" %>">
+								</td>
+								<td>
+									<table>
+										<tr>
+											<td id="tdtopCatFormKey">
+												<select name="topCatFormKey" size="8" style="width: 129px;"
+													id="topCatFormKey" onchange="onChangeTopCategory(this)">
+													<%
+														List topCategory = (List) request.getAttribute("topCategory");
+														ProductType topProductType = (ProductType) request.getAttribute("topProductType");
+														int topProductTypeId=topProductType!=null?topProductType.getId():-1;
+														if (topCategory != null) {
+															Iterator iter = topCategory.iterator();
+															while (iter.hasNext()) {
+																ProductType productType = (ProductType) iter.next();
+																if (productType != null) {
+															String name = productType.getName();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
+															out.print("<option value=\"" + value + "\"");
+															if(topProductTypeId==value){
+															  out.print("  selected ");
+															}
+															if (able) {
+																out.print(" style=\"color: rgb(204, 204, 204);\" ");
+															}
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
+															out.println(name);
+															out.println("</option>");
+
+																}
+															}
+														}
+													%>
+
+												</select>
+											</td>
+											<td id="tdsecondCatFormKey">
+												<select name="secondCatFormKey" size="8"
+													style="width: 129px;" id="secondCatFormKey"
+													onchange="onChangeSecondCategory(this)">
+													<%
+														List secondCategory = (List) request.getAttribute("secondCategory");
+														ProductType secondProductType = (ProductType) request.getAttribute("secondProductType");
+														int secondProductTypeId=secondProductType!=null?secondProductType.getId():-1;
+														if (secondCategory != null) {
+															Iterator iter = secondCategory.iterator();
+															while (iter.hasNext()) {
+																ProductType productType = (ProductType) iter.next();
+																if (productType != null) {
+															String name = productType.getName();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
+															out.print("<option value=\"" + value + "\"");
+															if(secondProductTypeId==value){
+															  out.print("  selected ");
+															}
+															if (able) {
+																out.print(" style=\"color: rgb(204, 204, 204);\" ");
+															}
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
+															out.println(name);
+															out.println("</option>");
+
+																}
+															}
+														}
+													%>
+												</select>
+											</td>
+											<td id="tdleafCatFormKey">
+												<select name="leafCatFormKey" size="8" id="leafCatFormKey"
+													style="width: 129px;" onchange="onChangeLeafCategory(this)">
+													<%
+														List thirdCategory = (List) request.getAttribute("thirdCategory");
+															int thirdProductTypeId=thirdProductType!=null?thirdProductType.getId():-1;
+													
+														if (thirdCategory != null) {
+															Iterator iter = thirdCategory.iterator();
+															while (iter.hasNext()) {
+																ProductType productType = (ProductType) iter.next();
+																if (productType != null) {
+															String name = productType.getName();
+															int value = productType.getId();
+															int isShow = productType.getIsShow();
+															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																	: false;
+															out.print("<option value=\"" + value + "\"");
+															if(thirdProductTypeId==value){
+															  out.print("  selected ");
+															}
+															if (able) {
+																out.print(" style=\"color: rgb(204, 204, 204);\" ");
+															}
+															out.println(" isShow='" + isShow + "' name='" + name
+																	+ "' >");
+															out.println(name);
+															out.println("</option>");
+
+																}
+															}
+														}
+													%>
+												</select>
+											</td>
+										</tr>
+									</table>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+						<table>
+							<tr>
+								<td>
+									产品属性
+								</td>
+							 
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td> 
+							<table width='100%'>
+								<tr>
+									<td align='center' >
+										序号
+									</td>
+									<td align='center' >
+										 名称
+									</td>
+									<td align='center'  >
+										不能为空
+									</td>
+									<td align='center' >
+										 单位
+									</td>
+									<td align='center' >
+										 类型
+									</td>
+									<td align='center' >
+										 隐藏名称
+									</td>
+									<td align='center'  >
+										备注
+									</td>
+									<td width='10%'>
+										 是否显示
+									</td>
+								</tr>
+								
+								 <%
+							 	 int len=0; 
+							 	if(product!=null){
+							 		long id=product.getId();
+							 		out.print("<input type='hidden' name='productId' value='"+id+"'>");
+							 		int state=product.getState();
+							 		String isHidden=	product.getIsHidden();
+							 		String propertyName=product.getPropertyName();
+							 		String isNull=product.getIsNull(); 
+							 		String remark=product.getRemark();
+							 		String unit=product.getUnit(); 
+							 		String type=product.getType();
+							 		String isShow=product.getIsShow();
+							 		
+							 		String[] hiddens=ProductUtil.arrayToString( isHidden);
+							 	    String[] propertyNames=ProductUtil.arrayToString( propertyName);
+							 	    String[] isNulls=ProductUtil.arrayToString( isNull);
+							 	    String[] remarks=ProductUtil.arrayToString( remark);
+							 	    String[] units=ProductUtil.arrayToString( unit);
+							 	    String[] types=ProductUtil.arrayToString( type);
+							 	    String[] isShows=ProductUtil.arrayToString( isShow);
+							 	    len=hiddens.length;
+							 	    for(int i=0;i<len;i++){
+							 	     int count=i+1;
+							 	    
+							%> 
+							
+							 <tr> 
+							 	 <td align='center'  > 
+							 		  <%=count %></td> 
+						         <td align='center'   > 
+						            <input id='property<%=count %>' name='property'  size='17' type='text' value="<%=propertyNames[i] %>"> 
+						             <font color='#ff0000'>*</font> 
+							     </td> 
+							     <td align='center'  > 
+							 		 <input  id='checkbox<%=count %>' type='checkbox' value='<%=isNulls[i] %>' <%=isNulls[i].equals("true")?" checked ":"" %> > 
+									 <input  id='isNull<%=count%>' name='isNull' type='hidden' value='<%=isNulls[i] %>'> 
+								 </td> 
+								 <td align='center' > 
+									  <input name='unit' type='text'   size='5' value='<%=units[i] %>'> 
+								 </td> 
+								 <td align='center'   > 
+									  <select id='select<%=count %>' disabled   > 
+							        	  <option value='text' <%=types[i].equals("text")?" selected ":"" %>   > 文本 </option> 
+							    		  <option value='select'  <%=types[i].equals("select")?" selected ":"" %>   >  下拉 </option> 
+									  </select> 
+									  <input id='type<%=count %>' name='type' type='hidden' value='<%=types[i] %>'> 
+							    </td> 
+							     <td align='center'  > 
+									  <input  id='isHiddenCheckbox<%=count %>' type='checkbox'   name='radioname'    <%=hiddens[i].equals("true")?" checked ":"" %> ></td> 
+									  <input  id='isHidden<%=count %>' name='isHidden' type='hidden' value='<%=hiddens[i] %>'> 
+								 </td> 
+							 	 <td align='center' > 
+							 		 <input name='remark' type='text' value="" > 
+							  	 </td> 
+							  	 <td align='center' > 
+							 		 <input  id='isShowCheckbox<%=count %>' type='checkbox'  <%=isShows[i].equals("true")?" checked ":"" %> ></td> 
+									 <input  id='isShow<%=count %>' name='isShow' type='hidden' value='<%=isShows[i] %>'> 
+							 	  </td> 
+							   </tr> 
+							<%     
+							 	    } 
+							 	}
+							 
+							  %>
+							 
+							</table>
+							
+					  </td> 
+				</tr>
+				 
+				<tr>
+					<td align="center">
+						<input type="button" value="确定" onclick="checkSumbit()">
+						<input type="button" value="预览">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 	<script language="JavaScript" type="text/javascript">
-		var count=0;
+		var count=<%=len%>;
 		function createProperty(){
 			var property="<table  width='100%' id='productTable"+count+"' >"+ 
 							 "<tr>"+
@@ -153,13 +442,14 @@ String path = request.getContextPath();
 		  
 			for(var i=1;i<=count;i++)
 			{
+				  
 				var checkboxId='isHiddenCheckbox'+i;
 				var isHiddenId='isHidden'+i;
 			    var checkbox=document.getElementById(checkboxId);  
 			    if(!checkbox.checked){
 				      var isHidden=document.getElementById(isHiddenId); 
 				      isHidden.value='false';  
-				     
+				   
 			    }else
 			    {
 			    	  var isHidden=document.getElementById(isHiddenId); 
@@ -176,7 +466,7 @@ String path = request.getContextPath();
 			if(checkValue())
 			{
 				 
-				document.form_product.action="<%=path%>/admin/product.do?method=createProduct";
+				document.form_product.action="<%=path%>/admin/product.do?method=updateProduct";
 				document.form_product.submit();
 			}
 		}
@@ -242,26 +532,7 @@ String path = request.getContextPath();
 			    } 
 			 
 			} 
-			 for(var i=1;i<=count;i++){
-			 	for(var j=1;j<=count;j++){
-			 		var indexId='indexId'+i; 
-			   		var index=document.getElementById(indexId); 
-			   		if(index.value>count||index.value<1)
-			   		{
-			   			alert("序号不能大于总数 请正确填写序号");
-			   			return false;
-			   		}  
-			 		if(i!=j){
-						var nextindexId='indexId'+j; 
-			  			var nextindex=document.getElementById(nextindexId);   
-			  			if(nextindex.value==index.value){
-			  				alert("序号不能相同 请正确填写序号");
-			  				return false;
-			  			}
-					} 
-			 	}
-				
-			 } 
+			  
 			 
 			return true; 
 		}
@@ -289,202 +560,4 @@ String path = request.getContextPath();
 			return true;
 		}
 	</script>
-	<body onload="init()">
-		<form name="form_product" method="post" action="">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tr>
-					<td align="center">
-						产品管理
-					</td>
-				</tr>
-
-				<tr>
-					<td align="left">
-						<table>
-							<tr>
-								<td>
-									产品名称
-									<font color="#ff0000">*</font>
-									<input id="productName" name="productName" type="text"
-										value="1111" size="15">
-								</td>
-
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align="left">
-						<table>
-							<tr>
-								<td valign="top">
-									产品所属类目
-									<font color="#ff0000">*</font>
-									<input id="productType" type="hidden" name="productType"
-										value="">
-								</td>
-								<td>
-									<table>
-										<tr>
-											<td id="tdtopCatFormKey">
-												<select name="topCatFormKey" size="8" style="width: 129px;"
-													id="topCatFormKey" onchange="onChangeTopCategory(this)">
-													<%
-														List topCategory = (List) request.getAttribute("topCategory");
-														if (topCategory != null) {
-															Iterator iter = topCategory.iterator();
-															while (iter.hasNext()) {
-																ProductType productType = (ProductType) iter.next();
-																if (productType != null) {
-															String name = productType.getName();
-															int value = productType.getId();
-															int isShow = productType.getIsShow();
-															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																	: false;
-															out.print("<option value=\"" + value + "\"");
-															if (able) {
-																out.print(" style=\"color: rgb(204, 204, 204);\" ");
-															}
-															out.println(" isShow='" + isShow + "' name='" + name
-																	+ "' >");
-															out.println(name);
-															out.println("</option>");
-
-																}
-															}
-														}
-													%>
-
-												</select>
-											</td>
-											<td id="tdsecondCatFormKey">
-												<select name="secondCatFormKey" size="8"
-													style="width: 129px;" id="secondCatFormKey"
-													onchange="onChangeSecondCategory(this)">
-													<%
-														List secondCategory = (List) request.getAttribute("secondCategory");
-														if (secondCategory != null) {
-															Iterator iter = secondCategory.iterator();
-															while (iter.hasNext()) {
-																ProductType productType = (ProductType) iter.next();
-																if (productType != null) {
-															String name = productType.getName();
-															int value = productType.getId();
-															int isShow = productType.getIsShow();
-															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																	: false;
-															out.print("<option value=\"" + value + "\"");
-															if (able) {
-																out.print(" style=\"color: rgb(204, 204, 204);\" ");
-															}
-															out.println(" isShow='" + isShow + "' name='" + name
-																	+ "' >");
-															out.println(name);
-															out.println("</option>");
-
-																}
-															}
-														}
-													%>
-												</select>
-											</td>
-											<td id="tdleafCatFormKey">
-												<select name="leafCatFormKey" size="8" id="leafCatFormKey"
-													style="width: 129px;" onchange="onChangeLeafCategory(this)">
-													<%
-														List thirdCategory = (List) request.getAttribute("thirdCategory");
-														if (thirdCategory != null) {
-															Iterator iter = thirdCategory.iterator();
-															while (iter.hasNext()) {
-																ProductType productType = (ProductType) iter.next();
-																if (productType != null) {
-															String name = productType.getName();
-															int value = productType.getId();
-															int isShow = productType.getIsShow();
-															boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																	: false;
-															out.print("<option value=\"" + value + "\"");
-															if (able) {
-																out.print(" style=\"color: rgb(204, 204, 204);\" ");
-															}
-															out.println(" isShow='" + isShow + "' name='" + name
-																	+ "' >");
-															out.println(name);
-															out.println("</option>");
-
-																}
-															}
-														}
-													%>
-												</select>
-											</td>
-										</tr>
-									</table>
-
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align="left">
-						<table>
-							<tr>
-								<td>
-									产品属性
-								</td>
-								<td>
-									<input type="button" value="添加产品属性" onclick="addProperty()">
-								</td>
-								<td>
-									<input type="button" value="删除产品属性" onclick="delProperty()">
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div>
-							<table width='100%'>
-								<tr>
-									<td align='center' width='4%'>
-										序号
-									</td>
-									<td align='center' width='10%'>
-										&nbsp;&nbsp;&nbsp;名称
-									</td>
-									<td align='center' width='12%'>
-										不能为空
-									</td>
-									<td align='center' width='10%'>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单位
-									</td>
-									<td align='center' width='10%'>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型
-									</td>
-									<td align='center' width='10%'>
-										&nbsp;隐藏名称
-									</td>
-									<td align='center' width='18%'>
-										备注
-									</td>
-									<td width='10%'>
-										&nbsp;&nbsp;&nbsp;是否显示
-									</td>
-								</tr>
-							</table>
-							<div id="producttd"></div>
-					</td>
-
-				</tr>
-				<tr>
-					<td align="center">
-						<input type="button" value="确定" onclick="checkSumbit()">
-						<input type="button" value="预览">
-					</td>
-				</tr>
-			</table>
-		</form>
-	</body>
 </html>
