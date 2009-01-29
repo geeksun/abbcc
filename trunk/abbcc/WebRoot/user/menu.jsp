@@ -34,7 +34,7 @@
      <dl>
      	<dt onclick="toggleDl(this)">供求管理</dt>
      	<dd><a href="<%=path%>/user/product/category.jsp" target="right">供求信息</a></dd>
-     	<dd><a href="<%=path%>/productInfo.do?method=productList&auditType=<%=AppConstants.CPGQXX_SFYX_1 %>&orderType=<%=AppConstants.CPGQXX_SFYX_1 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">管理供求信息</a></dd>
+     	<dd><a href="<%=path%>/productInfo.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_1 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">管理供求信息</a></dd>
      </dl>
      <dl>	
      	<dt onclick="toggleDl(this)">产品管理</dt>

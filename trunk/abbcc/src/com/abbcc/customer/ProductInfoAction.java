@@ -132,7 +132,58 @@ public class ProductInfoAction extends BaseAction {
 		}
 		return mapping.findForward("error");
 	}
+	public ActionForward productInfoList(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
 
+		String userid = UserUtil.getUserId(request);
+		String orderType = RequestUtils.getParameter(request, "orderType",
+				AppConstants.CPGQXX_SFYX_All); // 信息类型
+		String productName = RequestUtils.getParameter(request, "productName");// 产品名称
+
+		String auditType = RequestUtils.getParameter(request, "auditType");// 审核类型
+		String overdue = RequestUtils.getParameter(request, "overdue");// 是否过期
+		boolean hasNull = ProductUtil.hasNullParam(userid);
+		if (hasNull) {
+			return mapping.findForward("login");
+		}
+		try {
+			String action = "productInfo.do?method=productInfoList";
+			int currentPage = RequestUtils.getIntParameter(request,
+					PageConstants.PAGINATION_CURRENT_PAGE, 1);
+			int onePageSize = RequestUtils.getIntParameter(request,
+					PageConstants.PAGINATION_ONE_PAGE_SIZE, 10);
+			Map params = new HashMap();
+			params.put("orderType", orderType);
+			params.put("productName", productName);
+			params.put("auditType", auditType);
+			params.put("overdue", overdue);
+
+			Pagination pagination = new NormalPagination(currentPage, action,
+					onePageSize, params);
+			List productInfoList = this.productService.getProductInfoList(
+					orderType, productName, auditType, overdue, pagination);
+
+			request.setAttribute("productInfoList", productInfoList);
+			request.setAttribute("pagination", pagination);
+			request.setAttribute("auditType", auditType);
+			request.setAttribute("overdue", overdue);
+			return mapping.findForward("productInfoList");
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e);
+		}
+
+		return mapping.findForward("error");
+	}
+	/**
+	 * @deprecated
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	public ActionForward productList(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 
@@ -220,49 +271,68 @@ public class ProductInfoAction extends BaseAction {
 	public ActionForward showProductInfo(ActionMapping mapping,
 			ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) {
-
-		int parentid = 0;
-
-		List<ProductType> topCategory = this.productService
-				.getProductTypeByParentId(parentid);
 		try {
-			if (topCategory != null && topCategory.size() > 0) {
-				request.setAttribute("topCategory", topCategory);
-				ProductType productType = topCategory.get(0);
-				List<ProductType> secondCategory = this.productService
-						.getProductTypeByParentId(productType.getId());
-				request.setAttribute("secondCategory", secondCategory);
-				if (secondCategory != null && secondCategory.size() > 0) {
-					ProductType secondProductType = secondCategory.get(0);
-					List<ProductType> thirdCategory = this.productService
-							.getProductTypeByParentId(secondProductType.getId());
-					request.setAttribute("thirdCategory", thirdCategory);
 
-					if (thirdCategory != null && thirdCategory.size() > 0) {
-						ProductType thridProductType = thirdCategory.get(0);
-						int id = thridProductType.getId();
-						String productTypeId = String.valueOf(id);
-						Product product = this.productService
-								.getProductByStateAndProductTypeId(
-										Product.PRODUCT_STATE_IN_USED,
-										productTypeId);
+			String productInfoId = RequestUtils.getParameter(request,
+					"productInfoId");
+			long _productInfoId = Long.valueOf(productInfoId);
+			ProductInfo productInfo = productService
+					.getProductInfoById(_productInfoId);
+			request.setAttribute("productInfo", productInfo);
+			if (productInfo != null) {
+				Product product = productInfo.getProduct();
+				if (product != null) {
+					request.setAttribute("product", product);
+					String productTypeId = product.getProductTypeId();
+					Integer _productTypeId = Integer.parseInt(productTypeId);
+					ProductType productType = this.productService
+							.getProductTypeById(_productTypeId);
+					if (productType != null) {
+						int parentId = productType.getParentId();
+						List<ProductType> thirdCategory = this.productService
+								.getProductTypeByParentId(parentId);
+						ProductType secondProductType = this.productService
+								.getProductTypeById(parentId);
+						request.setAttribute("thirdCategory", thirdCategory);
+						request.setAttribute("thirdProductType", productType);
+						if (secondProductType != null) {
+							int secondParentId = secondProductType
+									.getParentId();
+							List<ProductType> secondCategory = this.productService
+									.getProductTypeByParentId(secondParentId);
+							ProductType topProductType = this.productService
+									.getProductTypeById(secondParentId);
+							int parentid = topProductType.getParentId();
+							List<ProductType> topCategory = this.productService
+									.getProductTypeByParentId(parentid);
+							request.setAttribute("secondCategory",
+									secondCategory);
+							request.setAttribute("secondProductType",
+									secondProductType);
 
-						String path = request.getContextPath();
+							request.setAttribute("topCategory", topCategory);
+							request.setAttribute("topProductType",
+									topProductType);
 
-						String productTemplate = ProductTemplate.getInstance()
-								.getTableStyle(product, path);
-						request
-								.setAttribute("productTemplate",
-										productTemplate);
+						}
+
 					}
 
+					String path = request.getContextPath();
+
+					String productTemplate = ProductTemplate.getInstance()
+							.getTableStyle(product, path, productInfo.getMapValue());
+					request.setAttribute("productTemplate", productTemplate);
+
 				}
+
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mapping.findForward("product");
 
+		return mapping.findForward("showProductInfo");
 	}
 
 	public ActionForward productSecondCategory(ActionMapping mapping,
@@ -568,4 +638,33 @@ public class ProductInfoAction extends BaseAction {
 		}
 		return mapping.findForward("error");
 	}
+	public ActionForward deleteProductInfo(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		String userid = UserUtil.getUserId(request);
+
+		long[] productInfoIds = RequestUtils.getLongParameters(request,
+				"productInfoIds");
+
+		boolean hasNull = ProductUtil.hasNullParam(userid);
+		if (hasNull) {
+			return mapping.findForward("login");
+		}
+		hasNull = ProductUtil.hasNullParam(productInfoIds);
+		if (hasNull) {
+			return mapping.findForward("error");
+		}
+		String filePath=UploadUtil.getLocalProductPicPath(request);
+		try {
+			this.productService.deleteProductInfoByIds(productInfoIds,filePath);
+			return this.productInfoList(mapping, form, request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			log.error(e);
+		}
+
+		return mapping.findForward("error");
+	}
+	
 }

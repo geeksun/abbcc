@@ -193,6 +193,6 @@ public abstract class Pagination implements Serializable {
 		this.selectValue = selectValue;
 	}
 
- 
+	public abstract String getHtml(String servicePath);
 
 }

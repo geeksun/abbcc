@@ -357,7 +357,7 @@
 			<TBODY>
 				<TR>
 					<TD style="PADDING-LEFT: 8px" align=right>
-					 	<%=pagination!=null?pagination.getHtml():"" %>
+					 	<%=pagination!=null?pagination.getHtml(path):"" %>
 					</TD>
 				</TR>
 				 
