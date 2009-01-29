@@ -15,7 +15,7 @@ public interface CpgqxxDAO {
 	public void update(Cpgqxx cpgqxx) throws DaoException;
 
 	// 删除产品供求信息
-	public void delete(int hyjbxxid, int cpgqxxid) throws DaoException;
+	public void delete(Integer hyjbxxid, Long cpgqxxid) throws DaoException;
 
 	// 根据主键查找产品供求信息
 	public Cpgqxx queryById(int hyjbxxid, int cpgqxxid) throws DaoException;
@@ -24,9 +24,9 @@ public interface CpgqxxDAO {
 	public List queryAll(int hyjbxxid, int currentPage, int lineSize)
 			throws DaoException;
 
-	public List getCpgqxxList(Integer hyjbxxid, String xxlx, String cpmc,String sfyx,String xxbt,int start,int maxReults)throws DaoException;
+	public List getCpgqxxList(Integer hyjbxxid, String xxlx, String cpmc,String sfyx,String xxbt, String overdue,int start,int maxReults)throws DaoException;
  
-	public int getCpgqxxCount(Integer hyjbxxid,String xxlx, String cpmc, String sfyx, String xxbt)throws DaoException;
+	public int getCpgqxxCount(Integer hyjbxxid,String xxlx, String cpmc, String sfyx, String xxbt,String overdue)throws DaoException;
 
 	public void updateCpggxxAuditType(String auditType, long[] productInfoId)throws DaoException;
 

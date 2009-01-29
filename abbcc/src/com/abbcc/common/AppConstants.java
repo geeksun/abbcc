@@ -82,6 +82,7 @@ public class AppConstants {
 	public static final int MESSAGE_STATE_REPLAY=2;
 	public static final int MESSAGE_TYPE_BUY=1;
 	public static final int MESSAGE_TYPE_SALE=2;
+	 
 	
 	public static final String CPGQXX_SFYX_All="4";//所有
 	public static final String CPGQXX_SFYX_1="1";//已发布上网 
@@ -90,12 +91,18 @@ public class AppConstants {
 	
 	public static final String CPGOXX_OVERDUE_ALL="3";//所有
 	public static final String CPGOXX_OVERDUE="1";//已过期
-	public static final String CPGOXX_UN_OVERDUE="2";//未过期
+	public static final String CPGOXX_UN_OVERDUE="2";//已过期
+	public static final String CPGOXX_OVERDUE_10_DAY="1";//10 天
+	public static final String CPGOXX_OVERDUE_20_DAY="2";//20 天
+	public static final String CPGOXX_OVERDUE_1_MONTH="3";//1个月
+	public static final String CPGOXX_OVERDUE_3_MONTH="4";//3个月
+	public static final String CPGOXX_OVERDUE_6_MONTH="5";//6个月
+ 	
 	
-	public static final String PRODUCT_SALE_ALL="4";//供应
+	public static final String PRODUCT_SALE_ALL="4";//所有
 	public static final String PRODUCT_SALE="1";//供应
 	public static final String PRODUCT_BUY="2";//求购
-	public static final String PRODUCT_QUICK_BUY="3";
+	public static final String PRODUCT_QUICK_BUY="3";//紧急求购
 
 	
 	

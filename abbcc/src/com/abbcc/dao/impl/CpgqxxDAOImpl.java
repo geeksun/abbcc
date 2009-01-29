@@ -1,10 +1,13 @@
 package com.abbcc.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 
+import com.abbcc.common.AppConstants;
+import com.abbcc.common.DateFormater;
 import com.abbcc.dao.CpgqxxDAO;
 import com.abbcc.exception.DaoException;
 import com.abbcc.factory.Globals;
@@ -15,8 +18,12 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 
 	private String tableName = "cpgqxx";
 
-	public void delete(int hyjbxxid, int cpgqxxid) throws DaoException {
-
+	public void delete(Integer hyjbxxid, Long cpgqxxid) throws DaoException {
+		String sql="delete from "+tableName+" where cpgqxxid=? and hyjbxxid=?" ;
+		SQLQuery query = this.getSession().createSQLQuery(sql);
+		query.setLong(0, cpgqxxid);
+		query.setInteger(1, hyjbxxid); 
+		query.executeUpdate();
 	}
 
 	public void insert(Cpgqxx cpgqxx) throws DaoException {
@@ -28,14 +35,14 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 		cpgqxx.setCpgqxxid(id);
 		String sql = "INSERT INTO cpgqxx_" + page
 				+ " (cpgqxxid,hyjbxxid,xxlx,cpmc,cpshlm, xxbt,  cpsxid,"
-				+ " xxsm, tp1,  tp2,  tp3, xxyxq,  jytjid, sqsj, sfyx, scsj)"
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " xxsm, tp1,  tp2,  tp3, xxyxq,  jytjid, sqsj, sfyx, scsj,xxyxsj)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		Object[] params = new Object[] { cpgqxx.getCpgqxxid(),
 				cpgqxx.getHyjbxxid(), cpgqxx.getXxlx(), cpgqxx.getCpmc(),
 				cpgqxx.getCpshlm(), cpgqxx.getXxbt(), cpgqxx.getCpsxid(),
 				cpgqxx.getXxsm(), cpgqxx.getTp1(), cpgqxx.getTp2(),
 				cpgqxx.getTp3(), cpgqxx.getXxyxq(), cpgqxx.getJytjid(),
-				cpgqxx.getSqsj(), cpgqxx.getSfyx(), cpgqxx.getScsj()
+				cpgqxx.getSqsj(), cpgqxx.getSfyx(), cpgqxx.getScsj(),DateFormater.getFormatDate(  cpgqxx.getXxyxsj())
 
 		};
 		SQLQuery query = this.getSession().createSQLQuery(sql);
@@ -62,26 +69,26 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public List getCpgqxxList(Integer hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt,int start,int maxReults) {
-		String hql = this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt);
+			String sfyx, String xxbt, String overdue,int start,int maxReults) {
+		String hql = this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
 		Query query = this
-				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt);
+				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
 		query.setFirstResult(start);
 		query.setMaxResults(maxReults);
 		return query.list();
 	}
 
 	public int getCpgqxxCount(Integer hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt) {
+			String sfyx, String xxbt, String overdue) {
 		String hql = "select count(*) "
-				+ this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt);
+				+ this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
 		Query query = this
-				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt);
+				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
 		return ((Long) query.uniqueResult()).intValue();
 	}
 
 	private Query getSelectQuery(String hql, Integer hyjbxxid, String xxlx,
-			String cpmc, String sfyx, String xxbt) {
+			String cpmc, String sfyx, String xxbt, String overdue) {
 		Query query = this.getQuery(hql); 
 		int index =0;
 		if (hyjbxxid != null) {
@@ -106,11 +113,19 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 			query.setParameter(index, xxbt);
 			index++;
 		}
+		if (overdue != null) {
+			if(overdue.equals(AppConstants.CPGOXX_OVERDUE)||overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)){
+				Date date=new Date();
+				//query.setTimestamp(index, date); 
+				index++;
+				 
+			}  
+		}
 		return query;
 	}
 
 	private String getSelectSql(Integer hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt) {
+			String sfyx, String xxbt,  String overdue) {
 		
 		String hql = "from Cpgqxx c where 1=1";
 		if (hyjbxxid != null) {
@@ -127,6 +142,14 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 		}
 		if (xxbt != null) {
 			hql += " and c.xxbt=?";
+		}
+		if (overdue != null) {
+			if(overdue.equals(AppConstants.CPGOXX_OVERDUE)){
+				hql += " and c.xxyxsj<NOW()";
+			}else if(overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)){
+				hql += " and c.xxyxsj>=NOW()";
+			}
+			
 		}
 		return hql;
 	}
