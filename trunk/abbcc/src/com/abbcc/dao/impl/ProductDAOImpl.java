@@ -1,5 +1,6 @@
 package com.abbcc.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
@@ -7,6 +8,7 @@ import org.hibernate.SQLQuery;
 
 
 import com.abbcc.dao.ProductDAO;
+import com.abbcc.exception.DaoException;
 import com.abbcc.pojo.Product;
 
 public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
@@ -42,5 +44,19 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 		
 		return object;
 	}
+
+	public List<Product> getProductListByProductTypeId(String productTypeId) throws DaoException {
+		String sql="from Product p where  p.productTypeId=? order by p.state ,p.createTime desc";
+		Query query=this.getQuery(sql); 
+		query.setParameter(0, productTypeId);
+		return  query.list();
+	}
+
+	public Product getProductById(long id) throws DaoException {
+		String sql="from Product p where  p.id=?";
+		Query query=this.getQuery(sql); 
+		query.setParameter(0, id);
+		return  (Product)query.uniqueResult();
+	} 
 
 }

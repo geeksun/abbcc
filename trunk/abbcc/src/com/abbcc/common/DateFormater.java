@@ -25,6 +25,7 @@ public class DateFormater
 	 */
 	public static String getFormatDate(Date date)
 	{
+		if(date==null)return null;
 		SimpleDateFormat simpleDataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return simpleDataFormat.format(date);
 	}

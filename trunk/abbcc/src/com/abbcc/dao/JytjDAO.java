@@ -14,7 +14,7 @@ public interface JytjDAO {
 	public void update(Jytj jytj) throws DaoException;
 
 	// 删除交易条件
-	public void delete(int hyjbxxid, int jytjid) throws DaoException;
+	public void delete(Integer hyjbxxid, Long jytjid) throws DaoException;
 
 	// 根据主键查找交易条件
 	public Jytj queryById(int hyjbxxid, int jytjid) throws DaoException;
