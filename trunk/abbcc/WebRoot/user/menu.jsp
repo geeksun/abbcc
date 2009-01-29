@@ -56,9 +56,10 @@
      	<dd><a href="<%=path %>/message.do?method=listBuyMessage&type=2" target="right">求购信息留言</a></dd>
  		<dd><a href="<%=path %>/message.do?method=userList" target="right">留言测试</a></dd>
      	<dt onclick="toggleDl(this)">系统后台产品</dt>
-     	<dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd>
-     	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">添加产品类目</a></dd>
-     	<dd><a href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_2 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">产品列表</a></dd>
+     	<dd><a href="<%=path%>/admin/product.do?method=productManager" target="right"> 产品管理</a></dd>
+     	<!-- <dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd> -->
+     	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">产品类目管理</a></dd>
+     	<dd><a href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_2 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">供求信息管理</a></dd>
      	<dd>子结点3</dd>
      	<dd>子结点4</dd>
  

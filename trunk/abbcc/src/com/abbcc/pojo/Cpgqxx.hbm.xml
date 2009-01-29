@@ -56,5 +56,8 @@
         <property name="scsj" type="timestamp">
             <column name="scsj"   />
         </property>
+        <property name="xxyxsj" type="timestamp">
+            <column name="xxyxsj"  not-null="true"  />
+        </property>
     </class>
 </hibernate-mapping>

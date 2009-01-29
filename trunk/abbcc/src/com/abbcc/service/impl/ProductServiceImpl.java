@@ -1,12 +1,15 @@
  package com.abbcc.service.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.abbcc.common.AppConstants;
 import com.abbcc.exception.AppException;
 import com.abbcc.exception.DaoException;
 import com.abbcc.pojo.Cpgqxx;
@@ -76,41 +79,60 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		return productTypeDao.getProductTypeByParentId(parentId);
 	}
 
-	public Product getProductById(long id) {
-		return null;
+	public Product getProductById(long id) throws AppException {
+		
+		try {
+			return this.productDao.getProductById(id);
+		} catch (DaoException e) {
+			log.error(e);
+			e.printStackTrace();
+			throw new AppException(e);
+		}
 	}
 
 	public Product getProductByStateAndProductTypeId(int state,
-			String productTypeId) {
-		return this.productDao.getProductByStateAndProductTypeId(state,
-				productTypeId);
+			String productTypeId) throws AppException {
+		try {
+			return this.productDao.getProductByStateAndProductTypeId(state,
+					productTypeId);
+		} catch (DaoException e) {
+			log.error(e);
+			e.printStackTrace();
+			throw new AppException(e);
+		}
 	}
 
-	public void addProduct(Product product) { 
+	public void addProduct(Product product) throws AppException { 
 		String productTypeId = product.getProductTypeId();
-		Product _product = productDao.getProductByStateAndProductTypeId(
+		try{
+			/*Product _product = productDao.getProductByStateAndProductTypeId(
 				Product.PRODUCT_STATE_IN_USED, productTypeId);
 		if (_product != null) {
 			_product.setState(Product.PRODUCT_STATE_UN_USED);
 			this.productDao.update(_product);
 
-		}
+		}*/
 		
 		String productTable = ProductUtil.PRODUCT_TABLE_INDEX_NAME;
 		Pz pz = this.pzDao.updateAndGetPz (productTable);
 		if (pz != null) {
 			long index = pz.getRecnum(); 
 			product.setTableName(productTable + "_" + index);
-			product.setState(Product.PRODUCT_STATE_IN_USED); 
+			//product.setState(Product.PRODUCT_STATE_IN_USED); 
 			this.productDao.addProduct(product);
 			String table = TableUtil.getCreateTable(product);
 			this.productDao.exectueSQLSql(table); 
 			pz.setMaxCount(pz.getMaxCount() + 1);
 			pzDao.updatePz(pz);
 		}
+		}catch(Exception e){
+			log.error(e);
+			e.printStackTrace();
+			throw new AppException(e);
+		}
 	}
 
-	private void addProductObj(ProductObject obj) {
+	private void addProductObj(ProductObject obj) throws DaoException {
 		if (obj == null)
 			return;
 		String sql = obj.getSql();
@@ -135,9 +157,31 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		
 	}
 
+	private Date getCpgqxxOverdueDate(String xxyxq){
+		Calendar rightNow = Calendar.getInstance();
+		if(xxyxq==null)return rightNow.getTime();
+		if(xxyxq.equals(AppConstants.CPGOXX_OVERDUE_10_DAY)){
+			rightNow.add(Calendar.DATE, 10);
+			
+		}else  if(xxyxq.equals(AppConstants.CPGOXX_OVERDUE_20_DAY)){
+			rightNow.add(Calendar.DATE, 20);
+		}else  if(xxyxq.equals(AppConstants.CPGOXX_OVERDUE_1_MONTH)){
+			rightNow.add(Calendar.MONTH, 1);
+		}else  if(xxyxq.equals(AppConstants.CPGOXX_OVERDUE_3_MONTH)){
+			rightNow.add(Calendar.MONTH, 3);
+		}else  if(xxyxq.equals(AppConstants.CPGOXX_OVERDUE_6_MONTH)){
+			rightNow.add(Calendar.MONTH, 6);
+		}
+		 return rightNow.getTime();
+		//return new Date( );
+	}
+
 	public void addProductInfo(ProductObject obj, Cpgqxx cpgqxx, Jytj jytj) throws AppException {
 		try{
 		if(obj==null||cpgqxx==null||jytj==null)return; 
+		String xxyxq=cpgqxx.getXxyxq();
+		Date xxyxsj=getCpgqxxOverdueDate(xxyxq);
+		cpgqxx.setXxyxsj(xxyxsj);
 		this.addCpgqxx(cpgqxx);   
 		Object[] values=obj.getValue();
 		values[values.length-1]=cpgqxx.getCpgqxxid();
@@ -156,7 +200,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		try { 
 			int start=pagination.getFirstResult();
 			int maxReults= pagination.getOnePageSize();
-			return this.cpgqxxDao.getCpgqxxList(userId,orderType,productName,auditType ,null,start,maxReults);
+			return this.cpgqxxDao.getCpgqxxList(userId,orderType,productName,auditType ,null,overdue,start,maxReults);
 		} catch (DaoException e) {
 			log.error(e);
 			e.printStackTrace();
@@ -166,13 +210,12 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	}
 
 	public List getProductInfoList(String orderType, String productName, String auditType, String overdue,Pagination pagination) throws AppException {
-	try { 
-			//if(orderType==null||productName==null||auditType==null||overdue==null||pagination==null)return null;
-			int count=this.cpgqxxDao.getCpgqxxCount(null, orderType,productName,auditType ,null);
+	try {  
+			int count=this.cpgqxxDao.getCpgqxxCount(null, orderType,productName,auditType ,null,overdue);
 			pagination.setTotalResults(count);
 			int start=pagination.getFirstResult();
 			int maxReults= pagination.getOnePageSize();
-			return this.cpgqxxDao.getCpgqxxList(null, orderType,productName,auditType ,null,start,maxReults);
+			return this.cpgqxxDao.getCpgqxxList(null, orderType,productName,auditType ,null,overdue,start,maxReults);
 		} catch (DaoException e) {
 			log.error(e);
 			e.printStackTrace();
@@ -219,13 +262,35 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 			return productInfo;
 			
 		} catch (DaoException e) {
-			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 		
 		return null; 
 	}
-	
+	private ProductInfo getProductInfoByIdForDelete(long infoId) {
+		
+		try {
+			ProductInfo productInfo=new ProductInfo();
+			
+			Cpgqxx cpgqxx=this.getCpgqxx(infoId);
+			Jytj jytj=this.getJytj(infoId);
+			String productTypeId=cpgqxx.getCpshlm();
+			Product _product = productDao.getProductByStateAndProductTypeId(
+					Product.PRODUCT_STATE_IN_USED, productTypeId); 
+			productInfo.setCpggxx(cpgqxx);
+			productInfo.setJytj(jytj);
+		 
+			productInfo.setProduct(_product);
+			return productInfo;
+			
+		} catch (DaoException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+		
+		return null; 
+	}
 	private Map<Integer ,ProductType> getProductTypeMap(List<ProductType> productTypeList){
 		Map ret=new HashMap();
 		if(productTypeList!=null){
@@ -288,6 +353,68 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		}
 
 		return ret;
+	}
+
+	public void deleteProductInfoByIds(long[] productInfoIds) throws AppException {
+		 
+		 if(productInfoIds!=null){
+			 try {
+				for (int i = 0; i < productInfoIds.length; i++) {
+					long id = productInfoIds[i];
+					ProductInfo productInfo = this.getProductInfoByIdForDelete(id);
+					if (productInfo != null) {
+						Cpgqxx cpgqxx = productInfo.getCpggxx();
+						if (cpgqxx != null) {
+							this.cpgqxxDao.delete(cpgqxx.getHyjbxxid(), cpgqxx.getCpgqxxid()); 
+						}
+						Jytj jytj = productInfo.getJytj();
+						if(jytj!=null){
+							this.jytjDao.delete(jytj.getHyjbxxid(), jytj.getJytjid());
+						}
+						
+						Product product = productInfo.getProduct();
+						if(product!=null){
+							ProductObject obj=ProductUtil.getProductDeleteObject(product);
+							obj.setValue(new Object[]{id});
+							this.deleteProductObj(obj);
+							
+						} 
+					}
+
+				}
+			}catch(Exception e){
+				log.error(e);
+				 e.printStackTrace();
+				 throw new AppException(e);
+			 }
+			 
+		 }
+		
+	}
+	private void deleteProductObj(ProductObject obj) throws DaoException {
+		if (obj == null)
+			return;
+		String sql = obj.getSql();
+		Object[] value = obj.getValue();
+		System.out.println(sql);
+		this.productDao.excetueSaveProduct(sql, value);
+
+	}
+
+	public List<Product> getProductListByProductTypeId(String productTypeId) throws AppException {
+		try {
+			return this.productDao.getProductListByProductTypeId(productTypeId);
+		} catch (DaoException e) {
+			log.error(e);
+			e.printStackTrace();
+			throw new AppException(e);
+		}
+		 
+	}
+
+	public void updateProduct(Product product) throws AppException {
+		this.productDao.update(product);
+		
 	}
 
 }

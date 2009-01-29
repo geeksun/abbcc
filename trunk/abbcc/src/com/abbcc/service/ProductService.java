@@ -24,8 +24,11 @@ public interface ProductService {
 	List getChildProductTypeById(int id)throws AppException;
 	
 	List getProductTypeByParentId(int parentId);
+	
 	//product
 	Product getProductById(long id)throws AppException;
+	
+	List<Product> getProductListByProductTypeId(String productTypeId)throws AppException;
 	
 	void addProduct(Product product)throws AppException;
 
@@ -41,5 +44,9 @@ public interface ProductService {
 
 	ProductInfo getProductInfoById(long infoId);
 	public List<List<ProductType>> getTextAreaProductTypeListByIds(List<Integer> ids)throws AppException;
+
+	void deleteProductInfoByIds(long[] productInfoIds) throws AppException;
+
+	void updateProduct(Product product) throws AppException;
 	
 }

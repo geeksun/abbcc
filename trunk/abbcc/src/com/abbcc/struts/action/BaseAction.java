@@ -13,6 +13,7 @@ public class BaseAction extends DispatchAction {
 	protected MessageService messageService=(MessageService)StartServlet.getBean("messageService");
 	
 	
+	 
 
 
 }

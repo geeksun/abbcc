@@ -39,6 +39,15 @@
 			<forward name="showProduct"
 				path="/admin/product/product.jsp">
 			</forward>
+			<forward name="productManager"
+				path="/admin/product/productManager.jsp">
+			</forward>
+			<forward name="addProduct"
+				path="/admin/product/addProduct.jsp">
+			</forward>
+			<forward name="productList"
+				path="/admin/product/productList.jsp">
+			</forward>
 		</action>
 	</action-mappings>
 </struts-config>

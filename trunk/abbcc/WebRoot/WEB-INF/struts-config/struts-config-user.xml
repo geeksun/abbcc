@@ -7,6 +7,9 @@
 			<form-property name="mm" type="java.lang.String"></form-property>
 			<form-property name="status" type="java.lang.String"></form-property>
 		</form-bean>
+	    <form-bean name="uploadProductInfoForm" type="com.abbcc.struts.form.ProductUpdateForm" /> 
+  
+		
 		<!-- registerForm -->
 		<form-bean name="registerForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<!-- 注册信息 -->
@@ -109,6 +112,7 @@
 		<forward name="login" path="/user/index.jsp"></forward>
 		<forward name="managerLogin" path="/manage/index.jsp"></forward>
 		<forward name="fail" path="/fail.jsp"></forward>
+		<forward name="error" path="/error.jsp"></forward>
 		<forward name="service_exception" path="/500.jsp"></forward>
 		<forward name="modifySuccess" path="/user/modifySuccess.jsp"></forward>
 		<forward name="modifyFail" path="/user/modifyFail.jsp"></forward>
@@ -149,12 +153,14 @@
 	    </action>
 	    
 	    <action path="/productInfo" parameter="method"
-			type="com.abbcc.customer.ProductInfoAction">
+			type="com.abbcc.customer.ProductInfoAction"  name="uploadProductInfoForm">
+		 
 			<forward name="product" path="/user/product/product.jsp"></forward>
 			<forward name="productInfoList"	path="/user/product/productInfoList.jsp"></forward>
 		</action>
 		
 	</action-mappings>
+	<controller maxFileSize="2M" inputForward="true" /> 
 	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
 		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml"/>
