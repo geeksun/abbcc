@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.abbcc.common.AppConstants;
+import com.abbcc.common.UploadUtil;
 import com.abbcc.exception.AppException;
 import com.abbcc.exception.DaoException;
 import com.abbcc.pojo.Cpgqxx;
@@ -247,7 +248,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 					Product.PRODUCT_STATE_IN_USED, productTypeId);
 			String sql=ProductUtil.getProductSelectSql(_product,String.valueOf(infoId));
 			Object[] value=new Object[]{String.valueOf(infoId)};
-			Object objectValue=this.productDao.excetueSelectProduct(sql, value);
+			// Object objectValue=this.productDao.excetueSelectProduct(sql, value);
 			List objectMapList=JdbcTemplateUtil.getProductListBySelectSql(sql,value);
 			Map objecgMap=null;
 			if(objectMapList!=null&&objectMapList.size()>0){
@@ -267,6 +268,23 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		}
 		
 		return null; 
+	}
+	public void updateProductInfo(ProductObject obj, Cpgqxx cpgqxx, Jytj jytj) throws AppException {
+		try {
+			String xxyxq=cpgqxx.getXxyxq();
+			Date xxyxsj=getCpgqxxOverdueDate(xxyxq);
+			cpgqxx.setXxyxsj(xxyxsj);
+			this.cpgqxxDao.update(cpgqxx);
+			this.jytjDao.update(jytj);
+			//JdbcTemplateUtil.updateObject(obj.getSql(),obj.getValue());
+			 this.productDao.excetueSaveProduct(obj.getSql(), obj.getValue());
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		 
+		
 	}
 	private ProductInfo getProductInfoByIdForDelete(long infoId) {
 		
@@ -294,9 +312,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 	private Map<Integer ,ProductType> getProductTypeMap(List<ProductType> productTypeList){
 		Map ret=new HashMap();
 		if(productTypeList!=null){
-			Iterator<ProductType> iter=productTypeList.iterator();
-			 
-			
+			Iterator<ProductType> iter=productTypeList.iterator(); 
 			while(iter.hasNext()){
 				ProductType pro=iter.next();
 				int id=pro.getId();
@@ -355,7 +371,7 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		return ret;
 	}
 
-	public void deleteProductInfoByIds(long[] productInfoIds) throws AppException {
+	public void deleteProductInfoByIds(long[] productInfoIds,String productPicPath) throws AppException {
 		 
 		 if(productInfoIds!=null){
 			 try {
@@ -366,6 +382,19 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 						Cpgqxx cpgqxx = productInfo.getCpggxx();
 						if (cpgqxx != null) {
 							this.cpgqxxDao.delete(cpgqxx.getHyjbxxid(), cpgqxx.getCpgqxxid()); 
+							String picName1=cpgqxx.getTp1();
+							String picName2=cpgqxx.getTp2();
+							String picName3=cpgqxx.getTp3();
+							if(picName1!=null&&!picName1.equals("")){
+								UploadUtil.deleteFile(productPicPath+"\\"+picName1);
+							}
+							if(picName2!=null&&!picName2.equals("")){
+								UploadUtil.deleteFile(productPicPath+"\\"+picName2);
+							}
+							if(picName3!=null&&!picName3.equals("")){
+								UploadUtil.deleteFile(productPicPath+"\\"+picName3);
+							}
+							
 						}
 						Jytj jytj = productInfo.getJytj();
 						if(jytj!=null){
@@ -416,5 +445,36 @@ public class ProductServiceImpl extends BaseServiceImpl implements ProductServic
 		this.productDao.update(product);
 		
 	}
+
+	public void updateProductState(Product product) throws AppException {
+		try {
+			String productTypeId = product.getProductTypeId();
+			Product _product = productDao.getProductByStateAndProductTypeId(
+					Product.PRODUCT_STATE_IN_USED, productTypeId);
+			
+			if (_product != null) {
+				long id=product.getId();
+				long oldId=_product.getId();
+				if(id!=oldId){
+					_product.setState(Product.PRODUCT_STATE_UN_USED);
+					this.productDao.update(_product);
+					this.updateProduct(product);
+				} 
+			}
+			
+		} catch (DaoException e) {
+			log.error(e);
+			e.printStackTrace();
+			throw new AppException(e);
+		}
+		
+	}
+
+	public void deleteProductById(long productId) throws AppException {
+		this.productDao.delete(Product.class, productId);
+		
+	}
+
+	
 
 }

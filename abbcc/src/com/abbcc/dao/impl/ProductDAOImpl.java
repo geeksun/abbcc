@@ -41,6 +41,7 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 		SQLQuery query=this.getSession().createSQLQuery(sql);
 		this.setParamter(0, query, value);
 		Object object=query.uniqueResult();
+	 
 		
 		return object;
 	}

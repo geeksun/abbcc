@@ -2,6 +2,9 @@
 <%@page import="com.abbcc.pojo.Cpgqxx" %>
 <%@page import="com.abbcc.util.pagination.Pagination" %>
 <%@page import="com.abbcc.common.AppConstants" %>
+<%@page import="com.abbcc.common.UploadUtil" %>
+<%@page import="com.abbcc.common.DateFormater"%>
+<%@page import="java.util.Date"%>
 <%
 	String path = request.getContextPath(); 
 %>
@@ -251,16 +254,19 @@
 					</TD>
 				</TR>
 				<%
-					if(productInfoList!=null){
-					
+						 if(productInfoList!=null){
+						 String filePath=AppConstants.PRODUCT_PICTURE_SAVE_DIR;
 						Iterator iter=productInfoList.iterator();
 						while(iter.hasNext()){
 							Cpgqxx cpgqxx=(Cpgqxx)iter.next();
 							if(cpgqxx!=null){
 							String title=cpgqxx.getXxbt();
 							Long id=cpgqxx.getCpgqxxid();
-							 
-				 %>
+							String tp1=cpgqxx.getTp1();
+							Date date=cpgqxx.getXxyxsj();			
+							String ccyxsjTime=DateFormater.getFormatDate(date);
+							
+				%>
 				<TR>
 					<TD class=list_lb_content align=left width=20>
 						<INPUT id=checkBox1 type=checkbox value=290577907 name=offerId>
@@ -271,8 +277,14 @@
 							href="#"
 							target=_blank>
 							<DIV class=list_picbox>
-								<IMG  src="<%=path%>/user/product/productInfoList.files/290577907.summ.jpg"
+								<%
+										if(tp1!=null){
+								 %>
+								<IMG  src="<%=path+filePath+"/"+tp1%>" width="100" heigth="100"
 									  border=0>
+								<% }else{ %>
+								<IMG src="<%=path%>/images/noPic.jpg" width="100" heigth="100" border=0>
+								<%} %>
 							</DIV>
 						</A>
 					</TD>
@@ -291,10 +303,9 @@
 						</DIV>
 					</TD>
 					<TD class=list_lb_content align=middle>
-						<A onmouseover="MM_showHideLayers('TimeLayer1','','show')"
-							style="TEXT-DECORATION: none"
-							onmouseout="MM_showHideLayers('TimeLayer1','','hide')"
-							href="#">2009-06-22
+						<A  
+							style="TEXT-DECORATION: none" 
+							href="#"><%=ccyxsjTime %>
 						</A>
 						 
 					</TD> 
@@ -325,7 +336,7 @@
 			<TBODY>
 				<TR>
 					<TD style="PADDING-LEFT: 5px" vAlign=top>
-						<INPUT onclick=javascript:doSelectAllBox(13,this) type=checkbox
+						<INPUT   type=checkbox
 							value=checkbox name=selectAllBox>
 						ȫѡ&nbsp;&nbsp;  
 						<INPUT onclick=""

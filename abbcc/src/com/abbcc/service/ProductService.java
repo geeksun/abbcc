@@ -45,8 +45,14 @@ public interface ProductService {
 	ProductInfo getProductInfoById(long infoId);
 	public List<List<ProductType>> getTextAreaProductTypeListByIds(List<Integer> ids)throws AppException;
 
-	void deleteProductInfoByIds(long[] productInfoIds) throws AppException;
+	void deleteProductInfoByIds(long[] productInfoIds,String productPicPath) throws AppException;
 
 	void updateProduct(Product product) throws AppException;
+
+	void updateProductState(Product product)throws AppException;
+
+	void deleteProductById(long productId)throws AppException;
+
+	void updateProductInfo(ProductObject obj, Cpgqxx cpgqxx, Jytj jytj)throws AppException;
 	
 }

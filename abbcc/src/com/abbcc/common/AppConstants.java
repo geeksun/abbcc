@@ -59,6 +59,9 @@ public class AppConstants {
 	public static final Object AUDIT_REGISTER_INFO_3 = "你的会员信息不存在";
 	
 	
+	public static final String PRODUCT_PICTURE_SAVE_DIR="/update/product";
+	
+	
 	
 	
 	
