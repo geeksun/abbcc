@@ -84,7 +84,15 @@ String path = request.getContextPath();
 									<input id="productName" name="productName" type="text"
 										value="<%=product!=null?product.getProductName():"" %>" size="15">
 								</td>
-
+								<td>
+									产品状态:
+									<%
+										int productState=product.getState();
+										
+									 %>
+									<%=productState==Product.PRODUCT_STATE_IN_USED?"使用中":"未使用" %>
+									 
+								</td>
 							</tr>
 						</table>
 					</td>

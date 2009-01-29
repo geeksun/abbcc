@@ -33,6 +33,7 @@ import com.abbcc.util.RequestUtils;
 import com.abbcc.util.pagination.NormalPagination;
 import com.abbcc.util.pagination.PageConstants;
 import com.abbcc.util.pagination.Pagination;
+import com.abbcc.util.product.ProductInfo;
 import com.abbcc.util.product.ProductObject;
 import com.abbcc.util.product.ProductTemplate;
 import com.abbcc.util.product.ProductUtil;
@@ -417,5 +418,154 @@ public class ProductInfoAction extends BaseAction {
 			System.out.println(dd.substring(i, i + 32));
 		}
 	}
+	public ActionForward updateProductInfo(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) {
 
+		try {
+			
+			long productInfoId = RequestUtils.getLongParameter(request, "productInfoId", -1) ;//产品id
+			if(productInfoId==-1){
+				return mapping.findForward("error");
+			}
+		 	String productTypeId = request.getParameter("productTypeId");//产品所属类目
+			String orderType = request.getParameter("orderType");//订购类型
+			String productName = request.getParameter("productName");//产品名称
+			String prodcutTitle = request.getParameter("prodcutTitle");//产品标题
+			String ableDate = request.getParameter("ableDate");//有效期
+			String desc = request.getParameter("desc");//详细信息
+
+			String unit = request.getParameter("unit");// 计量单位
+			String price = request.getParameter("price");// 产品单价
+			String orderCount = request.getParameter("minCount");//最小起订量 
+			String productCount = request.getParameter("productCount");// 供货总量
+			String freightDate = request.getParameter("freightDate");// 发货期限
+			String merchantType = request.getParameter("merchantType");// 供应商类型
+
+			
+			String uploadPicState1 = request.getParameter("uploadPicState1");//图片状态
+			String uploadPicState2= request.getParameter("uploadPicState2");//图片状态
+			String uploadPicState3 = request.getParameter("uploadPicState3");//图片状态 
+			ProductUpdateForm theForm = (ProductUpdateForm) form;
+			FormFile updatePic1 = theForm.getUpdatePic1(); //上传图片1
+			FormFile updatePic2 = theForm.getUpdatePic2(); //上传图片2
+			FormFile updatePic3 = theForm.getUpdatePic3();//上传图片3
+			String updatePic1Name=UploadUtil.getGUIDFileName(updatePic1,request);
+			String updatePic2Name=UploadUtil.getGUIDFileName(updatePic2,request);
+			String updatePic3Name=UploadUtil.getGUIDFileName(updatePic3,request); 
+			
+			String hyjbxxid = UserUtil.getUserId(request);
+			if(hyjbxxid==null||hyjbxxid.equals("")){
+				return mapping.findForward("login"); 
+			}
+			// 校验
+			boolean hasNull = ProductUtil.hasNullParam(productTypeId,
+					productName, prodcutTitle );
+			boolean isMathValues = ProductUtil.IsMathValue(orderType, ableDate,
+					price, productCount, orderCount, merchantType);
+			if (hasNull || !isMathValues) {
+				return mapping.findForward("error");
+			} else {
+				
+				ProductInfo productInfo = productService .getProductInfoById( productInfoId);
+				if(productInfo!=null){
+					Product product = productInfo.getProduct();
+			if (product != null) {
+				String[] formNames = ProductUtil.arrayToString(product
+						.getFormName());
+				String[] filedNames = ProductUtil.arrayToString(product
+						.getOtherFiledName());
+				if (formNames.length != filedNames.length) {
+					return mapping.findForward("error");
+				} else {
+
+					ProductObject obj = ProductUtil.getProductUpdateObject(
+							product, request,productInfo.getMapValue());
+					 
+					Cpgqxx cpgqxx =productInfo.getCpggxx(); 
+					cpgqxx.setCpmc(productName);// 产品名称
+					cpgqxx.setHyjbxxid(Integer.valueOf(hyjbxxid));
+					cpgqxx.setXxbt(prodcutTitle);// 信息标题
+					cpgqxx.setCpshlm(productTypeId);// 产品所属类目
+					cpgqxx.setXxsm(desc);// 详细说明
+					cpgqxx.setXxyxq(ableDate);// 有效时间
+					//cpgqxx.setSfyx(AppConstants.CPGQXX_SFYX_2);// 是否有效
+					cpgqxx.setXxlx(orderType);
+					
+					if(!uploadPicState1.equals("none")){
+						cpgqxx.setTp1(updatePic1Name);
+					}
+					if(!uploadPicState2.equals("none")){
+						cpgqxx.setTp2(updatePic2Name);
+					}
+					if(!uploadPicState3.equals("none")){
+						cpgqxx.setTp3(updatePic3Name);
+					}
+				 
+					Jytj jytj = productInfo.getJytj();
+					jytj.setCpdj(price);
+					jytj.setFhqx(freightDate);
+					jytj.setGhzl(productCount);
+					jytj.setGyslc(merchantType);
+					jytj.setHyjbxxid(Integer.valueOf(hyjbxxid));
+					jytj.setJldw(unit);
+					jytj.setZxqdl(orderCount);
+					this.productService.updateProductInfo(obj, cpgqxx, jytj);
+					
+					if(uploadPicState1.equals("upload")){
+						String oldPicName=cpgqxx.getTp1();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						}
+						UploadUtil.saveProductPic(updatePic1,updatePic1Name,request);
+					}else if(uploadPicState1.equals("delete")){
+						String oldPicName=cpgqxx.getTp1();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						}
+						
+						cpgqxx.setTp1(null);
+					}
+					
+					if(uploadPicState2.equals("upload")){
+						String oldPicName=cpgqxx.getTp2();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						}
+						UploadUtil.saveProductPic(updatePic2,updatePic2Name,request);
+					}else if(uploadPicState1.equals("delete")){
+						String oldPicName=cpgqxx.getTp2();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						} 
+						cpgqxx.setTp2(null);
+					}
+					if(uploadPicState1.equals("upload")){
+						String oldPicName=cpgqxx.getTp3();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						}
+						UploadUtil.saveProductPic(updatePic3,updatePic3Name,request);
+					}else if(uploadPicState1.equals("delete")){
+						String oldPicName=cpgqxx.getTp3();
+						if(oldPicName!=null){
+							UploadUtil.deleteProductPic(oldPicName, request); 
+						} 
+						cpgqxx.setTp3(null);
+					}
+				  
+					return this.showProductInfo(mapping, form, request, response);
+				}
+			}
+					
+				}
+				
+				
+			}
+
+		} catch (Exception e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+		return mapping.findForward("error");
+	}
 }

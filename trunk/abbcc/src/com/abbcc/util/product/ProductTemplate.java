@@ -188,8 +188,13 @@ public class ProductTemplate {
 		
 		StringBuilder builder = new StringBuilder();
 		StringBuilder hiddendBuilder = new StringBuilder();
+		StringBuilder javascriptBuilder = new StringBuilder();
 		
 		boolean hasHidden = false;
+		boolean containTrue=false;
+		javascriptBuilder.append("<script language=\"JavaScript\" type=\"text/javascript\">\n");
+		javascriptBuilder.append("function checkProduct(){\n");
+		
 		builder.append("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
 		builder.append("<tbody>\n");
 		for (int i = 0; i < formNames.length; i++) {
@@ -204,6 +209,10 @@ public class ProductTemplate {
 			String value=(String)objectValue.get(_filed);
 			if(value==null)value="";
 			if (!_isShow.equals("true")) {
+				if(i==formNames.length-1){
+					   javascriptBuilder.append("return true;");
+					   containTrue=true;
+				   }
 				continue;
 			} 
 			StringBuilder tempBuilder = new StringBuilder();
@@ -212,6 +221,14 @@ public class ProductTemplate {
 				tempBuilder.append("<b>" + _propertyNames + "</b>");
 				if (_isNull.equals("true")) {
 					tempBuilder.append("<font color='#ff0000'>*</font>"); 
+					javascriptBuilder.append("var "+_formName+" =document.mainform."+_formName+".value;\n");
+					javascriptBuilder.append("if(isNull("+_formName+")){\n");
+					javascriptBuilder.append("alert('"+_propertyNames+"不能为空');\n ");
+					javascriptBuilder.append("return false;\n}\n");
+				   if(i==formNames.length-1){
+					   javascriptBuilder.append("return true;");
+					   containTrue=true;
+				   }
 				} else {
 					tempBuilder.append("&nbsp;");
 
@@ -232,7 +249,14 @@ public class ProductTemplate {
 					tempBuilder.append("<b>" + temp[0] + "</b>");
 					if (_isNull.equals("true")) {
 						tempBuilder.append("<font color='#ff0000'>*</font>");
-
+						javascriptBuilder.append("var "+_formName+" =document.mainform."+_formName+".value;\n");
+						javascriptBuilder.append("if(isNull("+_formName+")){\n");
+						javascriptBuilder.append("alert('"+_propertyNames+"不能为空');\n ");
+						javascriptBuilder.append("return false;\n}\n");
+					   if(i==formNames.length-1){
+						   javascriptBuilder.append("return true;");
+						   containTrue=true;
+					   }
 					} else {
 						tempBuilder.append("&nbsp;");
 
@@ -293,7 +317,13 @@ public class ProductTemplate {
 			builder.append(hiddendBuilder);
 		}
 		 
-		builder.append("</tbody></table>");
+		builder.append("</tbody></table>\n");
+		if(containTrue)
+			   javascriptBuilder.append("}\n</script>\n");
+			else{
+				javascriptBuilder.append("return true;\n}\n</script>\n");
+			}
+		 builder.append(javascriptBuilder);
 		String template = builder.toString();
 		return template;
 	}

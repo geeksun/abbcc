@@ -1,13 +1,11 @@
 <%@ page contentType="text/html; charset=gbk"%>
 <%@ page import="java.util.List,java.util.Iterator"%>
 <%@ page import="com.abbcc.pojo.ProductType"%>
-<%@ page import="com.abbcc.util.product.ProductInfo"%>
 <%@ page import="com.abbcc.common.AppConstants"%>
-
+<%@ page import="com.abbcc.util.product.ProductInfo,com.abbcc.pojo.Jytj"%>
+<%@ page import="com.abbcc.pojo.Product,com.abbcc.pojo.Cpgqxx"%>
 <%
 String path = request.getContextPath();
-ProductInfo productInfo=(ProductInfo)request.getAttribute("productInfo");
- 
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,9 +15,6 @@ ProductInfo productInfo=(ProductInfo)request.getAttribute("productInfo");
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<script src="<%=path%>/js/prototype.js"></script>
-		<link rel="stylesheet" rev="stylesheet"
-			href="<%=path%>/user/product/product_files/AlicnTree.css"
-			type="text/css" />
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myali_search_v02.css"
 			type="text/css" />
@@ -32,77 +27,7 @@ ProductInfo productInfo=(ProductInfo)request.getAttribute("productInfo");
 		<link rel="stylesheet" rev="stylesheet"
 			href="<%=path%>/user/product/product_files/myalibaba.css"
 			type="text/css" />
-		<style>
-<!--
-.tablestyle{
-		border-top:#ffffff 3px solid; border-bottom:#e0e0e0 1px solid; background:#f6f6f6;
-		}
-.tablestylenobottomline{
-		border-top:#ffffff 3px solid; background:#f6f6f6;
-		}
-.awake{
-		padding:3px; border:#485E00 1px solid; background:#F7FFDD; color:#485e00;
-		}
-.normal{
-		padding:3px; border:#ffffff 1px solid; background:#ffffff; color:#999999;
-		}
-.wrong{
-		text-align:left;
-		padding:2px;
-		line-height:130%;
-		background:#FFF8EE;
-		border:#ff7300 1px solid;
-		background-image:url("http://i03.c.aliimg.com/images/cn/common/icon/icon_noteawake_16x16.gif");
-		background-repeat:no-repeat;
-		background-position:3px 3px;
-		margin:0px;
-		border:1px solid #FFCB99;
-		}
-.wrongwords{
-		margin-left:20px;
-		margin-bottom:0px;
-		margin-top:2px;
-		font-size:12px;
-		font-weight:normal;
-		color:#000000;
-		padding:0px;
-		}
-.M1 {font:bold 14px}
-ul.callinglayout {
-	display:block;
-	margin:0px;
-	padding:3px;
-	list-style:none;
-	text-align:left;
-}
 
-ul.callinglayout li {
-	float:left;
-	margin:0px 4px;
-	white-space:nowrap;
-}
-
-	
-	.OfferPostPic
-	{
-		height:55px
-	}
-	.OfferPostTitle
-	{
-		border-bottom:1px solid #D6D6D6;
-		font-size:14px;
-		word-break:break-all;
-		padding-left:15px;
-	}
-	.OfferPost
-	{
-		border-bottom:1px solid #D6D6D6;
-		font-size:12px;
-		word-break:break-all;
-		padding-left:15px;
-		
-	}
---></style>
 		<script language="JavaScript" type="text/javascript">
 		 
     	function onChangeTopCategory(value){
@@ -116,12 +41,15 @@ ul.callinglayout li {
 			var result= originalRequest.responseText;	    
 		    var secondCatForm=document.getElementById("tdsecondCatFormKey"); 
 		     secondCatForm.innerHTML=result;
+		     clearThirdSelect();
 	  
 	  	} 
 	  	function clearThirdSelect()
 	  	{
-	  	   //var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
-	  	   //tdleafCatFormKey.innerHTML="";
+	  	    var  tdleafCatFormKey=document.getElementById("tdleafCatFormKey"); 
+	  	    tdleafCatFormKey.innerHTML="";
+	  	    var productTypeId=document.getElementById("productTypeId");  
+	  	    productTypeId.value="";
 	  	}
 		function onChangeSecondCategory(value){
 			var paramname = value; 
@@ -133,12 +61,11 @@ ul.callinglayout li {
 		}
 		function showSecondChecked(originalRequest){
 			var result= originalRequest.responseText;	    
-		    var secondCatForm=document.getElementById("tdleafCatFormKey"); 
-		 
+		    var secondCatForm=document.getElementById("tdleafCatFormKey");  
 		     secondCatForm.innerHTML=result;
-		     
-		     
-	  
+		     var productTypeId=document.getElementById("productTypeId");  
+	  	    productTypeId.value="";
+		      
 	  	} 
 		
 		function onChangeLeafCategory(value){
@@ -146,7 +73,7 @@ ul.callinglayout li {
     		var url = "<%=path%>/productInfo.do?method=productTemplate";  
     		var pars = "key=" + paramname; 
 		    var myAjax = new Ajax.Request(url,{method: 'post', parameters: pars, onComplete: showLeafChecked});
-	  		   var productTypeId=document.getElementById("productTypeId");  
+	  		var productTypeId=document.getElementById("productTypeId");  
 	  		productTypeId.value=value;
 		} 
 		function showLeafChecked(originalRequest){
@@ -172,20 +99,81 @@ ul.callinglayout li {
 	  			} 
 	  	} 
 	  	function checkSubmit(){
-	  	
-	  		document.mainform.action="<%=path%>/productInfo.do?method=addProductInfo";
+	  		  
+		    var productName =document.mainform.productName.value;
+		    var productTypeId =document.mainform.productTypeId.value;
+		    var prodcutTitle =document.mainform.prodcutTitle.value;
+		    var merchantType =document.mainform.merchantType.value;
+		    if(isNull(productName)){
+		    	alert("产品名称不能为空"); 
+		    	return;
+		    }
+		     if(isNull(productTypeId)){
+		    	alert("请选择产品所属类目"); 
+		    	return;
+		    }
+		     if(isNull(prodcutTitle)){
+		    	alert("信息标题不能为空"); 
+		    	return;
+		    }
+		     if(isNull(merchantType)){
+		    	alert("请选择供应商类型"); 
+		    	return;
+		    }
+		    if(!checkProduct()){
+		    	return;
+		    }
+		    
+		    
+	  		document.mainform.action="<%=path%>/admin/product.do?method=updateProductInfo";
 	  		document.mainform.submit();
 	  	}
+	  	function isNull(value)
+		{
+			if(value==null)return true;
+			value=value.replace(/(^\s*)|(\s*$)/g, "");
+			if(value=="")return true;
+			return false;
+		}
 	  	</script>
 	</head>
+	<%
+				ProductType thirdProductType = (ProductType) request
+				.getAttribute("thirdProductType");
+		ProductInfo productInfo = (ProductInfo) request
+				.getAttribute("productInfo");
+		Cpgqxx cpgqxx = productInfo.getCpggxx();
+		String orderType = cpgqxx.getXxlx();
+		String productName = cpgqxx.getCpmc();
+		String prodcutTitle = cpgqxx.getXxbt();
+		String ableDate = cpgqxx.getXxyxq();
+		String desc=cpgqxx.getXxsm();
+		String pic1 = cpgqxx.getTp1();
+		String pic2 = cpgqxx.getTp2();
+		String pic3 = cpgqxx.getTp3();
+
+		Jytj jytj = productInfo.getJytj();
+		String unit = jytj.getJldw();
+		String price = jytj.getCpdj();
+		String minCount = jytj.getZxqdl();
+		String productCount = jytj.getGhzl();
+		String freightDate = jytj.getFhqx();
+		String merchantType = jytj.getGyslc();
+
+		Product product = productInfo.getProduct();
+	%>
 	<body>
 		<table align="right" class="content_border" border="0" cellpadding="0"
 			cellspacing="0" width="100%">
 			<tbody>
 				<tr>
 					<td>
-						<form name="mainform" method="post" >
-						<input id="productTypeId" type="hidden" name="productTypeId" value=""/>
+						<form name="mainform" method="post" enctype="multipart/form-data">
+							<input id="productTypeId" type="hidden" name="productTypeId"
+								value="<%=thirdProductType!=null?thirdProductType.getId():"" %>" />
+						 <input   type="hidden" name="productInfoId" value="<%=cpgqxx!=null?cpgqxx.getCpgqxxid():"" %>" />
+						
+								
 							<table width="100%">
 								<tbody>
 									<tr>
@@ -293,13 +281,20 @@ ul.callinglayout li {
 											<b>信息类型</b><font color="#ff0000">*</font>
 										</td>
 										<td class="list_right_box">
-											<input value="<%=AppConstants.PRODUCT_SALE%>" name="orderType"
-												checked="checked" type="radio" />
+											<input value="<%=AppConstants.PRODUCT_SALE%>"
+												name="orderType"
+												<%=orderType.equals(AppConstants.PRODUCT_SALE) ? " checked "
+							: ""%>
+												type="radio" />
 											供应
 											<input value="<%=AppConstants.PRODUCT_BUY%>" name="orderType"
+												<%=orderType.equals(AppConstants.PRODUCT_BUY) ? " checked "
+							: ""%>
 												type="radio" />
 											求购
 											<input value="<%=AppConstants.PRODUCT_QUICK_BUY%>"
+												<%=orderType.equals(AppConstants.PRODUCT_QUICK_BUY) ? " checked "
+							: ""%>
 												name="orderType" type="radio" />
 											紧急求购
 										</td>
@@ -320,8 +315,9 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td class="s lh13 normal" valign="top">
-															<input name="productName" value="" maxlength="16" size="20"
-																type="text" />
+															<input name="productName"
+																value="<%=productName != null ? productName : ""%>"
+																maxlength="16" size="20" type="text" />
 															<div class="MB_Menu" id="Banner_Menu"></div>
 														</td>
 													</tr>
@@ -365,26 +361,34 @@ ul.callinglayout li {
 																	<td id="tdtopCatFormKey">
 																		<select name="topCatFormKey" size="8"
 																			style="width: 129px;" id="topCatFormKey"
-																			 onchange="onChangeTopCategory(this.value) ">
+																			onchange="onChangeTopCategory(this.value) ">
 																			<%
 																				List topCategory = (List) request.getAttribute("topCategory");
+																				ProductType topProductType = (ProductType) request
+																						.getAttribute("topProductType");
+																				int topProductTypeId = topProductType != null ? topProductType
+																						.getId() : -1;
 																				if (topCategory != null) {
 																					Iterator iter = topCategory.iterator();
 																					while (iter.hasNext()) {
 																						ProductType productType = (ProductType) iter.next();
 																						if (productType != null) {
-																							String name = productType.getName();
-																							int value = productType.getId();
-																							int isShow = productType.getIsShow();
-																							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																									: false;
-																							out.print("<option value=\"" + value + "\"");
-																							if (able) {
-																								out.print(" style=\"color: rgb(204, 204, 204);\" ");
-																							}
-																							out.println(">");
-																							out.println(name);
-																							out.println("</option>");
+																					String name = productType.getName();
+																					int value = productType.getId();
+																					int isShow = productType.getIsShow();
+																					boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																							: false;
+																					out.print("<option value=\"" + value + "\"");
+																					if (topProductTypeId == value) {
+																						out.print("  selected ");
+																					}
+																					if (able) {
+																						out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																					}
+																					out.println(" isShow='" + isShow + "' name='" + name
+																							+ "' >");
+																					out.println(name);
+																					out.println("</option>");
 
 																						}
 																					}
@@ -399,6 +403,11 @@ ul.callinglayout li {
 																			onchange="onChangeSecondCategory(this.value)">
 																			<%
 																				List secondCategory = (List) request.getAttribute("secondCategory");
+																				ProductType secondProductType = (ProductType) request
+																						.getAttribute("secondProductType");
+																				int secondProductTypeId = secondProductType != null ? secondProductType
+																						.getId()
+																						: -1;
 																				if (secondCategory != null) {
 																					Iterator iter = secondCategory.iterator();
 																					while (iter.hasNext()) {
@@ -410,10 +419,14 @@ ul.callinglayout li {
 																					boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 																							: false;
 																					out.print("<option value=\"" + value + "\"");
+																					if (secondProductTypeId == value) {
+																						out.print("  selected ");
+																					}
 																					if (able) {
 																						out.print(" style=\"color: rgb(204, 204, 204);\" ");
 																					}
-																					out.println(" >");
+																					out.println(" isShow='" + isShow + "' name='" + name
+																							+ "' >");
 																					out.println(name);
 																					out.println("</option>");
 
@@ -429,23 +442,32 @@ ul.callinglayout li {
 																			onchange="onChangeLeafCategory(this.value)">
 																			<%
 																				List thirdCategory = (List) request.getAttribute("thirdCategory");
+
+																				int thirdProductTypeId = thirdProductType != null ? thirdProductType
+																						.getId()
+																						: -1;
+
 																				if (thirdCategory != null) {
 																					Iterator iter = thirdCategory.iterator();
 																					while (iter.hasNext()) {
 																						ProductType productType = (ProductType) iter.next();
-																						if (productType != null) { 
-																							String name = productType.getName();
-																							int value = productType.getId();
-																							int isShow = productType.getIsShow();
-																							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
-																									: false;
-																							out.print("<option value=\"" + value + "\"");
-																							if (able) {
-																								out.print(" style=\"color: rgb(204, 204, 204);\" ");
-																							}
-																							out.println(" >");
-																							out.println(name);
-																							out.println("</option>");
+																						if (productType != null) {
+																					String name = productType.getName();
+																					int value = productType.getId();
+																					int isShow = productType.getIsShow();
+																					boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
+																							: false;
+																					out.print("<option value=\"" + value + "\"");
+																					if (thirdProductTypeId == value) {
+																						out.print("  selected ");
+																					}
+																					if (able) {
+																						out.print(" style=\"color: rgb(204, 204, 204);\" ");
+																					}
+																					out.println(" isShow='" + isShow + "' name='" + name
+																							+ "' >");
+																					out.println(name);
+																					out.println("</option>");
 
 																						}
 																					}
@@ -498,8 +520,9 @@ ul.callinglayout li {
 												<tbody>
 													<tr>
 														<td>
-															<input name="prodcutTitle" value="供应" size="46" maxlength="25"
-																type="text" />
+															<input name="prodcutTitle" value="供应" size="46"
+																maxlength="25" type="text"
+																value="<%=prodcutTitle != null ? prodcutTitle : ""%>" />
 														</td>
 													</tr>
 												</tbody>
@@ -542,15 +565,35 @@ ul.callinglayout li {
 										</td>
 										<td class="list_right_box">
 											<div id="div_OfferExpire_normal">
-												<input value="1" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_10_DAY%>"
+													name="ableDate" type="radio"
+													<%=ableDate
+									.equals(AppConstants.CPGOXX_OVERDUE_10_DAY) ? " checked "
+							: ""%> />
 												10天
-												<input value="2" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_20_DAY%>"
+													name="ableDate" type="radio"
+													<%=ableDate
+									.equals(AppConstants.CPGOXX_OVERDUE_20_DAY) ? " checked "
+							: ""%> />
 												20天
-												<input value="3" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_1_MONTH%>"
+													name="ableDate" type="radio"
+													<%=ableDate
+									.equals(AppConstants.CPGOXX_OVERDUE_1_MONTH) ? " checked "
+							: ""%> />
 												1个月
-												<input value="4" name="ableDate" type="radio" />
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_3_MONTH%>"
+													name="ableDate" type="radio"
+													<%=ableDate
+									.equals(AppConstants.CPGOXX_OVERDUE_3_MONTH) ? " checked "
+							: ""%> />
 												3个月
-												<input value="5" checked="checked" name="ableDate"
+												<input value="<%=AppConstants.CPGOXX_OVERDUE_6_MONTH%>"
+													name="ableDate"
+													<%=ableDate
+									.equals(AppConstants.CPGOXX_OVERDUE_6_MONTH) ? " checked "
+							: ""%>
 													type="radio" />
 												6个月
 											</div>
@@ -630,7 +673,7 @@ ul.callinglayout li {
 										<td class="list_right_box" valign="top">
 											<div>
 												<textarea id="description" name="desc"
-													style="width: 430px; height: 350px;"></textarea>
+													style="width: 430px; height: 350px;"><%=desc!=null?desc:""%></textarea>
 											</div>
 											<table border="0" cellpadding="0" cellspacing="0"
 												width="100%">
@@ -671,6 +714,56 @@ ul.callinglayout li {
 
 										</td>
 									</tr>
+									<SCRIPT language=JavaScript>
+										   function showimg(index){
+										    var cardpicId="cardpic"+index;
+										    var cardPic=document.getElementById(cardpicId);
+										    
+										    var src=cardPic.value;
+										   
+										    var uploadedId="uploaded"+index;
+										    var uploaded=document.getElementById(uploadedId);
+										    uploaded.src=src; 
+										  
+										    var uploadImgId="uploadImg"+index; 
+										   	var updateImgtr=document.getElementById(uploadImgId);
+										   	updateImgtr.style.display='none'; 
+										   	
+										   	var uploadPicStateId="uploadPicState"+index;
+										    var uploadPicState=document.getElementById(uploadPicStateId);
+										    uploadPicState.value="upload"; 
+										   }
+										   function showUpload(index){ 
+										   	 for(var i=1;i<4;i++)
+										   	 {
+										   	 	  var uploadImgId="uploadImg"+i; 
+										   	 	  var updateImgtr=document.getElementById(uploadImgId);
+										   	 	  if(i==index){
+										   	 	 	 updateImgtr.style.display='block';
+										   	 	  }else
+										   	 	  {
+										   	 	  	 updateImgtr.style.display='none';
+										   	 	  }
+										   	 }
+										   }
+										   function deleteUpload(index){  
+										  
+										       var inputfileId="inputfile"+index;
+										       var inputfile=document.getElementById(inputfileId); 
+										       var noPicSrc='<%=path%>/user/product/product_files/detail_no_pic.gif';
+										   	   var updatetd=  "<input type='file' onchange='showimg("+index+");' id='cardpic"+index+"' name='cardpic"+index+"' value='' />"; 
+										       inputfile.innerHTML=updatetd;
+										       var uploadedId="uploaded"+index; 
+										       
+										       
+										       var uploaded=document.getElementById(uploadedId);
+										       uploaded.src=noPicSrc;  
+										       
+										       	var uploadPicStateId="uploadPicState"+index;
+										        var uploadPicState=document.getElementById(uploadPicStateId);
+										        uploadPicState.value="delete"; 
+										   }
+									  </SCRIPT>
 									<tr>
 										<td class="list_left_box" align="right" valign="top">
 											<b>上传图片</b>&nbsp;
@@ -693,41 +786,83 @@ ul.callinglayout li {
 													</tr>
 													<tr>
 														<td id="tdpic01" align="center" height="25">
-															<img name="uploaded0"
-																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
+															<img name="uploaded1" id="uploaded1" 
+																 src="<%=pic1!=null?(path+AppConstants.PRODUCT_PICTURE_SAVE_DIR+"/"+pic1):(path+"/user/product/product_files/detail_no_pic.gif") %>"
+																 
 																width="100" height="100" />
 														</td>
 														<td align="center">
-															<img name="uploaded1"
-																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
+															<img name="uploaded2" id="uploaded2" 
+																src="<%=pic2!=null?(path+AppConstants.PRODUCT_PICTURE_SAVE_DIR+"/"+pic2):(path+"/user/product/product_files/detail_no_pic.gif") %>"
+																
 																width="100" height="100" />
 														</td>
 														<td align="center">
-															<img name="uploaded2"
-																src="<%=path%>/user/product/product_files/detail_no_pic.gif"
+															<img name="uploaded3" id="uploaded3"
+															 
+																src="<%=pic3!=null?(path+AppConstants.PRODUCT_PICTURE_SAVE_DIR+"/"+pic3):(path+"/user/product/product_files/detail_no_pic.gif") %>"
+																
 																width="100" height="100" />
 														</td>
 													</tr>
 													<tr>
 														<td align="center" height="35">
-															<input value="上传" name="uploadPicBtn0" type="button" />
+															<input value="上传" name="uploadPicBtn0" type="button"
+																onclick="showUpload(1)" />
 															&nbsp;
 
-															<input onclick="delete_picture('0');" value="删除"
-																name="delPicBtn0" type="button" />
+															<input value="删除" name="delPicBtn0" type="button"
+																onclick="deleteUpload(1);cardpic1.select(); document.selection.clear();" />
+
 														</td>
 														<td align="center">
-															<input value="上传" name="uploadPicBtn1" type="button" />
+															<input value="上传" name="uploadPicBtn1" type="button"
+																onclick="showUpload(2)" />
 															&nbsp;
 
-															<input value="删除" name="delPicBtn1" type="button" />
+															<input value="删除" name="delPicBtn1" type="button"
+																onclick="deleteUpload(2)" />
 														</td>
 														<td align="center">
-															<input value="上传" name="uploadPicBtn2" type="button" />
+															<input value="上传" name="uploadPicBtn2" type="button"
+																onclick="showUpload(3)" />
 															&nbsp;
 
-															<input onclick="delete_picture('2');" value="删除"
-																name="delPicBtn2" type="button" />
+															<input value="删除" name="delPicBtn2" type="button"
+																onclick="deleteUpload(3)" />
+														</td>
+													</tr>
+													<tr id="uploadImg1" style="display:none">
+
+														<td colspan="3">
+															上传图片&nbsp;&nbsp;
+															<span id="inputfile1"> <input type="file"
+																	onchange="showimg(1);" id="cardpic1" name="updatePic1"
+																	value="" />
+																	<input type="hidden"
+																	  id="uploadPicState1" name="uploadPicState1" value="none" />
+															 </span>
+														</td>
+
+													</tr>
+													<tr id="uploadImg2" style="display:none">
+														<td colspan="3">
+															上传图片&nbsp;&nbsp;
+															<span id="inputfile2"> <input type="file"
+																	onchange="showimg(2);" id="cardpic2" name="updatePic2"
+																	value="" /> 
+																	<input type="hidden"
+																	  id="uploadPicState2" name="uploadPicState2" value="none" />
+																	  </span>
+														</td>
+													</tr>
+													<tr id="uploadImg3" style="display:none">
+														<td colspan="3">
+															上传图片&nbsp;&nbsp;
+															<span id="inputfile3"> <input type="file"
+																	onchange="showimg(3);" id="cardpic3" name="updatePic3"
+																	value="" /><input type="hidden"
+																	  id="uploadPicState3" name="uploadPicState3" value="none" /> </span>
 														</td>
 													</tr>
 												</tbody>
@@ -804,7 +939,7 @@ ul.callinglayout li {
 															</td>
 															<td class="list_right_box">
 																<input class="tpf_input" name="unit" id="feature59238"
-																	value="" size="23" maxlength="12" type="text" />
+																	value="<%=unit!=null?unit:"" %>" size="23" maxlength="12" type="text" />
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59238" class="s lh13 wrong"
 																	style="display: none; width: 110px;"> <span
@@ -826,7 +961,7 @@ ul.callinglayout li {
 															</td>
 															<td class="list_right_box">
 																<input class="tpf_input" name="price" id="feature59240"
-																	value="" size="23" maxlength="12" type="text" />
+																	value="<%=price!=null?price:"" %>" size="23" maxlength="12" type="text" />
 																元/
 																<span id="trade_unit_price">单位</span>
 																<span style="padding-left: 10px;"><span
@@ -849,8 +984,9 @@ ul.callinglayout li {
 																<b>最小起订量</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="orderCount" id="feature59239"
-																	value="" size="23" maxlength="12" type="text" />
+																<input class="tpf_input" name="minCount"
+																	id="feature59239" value="<%=minCount!=null?minCount:"" %>" size="23" maxlength="12"
+																	type="text" />
 																<span id="trade_unit_beginamount">单位</span>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59239" class="s lh13 wrong"
@@ -871,8 +1007,9 @@ ul.callinglayout li {
 																<b>供货总量</b>
 															</td>
 															<td class="list_right_box">
-																<input class="tpf_input" name="productCount" id="feature59241"
-																	value="" size="23" maxlength="12" type="text" />
+																<input class="tpf_input" name="productCount"
+																	id="feature59241" value="<%=productCount!=null?productCount:"" %>" size="23" maxlength="12"
+																	type="text" />
 																<span id="trade_unit_amount">单位</span>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature59241" class="s lh13 wrong"
@@ -894,62 +1031,63 @@ ul.callinglayout li {
 															</td>
 															<td class="list_right_box">
 																自买家付款之日起
-																<select name="freightDate" id="feature59242" maxlength="80">
+																<select name="freightDate" id="feature59242"
+																	maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
-																	<option value="1">
+																	<option value="1" <%=freightDate.equals("1")?" selected":"" %>>
 																		1
 																	</option>
-																	<option value="2">
+																	<option value="2" <%=freightDate.equals("2")?" selected":"" %>>
 																		2
 																	</option>
-																	<option value="3">
+																	<option value="3" <%=freightDate.equals("3")?" selected":"" %>>
 																		3
 																	</option>
-																	<option value="4">
+																	<option value="4" <%=freightDate.equals("4")?" selected":"" %>>
 																		4
 																	</option>
-																	<option value="5">
+																	<option value="5" <%=freightDate.equals("5")?" selected":"" %>>
 																		5
 																	</option>
-																	<option value="6">
+																	<option value="6" <%=freightDate.equals("6")?" selected":"" %>>
 																		6
 																	</option>
-																	<option value="7">
+																	<option value="7" <%=freightDate.equals("7")?" selected":"" %>>
 																		7
 																	</option>
-																	<option value="8">
+																	<option value="8" <%=freightDate.equals("8")?" selected":"" %>>
 																		8
 																	</option>
-																	<option value="9">
+																	<option value="9" <%=freightDate.equals("9")?" selected":"" %>>
 																		9
 																	</option>
-																	<option value="10" selected="selected">
+																	<option value="10" <%=freightDate.equals("10")?" selected":"" %> >
 																		10
 																	</option>
-																	<option value="11">
+																	<option value="11" <%=freightDate.equals("11")?" selected":"" %>>
 																		11
 																	</option>
-																	<option value="12">
+																	<option value="12" <%=freightDate.equals("12")?" selected":"" %>>
 																		12
 																	</option>
-																	<option value="13">
+																	<option value="13" <%=freightDate.equals("13")?" selected":"" %>>
 																		13
 																	</option>
-																	<option value="14">
+																	<option value="14" <%=freightDate.equals("14")?" selected":"" %>>
 																		14
 																	</option>
-																	<option value="15">
+																	<option value="15" <%=freightDate.equals("15")?" selected":"" %>>
 																		15
 																	</option>
-																	<option value="20">
+																	<option value="20" <%=freightDate.equals("20")?" selected":"" %>>
 																		20
 																	</option>
-																	<option value="30">
+																	<option value="30" <%=freightDate.equals("30")?" selected":"" %>>
 																		30
 																	</option>
-																	<option value="60">
+																	<option value="60" <%=freightDate.equals("60")?" selected":"" %>>
 																		60
 																	</option>
 																</select>
@@ -976,27 +1114,28 @@ ul.callinglayout li {
 
 																我是该产品的
 
-																<select name="merchantType" id="feature116330" maxlength="80">
+																<select name="merchantType" id="feature116330"
+																	maxlength="80">
 																	<option value="">
 																		请选择
 																	</option>
-																	<option value="1">
+																	<option value="1" <%=merchantType.equals("1")?" selected":"" %>>
 																		自主生产厂商
 																	</option>
-																	<option value="2">
+																	<option value="2" <%=merchantType.equals("2")?" selected":"" %>>
 																		加工商
 																	</option>
-																	<option value="3">
+																	<option value="3" <%=merchantType.equals("3")?" selected":"" %>>
 																		代理商
 																	</option>
-																	<option value="4">
+																	<option value="4" <%=merchantType.equals("4")?" selected":"" %>> 
 																		经销商
 																	</option>
-																	<option value="5">
+																	<option value="5" <%=merchantType.equals("5")?" selected":"" %>>
 																		其他
 																	</option>
-								
-								</select>
+
+																</select>
 																<span style="padding-left: 10px;"><span
 																	id="wrong_feature116330" class="s lh13 wrong"
 																	style="display: none; width: 110px;"> <span
@@ -1034,7 +1173,7 @@ ul.callinglayout li {
 															是&nbsp;
 
 															<input name="rBizType" value="checkbox"
-																onclick="changeBizType('N')" type="radio"/>
+																onclick="changeBizType('N')" type="radio" />
 															否
 															<table align="left" cellpadding="0" cellspacing="0"
 																width="100%">
@@ -1125,8 +1264,8 @@ ul.callinglayout li {
 									</tr>
 								</tbody>
 							</table>
-							<br/>
-							<br/>
+							<br />
+							<br />
 							<table border="0" cellpadding="0" cellspacing="0" width="99%">
 								<tbody>
 									<tr>
@@ -1139,8 +1278,7 @@ ul.callinglayout li {
 									</tr>
 									<tr>
 										<td class="C spc16" align="center">
-											<input name="postsubmit"
-												 onclick="checkSubmit()"
+											<input name="postsubmit" onclick="checkSubmit()"
 												value="同意服务条款，我要发布" class="submitButton" type="button" />
 											<a href="#"
 												onclick="previewPost(document.mainform);return false;">预览这条信息</a>

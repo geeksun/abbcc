@@ -1,13 +1,13 @@
 package com.abbcc.util.product;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.abbcc.pojo.Product;
-import com.abbcc.service.ProductService;
-import com.abbcc.servlet.StartServlet;
 
 public class ProductUtil {
 	private   Log log = LogFactory.getLog(ProductUtil.class);
@@ -49,6 +49,13 @@ public class ProductUtil {
 		ProductObject obj=new ProductObject(sql,value);
 		return obj;
 	}
+	public static ProductObject getProductUpdateObject(Product product ,HttpServletRequest request,Map objectValue){
+		if(product==null||request==null)return null;
+		String sql=getProductUpdateSql(product);
+		Object[] value=getValueByFromNameForUpdate(product,request,objectValue);
+		ProductObject obj=new ProductObject(sql,value);
+		return obj;
+	}
 	public static ProductObject getProductDeleteObject(Product product){
 		if(product==null )return null;
 		String sql=getProductDeleteSqlById(product);
@@ -75,6 +82,30 @@ public class ProductUtil {
 		}
 		return ret; 
 	}
+	private static Object[] getValueByFromNameForUpdate(Product product,HttpServletRequest request,Map objectValue){
+		if(product==null)return null; 
+		String[] formName  = ProductUtil.arrayToString(product.getFormName());
+		Object[] ret=new Object[formName.length+1] ;
+		for(int i=0;i<formName.length;i++){
+			String param=formName[i];  
+			String value=request.getParameter(param);
+			if(value==null)
+			{
+				ret[i]=""; 
+			}else
+			{
+				ret[i]=value; 
+			}
+			
+		}
+		String id=product.getIdFiledName();
+		if(objectValue!=null){
+			Integer value=(Integer)objectValue.get(id);
+			 ret[ret.length-1]=value;
+			  
+		}
+		return ret; 
+	}
 	private static String getProductInsertSql(Product product){
 		if(product==null)return null;
 		StringBuilder builder = new StringBuilder("insert into ");
@@ -95,14 +126,36 @@ public class ProductUtil {
 		builder.append("?)");
 		return builder.toString();
 	}
-	
+	private static String getProductUpdateSql(Product product){
+		if(product==null)return null;
+		StringBuilder builder = new StringBuilder("update ");
+		String filedName=product.getOtherFiledName();
+		String[] filedNames=arrayToString(filedName);
+		String tableName=product.getTableName(); 
+		builder.append(tableName+" set " );
+		String cpgqxxidFiled=product.getIdFiledName();
+		for (int i = 0; i < filedNames.length; i++) {
+			String name = filedNames[i];
+			if(i==filedNames.length-1){
+				builder.append( name + "=? "); 
+			}
+			else{
+				builder.append( name + "=?, "); 
+			}
+				
+		}
+		builder.append(" where "+cpgqxxidFiled+"=?");
+		 
+		return builder.toString();
+	}
 	private static String getProductDeleteSqlById(Product product){
 		if(product==null)return null;
 		StringBuilder builder = new StringBuilder("delete from ");
 	 
 		String tableName=product.getTableName(); 
+		 
 		builder.append(tableName );
-		builder.append(" where id=?" );
+		builder.append(" where "+product.getIdFiledName()+"=?" );
 		return builder.toString();
 	}
 	public static String getProductSelectSql(Product product,String cpgqxxId){

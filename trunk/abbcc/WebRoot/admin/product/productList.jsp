@@ -51,8 +51,9 @@
 								long id=product.getId();
 								String name=product.getProductName();
 								int state=product.getState();
-								Date date=product.getCreateTime();
-							    String  createTime=DateFormater.getFormatDate(date);
+								Date date=product.getCreateTime(); 
+								String productTypeId=product.getProductTypeId();
+								String  createTime=DateFormater.getFormatDate(date);
 				%>
 				<tr>
 					<td>
@@ -83,9 +84,10 @@
 						 <%=createTime!=null?createTime:"" %>
 					</td>
 					<td>
-						
+						<a href="<%=path %>/admin/product.do?method=updateProductState&productId=<%=id %>&productTypeId=<%=productTypeId %>">Ê¹ÓÃ</a>
 						<a href="<%=path %>/admin/product.do?method=showProduct&productId=<%=id %>"> ÐÞ¸Ä</a>
-						<a href="#">  É¾³ý</a>
+						<a href="<%=path %>/admin/product.do?method=deleteProduct&productId=<%=id %>&productTypeId=<%=productTypeId %>">É¾³ý</a>
+					
 					</td>
 				</tr>
 				

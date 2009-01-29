@@ -253,10 +253,7 @@ List productTypeList=(List)request.getAttribute("productTypeList");
 			return true;
 		}
 	</script>
-	<%
-	 Product product =(Product)request.getAttribute("product");
-	
-	 %>
+	 
 	<body  >
 		<form name="form_product" method="post" action="">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">

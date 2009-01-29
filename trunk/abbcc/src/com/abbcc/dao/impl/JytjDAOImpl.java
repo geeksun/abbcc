@@ -15,7 +15,7 @@ public class JytjDAOImpl extends BaseDaoImpl implements JytjDAO {
 	
 
 	public void delete(Integer hyjbxxid, Long jytjid) throws DaoException {
-		String sql="delete from "+tableName+" where cpgqxxid=? and jytjid=?" ;
+		String sql="delete from "+tableName+" where hyjbxxid=? and jytjid=?" ;
 		SQLQuery query = this.getSession().createSQLQuery(sql);
 		query.setInteger(0, hyjbxxid);
 		query.setLong(1, jytjid); 
@@ -56,7 +56,7 @@ public class JytjDAOImpl extends BaseDaoImpl implements JytjDAO {
 	}
 
 	public void update(Jytj jytj) throws DaoException {
-		// TODO Auto-generated method stub
+		super.update(jytj);
 		
 	}
 

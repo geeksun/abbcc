@@ -29,7 +29,7 @@
 			</forward>
 		</action>
 		<action path="/admin/product" parameter="method"
-			type="com.abbcc.admin.ProductAction">
+			 name="uploadProductInfoForm" type="com.abbcc.admin.ProductAction">
 			<forward name="createProduct"
 				path="/admin/product/createProduct.jsp">
 			</forward>

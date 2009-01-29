@@ -130,7 +130,7 @@ public class UploadUtil {
 	public static void saveProductPic(FormFile file, String desFileName,HttpServletRequest request) {
 		if(file==null||desFileName==null)return ;
 		if(checkFormFile(file)){
-			String desDir=request.getSession().getServletContext().getRealPath("/update/product");  
+			String desDir=getLocalProductPicPath(  request);
 			File dir=new File(desDir);
 			if(!dir.exists()){
 				dir.mkdirs();
@@ -139,7 +139,30 @@ public class UploadUtil {
 		}
 	
 	}
+	public static void deleteProductPic(  String desFileName,HttpServletRequest request) {
+		if( desFileName==null)return ;
+		  String desDir=getLocalProductPicPath( request)  ;
+			 
+		  deleteFile( desDir+"\\"+desFileName);
+		 
 	
+	}
+	public static String getLocalProductPicPath(   HttpServletRequest request) {
+		 
+		 return request.getSession().getServletContext().getRealPath(AppConstants.PRODUCT_PICTURE_SAVE_DIR);   
+		 
+	
+	}
+	 
+	public static void deleteFile(String desPath){
+		File f=new File(desPath);
+		System.out.println(desPath);
+		if(f.isFile()){
+			  
+			  f.delete();
+		}  
+	}
+	 
 	public static void saveFile(FormFile file, String desPath) {
 		if (file == null || desPath == null)
 			return;
@@ -176,6 +199,10 @@ public class UploadUtil {
 			file.destroy();
 		}
 
+	}
+	public static void main(String[] args){
+		String path="F:\\apache-tomcat-5.5.26\\webapps\\abbcc\\update\\product\\C81EC97234C499C605CB16F0190.gif";
+		deleteFile(path);
 	}
 
 }

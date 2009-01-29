@@ -64,7 +64,7 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public void update(Cpgqxx cpgqxx) throws DaoException {
-		// TODO Auto-generated method stub
+		super.update(cpgqxx);
 
 	}
 
