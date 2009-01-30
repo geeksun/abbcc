@@ -1,9 +1,10 @@
-ï»¿/*
+/*
 SQLyog Enterprise - MySQL GUI v6.03
 Host - 5.0.22-community-nt : Database - abbcc
 *********************************************************************
 Server version : 5.0.22-community-nt
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -28,7 +29,7 @@ CREATE TABLE `company_logo` (
 
 /*Data for the table `company_logo` */
 
-insert  into `company_logo`(`hyjbxxid`,`logo_info`,`handle_time`) values (5,'<p>åŒ—äº¬å¸‚æœé˜³åŒºåé‡Œæ²³ä¹¡è¥¿ç›´æ²³æ‘å°å­¦29å·<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/companylogo/06-08-07_1440.jpg\" /></p>','2009-01-18 23:34:22');
+insert  into `company_logo`(`hyjbxxid`,`logo_info`,`handle_time`) values (5,'<p>±±¾©ÊĞ³¯ÑôÇøÊ®ÀïºÓÏçÎ÷Ö±ºÓ´åĞ¡Ñ§29ºÅ<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/companylogo/06-08-07_1440.jpg\" /></p>','2009-01-18 23:34:22');
 
 /*Table structure for table `company_logo_0` */
 
@@ -43,7 +44,7 @@ CREATE TABLE `company_logo_0` (
 
 /*Data for the table `company_logo_0` */
 
-insert  into `company_logo_0`(`hyjbxxid`,`logo_info`,`handle_time`) values (5,'<p>åŒ—äº¬å¸‚æœé˜³åŒºåé‡Œæ²³ä¹¡è¥¿ç›´æ²³æ‘å°å­¦29å·<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/companylogo/06-08-07_1440.jpg\" /></p>','2009-01-18 23:34:22');
+insert  into `company_logo_0`(`hyjbxxid`,`logo_info`,`handle_time`) values (5,'<p>±±¾©ÊĞ³¯ÑôÇøÊ®ÀïºÓÏçÎ÷Ö±ºÓ´åĞ¡Ñ§29ºÅ<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/companylogo/06-08-07_1440.jpg\" /></p>','2009-01-18 23:34:22');
 
 /*Table structure for table `company_logo_1` */
 
@@ -111,7 +112,7 @@ CREATE TABLE `cpgqxx` (
 
 /*Data for the table `cpgqxx` */
 
-insert  into `cpgqxx`(`hyjbxxid`,`cpgqxxid`,`xxlx`,`cpmc`,`cpshlm`,`xxbt`,`cpsxid`,`xxsm`,`tp1`,`tp2`,`tp3`,`xxyxq`,`jytjid`,`sqsj`,`sfyx`,`scsj`,`xxyxsj`) values (1,22,'1','testeee','124','ä¾›åº”',NULL,'sssss','FC7F950A54204B26856DDAC682E.gif','153DA9783CA215358B0B0E44C66.gif','371C05D923BBF6CC4C62C82BFC2.jpg','5',NULL,'2009-01-29 17:12:27','2',NULL,'2009-07-29 20:59:55');
+insert  into `cpgqxx`(`hyjbxxid`,`cpgqxxid`,`xxlx`,`cpmc`,`cpshlm`,`xxbt`,`cpsxid`,`xxsm`,`tp1`,`tp2`,`tp3`,`xxyxq`,`jytjid`,`sqsj`,`sfyx`,`scsj`,`xxyxsj`) values (1,22,'1','testeee','124','¹©Ó¦',NULL,'sssss','FC7F950A54204B26856DDAC682E.gif','153DA9783CA215358B0B0E44C66.gif','371C05D923BBF6CC4C62C82BFC2.jpg','5',NULL,'2009-01-29 21:55:47','3',NULL,'2009-07-29 20:59:55');
 
 /*Table structure for table `cpgqxx_0` */
 
@@ -142,7 +143,7 @@ CREATE TABLE `cpgqxx_0` (
 
 /*Data for the table `cpgqxx_0` */
 
-insert  into `cpgqxx_0`(`hyjbxxid`,`cpgqxxid`,`xxlx`,`cpmc`,`cpshlm`,`xxbt`,`cpsxid`,`xxsm`,`tp1`,`tp2`,`tp3`,`xxyxq`,`jytjid`,`sqsj`,`sfyx`,`scsj`,`xxyxsj`) values (1,22,'1','testeee','124','ä¾›åº”',NULL,'sssss','FC7F950A54204B26856DDAC682E.gif','153DA9783CA215358B0B0E44C66.gif','371C05D923BBF6CC4C62C82BFC2.jpg','5',NULL,'2009-01-29 17:12:27','2',NULL,'2009-07-29 20:59:55');
+insert  into `cpgqxx_0`(`hyjbxxid`,`cpgqxxid`,`xxlx`,`cpmc`,`cpshlm`,`xxbt`,`cpsxid`,`xxsm`,`tp1`,`tp2`,`tp3`,`xxyxq`,`jytjid`,`sqsj`,`sfyx`,`scsj`,`xxyxsj`) values (1,22,'1','testeee','124','¹©Ó¦',NULL,'sssss','FC7F950A54204B26856DDAC682E.gif','153DA9783CA215358B0B0E44C66.gif','371C05D923BBF6CC4C62C82BFC2.jpg','5',NULL,'2009-01-29 21:55:47','3',NULL,'2009-07-29 20:59:55');
 
 /*Table structure for table `cpgqxx_1` */
 
@@ -553,7 +554,7 @@ CREATE TABLE `gsjbxx` (
 
 /*Data for the table `gsjbxx` */
 
-insert  into `gsjbxx`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`,`gsjs`) values (3,'39','0','','china','china','125,126','3','test','try',''),(1,'838','0','1,4,','838','åŒ—äº¬æœé˜³é—¨','131','3','93','93','è‹å·å¸‚é«˜ç§‘æ°”ä½“è®¾å¤‡æœ‰é™å…¬å¸æ˜¯ä¸€å®¶è‚¡ä»½åˆ¶é«˜æ–°æŠ€æœ¯ä¼ä¸šã€‚é«˜ç§‘å…¬å¸åº§è½äºè‹å·ç¾ä¸½çš„è™ä¸˜é£æ™¯åŒºè™ä¸˜å±±æ—ï¼Œ312å›½é“96å…¬é‡Œå¤„ï¼Œè·æ²ªå®é«˜é€Ÿçº¦ä¸¤å…¬é‡Œè·¯ç¨‹ï¼Œç¦»ç«è½¦ç«™ã€æ±½è½¦ç«™ä¹Ÿå°±å››äº”å…¬é‡Œï¼Œäº¤é€šååˆ†ä¾¿åˆ©ã€‚ä¸“ä¸šä»äº‹å„ç±»å·¥ä¸šæ°”ä½“è®¾å¤‡çš„ç ”åˆ¶ã€å¼€å‘ã€è®¾è®¡ã€ç”Ÿäº§ã€åˆ¶é€ ã€é”€å”®åŠæœåŠ¡ï¼Œæä¾›ä¸“ä¸šçš„æ°”ä½“èµ„æºå’Œé…å¥—äº§å“ã€‚æ˜¯å›½å†…çŸ¥åå·¥ä¸šæ°”ä½“è®¾å¤‡ä¸“ä¸šç”Ÿäº§å‚å•†ã€‚æ˜¯å›½å†…åˆ¶é€ å¸¸æ¸©ç©ºåˆ†åˆ¶æ°®ç³»ç»Ÿå…¨å¥—è®¾å¤‡æœ€ä¼˜ç§€çš„ä¼ä¸šä¹‹ä¸€ã€‚å…¬å¸åœ¨æ°”ä½“æŠ€æœ¯æ–¹é¢ç§¯ç´¯äº†ç›¸å½“ä¸°å¯Œçš„ç†è®ºå’Œå®è·µç»éªŒï¼Œé›„åšçš„æŠ€æœ¯åŠ›é‡ä½¿å…¬å¸çš„äº§å“åœ¨å¸‚åœºä¸Šå¤„äºé¢†å…ˆåœ°ä½ã€‚\r\né«˜ç§‘å…¬å¸äº§å“åŒ…æ‹¬å˜å‹å¸é™„åˆ¶æ°®è£…ç½®ã€æ°®æ°”çº¯åŒ–è£…ç½®ã€æ°¨åˆ†è§£åˆ¶æ°¢è£…ç½®ã€å˜å‹å¸é™„åˆ¶æ°¢è£…ç½®ã€æ°”ä½“çº¯åŒ–è£…ç½®ã€è‡ªåŠ¨é…æ¯”è£…ç½®ç­‰æ°”ä½“è®¾å¤‡ï¼Œè¿˜æ‰¿æ¥å„ç§æ°”ä½“éæ ‡è®¾å¤‡çš„è®¾è®¡ã€åˆ¶é€ å’ŒæŠ€æœ¯å’¨è¯¢ã€‚ \r\né«˜ç§‘å…¬å¸ç”Ÿäº§å„ç§æ°”ä½“è®¾å¤‡æœåŠ¡äºçŸ³æ²¹åŒ–å·¥ã€åŒ–çº¤ã€çƒ­å¤„ç†ã€å†¶é‡‘ã€ç»ç’ƒã€é£Ÿå“ã€åŒ»è¯ã€ç”µå­ã€å›½é˜²èˆªå¤©ã€èˆªç©ºç­‰ä¸»å¯¼é¢†åŸŸä¸­å¾—åˆ°äº†å¹¿æ³›çš„åº”ç”¨ã€‚ä¸ºå›½æ°‘ç»æµå»ºè®¾åšå‡ºäº†è´¡çŒ®ã€‚ \r\nå…ˆè¿›çš„æŠ€æœ¯æ˜¯é«˜ç§‘å‘å±•çš„åŠ¨åŠ›ï¼Œä¼˜è‰¯çš„å“è´¨æ˜¯é«˜ç§‘ç§‰æ‰¿çš„ä¼ ç»Ÿï¼Œå‘¨åˆ°çš„æœåŠ¡æ˜¯é«˜ç§‘ç”Ÿå­˜çš„æ ¹æœ¬ã€‚é«˜ç§‘å…¬å¸æ˜¯å›½å†…è¾ƒæ—©å¼€å‘ã€åˆ¶é€ å˜å‹å¸é™„åˆ¶æ°®æœºçš„ä¼ä¸šä¹‹ä¸€ã€‚æ°¨åˆ†è§£åˆ¶æ°¢ã€å˜å‹å¸é™„åˆ¶æ°®è£…ç½®ç­‰éƒ½æ˜¯å›½å†…ä¸€æµå“è´¨å’ŒæŠ€æœ¯çš„æ°”ä½“è®¾å¤‡ã€‚ \r\né«˜ç§‘äº§å“ä»è®¾è®¡å¼€å§‹å°±å¼•å…¥äº†æœåŠ¡æ¦‚å¿µï¼Œé”€å”®ä»…ä»…æ˜¯ä¸ºé¡¾å®¢æœåŠ¡çš„å¼€å§‹ã€‚é«˜ç§‘ä»¥ç”¨æˆ·ä¸ºä¸­å¿ƒï¼Œå¼ºåŒ–å„é¡¹æœåŠ¡å·¥ä½œï¼Œå…¨é¢å®æ–½â€œç”¨æˆ·æ»¡æ„å·¥ç¨‹â€ï¼Œä¸ºæ¯ä½é¡¾å®¢æä¾›ä¸“ä¸šã€å¿«æ·ã€æ»¡æ„çš„æœåŠ¡ã€‚\r\né«˜ç§‘æœŸå¾…ç€ä¸ºä½ åˆ›é€ ä»·å€¼ã€åˆ›é€ è´¢å¯Œ â€¦â€¦     \r\n    		'),(2,'88',NULL,NULL,'88','77',NULL,'3','82','73',NULL);
+insert  into `gsjbxx`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`,`gsjs`) values (3,'39','0','','china','china','125,126','3','test','try',''),(1,'838','0','1,4,','838','±±¾©³¯ÑôÃÅ','131','3','93','93','ËÕÖİÊĞ¸ß¿ÆÆøÌåÉè±¸ÓĞÏŞ¹«Ë¾ÊÇÒ»¼Ò¹É·İÖÆ¸ßĞÂ¼¼ÊõÆóÒµ¡£¸ß¿Æ¹«Ë¾×ùÂäÓÚËÕÖİÃÀÀöµÄ»¢Çğ·ç¾°Çø»¢ÇğÉ½ÅÔ£¬312¹úµÀ96¹«Àï´¦£¬¾à»¦Äş¸ßËÙÔ¼Á½¹«ÀïÂ·³Ì£¬Àë»ğ³µÕ¾¡¢Æû³µÕ¾Ò²¾ÍËÄÎå¹«Àï£¬½»Í¨Ê®·Ö±ãÀû¡£×¨Òµ´ÓÊÂ¸÷Àà¹¤ÒµÆøÌåÉè±¸µÄÑĞÖÆ¡¢¿ª·¢¡¢Éè¼Æ¡¢Éú²ú¡¢ÖÆÔì¡¢ÏúÊÛ¼°·şÎñ£¬Ìá¹©×¨ÒµµÄÆøÌå×ÊÔ´ºÍÅäÌ×²úÆ·¡£ÊÇ¹úÄÚÖªÃû¹¤ÒµÆøÌåÉè±¸×¨ÒµÉú²ú³§ÉÌ¡£ÊÇ¹úÄÚÖÆÔì³£ÎÂ¿Õ·ÖÖÆµªÏµÍ³È«Ì×Éè±¸×îÓÅĞãµÄÆóÒµÖ®Ò»¡£¹«Ë¾ÔÚÆøÌå¼¼Êõ·½Ãæ»ıÀÛÁËÏàµ±·á¸»µÄÀíÂÛºÍÊµ¼ù¾­Ñé£¬ĞÛºñµÄ¼¼ÊõÁ¦Á¿Ê¹¹«Ë¾µÄ²úÆ·ÔÚÊĞ³¡ÉÏ´¦ÓÚÁìÏÈµØÎ»¡£\r\n¸ß¿Æ¹«Ë¾²úÆ·°üÀ¨±äÑ¹Îü¸½ÖÆµª×°ÖÃ¡¢µªÆø´¿»¯×°ÖÃ¡¢°±·Ö½âÖÆÇâ×°ÖÃ¡¢±äÑ¹Îü¸½ÖÆÇâ×°ÖÃ¡¢ÆøÌå´¿»¯×°ÖÃ¡¢×Ô¶¯Åä±È×°ÖÃµÈÆøÌåÉè±¸£¬»¹³Ğ½Ó¸÷ÖÖÆøÌå·Ç±êÉè±¸µÄÉè¼Æ¡¢ÖÆÔìºÍ¼¼Êõ×ÉÑ¯¡£ \r\n¸ß¿Æ¹«Ë¾Éú²ú¸÷ÖÖÆøÌåÉè±¸·şÎñÓÚÊ¯ÓÍ»¯¹¤¡¢»¯ÏË¡¢ÈÈ´¦Àí¡¢Ò±½ğ¡¢²£Á§¡¢Ê³Æ·¡¢Ò½Ò©¡¢µç×Ó¡¢¹ú·Àº½Ìì¡¢º½¿ÕµÈÖ÷µ¼ÁìÓòÖĞµÃµ½ÁË¹ã·ºµÄÓ¦ÓÃ¡£Îª¹úÃñ¾­¼Ã½¨Éè×ö³öÁË¹±Ï×¡£ \r\nÏÈ½øµÄ¼¼ÊõÊÇ¸ß¿Æ·¢Õ¹µÄ¶¯Á¦£¬ÓÅÁ¼µÄÆ·ÖÊÊÇ¸ß¿Æ±ü³ĞµÄ´«Í³£¬ÖÜµ½µÄ·şÎñÊÇ¸ß¿ÆÉú´æµÄ¸ù±¾¡£¸ß¿Æ¹«Ë¾ÊÇ¹úÄÚ½ÏÔç¿ª·¢¡¢ÖÆÔì±äÑ¹Îü¸½ÖÆµª»úµÄÆóÒµÖ®Ò»¡£°±·Ö½âÖÆÇâ¡¢±äÑ¹Îü¸½ÖÆµª×°ÖÃµÈ¶¼ÊÇ¹úÄÚÒ»Á÷Æ·ÖÊºÍ¼¼ÊõµÄÆøÌåÉè±¸¡£ \r\n¸ß¿Æ²úÆ·´ÓÉè¼Æ¿ªÊ¼¾ÍÒıÈëÁË·şÎñ¸ÅÄî£¬ÏúÊÛ½ö½öÊÇÎª¹Ë¿Í·şÎñµÄ¿ªÊ¼¡£¸ß¿ÆÒÔÓÃ»§ÎªÖĞĞÄ£¬Ç¿»¯¸÷Ïî·şÎñ¹¤×÷£¬È«ÃæÊµÊ©¡°ÓÃ»§ÂúÒâ¹¤³Ì¡±£¬ÎªÃ¿Î»¹Ë¿ÍÌá¹©×¨Òµ¡¢¿ì½İ¡¢ÂúÒâµÄ·şÎñ¡£\r\n¸ß¿ÆÆÚ´ı×ÅÎªÄã´´Ôì¼ÛÖµ¡¢´´Ôì²Æ¸» ¡­¡­     \r\n    		'),(2,'88',NULL,NULL,'88','77',NULL,'3','82','73',NULL);
 
 /*Table structure for table `gsjbxx_0` */
 
@@ -576,7 +577,7 @@ CREATE TABLE `gsjbxx_0` (
 
 /*Data for the table `gsjbxx_0` */
 
-insert  into `gsjbxx_0`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`,`gsjs`) values (3,'39','0','','china','china','125,126','3','test','try',''),(1,'838','0','1,4,','838','åŒ—äº¬æœé˜³é—¨','131','3','93','93','è‹å·å¸‚é«˜ç§‘æ°”ä½“è®¾å¤‡æœ‰é™å…¬å¸æ˜¯ä¸€å®¶è‚¡ä»½åˆ¶é«˜æ–°æŠ€æœ¯ä¼ä¸šã€‚é«˜ç§‘å…¬å¸åº§è½äºè‹å·ç¾ä¸½çš„è™ä¸˜é£æ™¯åŒºè™ä¸˜å±±æ—ï¼Œ312å›½é“96å…¬é‡Œå¤„ï¼Œè·æ²ªå®é«˜é€Ÿçº¦ä¸¤å…¬é‡Œè·¯ç¨‹ï¼Œç¦»ç«è½¦ç«™ã€æ±½è½¦ç«™ä¹Ÿå°±å››äº”å…¬é‡Œï¼Œäº¤é€šååˆ†ä¾¿åˆ©ã€‚ä¸“ä¸šä»äº‹å„ç±»å·¥ä¸šæ°”ä½“è®¾å¤‡çš„ç ”åˆ¶ã€å¼€å‘ã€è®¾è®¡ã€ç”Ÿäº§ã€åˆ¶é€ ã€é”€å”®åŠæœåŠ¡ï¼Œæä¾›ä¸“ä¸šçš„æ°”ä½“èµ„æºå’Œé…å¥—äº§å“ã€‚æ˜¯å›½å†…çŸ¥åå·¥ä¸šæ°”ä½“è®¾å¤‡ä¸“ä¸šç”Ÿäº§å‚å•†ã€‚æ˜¯å›½å†…åˆ¶é€ å¸¸æ¸©ç©ºåˆ†åˆ¶æ°®ç³»ç»Ÿå…¨å¥—è®¾å¤‡æœ€ä¼˜ç§€çš„ä¼ä¸šä¹‹ä¸€ã€‚å…¬å¸åœ¨æ°”ä½“æŠ€æœ¯æ–¹é¢ç§¯ç´¯äº†ç›¸å½“ä¸°å¯Œçš„ç†è®ºå’Œå®è·µç»éªŒï¼Œé›„åšçš„æŠ€æœ¯åŠ›é‡ä½¿å…¬å¸çš„äº§å“åœ¨å¸‚åœºä¸Šå¤„äºé¢†å…ˆåœ°ä½ã€‚\r\né«˜ç§‘å…¬å¸äº§å“åŒ…æ‹¬å˜å‹å¸é™„åˆ¶æ°®è£…ç½®ã€æ°®æ°”çº¯åŒ–è£…ç½®ã€æ°¨åˆ†è§£åˆ¶æ°¢è£…ç½®ã€å˜å‹å¸é™„åˆ¶æ°¢è£…ç½®ã€æ°”ä½“çº¯åŒ–è£…ç½®ã€è‡ªåŠ¨é…æ¯”è£…ç½®ç­‰æ°”ä½“è®¾å¤‡ï¼Œè¿˜æ‰¿æ¥å„ç§æ°”ä½“éæ ‡è®¾å¤‡çš„è®¾è®¡ã€åˆ¶é€ å’ŒæŠ€æœ¯å’¨è¯¢ã€‚ \r\né«˜ç§‘å…¬å¸ç”Ÿäº§å„ç§æ°”ä½“è®¾å¤‡æœåŠ¡äºçŸ³æ²¹åŒ–å·¥ã€åŒ–çº¤ã€çƒ­å¤„ç†ã€å†¶é‡‘ã€ç»ç’ƒã€é£Ÿå“ã€åŒ»è¯ã€ç”µå­ã€å›½é˜²èˆªå¤©ã€èˆªç©ºç­‰ä¸»å¯¼é¢†åŸŸä¸­å¾—åˆ°äº†å¹¿æ³›çš„åº”ç”¨ã€‚ä¸ºå›½æ°‘ç»æµå»ºè®¾åšå‡ºäº†è´¡çŒ®ã€‚ \r\nå…ˆè¿›çš„æŠ€æœ¯æ˜¯é«˜ç§‘å‘å±•çš„åŠ¨åŠ›ï¼Œä¼˜è‰¯çš„å“è´¨æ˜¯é«˜ç§‘ç§‰æ‰¿çš„ä¼ ç»Ÿï¼Œå‘¨åˆ°çš„æœåŠ¡æ˜¯é«˜ç§‘ç”Ÿå­˜çš„æ ¹æœ¬ã€‚é«˜ç§‘å…¬å¸æ˜¯å›½å†…è¾ƒæ—©å¼€å‘ã€åˆ¶é€ å˜å‹å¸é™„åˆ¶æ°®æœºçš„ä¼ä¸šä¹‹ä¸€ã€‚æ°¨åˆ†è§£åˆ¶æ°¢ã€å˜å‹å¸é™„åˆ¶æ°®è£…ç½®ç­‰éƒ½æ˜¯å›½å†…ä¸€æµå“è´¨å’ŒæŠ€æœ¯çš„æ°”ä½“è®¾å¤‡ã€‚ \r\né«˜ç§‘äº§å“ä»è®¾è®¡å¼€å§‹å°±å¼•å…¥äº†æœåŠ¡æ¦‚å¿µï¼Œé”€å”®ä»…ä»…æ˜¯ä¸ºé¡¾å®¢æœåŠ¡çš„å¼€å§‹ã€‚é«˜ç§‘ä»¥ç”¨æˆ·ä¸ºä¸­å¿ƒï¼Œå¼ºåŒ–å„é¡¹æœåŠ¡å·¥ä½œï¼Œå…¨é¢å®æ–½â€œç”¨æˆ·æ»¡æ„å·¥ç¨‹â€ï¼Œä¸ºæ¯ä½é¡¾å®¢æä¾›ä¸“ä¸šã€å¿«æ·ã€æ»¡æ„çš„æœåŠ¡ã€‚\r\né«˜ç§‘æœŸå¾…ç€ä¸ºä½ åˆ›é€ ä»·å€¼ã€åˆ›é€ è´¢å¯Œ â€¦â€¦     \r\n    		'),(2,'88',NULL,NULL,'88','77',NULL,'3','82','73',NULL);
+insert  into `gsjbxx_0`(`hyjbxxid`,`gsmc`,`qylx`,`jyms`,`gsszd`,`jydz`,`zyhy`,`zyfx`,`xsdcp`,`cgdcp`,`gsjs`) values (3,'39','0','','china','china','125,126','3','test','try',''),(1,'838','0','1,4,','838','±±¾©³¯ÑôÃÅ','131','3','93','93','ËÕÖİÊĞ¸ß¿ÆÆøÌåÉè±¸ÓĞÏŞ¹«Ë¾ÊÇÒ»¼Ò¹É·İÖÆ¸ßĞÂ¼¼ÊõÆóÒµ¡£¸ß¿Æ¹«Ë¾×ùÂäÓÚËÕÖİÃÀÀöµÄ»¢Çğ·ç¾°Çø»¢ÇğÉ½ÅÔ£¬312¹úµÀ96¹«Àï´¦£¬¾à»¦Äş¸ßËÙÔ¼Á½¹«ÀïÂ·³Ì£¬Àë»ğ³µÕ¾¡¢Æû³µÕ¾Ò²¾ÍËÄÎå¹«Àï£¬½»Í¨Ê®·Ö±ãÀû¡£×¨Òµ´ÓÊÂ¸÷Àà¹¤ÒµÆøÌåÉè±¸µÄÑĞÖÆ¡¢¿ª·¢¡¢Éè¼Æ¡¢Éú²ú¡¢ÖÆÔì¡¢ÏúÊÛ¼°·şÎñ£¬Ìá¹©×¨ÒµµÄÆøÌå×ÊÔ´ºÍÅäÌ×²úÆ·¡£ÊÇ¹úÄÚÖªÃû¹¤ÒµÆøÌåÉè±¸×¨ÒµÉú²ú³§ÉÌ¡£ÊÇ¹úÄÚÖÆÔì³£ÎÂ¿Õ·ÖÖÆµªÏµÍ³È«Ì×Éè±¸×îÓÅĞãµÄÆóÒµÖ®Ò»¡£¹«Ë¾ÔÚÆøÌå¼¼Êõ·½Ãæ»ıÀÛÁËÏàµ±·á¸»µÄÀíÂÛºÍÊµ¼ù¾­Ñé£¬ĞÛºñµÄ¼¼ÊõÁ¦Á¿Ê¹¹«Ë¾µÄ²úÆ·ÔÚÊĞ³¡ÉÏ´¦ÓÚÁìÏÈµØÎ»¡£\r\n¸ß¿Æ¹«Ë¾²úÆ·°üÀ¨±äÑ¹Îü¸½ÖÆµª×°ÖÃ¡¢µªÆø´¿»¯×°ÖÃ¡¢°±·Ö½âÖÆÇâ×°ÖÃ¡¢±äÑ¹Îü¸½ÖÆÇâ×°ÖÃ¡¢ÆøÌå´¿»¯×°ÖÃ¡¢×Ô¶¯Åä±È×°ÖÃµÈÆøÌåÉè±¸£¬»¹³Ğ½Ó¸÷ÖÖÆøÌå·Ç±êÉè±¸µÄÉè¼Æ¡¢ÖÆÔìºÍ¼¼Êõ×ÉÑ¯¡£ \r\n¸ß¿Æ¹«Ë¾Éú²ú¸÷ÖÖÆøÌåÉè±¸·şÎñÓÚÊ¯ÓÍ»¯¹¤¡¢»¯ÏË¡¢ÈÈ´¦Àí¡¢Ò±½ğ¡¢²£Á§¡¢Ê³Æ·¡¢Ò½Ò©¡¢µç×Ó¡¢¹ú·Àº½Ìì¡¢º½¿ÕµÈÖ÷µ¼ÁìÓòÖĞµÃµ½ÁË¹ã·ºµÄÓ¦ÓÃ¡£Îª¹úÃñ¾­¼Ã½¨Éè×ö³öÁË¹±Ï×¡£ \r\nÏÈ½øµÄ¼¼ÊõÊÇ¸ß¿Æ·¢Õ¹µÄ¶¯Á¦£¬ÓÅÁ¼µÄÆ·ÖÊÊÇ¸ß¿Æ±ü³ĞµÄ´«Í³£¬ÖÜµ½µÄ·şÎñÊÇ¸ß¿ÆÉú´æµÄ¸ù±¾¡£¸ß¿Æ¹«Ë¾ÊÇ¹úÄÚ½ÏÔç¿ª·¢¡¢ÖÆÔì±äÑ¹Îü¸½ÖÆµª»úµÄÆóÒµÖ®Ò»¡£°±·Ö½âÖÆÇâ¡¢±äÑ¹Îü¸½ÖÆµª×°ÖÃµÈ¶¼ÊÇ¹úÄÚÒ»Á÷Æ·ÖÊºÍ¼¼ÊõµÄÆøÌåÉè±¸¡£ \r\n¸ß¿Æ²úÆ·´ÓÉè¼Æ¿ªÊ¼¾ÍÒıÈëÁË·şÎñ¸ÅÄî£¬ÏúÊÛ½ö½öÊÇÎª¹Ë¿Í·şÎñµÄ¿ªÊ¼¡£¸ß¿ÆÒÔÓÃ»§ÎªÖĞĞÄ£¬Ç¿»¯¸÷Ïî·şÎñ¹¤×÷£¬È«ÃæÊµÊ©¡°ÓÃ»§ÂúÒâ¹¤³Ì¡±£¬ÎªÃ¿Î»¹Ë¿ÍÌá¹©×¨Òµ¡¢¿ì½İ¡¢ÂúÒâµÄ·şÎñ¡£\r\n¸ß¿ÆÆÚ´ı×ÅÎªÄã´´Ôì¼ÛÖµ¡¢´´Ôì²Æ¸» ¡­¡­     \r\n    		'),(2,'88',NULL,NULL,'88','77',NULL,'3','82','73',NULL);
 
 /*Table structure for table `gsjbxx_1` */
 
@@ -671,7 +672,7 @@ CREATE TABLE `gsxxxx` (
 
 /*Data for the table `gsxxxx` */
 
-insert  into `gsxxxx`(`hyjbxxid`,`gszcd`,`gsclsj`,`fddbr`,`nyye`,`ygrs`,`jypp`,`zczb`,`zykhq`,`zysc`,`ncke`,`njke`,`khyh`,`zh`,`oem`,`yfbmrs`,`ycl`,`cfmj`,`zlkz`,`gltxrz`,`gstp`) values (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1,'æ¶ˆè´¹æ°´å¹³','1234','ä¸€ä¸ªäºº','0','3','test','12222','','','0','0','ä¸­å›½','å¤©æ´¥','','3',NULL,'89282','','',NULL);
+insert  into `gsxxxx`(`hyjbxxid`,`gszcd`,`gsclsj`,`fddbr`,`nyye`,`ygrs`,`jypp`,`zczb`,`zykhq`,`zysc`,`ncke`,`njke`,`khyh`,`zh`,`oem`,`yfbmrs`,`ycl`,`cfmj`,`zlkz`,`gltxrz`,`gstp`) values (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1,'Ïû·ÑË®Æ½','1234','Ò»¸öÈË','0','3','test','12222','','','0','0','ÖĞ¹ú','Ìì½ò','','3',NULL,'89282','','',NULL);
 
 /*Table structure for table `gsxxxx_0` */
 
@@ -704,7 +705,7 @@ CREATE TABLE `gsxxxx_0` (
 
 /*Data for the table `gsxxxx_0` */
 
-insert  into `gsxxxx_0`(`hyjbxxid`,`gszcd`,`gsclsj`,`fddbr`,`nyye`,`ygrs`,`jypp`,`zczb`,`zykhq`,`zysc`,`ncke`,`njke`,`khyh`,`zh`,`oem`,`yfbmrs`,`ycl`,`cfmj`,`zlkz`,`gltxrz`,`gstp`) values (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1,'æ¶ˆè´¹æ°´å¹³','1234','ä¸€ä¸ªäºº','0','3','test','12222','','','0','0','ä¸­å›½','å¤©æ´¥','','3',NULL,'89282','','',NULL);
+insert  into `gsxxxx_0`(`hyjbxxid`,`gszcd`,`gsclsj`,`fddbr`,`nyye`,`ygrs`,`jypp`,`zczb`,`zykhq`,`zysc`,`ncke`,`njke`,`khyh`,`zh`,`oem`,`yfbmrs`,`ycl`,`cfmj`,`zlkz`,`gltxrz`,`gstp`) values (3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1,'Ïû·ÑË®Æ½','1234','Ò»¸öÈË','0','3','test','12222','','','0','0','ÖĞ¹ú','Ìì½ò','','3',NULL,'89282','','',NULL);
 
 /*Table structure for table `gsxxxx_1` */
 
@@ -811,7 +812,7 @@ CREATE TABLE `honor` (
 
 /*Data for the table `honor` */
 
-insert  into `honor`(`hyjbxxid`,`honor_info`,`create_time`) values (2,'<p><span style=\"font-size: medium\">å¿«è¿‡å¹´äº†å“¦&middot;&middot;ï¼</span></p>','2009-01-21 14:01:18'),(8,'<p><img height=\"307\" alt=\"\" width=\"296\" src=\"/abbcc/UserFiles/Image/e60e6817eb12725321a4e924.gif\" />æ˜¯çš„ï¼Œåªæœ‰å¿«æ‰èƒ½æ—©ç‚¹è¾¾æˆç›®æ ‡ï¼ï¼ï¼</p>','2009-01-17 19:30:53'),(5,'<p>ä¸­å›½SUNåˆ†å…¬å¸å¥½è¿‡æ²³å—ï¼Ÿ<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/06-08-07_1440(2).jpg\" />çš„ï¼Œå·²ç»ready@</p>','2009-01-18 23:35:53'),(1,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/7(000).jpg\" /></p>','2009-01-21 11:23:53');
+insert  into `honor`(`hyjbxxid`,`honor_info`,`create_time`) values (2,'<p><span style=\"font-size: medium\">¿ì¹ıÄêÁËÅ¶&middot;&middot;£¡</span></p>','2009-01-21 14:01:18'),(8,'<p><img height=\"307\" alt=\"\" width=\"296\" src=\"/abbcc/UserFiles/Image/e60e6817eb12725321a4e924.gif\" />ÊÇµÄ£¬Ö»ÓĞ¿ì²ÅÄÜÔçµã´ï³ÉÄ¿±ê£¡£¡£¡</p>','2009-01-17 19:30:53'),(5,'<p>ÖĞ¹úSUN·Ö¹«Ë¾ºÃ¹ıºÓÂğ£¿<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/06-08-07_1440(2).jpg\" />µÄ£¬ÒÑ¾­ready@</p>','2009-01-18 23:35:53'),(1,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/7(000).jpg\" /></p>','2009-01-21 11:23:53');
 
 /*Table structure for table `honor_0` */
 
@@ -826,7 +827,7 @@ CREATE TABLE `honor_0` (
 
 /*Data for the table `honor_0` */
 
-insert  into `honor_0`(`hyjbxxid`,`honor_info`,`create_time`) values (2,'<p><span style=\"font-size: medium\">å¿«è¿‡å¹´äº†å“¦&middot;&middot;ï¼</span></p>','2009-01-21 14:01:18'),(8,'<p><img height=\"307\" alt=\"\" width=\"296\" src=\"/abbcc/UserFiles/Image/e60e6817eb12725321a4e924.gif\" />æ˜¯çš„ï¼Œåªæœ‰å¿«æ‰èƒ½æ—©ç‚¹è¾¾æˆç›®æ ‡ï¼ï¼ï¼</p>','2009-01-17 19:30:53'),(5,'<p>ä¸­å›½SUNåˆ†å…¬å¸å¥½è¿‡æ²³å—ï¼Ÿ<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/06-08-07_1440(2).jpg\" />çš„ï¼Œå·²ç»ready@</p>','2009-01-18 23:35:53'),(1,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/7(000).jpg\" /></p>','2009-01-21 11:23:53');
+insert  into `honor_0`(`hyjbxxid`,`honor_info`,`create_time`) values (2,'<p><span style=\"font-size: medium\">¿ì¹ıÄêÁËÅ¶&middot;&middot;£¡</span></p>','2009-01-21 14:01:18'),(8,'<p><img height=\"307\" alt=\"\" width=\"296\" src=\"/abbcc/UserFiles/Image/e60e6817eb12725321a4e924.gif\" />ÊÇµÄ£¬Ö»ÓĞ¿ì²ÅÄÜÔçµã´ï³ÉÄ¿±ê£¡£¡£¡</p>','2009-01-17 19:30:53'),(5,'<p>ÖĞ¹úSUN·Ö¹«Ë¾ºÃ¹ıºÓÂğ£¿<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/06-08-07_1440(2).jpg\" />µÄ£¬ÒÑ¾­ready@</p>','2009-01-18 23:35:53'),(1,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/honor/7(000).jpg\" /></p>','2009-01-21 11:23:53');
 
 /*Table structure for table `honor_1` */
 
@@ -1099,7 +1100,7 @@ CREATE TABLE `hyjbxx` (
 
 /*Data for the table `hyjbxx` */
 
-insert  into `hyjbxx`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`,`zw`) values (2,'jzq98','geeks','æˆ‘æœ€å–œæ¬¢åƒçš„é£Ÿç‰©ï¼Ÿ','test','test','0','test@test.com','88/99/88','88','88','1','0','2010-01-21 00:00:00','1','88','88','77','1','2009-01-21 00:00:00','manager'),(1,'geeks','geeks','æˆ‘æœ€å–œæ¬¢çš„æ­Œæ˜Ÿï¼Ÿ','sun','sun','0','test@183.com','83/938/838','838','838','4','0','2012-01-21 00:00:00','1','838','838','83','1','2009-01-21 00:00:00','boss'),(3,'abbcc','geeks','æˆ‘æœ€å–œæ¬¢çš„æ­Œæ˜Ÿï¼Ÿ','test','test','0','test@163.com','299/929/83Q','939','93','0','0','2010-01-21 00:00:00','1','39','china','china','1','2009-01-21 00:00:00','test');
+insert  into `hyjbxx`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`,`zw`) values (2,'jzq98','geeks','ÎÒ×îÏ²»¶³ÔµÄÊ³Îï£¿','test','test','0','test@test.com','88/99/88','88','88','1','0','2010-01-21 00:00:00','1','88','88','77','1','2009-01-21 00:00:00','manager'),(1,'geeks','geeks','ÎÒ×îÏ²»¶µÄ¸èĞÇ£¿','sun','sun','0','test@183.com','83/938/838','838','838','4','0','2012-01-21 00:00:00','1','838','838','83','1','2009-01-21 00:00:00','boss'),(3,'abbcc','geeks','ÎÒ×îÏ²»¶µÄ¸èĞÇ£¿','test','test','0','test@163.com','299/929/83Q','939','93','0','0','2010-01-21 00:00:00','1','39','china','china','1','2009-01-21 00:00:00','test');
 
 /*Table structure for table `hyjbxx_0` */
 
@@ -1134,7 +1135,7 @@ CREATE TABLE `hyjbxx_0` (
 
 /*Data for the table `hyjbxx_0` */
 
-insert  into `hyjbxx_0`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`,`zw`) values (2,'jzq98','geeks','æˆ‘æœ€å–œæ¬¢åƒçš„é£Ÿç‰©ï¼Ÿ','test','test','0','test@test.com','88/99/88','88','88','1','0','2010-01-21 00:00:00','1','88','88','77','1','2009-01-21 00:00:00','manager'),(1,'geeks','geeks','æˆ‘æœ€å–œæ¬¢çš„æ­Œæ˜Ÿï¼Ÿ','sun','sun','0','test@183.com','83/938/838','838','838','4','0','2012-01-21 00:00:00','1','838','838','83','1','2009-01-21 00:00:00','boss'),(3,'abbcc','geeks','æˆ‘æœ€å–œæ¬¢çš„æ­Œæ˜Ÿï¼Ÿ','test','test','0','test@163.com','299/929/83Q','939','93','0','0','2010-01-21 00:00:00','1','39','china','china','1','2009-01-21 00:00:00','test');
+insert  into `hyjbxx_0`(`hyjbxxid`,`hydlm`,`mm`,`mmtswt`,`mmtsda`,`zsxm`,`xb`,`dzyx`,`gddh`,`cz`,`sj`,`member_type`,`sfyx`,`scsj`,`gslx`,`gsmc`,`gsszd`,`jydz`,`zyhy`,`regist_time`,`zw`) values (2,'jzq98','geeks','ÎÒ×îÏ²»¶³ÔµÄÊ³Îï£¿','test','test','0','test@test.com','88/99/88','88','88','1','0','2010-01-21 00:00:00','1','88','88','77','1','2009-01-21 00:00:00','manager'),(1,'geeks','geeks','ÎÒ×îÏ²»¶µÄ¸èĞÇ£¿','sun','sun','0','test@183.com','83/938/838','838','838','4','0','2012-01-21 00:00:00','1','838','838','83','1','2009-01-21 00:00:00','boss'),(3,'abbcc','geeks','ÎÒ×îÏ²»¶µÄ¸èĞÇ£¿','test','test','0','test@163.com','299/929/83Q','939','93','0','0','2010-01-21 00:00:00','1','39','china','china','1','2009-01-21 00:00:00','test');
 
 /*Table structure for table `hyjbxx_1` */
 
@@ -1676,7 +1677,7 @@ CREATE TABLE `manager` (
 
 /*Data for the table `manager` */
 
-insert  into `manager`(`managerid`,`manager_name`,`password`,`true_name`,`status`) values (1,'geeks','geeks','å°ç‹','ç®¡ç†å‘˜');
+insert  into `manager`(`managerid`,`manager_name`,`password`,`true_name`,`status`) values (1,'geeks','geeks','Ğ¡Íõ','¹ÜÀíÔ±');
 
 /*Table structure for table `product` */
 
@@ -1705,15 +1706,15 @@ CREATE TABLE `product` (
 
 /*Data for the table `product` */
 
-insert  into `product`(`id`,`tableName`,`cpgqxxIdFiled`,`idFiledName`,`otherFiledName`,`productTypeId`,`formName`,`propertyName`,`isNull`,`remark`,`unit`,`type`,`isShow`,`isHidden`,`state`,`createTime`,`productName`) values (17,'product_table_7','cpgqxxid','id','f_0,f_1,f_2,f_3','124','f_0,f_1,f_2,f_3','æˆ‘ä»¬å¤š,ä½ ä¹ˆæˆ‘,ä»–ä»¬,å¤§å®¶2','true,true,true,false',',,,','mm,mm,mm,mm','text,text,text,text','true,true,true,true','false,false,false,true',1,'2009-01-29 12:26:17','å‘µå‘µå¯º');
+insert  into `product`(`id`,`tableName`,`cpgqxxIdFiled`,`idFiledName`,`otherFiledName`,`productTypeId`,`formName`,`propertyName`,`isNull`,`remark`,`unit`,`type`,`isShow`,`isHidden`,`state`,`createTime`,`productName`) values (17,'product_table_7','cpgqxxid','id','f_0,f_1,f_2,f_3','124','f_0,f_1,f_2,f_3','ÎÒÃÇ¶à,ÄãÃ´ÎÒ,ËûÃÇ,´ó¼Ò2','true,true,true,false',',,,','mm,mm,mm,mm','text,text,text,text','true,true,true,true','false,false,false,true',1,'2009-01-29 12:26:17','ºÇºÇËÂ');
 
 /*Table structure for table `product_table_7` */
 
 DROP TABLE IF EXISTS `product_table_7`;
 
 CREATE TABLE `product_table_7` (
-  `id` int(11) NOT NULL auto_increment COMMENT 'å‘µå‘µ',
-  `cpgqxxid` int(11) NOT NULL COMMENT 'å‘µå‘µ',
+  `id` int(11) NOT NULL auto_increment COMMENT 'ºÇºÇ',
+  `cpgqxxid` int(11) NOT NULL COMMENT 'ºÇºÇ',
   `f_0` varchar(255) default NULL,
   `f_1` varchar(255) default NULL,
   `f_2` varchar(255) default NULL,
@@ -1724,14 +1725,14 @@ CREATE TABLE `product_table_7` (
 
 /*Data for the table `product_table_7` */
 
-insert  into `product_table_7`(`id`,`cpgqxxid`,`f_0`,`f_1`,`f_2`,`f_3`,`createtime`) values (2,17,'ddd','dd','11','11','2009-01-29 16:36:16'),(3,18,'111','11','111','11','2009-01-29 16:59:52'),(4,19,'dd','qq','qq','q','2009-01-29 17:05:24'),(5,20,'ff','ff','ff','ff','2009-01-29 17:08:18'),(6,21,'11','11','1','11','2009-01-29 17:10:57'),(7,22,'1ggg','1ddd','1ddd','fff','2009-01-29 17:12:27');
+insert  into `product_table_7`(`id`,`cpgqxxid`,`f_0`,`f_1`,`f_2`,`f_3`,`createtime`) values (2,17,'ddd','dd','11','11','2009-01-29 16:36:16'),(3,18,'111','11','111','11','2009-01-29 16:59:52'),(4,19,'dd','qq','qq','q','2009-01-29 17:05:24'),(5,20,'ff','ff','ff','ff','2009-01-29 17:08:18'),(6,21,'11','11','1','11','2009-01-29 17:10:57'),(7,22,'1ggg','1ddd','1ddd','fff','2009-01-29 17:12:27'),(8,23,'11','11','1','1','2009-01-29 21:33:26');
 
 /*Table structure for table `producttype` */
 
 DROP TABLE IF EXISTS `producttype`;
 
 CREATE TABLE `producttype` (
-  `id` int(11) NOT NULL auto_increment COMMENT 'äº§å“ç±»ç›®è¡¨',
+  `id` int(11) NOT NULL auto_increment COMMENT '²úÆ·ÀàÄ¿±í',
   `parentid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `typeid` varchar(100) default NULL,
@@ -1744,7 +1745,7 @@ CREATE TABLE `producttype` (
 
 /*Data for the table `producttype` */
 
-insert  into `producttype`(`id`,`parentid`,`name`,`typeid`,`type`,`isshow`,`createtime`,`priority`) values (112,0,'ç…§æ˜å·¥ä¸š',NULL,1,2,'2009-01-28 19:31:52',1),(113,0,'ç”µå­å…ƒå™¨ä»¶',NULL,1,2,'2008-12-21 19:54:30',3),(114,0,'ä¼ åª’ã€å¹¿ç”µ',NULL,1,2,'2008-12-21 19:56:21',4),(115,0,'å®‰å…¨ã€é˜²æŠ¤',NULL,1,2,'2008-12-21 19:35:20',100),(116,0,'åŒ…è£…',NULL,1,2,'2008-12-21 19:54:24',2),(117,0,'çº¸ä¸š',NULL,1,2,'2008-12-21 19:35:28',100),(118,0,'åŠå…¬ã€æ–‡æ•™',NULL,1,2,'2008-12-21 19:35:25',100),(119,112,'ç™½ç‚½ç¯',NULL,1,2,'2008-12-21 20:01:40',0),(120,112,'å†·å…‰æº',NULL,1,2,'2008-12-21 20:01:44',0),(121,112,'ç”µå…‰æºææ–™',NULL,1,2,'2008-12-21 20:01:46',0),(122,112,'æ’åº§',NULL,1,2,'2008-12-21 20:01:49',0),(123,112,'å…¶ä»–æœªåˆ†ç±»',NULL,1,2,'2009-01-28 19:32:09',0),(124,119,'å½©è‰²ç¯æ³¡',NULL,1,2,'2008-12-21 20:02:54',0),(125,119,'æ‘„å½±ç¯æ³¡',NULL,1,2,'2008-12-21 20:02:59',0),(126,119,'å¾®å‹ç¯æ³¡',NULL,1,2,'2009-01-28 19:32:02',0),(127,119,'æ°´ä¸‹ç¯æ³¡',NULL,1,2,'2009-01-28 19:32:04',0),(128,119,'å…¶ä»–ç™½ç‚½ç¯',NULL,1,2,'2009-01-28 19:32:06',100);
+insert  into `producttype`(`id`,`parentid`,`name`,`typeid`,`type`,`isshow`,`createtime`,`priority`) values (112,0,'ÕÕÃ÷¹¤Òµ',NULL,1,2,'2009-01-28 19:31:52',1),(113,0,'µç×ÓÔªÆ÷¼ş',NULL,1,2,'2008-12-21 19:54:30',3),(114,0,'´«Ã½¡¢¹ãµç',NULL,1,2,'2008-12-21 19:56:21',4),(115,0,'°²È«¡¢·À»¤',NULL,1,2,'2008-12-21 19:35:20',100),(116,0,'°ü×°',NULL,1,2,'2008-12-21 19:54:24',2),(117,0,'Ö½Òµ',NULL,1,2,'2008-12-21 19:35:28',100),(118,0,'°ì¹«¡¢ÎÄ½Ì',NULL,1,2,'2008-12-21 19:35:25',100),(119,112,'°×³ãµÆ',NULL,1,2,'2008-12-21 20:01:40',0),(120,112,'Àä¹âÔ´',NULL,1,2,'2008-12-21 20:01:44',0),(121,112,'µç¹âÔ´²ÄÁÏ',NULL,1,2,'2008-12-21 20:01:46',0),(122,112,'²å×ù',NULL,1,2,'2008-12-21 20:01:49',0),(123,112,'ÆäËûÎ´·ÖÀà',NULL,1,2,'2009-01-28 19:32:09',0),(124,119,'²ÊÉ«µÆÅİ',NULL,1,2,'2008-12-21 20:02:54',0),(125,119,'ÉãÓ°µÆÅİ',NULL,1,2,'2008-12-21 20:02:59',0),(126,119,'Î¢ĞÍµÆÅİ',NULL,1,2,'2009-01-28 19:32:02',0),(127,119,'Ë®ÏÂµÆÅİ',NULL,1,2,'2009-01-28 19:32:04',0),(128,119,'ÆäËû°×³ãµÆ',NULL,1,2,'2009-01-28 19:32:06',100);
 
 /*Table structure for table `pz` */
 
@@ -1759,7 +1760,7 @@ CREATE TABLE `pz` (
 
 /*Data for the table `pz` */
 
-insert  into `pz`(`tablename`,`recnum`,`max_count`) values ('company_logo',0,0),('cpgqxx',22,22),('dljmsx',0,0),('fwsx',0,0),('gly',0,0),('gsjbxx',3,3),('gsxxxx',3,3),('honor',1,0),('hygrzl',0,0),('hygzjl',0,0),('hyjbxx',3,3),('hyjyjl',0,0),('hysh',0,0),('hzsx',0,0),('jghz',0,0),('jytj',37,35),('product_table',8,6),('technology',1,0),('wzjbxx',0,0),('xxsh',0,0),('zpxx',0,0);
+insert  into `pz`(`tablename`,`recnum`,`max_count`) values ('company_logo',0,0),('cpgqxx',23,23),('dljmsx',0,0),('fwsx',0,0),('gly',0,0),('gsjbxx',3,3),('gsxxxx',3,3),('honor',1,0),('hygrzl',0,0),('hygzjl',0,0),('hyjbxx',3,3),('hyjyjl',0,0),('hysh',0,0),('hzsx',0,0),('jghz',0,0),('jytj',38,36),('product_table',8,6),('technology',1,0),('wzjbxx',0,0),('xxsh',0,0),('zpxx',0,0);
 
 /*Table structure for table `technology` */
 
@@ -1773,7 +1774,7 @@ CREATE TABLE `technology` (
 
 /*Data for the table `technology` */
 
-insert  into `technology`(`hyjbxxid`,`tech_info`,`handle_time`) values (5,'<p>ä¸­å›½ä¸€å¤©å…¬å¸é‡‡ç”¨é¡¶å°–æŠ€æœ¯ä¸ºäº’è”ç½‘çš„å‘å±•åŠ©åŠ›&middot;<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/06-08-07_1206.jpg\" /></p>','2009-01-18 23:34:49'),(2,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/leesy..jpg\" /></p>','2009-01-21 14:01:36');
+insert  into `technology`(`hyjbxxid`,`tech_info`,`handle_time`) values (5,'<p>ÖĞ¹úÒ»Ìì¹«Ë¾²ÉÓÃ¶¥¼â¼¼ÊõÎª»¥ÁªÍøµÄ·¢Õ¹ÖúÁ¦&middot;<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/06-08-07_1206.jpg\" /></p>','2009-01-18 23:34:49'),(2,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/leesy..jpg\" /></p>','2009-01-21 14:01:36');
 
 /*Table structure for table `technology_0` */
 
@@ -1788,7 +1789,7 @@ CREATE TABLE `technology_0` (
 
 /*Data for the table `technology_0` */
 
-insert  into `technology_0`(`hyjbxxid`,`tech_info`,`handle_time`) values (5,'<p>ä¸­å›½ä¸€å¤©å…¬å¸é‡‡ç”¨é¡¶å°–æŠ€æœ¯ä¸ºäº’è”ç½‘çš„å‘å±•åŠ©åŠ›&middot;<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/06-08-07_1206.jpg\" /></p>','2009-01-18 23:34:49'),(2,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/leesy..jpg\" /></p>','2009-01-21 14:01:36');
+insert  into `technology_0`(`hyjbxxid`,`tech_info`,`handle_time`) values (5,'<p>ÖĞ¹úÒ»Ìì¹«Ë¾²ÉÓÃ¶¥¼â¼¼ÊõÎª»¥ÁªÍøµÄ·¢Õ¹ÖúÁ¦&middot;<img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/06-08-07_1206.jpg\" /></p>','2009-01-18 23:34:49'),(2,'<p><img height=\"338\" width=\"450\" alt=\"\" src=\"/abbcc/UserFiles/technology/leesy..jpg\" /></p>','2009-01-21 14:01:36');
 
 /*Table structure for table `technology_1` */
 
@@ -1841,7 +1842,7 @@ CREATE TABLE `trade_info` (
 
 /*Data for the table `trade_info` */
 
-insert  into `trade_info`(`category_id`,`product_id`,`table_name`) values ('0','01','ç…§æ˜å·¥ä¸š\r'),('01','0101','ç™½ç‚½ç¯\r'),('0101','010101','å½©è‰²ç¯æ³¡\r'),('0101','010102','å¤é’¨ç¯æ³¡\r'),('0101','010103','æ‘„å½±ç¯æ³¡\r'),('0101','010104','æ™®é€šç…§æ˜ç™½ç‚½ç¯\r'),('0101','010105','å¾®å‹ç¯æ³¡\r'),('0101','010106','èšå…‰ç¯æ³¡\r'),('0101','010107','æ°´ä¸‹ç¯æ³¡\r'),('0101','010108','æ— å½±ç¯\r'),('0101','010109','çº¢å¤–çº¿ç¯æ³¡\r'),('0101','010110','æŒ‡ç¤ºç¯æ³¡\r'),('01','0102','æ°”ä½“æ”¾ç”µç¯\r'),('0102','010201','æ°™æ°”ç¯\r'),('0102','010202','Uå‹è§å…‰ç¯ç®¡\r'),('0102','010203','å†·é˜´æè§å…‰ç¯\r'),('0102','010204','éœ“è™¹ç¯ç®¡\r'),('0102','010205','ç›´å‹è§å…‰ç¯\r'),('0102','010206','ç¯å‹è§å…‰ç¯ç®¡\r'),('0102','010207','æ±ç¯\r'),('0102','010208','çº³ç¯\r'),('0102','010209','é‡‘å¤ç¯\r'),('0102','010210','æ°–ç¯\r'),('0102','010211','ç´«å¤–çº¿ç¯ç®¡\r'),('0102','010212','èºæ—‹å‹è§å…‰ç¯ç®¡\r'),('01','0103','å†·å…‰æº\r'),('0103','010301','ELå†·å…‰ç‰‡\r'),('0103','010302','å‘å…‰äºŒçº§ç®¡\r'),('01','0104','ç¯å…·é…é™„ä»¶\r'),('0104','010401','ç«¯å­\r'),('0104','010402','ç¨³å‹å™¨\r'),('0104','010403','ç¯ç®±\r'),('0104','010404','è§£ç‰‡\r'),('0104','010405','è§¦å‘å™¨\r'),('0104','010406','å…‰æºå™¨\r'),('0104','010407','ç¯æ¯\r'),('0104','010408','æ”¯æ¶\r'),('0104','010409','ç¯å¤´ç¯åº§\r'),('0104','010410','ç¯ç›˜\r'),('0104','010411','ç¯æŸ±ç¯æ†\r'),('0104','010412','ç¯ç½©\r'),('0104','010413','å¯è¾‰å™¨\r'),('0104','010414','é•‡æµå™¨\r'),('01','0105','ç”µå…‰æºææ–™\r'),('0105','010501','ç¯ä¸');
+insert  into `trade_info`(`category_id`,`product_id`,`table_name`) values ('0','01','ÕÕÃ÷¹¤Òµ\r'),('01','0101','°×³ãµÆ\r'),('0101','010101','²ÊÉ«µÆÅİ\r'),('0101','010102','Â±ÎÙµÆÅİ\r'),('0101','010103','ÉãÓ°µÆÅİ\r'),('0101','010104','ÆÕÍ¨ÕÕÃ÷°×³ãµÆ\r'),('0101','010105','Î¢ĞÍµÆÅİ\r'),('0101','010106','¾Û¹âµÆÅİ\r'),('0101','010107','Ë®ÏÂµÆÅİ\r'),('0101','010108','ÎŞÓ°µÆ\r'),('0101','010109','ºìÍâÏßµÆÅİ\r'),('0101','010110','Ö¸Ê¾µÆÅİ\r'),('01','0102','ÆøÌå·ÅµçµÆ\r'),('0102','010201','ë¯ÆøµÆ\r'),('0102','010202','UĞÍÓ«¹âµÆ¹Ü\r'),('0102','010203','ÀäÒõ¼«Ó«¹âµÆ\r'),('0102','010204','ÄŞºçµÆ¹Ü\r'),('0102','010205','Ö±ĞÍÓ«¹âµÆ\r'),('0102','010206','»·ĞÍÓ«¹âµÆ¹Ü\r'),('0102','010207','¹¯µÆ\r'),('0102','010208','ÄÉµÆ\r'),('0102','010209','½ğÂ±µÆ\r'),('0102','010210','ÄÊµÆ\r'),('0102','010211','×ÏÍâÏßµÆ¹Ü\r'),('0102','010212','ÂİĞıĞÍÓ«¹âµÆ¹Ü\r'),('01','0103','Àä¹âÔ´\r'),('0103','010301','ELÀä¹âÆ¬\r'),('0103','010302','·¢¹â¶ş¼¶¹Ü\r'),('01','0104','µÆ¾ßÅä¸½¼ş\r'),('0104','010401','¶Ë×Ó\r'),('0104','010402','ÎÈÑ¹Æ÷\r'),('0104','010403','µÆÏä\r'),('0104','010404','½âÆ¬\r'),('0104','010405','´¥·¢Æ÷\r'),('0104','010406','¹âÔ´Æ÷\r'),('0104','010407','µÆ±­\r'),('0104','010408','Ö§¼Ü\r'),('0104','010409','µÆÍ·µÆ×ù\r'),('0104','010410','µÆÅÌ\r'),('0104','010411','µÆÖùµÆ¸Ë\r'),('0104','010412','µÆÕÖ\r'),('0104','010413','Æô»ÔÆ÷\r'),('0104','010414','ÕòÁ÷Æ÷\r'),('01','0105','µç¹âÔ´²ÄÁÏ\r'),('0105','010501','µÆË¿');
 
 /*Table structure for table `wzjbxx` */
 
