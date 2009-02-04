@@ -47,8 +47,8 @@
         <property name="sfyx" type="java.lang.String">
             <column name="sfyx" length="1" />
         </property>
-        <property name="scsj" type="java.lang.String">
-            <column name="scsj" length="20" />
+        <property name="scsj" type="java.util.Date">
+            <column name="scsj"  />
         </property>
         <!--  new column ,modify by jzq  -->
         <property name="gslx" type="java.lang.String">
@@ -66,8 +66,11 @@
         <property name="gsszd" type="java.lang.String">  
             <column name="gsszd" length="30" />
         </property>
-        <property name="registTime" type="java.lang.String">
+        <property name="registTime" type="java.util.Date">
             <column name="regist_time"  />
+        </property>
+        <property name="zw" type="java.lang.String">  
+            <column name="zw" length="30" />
         </property>
     </class>
 </hibernate-mapping>
