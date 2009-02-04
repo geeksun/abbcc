@@ -1,5 +1,7 @@
 package com.abbcc.pojo;
 
+import java.util.Date;
+
 /**
  * @author geeksun
  *	会员PO
@@ -21,13 +23,14 @@ public class Hyjbxx implements java.io.Serializable {
 	private String sj;					//手机
 	private String memberType;			//会员类型  
 	private String sfyx;				//是否有效
-	private String scsj;				//删除时间（有效时间）：免费会员默认为一年的有效期
+	private Date scsj;				//删除时间（有效时间）：免费会员默认为一年的有效期
 	private String gslx;				//公司类型
 	private String gsmc;				//公司名称
 	private String jydz; 				//经营地址
 	private String zyhy;				//主营行业
 	private String gsszd;				//公司所在地
-	private String registTime;			//注册时间 -> regist_time
+	private Date registTime;			//注册时间 -> regist_time
+	private String zw;					//职位
 	// Constructors
     
 	/** default constructor */
@@ -36,8 +39,8 @@ public class Hyjbxx implements java.io.Serializable {
 
 	/** full constructor */
 	public Hyjbxx(String hydlm, String mm, String mmtswt, String mmtsda,String zsxm, String xb, String dzyx,
-			String gddh, String cz,String sj, String memberType, String sfyx, String scsj,String gslx,String gsmc,
-			String gsszd,String jydz,String zyhy,String registTime){ 
+			String gddh, String cz,String sj, String memberType, String sfyx, Date scsj,String gslx,String gsmc,
+			String gsszd,String jydz,String zyhy,Date registTime, String zw){ 
 			this.hydlm = hydlm;
 			this.mm = mm;
 			this.mmtswt = mmtswt;
@@ -57,6 +60,7 @@ public class Hyjbxx implements java.io.Serializable {
 			this.jydz = jydz;
 			this.zyhy = zyhy;
 			this.registTime = registTime;
+			this.zw = zw;
 	}
 	// Property accessors
 
@@ -164,11 +168,11 @@ public class Hyjbxx implements java.io.Serializable {
 		this.sfyx = sfyx;
 	}
 
-	public String getScsj() {
+	public Date getScsj() {
 		return this.scsj;
 	}
 
-	public void setScsj(String scsj) {
+	public void setScsj(Date scsj) {
 		this.scsj = scsj;
 	}
 
@@ -196,11 +200,11 @@ public class Hyjbxx implements java.io.Serializable {
 		this.gsszd = gsszd;
 	}
 
-	public String getRegistTime() {
+	public Date getRegistTime() {
 		return registTime;
 	}
 
-	public void setRegistTime(String registTime) {
+	public void setRegistTime(Date registTime) {
 		this.registTime = registTime;
 	}
 
@@ -218,5 +222,13 @@ public class Hyjbxx implements java.io.Serializable {
 
 	public void setZyhy(String zyhy) {
 		this.zyhy = zyhy;
+	}
+
+	public String getZw() {
+		return zw;
+	}
+
+	public void setZw(String zw) {
+		this.zw = zw;
 	}
 }
