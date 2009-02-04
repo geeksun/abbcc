@@ -197,7 +197,7 @@ public class TraceInfoAction extends BaseAction {
 			//经营模式
 			String[] jyms = request.getParameterValues("jyms");
 			StringBuffer su;
-			if(jyms.length>0){
+			if(jyms!=null&&jyms.length>0){
 				su = new StringBuffer();
 				for(int i=0;i<jyms.length;i++){
 					su.append(jyms[i]);
