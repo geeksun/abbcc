@@ -25,7 +25,7 @@
      <dl>
      	<dt onclick="toggleDl(this)">会员管理</dt>
      	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayModifyCipher" target="right">待审普通会员管理</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
      	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
      	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
      </dl>
