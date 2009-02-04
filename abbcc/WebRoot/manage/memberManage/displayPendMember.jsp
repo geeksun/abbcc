@@ -23,7 +23,7 @@
 	     <c:forEach var="member" items="${page.data}" >
 	     <tr align=center>
 	     	<td>${member.hyjbxxid}</td>
-	     	<td><a href="membeManage.do?action=detailMemberInfo&hyjbxxid=${member.hyjbxxid}">${member.gsmc}</a></td>
+	     	<td><a href="memberManage.do?action=detailMemberInfo&hyjbxxid=${member.hyjbxxid}">${member.gsmc}</a></td>
 	     	<td>${member.hydlm}</td>
 	     	<td>${member.mm}</td>
 	     	<td><a href="javascript:examine('<%=path%>/manage/memberManage/auditMember.jsp?hyjbxxid=${member.hyjbxxid}')"><img border="0" alt="" src="<%=path%>/images/m_news.gif"/></a></td>
