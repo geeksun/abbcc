@@ -45,5 +45,8 @@
 		<property name="hyjbxxDao">
 			<ref bean="hyjbxxDao"/>
 		</property>
+		<property name="gsjbxxDao">
+			<ref bean="gsjbxxDao"/>
+		</property>
 	</bean> 	 
 </beans>

@@ -14,6 +14,10 @@
 	    </action>
 	    <action path="/memberManage"  parameter="action" type="org.springframework.web.struts.DelegatingActionProxy" >
 	     	<forward name="newRegisterMember" path="/manage/memberManage/newRegisterMember.jsp"></forward>
+	     	<forward name="displayPendMember" path="/manage/memberManage/displayPendMember.jsp"></forward>
+	     	<forward name="detailMemberInfo" path="/manage/memberManage/detailMemberInfo.jsp"></forward>
+	     	
+	     	
 	     	<forward name="prompt" path="/manage/memberManage/prompt.jsp"></forward>
 	    </action>
 	    
