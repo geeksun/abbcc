@@ -101,7 +101,6 @@
 						员工人数：
 					</td>
 					<td>
-					
 						<SELECT name=ygrs>
 							<OPTION value="0" <c:if test="${gsxxxx.ygrs=='0'}">selected</c:if>>
 								-- 请选择 --
