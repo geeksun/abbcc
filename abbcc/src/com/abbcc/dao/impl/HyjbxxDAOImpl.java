@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
 import com.abbcc.common.AppConstants;
+import com.abbcc.common.TypeChange;
 import com.abbcc.dao.HyjbxxDAO;
 import com.abbcc.factory.Globals;
 import com.abbcc.pojo.Hyjbxx;
@@ -42,7 +43,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		Session session = getHibernateTemplate().getSessionFactory().openSession();
 		Connection	conn = session.connection();
 		String sql = "INSERT INTO hyjbxx_" + page
-				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -53,20 +54,23 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 		pstmt.setString(5, hyjbxx.getMmtsda());
 		pstmt.setString(6, hyjbxx.getZsxm());
 		pstmt.setString(7, hyjbxx.getXb());
-		pstmt.setString(8, hyjbxx.getDzyx());		//  email->8
+		
+		pstmt.setString(8, hyjbxx.getDzyx());		//email->8
 		pstmt.setString(9, hyjbxx.getGddh());
 		pstmt.setString(10, hyjbxx.getCz());
 		pstmt.setString(11, hyjbxx.getSj());
-		pstmt.setString(12, hyjbxx.getMemberType());	//   用户类型  0：免费会员  1：收费会员
-		pstmt.setString(13, hyjbxx.getSfyx());		//   是否有效  0：无效  1：有效
-		pstmt.setString(14, hyjbxx.getScsj());		//   删除时间（在注册时间到此时间间有效） -> 14
+		pstmt.setString(12, hyjbxx.getMemberType());	//用户类型  0：免费会员  1：收费会员
+		pstmt.setString(13, hyjbxx.getSfyx());		//是否有效  0：无效  1：有效
 		
-		pstmt.setString(15, hyjbxx.getGslx());		//   公司类型
+		//System.out.println(hyjbxx.getScsj()+"//"+hyjbxx.getRegistTime());
+		pstmt.setDate(14, TypeChange.dateToDate(hyjbxx.getScsj()));	  // 删除时间（在注册时间到此时间间有效） -> 14
+		pstmt.setString(15, hyjbxx.getGslx());		//公司类型
 		pstmt.setString(16, hyjbxx.getGsmc());
 		pstmt.setString(17, hyjbxx.getGsszd());
 		pstmt.setString(18, hyjbxx.getJydz());
-		pstmt.setString(19, hyjbxx.getZyhy());		//   主营行业
-		pstmt.setString(20, hyjbxx.getRegistTime());		//   注册时间 -> 20
+		pstmt.setString(19, hyjbxx.getZyhy());		//主营行业
+		pstmt.setDate(20, TypeChange.dateToDate(hyjbxx.getRegistTime()));		//注册时间 -> 20
+		pstmt.setString(21, hyjbxx.getZw());		//职位
 		
 		init = pstmt.executeUpdate();
 		//pa.updateNum(track[0],track[1],"hyjbxx");
@@ -172,7 +176,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 			h.setSj(rs.getString(11));
 			h.setMemberType(rs.getString(12));	//  用户类型
 			h.setSfyx(rs.getString(13));
-			h.setScsj(rs.getString(14));
+			h.setScsj(rs.getDate(14));
 		}
 		rs.close();
 		pstmt.close();
@@ -212,7 +216,7 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
 			h.setSj(rs.getString(11));
 			h.setMemberType(rs.getString(12));	//  用户类型
 			h.setSfyx(rs.getString(13));
-			h.setScsj(rs.getString(14));
+			h.setScsj(rs.getDate(14));
 			list.add(h);
 		}
 		rs.close();
@@ -417,6 +421,37 @@ public class HyjbxxDAOImpl extends BaseDaoImpl  implements HyjbxxDAO {
                return  data;  
                }
         });      
+	}
+
+	/**
+	 * @see 审核注册新会员：
+	 */
+	public void auditRegisterMember(Hyjbxx hyjbxx) {
+		int page = hyjbxx.getHyjbxxid() / Globals.COUNT;
+		Session session = getHibernateTemplate().getSessionFactory().openSession();
+		Connection	conn = session.connection();
+		String sql = "UPDATE hyjbxx_"
+				+ page
+				+ " h SET h.member_type=?,h.scsj=? WHERE h.hyjbxxid=?";
+		try{
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, hyjbxx.getMemberType());
+		pstmt.setDate(2, TypeChange.dateToDate(hyjbxx.getScsj()));
+		pstmt.setLong(3, hyjbxx.getHyjbxxid());
+		pstmt.executeUpdate();
+		log.info("audited register member successed with hyjbxxid:"+hyjbxx.getHyjbxxid());
+		}catch(Exception e){
+			log.error("audit register member failed with hyjbxxid:"+hyjbxx.getHyjbxxid(), e);
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+				session.close();
+			} catch (SQLException e) {
+				log.error("session can't closed!");
+				e.printStackTrace();
+			}
+		}
 	}	
 	
 	
