@@ -188,13 +188,13 @@ public class GsjbxxDAOImpl extends BaseDaoImpl implements GsjbxxDAO {
 	}
 
 	public List getMemberByName(String hyjbxxid) {
-		log.debug("finding Hyjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
+		log.debug("finding Gsjbxx instance with property: " + HYJBXXID + ", value: " + hyjbxxid);
 		try{
 			String queryString = "from Gsjbxx as model where model." + HYJBXXID + "= ?";
 			int hyid = Integer.parseInt(hyjbxxid);
 			return getHibernateTemplate().find(queryString, hyid);
 		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
+			log.error("find Gsjbxx by property name failed", re);
 			throw re;
 		}
 	}
