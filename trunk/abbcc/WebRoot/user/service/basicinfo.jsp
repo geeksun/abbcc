@@ -230,8 +230,7 @@
     		<td>公司简介：<font color=red>*</font>(最多可输入1000字)</td>
     		<td>
             <FONT color=#999999>请用中文详细说明贵司的成立历史、主营产品、品牌、服务等优势</FONT>
-    		<textarea name="gsjs" rows=10 cols=50  ><c:out value="${gsjbxx.gsjs}"/>
-    		</textarea>
+    		<textarea name="gsjs" rows=10 cols="50"><c:out value="${gsjbxx.gsjs}"/></textarea>
     		</td>
     		</tr>
     	</table>
