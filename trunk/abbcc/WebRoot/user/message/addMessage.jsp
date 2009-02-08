@@ -79,10 +79,7 @@
 									</TR>
 								</TBODY>
 							</TABLE>
-						</TD>
-					</TR>
-				</TBODY>
-			</TABLE>
+
 			<BR>
 			<TABLE cellSpacing=0 cellPadding=0 width=650 align=center border=0>
 				<TBODY>
