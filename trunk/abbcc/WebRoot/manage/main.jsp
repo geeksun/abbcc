@@ -4,7 +4,7 @@
 %>
 <html>
   <head>
-   <title>用户管理</title>
+   <title>系统管理</title>
    <meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
   </head>
