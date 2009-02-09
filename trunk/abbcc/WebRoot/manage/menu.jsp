@@ -31,38 +31,28 @@
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">会员客服</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
-     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">会员客服</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">登录邮件提醒</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">群发东方五金消息</a></dd> 
+     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">意见建议</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">邮件列表</a></dd>
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">商业机会管理</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
-     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">商业机会</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">已审商业机会</a></dd>
      </dl>
      <dl>
      	<dt onclick="toggleDl(this)">产品管理</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
-     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">等审产品管理</a></dd>
      </dl>
       <dl>
      	<dt onclick="toggleDl(this)">人才市场管理</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
-     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">招聘管理</a></dd>
      </dl>
       <dl>
      	<dt onclick="toggleDl(this)">网站系统管理</dt>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">新用户注册管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayPendMember" target="right">待审会员管理</a></dd>
-     	<dd><a href="<%=path%>/memberManage.do?action=displayDetailInfo" target="right">待审未付费会员管理</a></dd> 
-     	<dd><a href="<%=path%>/memberManage.do?action=displayHonorCertificate" target="right">已收费会员</a></dd>
+     	<dd><a href="<%=path%>/memberManage.do?action=displayRegisterMember" target="right">网站系统管理</a></dd>
      </dl>
      
   </body>
