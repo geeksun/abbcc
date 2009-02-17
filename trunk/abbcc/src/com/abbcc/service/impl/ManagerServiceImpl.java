@@ -85,6 +85,22 @@ public class ManagerServiceImpl implements ManagerService {
 		List list = gsjbxxDao.getMemberByName(hyjbxxid);
 		return  list;
 	}
+
+	public MemberPageBean listChargedMemberData(String jumpPage) {
+		MemberPageBean page = new MemberPageBean(this);
+		
+		int pageNum = Integer.parseInt(jumpPage);
+		if(pageNum<0)
+			pageNum = 1;
+		if(pageNum>page.totalPage)
+			pageNum = page.totalPage;
+		String sql = "from Hyjbxx where memberType<>'0' order by hyjbxxid DESC";
+		ArrayList data = hyjbxxDao.getData(sql,page.rowsPage*(pageNum-1), page.rowsPage);
+		page.currentPage = pageNum;
+		page.data = data;
+		
+		return page;
+	}
 	
 	
 	
