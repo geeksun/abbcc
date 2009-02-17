@@ -140,7 +140,29 @@ public class MemberManageAction extends BaseAction {
 			return mapping.findForward("detailMemberInfo");	 
 	}
 	
-	
+	/**
+	 * @see 会员管理-->已收费会员-->察看已收费会员详细信息
+	 */
+	public ActionForward displayChargedMember(ActionMapping mapping, ActionForm form,HttpServletRequest request,
+			HttpServletResponse response)	throws Exception{
+			HttpSession session = request.getSession(false);
+			String managerName = (String) session.getAttribute("managerName");	
+			String hyjbxxid = request.getParameter("hyjbxxid");
+			
+			if(managerName!=null){
+				String jumpPage = request.getParameter("jumpPage");
+				if(jumpPage == null)
+					jumpPage = "1";
+				
+				MemberPageBean page = managerService.listChargedMemberData(jumpPage);
+			   	request.setAttribute("page",page);
+				return mapping.findForward("displayChargedMember");
+			}
+			else{
+				request.setAttribute(AppConstants.MANAGER_LOGININFO, AppConstants.MANAGER_LOGININFO_4);
+				return mapping.findForward("managerLogin");
+			}
+	}
 	
 	
 	
