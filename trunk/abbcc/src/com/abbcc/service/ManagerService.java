@@ -20,7 +20,9 @@ public interface ManagerService {
 
 	public Hyjbxx getCustomerById(String hyjbxxid);
 
-	public List getMemberById(String hyjbxxid);      
+	public List getMemberById(String hyjbxxid);
+
+	public MemberPageBean listChargedMemberData(String jumpPage);       
 	
 	
 	
