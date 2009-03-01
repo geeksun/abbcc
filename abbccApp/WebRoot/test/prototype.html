@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>prototype.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="js/prototype.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script><!--
+	    function test1()
+	    {
+	    	//alert('il');
+	        var d = $('myDiv');
+	        alert(d.innerHTML);
+	    }
+	
+	    function test2()
+	    {
+	        var divs = $('myDiv','myOtherDiv');
+	        for(i=0; i<divs.length; i++)
+	        {
+	            alert(divs[i].innerHTML);
+	        }
+	    }
+	    function checkUser(){
+	    alert('il')
+		//if(checkUsername(successid,elem,id)){
+			//  loading...
+			//$(id).innerHTML = "<img border=0 src='<%=path%>/images/gif/loadding_indicator_remembermilk_orange.gif'/>";
+			var url = "/abbcc/checkName.do";
+			//alert(url); 
+			var pars = "";
+			new Ajax.Request(url,{
+					method:'post',
+					parameters:pars,
+					onSuccess:function(transport){
+						alert('il')
+					}
+			});
+		}
+	}
+	</script>
+</HEAD>
+
+<BODY>
+    <div id="myDiv">
+        <p>This is a paragraph</p>
+    </div>
+    <div id="myOtherDiv">
+        <p>This is another paragraph</p>
+    </div>
+
+    <input type="button" value=Test1 onclick="test1();"><br>
+    <input type="button" value=Test2 onclick="test2();"><br>
+	 <input type="button" value=Test3 onclick="checkUser();"><br>
+</BODY>
+</HTML>
