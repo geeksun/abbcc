@@ -82,11 +82,10 @@
 						</span>
 					</td>
 				</tr>
-				<tr>
-					</td>
+				<tr> 
 					<a style='cursor: pointer;' onclick='showMore(this)'
 						class='Htab2_off'>∏¸∂‡ Ù–‘</a>
-					</td>
+					 
 				</tr>
 			</tbody>
 		</table>
