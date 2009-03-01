@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	 
+	<bean id="hyjbxxService" class="com.abbcc.service.impl.HyjbxxServiceImpl">
+		<property name="hyjbxxDao">
+			<ref bean="hyjbxxDao"/>
+		</property>
+		<property name="gsjbxxDao">
+			<ref bean="gsjbxxDao"/>
+		</property>
+		<property name="gsxxxxDao">
+			<ref bean="gsxxxxDao"/>
+		</property>
+		<property name="honorDao">  
+			<ref bean="honorDao"/>
+		</property>
+		<property name="companyDao">  
+			<ref bean="companyDao"/>
+		</property>
+		<property name="techDao">  
+			<ref bean="techDao"/>
+		</property>
+	</bean> 
+	<!--  <bean id="tradeInfoService" class="com.abbcc.service.impl.TradeInfoServiceImpl">
+		<property name="tradeInfoDao">
+			<ref bean="tradeInfoDao"/>
+		</property>
+	</bean>-->
+	<bean name="/checkName" class="com.abbcc.customer.CheckName" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/register" class="com.abbcc.customer.RegisterAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/login" class="com.abbcc.customer.CustomerLoginAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/traceInfo" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+		<!--  
+		<property name="tradeInfoService">
+			<ref local="tradeInfoService"/>
+		</property>-->
+	</bean>
+	<bean name="/traceDetailInfo" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/modifyPassword" class="com.abbcc.customer.TraceInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+	<bean name="/strengthInfo" class="com.abbcc.customer.StrengthInfoAction" scope="prototype">    
+		<property name="hyjbxxService">
+			<ref local="hyjbxxService"/>
+		</property>
+	</bean>
+</beans>

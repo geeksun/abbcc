@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/adminlogin.do" location="0,148" dimension="286,84" />
+  <StrutsActivity path="/admin/productType.do" location="350,50" dimension="244,84" />
+  <StrutsActivity path="/admin/product.do" location="650,50" dimension="220,84" />
+  <StrutsActivity path="/admin/" location="102,332" dimension="82,48" />
+  <StrutsActivity path="/admin/index.jsp" location="75,0" dimension="136,48" />
+  <StrutsActivity path="/admin/product/showProductType.jsp" location="950,150" dimension="244,48" />
+  <StrutsActivity path="/admin/product/createProduct.jsp" location="350,250" dimension="232,48" />
+  <StrutsTransition id="/adminlogin.do,adminlogin,/admin/,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="143,232" />
+      <AbsolutePoint location="143,332" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/admin/index.jsp,null,/adminlogin.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="143,48" />
+      <AbsolutePoint location="143,148" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/admin/product.do,createProduct,/admin/product/createProduct.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/admin/productType.do,showProductType,/admin/product/showProductType.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
