@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="hydlm" type="java.lang.String"></form-property>
+			<form-property name="mm" type="java.lang.String"></form-property>
+			<form-property name="status" type="java.lang.String"></form-property>
+		</form-bean>
+	    <form-bean name="uploadProductInfoForm" type="com.abbcc.struts.form.ProductUpdateForm" /> 
+  
+		
+		<!-- registerForm -->
+		<form-bean name="registerForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 注册信息 -->
+			<form-property name="hydlm" type="java.lang.String"></form-property>
+			<form-property name="mm" type="java.lang.String"></form-property>
+			<form-property name="mmtswt" type="java.lang.String"></form-property>
+			<form-property name="mmtsda" type="java.lang.String"></form-property>
+			<form-property name="zsxm" type="java.lang.String"></form-property>
+			<form-property name="xb" type="java.lang.String"></form-property>
+			<form-property name="zw" type="java.lang.String"></form-property>
+			<form-property name="dzyx" type="java.lang.String"></form-property>
+			<!-- 固定电话 -->
+			<form-property name="area" type="java.lang.String"></form-property>
+			<form-property name="phone" type="java.lang.String"></form-property>
+			<form-property name="extension" type="java.lang.String"></form-property>
+			
+			<form-property name="cz" type="java.lang.String" initial=""></form-property>
+			<form-property name="sj" type="java.lang.String" initial=""></form-property>
+			<form-property name="gslx" type="java.lang.String"></form-property>
+			<form-property name="gsmc" type="java.lang.String"></form-property>
+			<form-property name="gsszd" type="java.lang.String"></form-property>
+			<form-property name="jydz" type="java.lang.String"></form-property>
+			<form-property name="zyhy" type="java.lang.String"></form-property>
+			<!-- 主营方向 -->
+			<form-property name="zyfx" type="java.lang.String"></form-property>
+			<form-property name="xsdcp" type="java.lang.String"></form-property>
+			<form-property name="cgdcp" type="java.lang.String"></form-property>
+			
+		</form-bean>
+		<!--  basicInfoForm  -->
+		<form-bean name="basicInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司基本信息 -->
+			<form-property name="gsmc" type="java.lang.String"></form-property>
+			<form-property name="qylx" type="java.lang.String"></form-property>
+			<form-property name="jyms" type="java.lang.String"></form-property>
+			<form-property name="jydz" type="java.lang.String"></form-property>
+			<form-property name="xsdcp" type="java.lang.String"></form-property>
+			<form-property name="cgdcp" type="java.lang.String"></form-property>
+			<form-property name="zyhy" type="java.lang.String"></form-property>
+			<form-property name="gsjs" type="java.lang.String"></form-property>
+			
+			<form-property name="zsxm" type="java.lang.String"></form-property>
+			<form-property name="gsszd" type="java.lang.String"></form-property>
+			<form-property name="dzyx" type="java.lang.String" initial=""></form-property>
+		</form-bean>
+		<!-- detailInfo -->
+		<form-bean name="detailInfoForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司详细信息 -->
+			<form-property name="zczb" type="java.lang.String"></form-property>
+			<form-property name="gsclsj" type="java.lang.String"></form-property>
+			<form-property name="gszcd" type="java.lang.String"></form-property>
+			<form-property name="fddbr" type="java.lang.String"></form-property>
+			<form-property name="khyh" type="java.lang.String"></form-property>
+			<form-property name="zh" type="java.lang.String"></form-property>
+			<form-property name="cfmj" type="java.lang.String"></form-property>
+			
+			<form-property name="ygrs" type="java.lang.String"></form-property>
+			<form-property name="yfbmrs" type="java.lang.String"></form-property>
+			<form-property name="jypp" type="java.lang.String"></form-property>
+			<form-property name="monthProduction" type="java.lang.String" ></form-property>
+			<form-property name="unit" type="java.lang.String"></form-property>
+			<form-property name="nyye" type="java.lang.String"></form-property>
+			<form-property name="njke" type="java.lang.String"></form-property>
+			<form-property name="ncke" type="java.lang.String"></form-property>
+			<form-property name="gltxrz" type="java.lang.String"></form-property>
+			
+			<form-property name="zlkz" type="java.lang.String"></form-property>
+			<form-property name="zysc" type="java.lang.String"></form-property>
+			<form-property name="zykhq" type="java.lang.String"></form-property>			
+			<form-property name="oem" type="java.lang.String"></form-property>
+		</form-bean>
+		<!-- modifyPasswordForm -->
+		<form-bean name="modifyPasswordForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 用户修改密码 -->
+			<form-property name="old_password" type="java.lang.String"></form-property>
+			<form-property name="new_password" type="java.lang.String"></form-property>
+			<form-property name="confirm_password" type="java.lang.String"></form-property>
+			<form-property name="password_question" type="java.lang.String"></form-property>
+			<form-property name="password_answer" type="java.lang.String"></form-property>
+			<form-property name="confirmAnswer" type="java.lang.String"></form-property>
+			<form-property name="access_mark" type="java.lang.String"></form-property>
+			<form-property name="truename" type="java.lang.String"></form-property>
+			<form-property name="memberId" type="java.lang.String"></form-property>
+		</form-bean>
+		<!-- honorCertificateForm -->
+		<form-bean name="honorCertificateForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<!-- 公司荣誉证书 -->
+			<form-property name="content" type="java.lang.String"></form-property>
+			<form-property name="honorPicture" type="org.apache.struts.upload.FormFile"></form-property>
+			
+		</form-bean>
+		
+		 <form-bean name="test" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="honorPicture" type="org.apache.struts.upload.FormFile"/>
+			
+	</form-bean>
+	</form-beans>
+ 
+	<global-forwards>
+		<forward name="login" path="/user/index.jsp"></forward>
+		<forward name="managerLogin" path="/manage/index.jsp"></forward>
+		<forward name="fail" path="/fail.jsp"></forward>
+		<forward name="error" path="/error.jsp"></forward>
+		<forward name="service_exception" path="/500.jsp"></forward>
+		<forward name="modifySuccess" path="/user/modifySuccess.jsp"></forward>
+		<forward name="modifyFail" path="/user/modifyFail.jsp"></forward>
+	</global-forwards>
+	<action-mappings>
+		<action path="/message" type="com.abbcc.customer.MessageAction" parameter="method">
+	     	<forward name="addMessage" path="/user/message/addMessage.jsp"></forward>
+	     	<forward name="allMessageList" path="/user/message/allMessageList.jsp"></forward>
+	     	<forward name="showMessage" path="/user/message/getMessage.jsp"></forward>
+	    </action>
+	    <action path="/login" input="/user/index.jsp" name="loginForm"  scope="request" type="org.springframework.web.struts.DelegatingActionProxy" >
+	     	<forward name="loginsuccess" path="/user/main.jsp"></forward>
+	    </action>
+	    <action path="/register" input="/user/register.jsp" name="registerForm"  scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+	      	<forward name="registersuccess" path="/user/main.jsp"></forward>
+	    </action>
+	    <action path="/checkName" scope="request" type="org.springframework.web.struts.DelegatingActionProxy">
+	    </action>
+	    <!-- 公司基本信息管理 -->
+	    <action path="/traceInfo" scope="request" name="basicInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="basicinfo" path="/user/service/basicinfo.jsp"></forward>
+	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
+	    
+	    </action>
+	    <!-- 公司详细信息管理&&上述公司基本信息管理使用同一个类 -->
+	    <action path="/traceDetailInfo" scope="request" name="detailInfoForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="detailinfo" path="/user/service/detailinfo.jsp"></forward>
+	    </action>
+	    <!-- 用户修改密码 -->
+	    <action path="/modifyPassword" scope="request" name="modifyPasswordForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="modify_password" path="/user/service/modify_password.jsp"></forward>
+	    </action>
+	    <!-- 公司实力信息 -->
+	    <action path="/strengthInfo" scope="request" name="honorCertificateForm" parameter="action" type="org.springframework.web.struts.DelegatingActionProxy">
+	    	<forward name="honor_certificate" path="/user/service/honor_certificate.jsp"></forward>
+	    	<forward name="technology" path="/user/service/technology.jsp"></forward>
+	    	<forward name="company_logo" path="/user/service/company_logo.jsp"></forward>
+	    </action>
+	    
+	    <action path="/productInfo" parameter="method"
+			type="com.abbcc.customer.ProductInfoAction"  name="uploadProductInfoForm">
+		     <forward name="showProductInfo" path="/admin/product/showProductInfo.jsp"> </forward>
+			<forward name="product" path="/user/product/product.jsp"></forward>
+			<forward name="productInfoList"	path="/user/product/productInfoList.jsp"></forward>
+		</action>
+		
+	</action-mappings>
+	<controller maxFileSize="2M" inputForward="true" /> 
+	<message-resources parameter="com.abbcc.struts.ApplicationResources" />
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml"/>
+	</plug-in>
+</struts-config>
