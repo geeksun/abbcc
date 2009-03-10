@@ -42,24 +42,11 @@
 	</head>
 	<body>
 		<br>
-		<p>
+		<p align=center>
+		<c:if test="${customer_logininfo!=null}">
+			<font color=red>${customer_logininfo }</font>
+		</c:if>
 		</p>
-		<html:messages id="usernameError" message="true">
-				<div align="center" id="message">
-					<font color=red size=h3>
-					<bean:write name="usernameError" />
-					</font>
-				</div>
-		</html:messages>
-		<!-- 
-		<html:messages id="repeatLogin" message="false">
-				<div align="center" id="message">
-					<font color=red size=h3>
-					<bean:write name="repeatLogin" />
-					</font>
-				</div>
-		</html:messages>
-		 -->
 		<html:form action="login.do" method="post">
 			<table align="center" >
 				<tr>

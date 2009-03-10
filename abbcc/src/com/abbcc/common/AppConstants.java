@@ -33,7 +33,7 @@ public class AppConstants {
 	public static final String CHECKFILE_INFO = "checkfile_Info";
 	public static final String FCK_UPLOADPATH = "fck_uploadpath";
 	public static final String MANAGER_LOGININFO = "manager_logininfo";
-	
+	public static final String CUSTOMER_LOGININFO = "customer_logininfo";
 	
 	
 	//访问标记和操作标记value
@@ -57,6 +57,9 @@ public class AppConstants {
 	public static final Object AUDIT_REGISTER_INFO_1 = "你无权进行此操作";
 	public static final Object AUDIT_REGISTER_INFO_2 = "你的会员ID不存在";
 	public static final Object AUDIT_REGISTER_INFO_3 = "你的会员信息不存在";
+	
+	
+	public static final String CUSTOMER_LOGININFO_1 = "用户名或密码错误";
 	
 	
 	public static final String PRODUCT_PICTURE_SAVE_DIR="/update/product";
@@ -106,6 +109,7 @@ public class AppConstants {
 	public static final String PRODUCT_SALE="1";//供应
 	public static final String PRODUCT_BUY="2";//求购
 	public static final String PRODUCT_QUICK_BUY="3";//紧急求购
+	
 
 	
 	
