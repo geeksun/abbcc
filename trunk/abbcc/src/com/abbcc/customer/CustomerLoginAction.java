@@ -59,11 +59,13 @@ public class CustomerLoginAction extends BaseAction {
 				return actionMapping.getInputForward();
 			}*/
 		}else{
-			ActionMessages am = new ActionMessages();
+			/*ActionMessages am = new ActionMessages();
 			am.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("usernameError")); 
-			this.saveMessages(request, am); 
+			this.saveMessages(request, am); */
+			request.setAttribute(AppConstants.CUSTOMER_LOGININFO, AppConstants.CUSTOMER_LOGININFO_1);
 			
-			return actionMapping.getInputForward();
+			
+			return actionMapping.findForward("login");
 		}
 		}catch(Exception e){
 			e.printStackTrace();
