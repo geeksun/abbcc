@@ -1,0 +1,25 @@
+#Created by JInto - www.guh-software.de
+#Wed May 14 08:34:11 CST 2008
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH\:mm\:ss,SSS} [%c]-[%p] %m%n
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+log4j.appender.R.File=abbcc-log.txt
+log4j.appender.R.MaxBackupIndex=10
+log4j.appender.R.MaxFileSize=500KB
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%d{yyyy-MM-dd HH\:mm\:ss,SSS} [%t] [%c] [%p] - %m%n
+#log4j.rootLogger=INFO,A1,R
+log4j.rootLogger=error
+
+two#
+log4j.rootLogger=DEBUG, A1 , R
+log4j.appender.A1=org.apache.log4j.ConsoleAppender 
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout 
+log4j.appender.A1.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss} [%c]-[%p] %m%n 
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+log4j.appender.R.File=E:\\logs\\log4j.log
+log4j.appender.R.MaxFileSize=100KB
+log4j.appender.R.MaxBackupIndex=1
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%p %t %c - %m%n
