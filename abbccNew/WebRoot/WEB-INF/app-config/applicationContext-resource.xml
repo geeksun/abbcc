@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/abbcc?useUnicode=true&amp;characterEncoding=gbk" />
+		<property name="user" value="root" />
+		<property name="password" value="" />
+		<property name="minPoolSize" value="3" />
+		<property name="maxPoolSize" value="30" />
+
+		<property name="maxIdleTime" value="1800" />
+		<property name="acquireIncrement" value="3" />
+		<property name="maxStatements" value="0" />
+		<property name="initialPoolSize" value="3" />
+		<property name="idleConnectionTestPeriod" value="60" />
+
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="testConnectionOnCheckout" value="false" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<!--   用于支持中文    加上不支持处理query  删除
+					<prop key="hibernate.query.factory_class">
+					org.hibernate.hql.classic.ClassicQueryTranslatorFactory
+					</prop>-->
+				<!--  hibernate 批处理量 -->
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.query.substitutions">
+					true 'Y', false 'N'
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/abbcc/pojo/Cpgqxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Dljmsx.hbm.xml</value>
+				<value>com/abbcc/pojo/Fwsx.hbm.xml</value>
+				<value>com/abbcc/pojo/Gly.hbm.xml</value>
+				<value>com/abbcc/pojo/Gsjbxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Gsxxxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Hygrzl.hbm.xml</value>
+				<value>com/abbcc/pojo/Hygzjl.hbm.xml</value>
+				<value>com/abbcc/pojo/Hyjbxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Hyjyjl.hbm.xml</value>
+				<value>com/abbcc/pojo/Hysh.hbm.xml</value>
+				<value>com/abbcc/pojo/Hzsx.hbm.xml</value>
+				<value>com/abbcc/pojo/Jghz.hbm.xml</value>
+				<value>com/abbcc/pojo/Jytj.hbm.xml</value>
+				<value>com/abbcc/pojo/Wzjbxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Xxsh.hbm.xml</value>
+				<value>com/abbcc/pojo/Zpxx.hbm.xml</value>
+				<value>com/abbcc/pojo/Pz.hbm.xml</value>
+				<value>com/abbcc/pojo/TradeInfo.hbm.xml</value>
+				<value>com/abbcc/pojo/ProductType.hbm.xml</value>
+				<value>com/abbcc/pojo/Product.hbm.xml</value>
+				<value>com/abbcc/pojo/Message.hbm.xml</value>
+				<value>com/abbcc/pojo/Honor.hbm.xml</value>
+				<value>com/abbcc/pojo/Technology.hbm.xml</value>
+				<value>com/abbcc/pojo/CompanyLogo.hbm.xml</value>
+				<value>com/abbcc/pojo/Manager.hbm.xml</value>
+				
+			</list>
+		</property>
+	</bean>
+ 
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean> 
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean> 
+	<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="del*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property> 
+	</bean>
+	<!--  
+	 <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+	<bean id="baseServiceProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager">
+			<ref local="jtaTransactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="set*">PROPAGATION_REQUIRED</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property> 
+	</bean>
+        --> 
+	<!-- 
+	 <bean    class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>productServiceImpl</value>  
+            </list>  
+        </property>  
+           下面定义BeanNameAutoProxyCreator所需的事务拦截器  
+        <property name="interceptorNames">  
+            <list>  
+                <value>transactionInterceptor</value>  
+            </list>  
+        </property>  
+    </bean>  
+   -->
+	<!-- <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManagerName">
+			<value>java:/TransactionManager</value>
+		</property>
+	</bean>
+	 		
+	 spring代理业务层的事务管理
+	<bean id="baseServiceProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager">
+			<ref local="jtaTransactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="set*">PROPAGATION_REQUIRED</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property> 
+	</bean> -->
+</beans>

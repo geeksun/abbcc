@@ -1,0 +1,72 @@
+DIV#searchBarN A:link {
+	COLOR: #3d362b
+}
+DIV#searchBarN A:visited {
+	COLOR: #3d362b
+}
+DIV#searchBarN A:hover {
+	COLOR: #ff6600
+}
+DIV#searchBar A:link {
+	COLOR: #3d362b
+}
+DIV#searchBar A:visited {
+	COLOR: #3d362b
+}
+DIV#searchBar A:hover {
+	COLOR: #ff6600
+}
+DIV#searchBarN {
+	FONT-SIZE: 12px; FLOAT: left; WIDTH: 372px; COLOR: #ffffff
+}
+DIV.searchT {
+	PADDING-LEFT: 2px; MARGIN-LEFT: 0px
+}
+.searchT UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DIV.searchC {
+	CLEAR: both; BORDER-RIGHT: #ebebeb 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: url(http://img.china.alibaba.com/images/cn/trade/search_bg.gif); MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 3px; BORDER-LEFT: #ebebeb 1px solid; PADDING-TOP: 3px; BORDER-BOTTOM: #ebebeb 1px solid; HEIGHT: 42px; TEXT-ALIGN: center
+}
+.searchC FORM {
+	CLEAR: both; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; LINE-HEIGHT: normal; PADDING-TOP: 0px
+}
+INPUT.textInput {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+.activedTab {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: url(http://img.china.alibaba.com/images/cn/trade/act_bg.gif); FLOAT: left; MARGIN-LEFT: -1px; WIDTH: 62px; COLOR: #000; LINE-HEIGHT: 23px; TEXT-ALIGN: center
+}
+.nTab {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FLOAT: left; BACKGROUND-IMAGE: url(http://img.china.alibaba.com/images/cn/trade/myali_search_bgnew.gif); MARGIN-LEFT: -1px; WIDTH: 63px; CURSOR: hand; COLOR: #ffffff; LINE-HEIGHT: 22px; BORDER-BOTTOM: #ebebeb 1px solid; TEXT-ALIGN: center
+}
+.defaultTab {
+	FONT-SIZE: 12px; FLOAT: left; MARGIN-LEFT: -1px; WIDTH: 5px; COLOR: #ffffff; LINE-HEIGHT: 22px; BORDER-BOTTOM: #ebebeb 1px solid; TEXT-ALIGN: center
+}
+.MB_Menu {
+	BORDER-RIGHT: #7b9cbc 1px solid; BORDER-TOP: #7b9cbc 1px solid; DISPLAY: none; FONT-SIZE: 14px; Z-INDEX: 9900; OVERFLOW: auto; BORDER-LEFT: #7b9cbc 1px solid; WIDTH: 285px; BORDER-BOTTOM: #7b9cbc 1px solid; POSITION: absolute; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: left
+}
+.MB_Menu DIV {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 14px; MARGIN: 0px; OVERFLOW: hidden; BORDER-LEFT: #ffffff 1px solid; CURSOR: hand; COLOR: #000; PADDING-TOP: 2px; BORDER-BOTTOM: #ffffff 1px solid; HEIGHT: 18px; BACKGROUND-COLOR: #ffffff
+}
+.MB_Menu .MB_MenuSelectedItem {
+	PADDING-LEFT: 2px; FONT-SIZE: 14px; MARGIN: 0px; COLOR: #000; PADDING-TOP: 2px; BACKGROUND-COLOR: #ff9933
+}
+.MB_Menu1 {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; DISPLAY: none; FONT-SIZE: 12px; Z-INDEX: 100; MARGIN: 1px; OVERFLOW: auto; BORDER-LEFT: #ffffff 1px solid; WIDTH: 467px; BORDER-BOTTOM: #ffffff 1px solid; POSITION: absolute; HEIGHT: 205px; BACKGROUND-COLOR: #ff0000; TEXT-ALIGN: left
+}
+.linkKwords {
+	MARGIN-TOP: 3px; PADDING-LEFT: 3px; COLOR: #fff; TEXT-ALIGN: left
+}
+DIV#searchBarN .searchC .linkKwords A:link {
+	COLOR: #fff
+}
+DIV#searchBarN .searchC .linkKwords A:visited {
+	COLOR: #fff
+}
+DIV#searchBarN .searchC .linkKwords A:hover {
+	COLOR: #fff
+}
+LI.nav_link {
+	PADDING-RIGHT: 10px; WIDTH: 100px; TEXT-ALIGN: right
+}
