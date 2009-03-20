@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="hyjbxxDao" class="com.abbcc.dao.impl.HyjbxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="pzDao" class="com.abbcc.dao.impl.PzDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="gsjbxxDao" class="com.abbcc.dao.impl.GsjbxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="gsxxxxDao" class="com.abbcc.dao.impl.GsxxxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="honorDao" class="com.abbcc.dao.impl.HonorDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean> 
+	<!--  <bean id="tradeInfoDao" class="com.abbcc.dao.impl.TradeInfoDaoImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean> -->
+	<bean id="companyDao" class="com.abbcc.dao.impl.CompanyLogoDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="techDao" class="com.abbcc.dao.impl.TechnologyDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="productDao" class="com.abbcc.dao.impl.ProductDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="productTypeDao" class="com.abbcc.dao.impl.ProductTypeDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="cpgqxxDao" class="com.abbcc.dao.impl.CpgqxxDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="jytjDao" class="com.abbcc.dao.impl.JytjDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="messageDao" class="com.abbcc.dao.impl.MessageDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="managerDao" class="com.abbcc.dao.impl.ManagerDAOImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	
+	<!-- Dao 代理 -->
+	
+	<bean id="productDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.ProductDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="productDao" />
+	    </property>
+	</bean>
+	<bean id="productTypeDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.ProductTypeDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="productTypeDao" />
+	    </property>
+	</bean>
+	<bean id="jytjDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.JytjDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="jytjDao" />
+	    </property>
+	</bean>
+	<bean id="pzDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.PzDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="pzDao" />
+	    </property>
+	</bean>
+	<bean id="cpgqxxDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.CpgqxxDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="cpgqxxDao" />
+	    </property>
+	</bean>
+	<bean id="messageDaoProxy"  class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces">
+	        <value>com.abbcc.dao.MessageDAO</value>
+	    </property>
+	    <property name="target">
+	        <ref bean="messageDao" />
+	    </property>
+	</bean>
+</beans>
