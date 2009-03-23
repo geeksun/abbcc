@@ -26,4 +26,10 @@ public interface MessageService {
 
 	List getUserList();
 
+
+	int getAllMessageListCount(Integer userId);
+
+
+	int getMessageListCount(Integer userId, int state);
+
 }

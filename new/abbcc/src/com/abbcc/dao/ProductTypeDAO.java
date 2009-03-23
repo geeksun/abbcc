@@ -9,7 +9,7 @@ public interface ProductTypeDAO {
 	
 	List getProductTypeByParentId(int parentId);
 
-	void addProductType(ProductType productType);
+	void addProductType(ProductType productType) throws Exception;
 
 	void updateProductType(ProductType productType);
 

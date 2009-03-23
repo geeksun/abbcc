@@ -70,6 +70,7 @@ public class ProductDAOImpl extends BaseDaoImpl  implements ProductDAO  {
 		Query query=this.getQuery(sql); 
 		query.setInteger(0, state);
 		return  query.list() ;
-	} 
+	}
 
+ 
 }

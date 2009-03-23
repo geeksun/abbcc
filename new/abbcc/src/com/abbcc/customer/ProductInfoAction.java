@@ -203,62 +203,7 @@ public class ProductInfoAction extends BaseAction {
 
 		return mapping.findForward("error");
 	}
-	/**
-	 * @deprecated
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	public ActionForward productList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-
-		String userid = (String) request.getSession().getAttribute("hyjbxxid");
-
-		String orderType = request.getParameter("orderType"); // 信息类型
-		String productName = request.getParameter("productName");// 产品名称
-		int _userId = Integer.valueOf(userid);
-		String auditType = request.getParameter("auditType");// 审核类型
-		String overdue = request.getParameter("overdue");// 是否过期
-		boolean hasNull = ProductUtil.hasNullParam(userid);
-		if (hasNull) {
-			return mapping.findForward("error");
-		}
-		try {
-			String action = "productInfo.do?method=productList";
-			int currentPage = RequestUtils.getIntParameter(request,
-					PageConstants.PAGINATION_CURRENT_PAGE, 1);
-			int onePageSize = RequestUtils.getIntParameter(request,
-					PageConstants.PAGINATION_ONE_PAGE_SIZE, 10);
-			Map params = new HashMap();
-			params.put("orderType", orderType);
-			params.put("productName", productName);
-			params.put("auditType", auditType);
-			params.put("overdue", overdue);
-			Pagination pagination = new NormalPagination(currentPage, action,
-					onePageSize, params);
-			List productInfoList = this.productService.getProductInfoList(
-					_userId, orderType, productName, auditType, overdue,
-					pagination);
-
-			request.setAttribute("productInfoList", productInfoList);
-			request.setAttribute("pagination", pagination);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.error(e);
-		}
-
-		return mapping.findForward("productInfoList");
-	}
-
-	public ActionForward deleteProduct(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-
-		return mapping.findForward("");
-	}
-
+  
 	 
 
 	public ActionForward productTemplate(ActionMapping mapping,
@@ -487,6 +432,7 @@ public class ProductInfoAction extends BaseAction {
 							int isShow = productType.getIsShow();
 							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 									: false;
+							if(able)continue;
 							result.append("<option value='" + value + "'");
 							if (able) {
 								result
@@ -548,7 +494,7 @@ public class ProductInfoAction extends BaseAction {
 							int isShow = productType.getIsShow();
 							boolean able = isShow == ProductType.PRODUCT_TYPE_SHOW ? true
 									: false;
-
+							if(able)continue;
 							result.append("<option value='" + value + "'");
 							if (able) {
 								result
@@ -823,5 +769,51 @@ public class ProductInfoAction extends BaseAction {
 
 		return mapping.findForward("error");
 	}
-	
+	/**
+	 * 用户管理首页
+	 * @param mapping
+	 * @param form
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public ActionForward userManagerIndex(ActionMapping mapping,
+			ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		Integer userId = UserUtil.getIntUserId(request);
+		if(userId==null)return mapping.findForward("error");
+		try {
+			
+			
+			int productInfoCount = this.productService
+					.getAllProductInfoListCount(userId);
+			int overTimeCount = this.productService
+					.getOverTimeProductInfoListCount(userId);
+			int newProductInfoCount = this.productService
+					.getNewProductInfoListCount(userId);
+			int messageCount = this.messageService
+					.getAllMessageListCount(userId);
+			int readMessageCount = this.messageService.getMessageListCount(
+					userId, AppConstants.MESSAGE_STATE_READ);
+			int unreadMessageCount = this.messageService.getMessageListCount(
+					userId, AppConstants.MESSAGE_STATE_UN_READ);
+			int replayMessageCount = this.messageService.getMessageListCount(
+					userId, AppConstants.MESSAGE_STATE_REPLAY);
+			request.setAttribute("productInfoCount", productInfoCount);
+			request.setAttribute("overTimeCount", overTimeCount);
+			request.setAttribute("newProductInfoCount", newProductInfoCount);
+			request.setAttribute("messageCount", messageCount);
+			request.setAttribute("readMessageCount", readMessageCount);
+			request.setAttribute("unreadMessageCount", unreadMessageCount);
+			request.setAttribute("replayMessageCount", replayMessageCount);
+			
+			return mapping.findForward("right");
+		} catch (Exception e) {
+
+		}
+
+		return null;
+	}
+		
 }

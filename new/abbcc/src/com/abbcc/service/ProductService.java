@@ -185,4 +185,10 @@ public interface ProductService {
 	 */
 	long getProductCountByType(long userId, int type) throws AppException;
 
+	int getAllProductInfoListCount(Integer userId) throws AppException;
+
+	int getOverTimeProductInfoListCount(Integer userId) throws AppException;
+
+	int getNewProductInfoListCount(Integer userId) throws AppException;
+
 }

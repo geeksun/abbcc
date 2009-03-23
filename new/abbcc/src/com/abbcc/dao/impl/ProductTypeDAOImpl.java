@@ -17,9 +17,9 @@ public class ProductTypeDAOImpl extends BaseDaoImpl implements ProductTypeDAO{
 		return query.list();
 	}
 
-	public void addProductType(ProductType productType) {
+	public void addProductType(ProductType productType) throws Exception {
 		this.add(productType);
-		
+		throw new Exception();
 	}
 
 	public void updateProductType(ProductType productType) {

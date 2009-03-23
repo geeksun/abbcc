@@ -41,6 +41,10 @@ public interface CpgqxxDAO {
 
 	public long getCpgqxxOverdueCount(long userId);
 
+	public int getAllCpgqxxCount(long userId);
+
+	public int getNewCpgqxxCount(long userId);
+
 	 
 	 
 }

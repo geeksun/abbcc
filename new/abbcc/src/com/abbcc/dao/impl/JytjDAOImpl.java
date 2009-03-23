@@ -42,6 +42,8 @@ public class JytjDAOImpl extends BaseDaoImpl implements JytjDAO {
 		SQLQuery query=this.getSession().createSQLQuery(sql);
 		this.setParamter(0, query, params);
 		query.executeUpdate();
+		if(1==1)
+			throw  new DaoException("");
 		this.updateTableCount(tableName);
 	}
 

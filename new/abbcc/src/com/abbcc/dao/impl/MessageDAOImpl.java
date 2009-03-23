@@ -177,5 +177,25 @@ public class MessageDAOImpl extends BaseDaoImpl implements MessageDAO {
 		return 0;
 	}
 
+	public int getAllMessageListCount(Integer userId) {
+		if(userId==0)return 0;
+		String hql="select count(*) from Message m where m.toid=? or m.fromid=?";
+		Query query=this.getQuery(hql);
+		query.setInteger(0, userId);
+		query.setInteger(1, userId);
+		
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
+	public int getMessageListCount(Integer userId, int state) {
+		if(userId==0)return 0;
+		String hql="select count(*) from Message m where ( m.toid=? or m.fromid=? ) and m.state=? ";
+		Query query=this.getQuery(hql);
+		query.setInteger(0, userId);
+		query.setInteger(1, userId);
+		query.setInteger(2, state);
+		return ((Long)query.uniqueResult()).intValue();
+	}
+
 	 
 }

@@ -24,6 +24,7 @@ public interface ProductDAO extends BaseDao{
 	List<Product> getAllProductList() throws DaoException;
 
 	List<Product> getProductList(int state)throws DaoException;
-	
+
+		
 	
 }

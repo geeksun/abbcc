@@ -32,4 +32,12 @@ public interface MessageDAO {
 	int getMessageListSize(Integer fromId,Integer toId,Integer state,Integer messageType,Date startTime,Date endTime );
 
 	List getMessageList(Integer fromId,Integer toId,Integer state,Integer messageType,Date startTime,Date endTime, int start, int maxReults);
+
+
+
+	int getAllMessageListCount(Integer userId);
+
+
+
+	int getMessageListCount(Integer userId, int state);
  }

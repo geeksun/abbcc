@@ -1,5 +1,6 @@
 package com.abbcc.dao.impl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +20,11 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	private String tableName = "cpgqxx";
 
 	public void delete(Integer hyjbxxid, Long cpgqxxid) throws DaoException {
-		String sql="delete from "+tableName+" where cpgqxxid=? and hyjbxxid=?" ;
+		String sql = "delete from " + tableName
+				+ " where cpgqxxid=? and hyjbxxid=?";
 		SQLQuery query = this.getSession().createSQLQuery(sql);
 		query.setLong(0, cpgqxxid);
-		query.setInteger(1, hyjbxxid); 
+		query.setInteger(1, hyjbxxid);
 		query.executeUpdate();
 	}
 
@@ -33,7 +35,8 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 		long id = pz.getRecnum();
 		long page = id / Globals.COUNT;
 		cpgqxx.setCpgqxxid(id);
-		String sql = "INSERT INTO cpgqxx_" + page
+		String sql = "INSERT INTO cpgqxx_"
+				+ page
 				+ " (cpgqxxid,hyjbxxid,xxlx,cpmc,cpshlm, xxbt,  cpsxid,"
 				+ " xxsm, tp1,  tp2,  tp3, xxyxq,  jytjid, sqsj, sfyx, scsj,xxyxsj)"
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -42,7 +45,8 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 				cpgqxx.getCpshlm(), cpgqxx.getXxbt(), cpgqxx.getCpsxid(),
 				cpgqxx.getXxsm(), cpgqxx.getTp1(), cpgqxx.getTp2(),
 				cpgqxx.getTp3(), cpgqxx.getXxyxq(), cpgqxx.getJytjid(),
-				cpgqxx.getSqsj(), cpgqxx.getSfyx(), cpgqxx.getScsj(),DateFormater.getFormatDate(  cpgqxx.getXxyxsj())
+				cpgqxx.getSqsj(), cpgqxx.getSfyx(), cpgqxx.getScsj(),
+				DateFormater.getFormatDate(cpgqxx.getXxyxsj())
 
 		};
 		SQLQuery query = this.getSession().createSQLQuery(sql);
@@ -69,10 +73,11 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public List getCpgqxxList(Integer hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt, String overdue,int start,int maxReults) {
-		String hql = this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
-		Query query = this
-				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
+			String sfyx, String xxbt, String overdue, int start, int maxReults) {
+		String hql = this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt,
+				overdue);
+		Query query = this.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx,
+				xxbt, overdue);
 		query.setFirstResult(start);
 		query.setMaxResults(maxReults);
 		return query.list();
@@ -81,28 +86,28 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	public int getCpgqxxCount(Integer hyjbxxid, String xxlx, String cpmc,
 			String sfyx, String xxbt, String overdue) {
 		String hql = "select count(*) "
-				+ this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
-		Query query = this
-				.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx, xxbt,overdue);
+				+ this.getSelectSql(hyjbxxid, xxlx, cpmc, sfyx, xxbt, overdue);
+		Query query = this.getSelectQuery(hql, hyjbxxid, xxlx, cpmc, sfyx,
+				xxbt, overdue);
 		return ((Long) query.uniqueResult()).intValue();
 	}
 
 	private Query getSelectQuery(String hql, Integer hyjbxxid, String xxlx,
 			String cpmc, String sfyx, String xxbt, String overdue) {
-		Query query = this.getQuery(hql); 
-		int index =0;
+		Query query = this.getQuery(hql);
+		int index = 0;
 		if (hyjbxxid != null) {
 			query.setParameter(index, hyjbxxid);
 			index++;
 		}
-		
+
 		if (xxlx != null) {
 			query.setParameter(index, xxlx);
 			index++;
 		}
 		if (cpmc != null) {
-			cpmc="%"+cpmc+"%";
-			query.setString (index, cpmc);
+			cpmc = "%" + cpmc + "%";
+			query.setString(index, cpmc);
 			index++;
 		}
 		if (sfyx != null) {
@@ -114,19 +119,20 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 			index++;
 		}
 		if (overdue != null) {
-			if(overdue.equals(AppConstants.CPGOXX_OVERDUE)||overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)){
-				Date date=new Date();
-				//query.setTimestamp(index, date); 
+			if (overdue.equals(AppConstants.CPGOXX_OVERDUE)
+					|| overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)) {
+				Date date = new Date();
+				// query.setTimestamp(index, date);
 				index++;
-				 
-			}  
+
+			}
 		}
 		return query;
 	}
 
 	private String getSelectSql(Integer hyjbxxid, String xxlx, String cpmc,
-			String sfyx, String xxbt,  String overdue) {
-		
+			String sfyx, String xxbt, String overdue) {
+
 		String hql = "from Cpgqxx c where 1=1";
 		if (hyjbxxid != null) {
 			hql += " and c.hyjbxxid=?";
@@ -144,20 +150,21 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 			hql += " and c.xxbt=?";
 		}
 		if (overdue != null) {
-			if(overdue.equals(AppConstants.CPGOXX_OVERDUE)){
+			if (overdue.equals(AppConstants.CPGOXX_OVERDUE)) {
 				hql += " and c.xxyxsj<NOW()";
-			}else if(overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)){
+			} else if (overdue.equals(AppConstants.CPGOXX_UN_OVERDUE)) {
 				hql += " and c.xxyxsj>=NOW()";
 			}
-			
+
 		}
 		return hql;
 	}
 
-	public void updateCpggxxAuditType(String auditType, long[] productInfoId) throws DaoException {
-		String hql="update Cpgqxx c set c.sfyx=? where c.cpgqxxid";
-		hql=this.getSql(hql, productInfoId);
-		Query query = this.getQuery(hql); 
+	public void updateCpggxxAuditType(String auditType, long[] productInfoId)
+			throws DaoException {
+		String hql = "update Cpgqxx c set c.sfyx=? where c.cpgqxxid";
+		hql = this.getSql(hql, productInfoId);
+		Query query = this.getQuery(hql);
 		query.setString(0, auditType);
 		this.setLongParamter(1, query, productInfoId);
 		query.executeUpdate();
@@ -173,15 +180,15 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public long getCpgqxxOverdueCount() {
-		String hql = "select count(*) from Cpgqxx  c  where  c.xxyxsj<NOW()"; 
+		String hql = "select count(*) from Cpgqxx  c  where  c.xxyxsj<NOW()";
 		Query query = this.getQuery(hql);
-		 
+
 		return ((Long) query.uniqueResult()).intValue();
 
 	}
 
 	public long getCpgqxxOverdueCount(long userId) {
-		String hql = "select count(*) from Cpgqxx  c where  c.xxyxsj<NOW() and c.hyjbxxid=?"; 
+		String hql = "select count(*) from Cpgqxx  c where  c.xxyxsj<NOW() and c.hyjbxxid=?";
 		Query query = this.getQuery(hql);
 		query.setLong(0, userId);
 
@@ -189,7 +196,7 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public long getCpgqxxSfyxCount(String sfyx) {
-		String hql = "select count(*) from Cpgqxx  c where  c.sfyx=?"; 
+		String hql = "select count(*) from Cpgqxx  c where  c.sfyx=?";
 		Query query = this.getQuery(hql);
 		query.setString(0, sfyx);
 
@@ -197,11 +204,33 @@ public class CpgqxxDAOImpl extends BaseDaoImpl implements CpgqxxDAO {
 	}
 
 	public long getCpgqxxSfyxCount(long userId, String sfyx) {
-		String hql = "select count(*) from Cpgqxx  c where   c.sfyx=? and c.hyjbxxid=?"; 
+		String hql = "select count(*) from Cpgqxx  c where   c.sfyx=? and c.hyjbxxid=?";
 		Query query = this.getQuery(hql);
 		query.setString(0, sfyx);
 		query.setLong(1, userId);
 
+		return ((Long) query.uniqueResult()).intValue();
+	}
+
+	public int getAllCpgqxxCount(long userId) {
+		String hql = "select count(*) from Cpgqxx  c where   c.hyjbxxid=?";
+		Query query = this.getQuery(hql);
+
+		query.setLong(0, userId);
+		return ((Long) query.uniqueResult()).intValue();
+
+	}
+
+	public int getNewCpgqxxCount(long userId) {
+		String hql = "select count(*) from Cpgqxx  c where   c.hyjbxxid=? and c.sqsj=?";
+		Query query = this.getQuery(hql);
+		Calendar calendar=Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_MONTH, -5);
+		query.setLong(0, userId);
+		query.setTimestamp(1, calendar.getTime());
+		
+		
+		
 		return ((Long) query.uniqueResult()).intValue();
 	}
 
