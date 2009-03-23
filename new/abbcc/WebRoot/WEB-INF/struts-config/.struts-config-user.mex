@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/message.do" location="950,250" dimension="238,84" />
+  <StrutsActivity path="/login.do" location="-15,150" dimension="274,84" />
+  <StrutsActivity path="/register.do" location="330,150" dimension="244,84" />
+  <StrutsActivity path="/checkName.do" location="-30,390" dimension="358,84" />
+  <StrutsActivity path="/traceInfo.do" location="600,150" dimension="274,84" />
+  <StrutsActivity path="/productInfo.do" location="350,550" dimension="220,84" />
+  <StrutsActivity path="login;6" location="225,0" dimension="106,72" />
+  <StrutsActivity path="fail;6" location="390,420" dimension="100,72" />
+  <StrutsActivity path="/user/message/getMessage.jsp" location="950,550" dimension="208,48" />
+  <StrutsActivity path="/user/message/addMessage.jsp" location="650,650" dimension="208,48" />
+  <StrutsActivity path="/user/message/allMessageList.jsp" location="950,650" dimension="232,48" />
+  <StrutsActivity path="/user/main.jsp" location="950,150" dimension="124,48" />
+  <StrutsActivity path="/user/index.jsp" location="15,0" dimension="130,48" />
+  <StrutsActivity path="/user/register.jsp" location="390,0" dimension="148,48" />
+  <StrutsActivity path="/user/service/basicinfo.jsp" location="630,15" dimension="202,48" />
+  <StrutsActivity path="/user/product/product.jsp" location="50,550" dimension="190,48" />
+  <StrutsActivity path="/fail.jsp" location="570,420" dimension="94,48" />
+  <StrutsActivity path="/admin/product/showProductType.jsp" location="50,650" dimension="244,48" />
+  <StrutsActivity path="/admin/product/createProduct.jsp" location="650,550" dimension="232,48" />
+  <StrutsActivity path="/user/service/index.jsp" location="195,315" dimension="178,48" />
+  <StrutsActivity path="/user/product/basicinfo.jsp" location="950,450" dimension="202,48" />
+  <StrutsActivity path="/user/product/productInfoList.jsp" />
+  <StrutsTransition id="/traceInfo.do,basicinfo,/user/service/basicinfo.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="737,150" />
+      <AbsolutePoint location="737,63" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/register.do,registersuccess,/user/main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="482,150" />
+      <AbsolutePoint location="482,87" />
+      <AbsolutePoint location="1042,87" />
+      <AbsolutePoint location="1042,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/login.do,loginsuccess,/user/main.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="122,150" />
+      <AbsolutePoint location="122,117" />
+      <AbsolutePoint location="1012,117" />
+      <AbsolutePoint location="1012,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/message.do,addMessage,/user/message/addMessage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="950,292" />
+      <AbsolutePoint location="927,292" />
+      <AbsolutePoint location="927,674" />
+      <AbsolutePoint location="858,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/index.jsp,null,/login.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="80,48" />
+      <AbsolutePoint location="80,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/register.jsp,null,/register.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="452,48" />
+      <AbsolutePoint location="452,150" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/productInfo.do,product,/user/product/product.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="350,583" />
+      <AbsolutePoint location="240,583" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/message.do,allMessageList,/user/message/allMessageList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1188,292" />
+      <AbsolutePoint location="1263,292" />
+      <AbsolutePoint location="1263,674" />
+      <AbsolutePoint location="1182,674" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="fail;6,null,/fail.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="490,453" />
+      <AbsolutePoint location="570,453" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="login;6,null,/user/index.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="225,33" />
+      <AbsolutePoint location="145,33" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/productInfo.do,productInfoList,/user/product/productInfoList.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="460,592" />
+      <AbsolutePoint location="0,0" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/message.do,showMessage,/user/message/getMessage.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1173,334" />
+      <AbsolutePoint location="1173,574" />
+      <AbsolutePoint location="1158,574" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+</FlowViewLayout>
+
