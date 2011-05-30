@@ -26,7 +26,7 @@
      	<dt onclick="toggleDl(this)">基本信息设置</dt>
      	<dd><a href="<%=path%>/traceInfo.do?action=displayBasicInfo" target="right">基本资料管理</a></dd>
      	<dd><a href="<%=path%>/modifyPassword.do?action=displayModifyCipher" target="right">后台密码修改</a></dd>
-     	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">公司简介</a></dd> 
+     	<dd><a href="<%=path%>/traceInfo.do?action=displayDetailInfo" target="right">详细资料管理</a></dd> 
      	<dd><a href="<%=path%>/strengthInfo.do?action=displayHonorCertificate" target="right">荣誉证书</a></dd>
      	<dd><a href="<%=path%>/strengthInfo.do?action=displayTechnology" target="right">技术实力</a></dd>
      	<dd><a href="<%=path%>/strengthInfo.do?action=displayCompanyLogo" target="right">上传公司标志</a></dd>
@@ -41,11 +41,9 @@
      </dl>
       <dl>
      	<dt onclick="toggleDl(this)">我的意见</dt>
-     	<dd><a href="<%=path%>/user/comment/comment.jsp" target="right">评价东方五金</a></dd>
+     	<dd><a href="<%=path%>/user/comment/comment.jsp" target="right">评价网站</a></dd>
      	<dd>疑问或难题 </dd>
      	<dd>意见管理</dd>
-     	<dd>子结点4</dd>
- 
      </dl>
      <dl>
      	<dt onclick="">留言管理</dt>
@@ -55,17 +53,10 @@
      	<dd><a href="<%=path %>/message.do?method=listSellMessage&type=1" target="right">供应信息留言</a></dd>
      	<dd><a href="<%=path %>/message.do?method=listBuyMessage&type=2" target="right">求购信息留言</a></dd>
  		<dd><a href="<%=path %>/message.do?method=userList" target="right">留言测试</a></dd>
-     	<dt onclick="toggleDl(this)">系统后台产品</dt>
+     	<dt onclick="toggleDl(this)">系统后台</dt>
      	<dd><a href="<%=path%>/admin/product.do?method=productManager" target="right"> 产品管理</a></dd>
-     	<!-- <dd><a href="<%=path%>/admin/product.do?method=showProduct" target="right">添加产品</a></dd> -->
      	<dd><a href="<%=path%>/admin/productType.do?method=showProductType" target="right">产品类目管理</a></dd>
      	<dd><a href="<%=path%>/admin/product.do?method=productInfoList&auditType=<%=AppConstants.CPGQXX_SFYX_2 %>&overdue=<%=AppConstants.CPGOXX_UN_OVERDUE %>" target="right">供求信息管理</a></dd>
-     	<dd>子结点3</dd>
-     	<dd>子结点4</dd>
- 
-     </dl>
-     <dl>
-     	<dt onclick="toggleDl(this)">留言管理</dt>
      </dl>
   </body>
 </html>

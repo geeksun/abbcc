@@ -8,7 +8,7 @@
 %>
 <html>
 	<head>
-		<title>东方五金门户网站</title>
+		<title>B2C电子商务网站</title>
 		<script type="text/javascript">
 			function verify(){
 			if(validate()){
