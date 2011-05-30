@@ -154,7 +154,7 @@
 	    
 	    <action path="/productInfo" parameter="method"
 			type="com.abbcc.customer.ProductInfoAction"  name="uploadProductInfoForm">
-		     <forward name="showProductInfo" path="/admin/product/showProductInfo.jsp"> </forward>
+		     <forward name="showProductInfo" path="/user/product/showProductInfo.jsp"> </forward>
 			<forward name="product" path="/user/product/product.jsp"></forward>
 			<forward name="productInfoList"	path="/user/product/productInfoList.jsp"></forward>
 		</action>
