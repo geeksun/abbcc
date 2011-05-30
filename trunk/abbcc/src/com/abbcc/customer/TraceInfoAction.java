@@ -298,10 +298,11 @@ public class TraceInfoAction extends BaseAction {
 	 *   show:真实姓名和会员登录名memberId
 	 */
 	public ActionForward displayModifyCipher(ActionMapping mapping, ActionForm form,HttpServletRequest request,
-			HttpServletResponse response)	throws Exception{
-			HttpSession session = request.getSession(false);
-			String hyjbxxid = (String) session.getAttribute("hyjbxxid");
-			
+		HttpServletResponse response)	throws Exception{
+		HttpSession session = request.getSession(false);
+		String hyjbxxid = (String) session.getAttribute("hyjbxxid");
+		
+		if(hyjbxxid!=null){
 			Hyjbxx hyjbxx = hyjbxxService.getCustomerById(hyjbxxid);
 			if(hyjbxx!=null){
 				request.setAttribute("truename", hyjbxx.getZsxm());
@@ -313,8 +314,13 @@ public class TraceInfoAction extends BaseAction {
 				request.setAttribute(AppConstants.DISPLAY_FLAG, AppConstants.DISPLAY_CRASH);
 				return mapping.findForward("service_exception");
 			}
-			
 			return mapping.findForward("modify_password");
+		}else{
+			log.debug("modifyPassword handle failed,not find Hyjbxx instance by hyjbxxid："+hyjbxxid);
+			//服务器异常500
+			request.setAttribute(AppConstants.DISPLAY_FLAG, AppConstants.DISPLAY_CRASH);
+			return mapping.findForward("service_exception");
+		}
 	}
 	
 	/**

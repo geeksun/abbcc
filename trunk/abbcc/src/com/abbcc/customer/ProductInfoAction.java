@@ -275,59 +275,59 @@ public class ProductInfoAction extends BaseAction {
 
 			String productInfoId = RequestUtils.getParameter(request,
 					"productInfoId");
-			long _productInfoId = Long.valueOf(productInfoId);
-			ProductInfo productInfo = productService
-					.getProductInfoById(_productInfoId);
-			request.setAttribute("productInfo", productInfo);
-			if (productInfo != null) {
-				Product product = productInfo.getProduct();
-				if (product != null) {
-					request.setAttribute("product", product);
-					String productTypeId = product.getProductTypeId();
-					Integer _productTypeId = Integer.parseInt(productTypeId);
-					ProductType productType = this.productService
-							.getProductTypeById(_productTypeId);
-					if (productType != null) {
-						int parentId = productType.getParentId();
-						List<ProductType> thirdCategory = this.productService
-								.getProductTypeByParentId(parentId);
-						ProductType secondProductType = this.productService
-								.getProductTypeById(parentId);
-						request.setAttribute("thirdCategory", thirdCategory);
-						request.setAttribute("thirdProductType", productType);
-						if (secondProductType != null) {
-							int secondParentId = secondProductType
-									.getParentId();
-							List<ProductType> secondCategory = this.productService
-									.getProductTypeByParentId(secondParentId);
-							ProductType topProductType = this.productService
-									.getProductTypeById(secondParentId);
-							int parentid = topProductType.getParentId();
-							List<ProductType> topCategory = this.productService
-									.getProductTypeByParentId(parentid);
-							request.setAttribute("secondCategory",
-									secondCategory);
-							request.setAttribute("secondProductType",
-									secondProductType);
+			if(productInfoId!=null){
+				long _productInfoId = Long.valueOf(productInfoId);
+				ProductInfo productInfo = productService
+						.getProductInfoById(_productInfoId);
+				request.setAttribute("productInfo", productInfo);
+				if (productInfo != null) {
+					Product product = productInfo.getProduct();
+					if (product != null) {
+						request.setAttribute("product", product);
+						String productTypeId = product.getProductTypeId();
+						Integer _productTypeId = Integer.parseInt(productTypeId);
+						ProductType productType = this.productService
+								.getProductTypeById(_productTypeId);
+						if (productType != null) {
+							int parentId = productType.getParentId();
+							List<ProductType> thirdCategory = this.productService
+									.getProductTypeByParentId(parentId);
+							ProductType secondProductType = this.productService
+									.getProductTypeById(parentId);
+							request.setAttribute("thirdCategory", thirdCategory);
+							request.setAttribute("thirdProductType", productType);
+							if (secondProductType != null) {
+								int secondParentId = secondProductType
+										.getParentId();
+								List<ProductType> secondCategory = this.productService
+										.getProductTypeByParentId(secondParentId);
+								ProductType topProductType = this.productService
+										.getProductTypeById(secondParentId);
+								int parentid = topProductType.getParentId();
+								List<ProductType> topCategory = this.productService
+										.getProductTypeByParentId(parentid);
+								request.setAttribute("secondCategory",
+										secondCategory);
+								request.setAttribute("secondProductType",
+										secondProductType);
 
-							request.setAttribute("topCategory", topCategory);
-							request.setAttribute("topProductType",
-									topProductType);
+								request.setAttribute("topCategory", topCategory);
+								request.setAttribute("topProductType",
+										topProductType);
 
+							}
 						}
+
+						String path = request.getContextPath();
+
+						String productTemplate = ProductTemplate.getInstance()
+								.getTableStyle(product, path, productInfo.getMapValue());
+						request.setAttribute("productTemplate", productTemplate);
 
 					}
 
-					String path = request.getContextPath();
-
-					String productTemplate = ProductTemplate.getInstance()
-							.getTableStyle(product, path, productInfo.getMapValue());
-					request.setAttribute("productTemplate", productTemplate);
-
 				}
-
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -138,29 +138,46 @@ String path = request.getContextPath();
 	  	</script>
 	</head>
 	<%
-				ProductType thirdProductType = (ProductType) request
-				.getAttribute("thirdProductType");
-		ProductInfo productInfo = (ProductInfo) request
-				.getAttribute("productInfo");
-		Cpgqxx cpgqxx = productInfo.getCpggxx();
-		String orderType = cpgqxx.getXxlx();
-		String productName = cpgqxx.getCpmc();
-		String prodcutTitle = cpgqxx.getXxbt();
-		String ableDate = cpgqxx.getXxyxq();
-		String desc=cpgqxx.getXxsm();
-		String pic1 = cpgqxx.getTp1();
-		String pic2 = cpgqxx.getTp2();
-		String pic3 = cpgqxx.getTp3();
-
-		Jytj jytj = productInfo.getJytj();
-		String unit = jytj.getJldw();
-		String price = jytj.getCpdj();
-		String minCount = jytj.getZxqdl();
-		String productCount = jytj.getGhzl();
-		String freightDate = jytj.getFhqx();
-		String merchantType = jytj.getGyslc();
-
-		Product product = productInfo.getProduct();
+		ProductType thirdProductType = (ProductType) request.getAttribute("thirdProductType");
+		ProductInfo productInfo = (ProductInfo) request.getAttribute("productInfo");
+		Cpgqxx cpgqxx = null;
+		Jytj jytj = null;
+		String orderType = "";
+		String productName = "";
+		String prodcutTitle = "";
+		String ableDate = "";
+		String desc = "";
+		String pic1 = "";
+		String pic2 = "";
+		String pic3 = "";
+		String unit = "";
+		String price = "";
+		String minCount = "";
+		String productCount = "";
+		String freightDate = "";
+		String merchantType = "";
+		if(productInfo!=null){
+			cpgqxx = productInfo.getCpggxx();
+			orderType = cpgqxx.getXxlx();
+			productName = cpgqxx.getCpmc();
+			prodcutTitle = cpgqxx.getXxbt();
+			ableDate = cpgqxx.getXxyxq();
+			desc=cpgqxx.getXxsm();
+			pic1 = cpgqxx.getTp1();
+			pic2 = cpgqxx.getTp2();
+			pic3 = cpgqxx.getTp3();
+	
+			jytj = productInfo.getJytj();
+			unit = jytj.getJldw();
+			price = jytj.getCpdj();
+			minCount = jytj.getZxqdl();
+			productCount = jytj.getGhzl();
+			freightDate = jytj.getFhqx();
+			merchantType = jytj.getGyslc();
+	
+			Product product = productInfo.getProduct();
+		}
+		
 	%>
 	<body>
 		<table align="right" class="content_border" border="0" cellpadding="0"

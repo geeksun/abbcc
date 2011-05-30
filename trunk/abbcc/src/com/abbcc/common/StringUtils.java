@@ -83,7 +83,7 @@ public class StringUtils {
     } 
     
     /**
-     * 是否为空白,包括null和""
+     * 是否为空,包括null和""
      * @param str
      * @return
      */
