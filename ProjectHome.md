@@ -1,0 +1,1 @@
+struts1.2+hibernate3.1+spring2.0+c3p0连接池
